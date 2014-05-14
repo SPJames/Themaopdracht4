@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" 
+ xmlns:web="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" 
+ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" 
+ version="2.4"> 
+ 
+	<servlet> 
+		<servlet-name>Register Servlet</servlet-name> 
+		<servlet-class>AccountSysteem.RegisterServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Register Servlet</servlet-name> 
+		<url-pattern>/RegisterServlet.do</url-pattern> 
+	</servlet-mapping> 
+	
+	<servlet> 
+		<servlet-name>Login Servlet</servlet-name> 
+		<servlet-class>AccountSysteem.LoginServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Login Servlet</servlet-name> 
+		<url-pattern>/LoginServlet.do</url-pattern> 
+	</servlet-mapping> 
+	
+	<servlet> 
+		<servlet-name>Logout Servlet</servlet-name> 
+		<servlet-class>AccountSysteem.LogoutServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Logout Servlet</servlet-name> 
+		<url-pattern>/LogoutServlet</url-pattern> 
+	</servlet-mapping> 
+	
+	<!-- hier onder beginen je klus servlets -->
+	<servlet> 
+		<servlet-name>Klus Aanmaken Servlet</servlet-name> 
+		<servlet-class>Klus.KlusAanmakenServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Klus Aanmaken Servlet</servlet-name> 
+		<url-pattern>/KlusAanmakenServlet.do</url-pattern> 
+	</servlet-mapping> 
+	
+	<servlet> 
+		<servlet-name>Klus Afronden Servlet</servlet-name> 
+		<servlet-class>Klus.KlusAfrondenServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Klus Afronden Servlet</servlet-name> 
+		<url-pattern>/KlusAfrondenServlet</url-pattern> 
+	</servlet-mapping> 
+	
+	
+	<!-- hier onder beginen je monteur servlets -->
+	<servlet> 
+		<servlet-name>Login Monteur Servlet</servlet-name> 
+		<servlet-class>Monteur.LoginMonteurServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Login Monteur Servlet</servlet-name> 
+		<url-pattern>/LoginMonteurServlet.do</url-pattern> 
+	</servlet-mapping>
+	
+	<servlet> 
+		<servlet-name>Logout Monteur Servlet</servlet-name> 
+		<servlet-class>Monteur.LogoutMonteurServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Logout Monteur Servlet</servlet-name> 
+		<url-pattern>/LogoutMonteurServlet</url-pattern> 
+	</servlet-mapping> 
+	
+	<servlet> 
+		<servlet-name>Register Monteur Servlet</servlet-name> 
+		<servlet-class>Monteur.RegisterMonteurServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Register Monteur Servlet</servlet-name> 
+		<url-pattern>/RegisterMonteurServlet.do</url-pattern> 
+	</servlet-mapping> 
+	
+	<!-- hier onder beginen je admin servlets  -->
+	
+	<servlet> 
+		<servlet-name>Login Admin Servlet</servlet-name> 
+		<servlet-class>Administratie.LoginAdminServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Login Admin Servlet</servlet-name> 
+		<url-pattern>/LoginAdminServlet.do</url-pattern> 
+	</servlet-mapping> 
+	
+	<servlet> 
+		<servlet-name>Klus Factureren Servlet</servlet-name> 
+		<servlet-class>Administratie.KlusFacturerenServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Klus Factureren Servlet</servlet-name> 
+		<url-pattern>/KlusFacturerenServlet</url-pattern> 
+	</servlet-mapping> 
+	 
+</web-app>
