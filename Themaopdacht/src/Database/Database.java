@@ -15,7 +15,7 @@ public class Database {
 	public void leesUsersIn(ArrayList<Klant> Users) throws IOException {
 		
 		Klant k = null;
-		int id = 0;
+		//int id = 0;
 		String naam = null;
 		String adres = null;
 		String postcode = null;
@@ -36,7 +36,7 @@ public class Database {
 				int endPostcode = str.indexOf("|");
 				//int end = str.indexOf("/");
 
-				id = Integer.parseInt(str.substring(0, (endID)));
+				//id = Integer.parseInt(str.substring(0, (endID)));
 				username = str.substring((endID + 1), (endUsername));
 				password = str.substring((endUsername + 1), (endPassword));
 				naam = str.substring((endPassword + 1), (endRealname));
