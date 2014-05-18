@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
 			rd = req.getRequestDispatcher("register.jsp");
 
 		} else {
-			Klant k = new Klant(userinfo[0], userinfo[6], userinfo[7],userinfo[4],userinfo[0],userinfo[2]);
+			Klant k = new Klant(userinfo[1], userinfo[6], userinfo[7],userinfo[4],userinfo[0],userinfo[2]);
 			k.schrijfWeg(userinfo);
 			
 			@SuppressWarnings("unchecked")

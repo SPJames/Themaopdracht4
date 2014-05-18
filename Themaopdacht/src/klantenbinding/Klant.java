@@ -94,6 +94,11 @@ public class Klant {
 		fw.close();
 	}
 
+	public static int getId() {
+		return id;
+	}
+
+
 	public void setLaatstBezocht(Calendar nd) {
 		laatstBezocht = nd;
 	}
