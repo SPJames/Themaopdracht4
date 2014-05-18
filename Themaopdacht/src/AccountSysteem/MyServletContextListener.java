@@ -16,11 +16,13 @@ public class MyServletContextListener implements ServletContextListener {
 		ArrayList<Klant> List = new ArrayList<Klant>();
 		
 		//lees bestaande users in
-		try {
-			Database.leesUsersIn(List);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
+		//ERROR, onbekend waarom. Oorsprong ligt waarschijnlijk in database.java
+//		try {
+//			Database.leesUsersIn(List);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
 		//users initaliseren
 		

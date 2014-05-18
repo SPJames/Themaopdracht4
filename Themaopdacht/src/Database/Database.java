@@ -35,21 +35,20 @@ public class Database {
 				int endEmail = str.indexOf(",");
 				int endAdres = str.indexOf(".");
 				int endPostcode = str.indexOf("|");
-				//int end = str.indexOf("/");
 
-				//id = Integer.parseInt(str.substring(0, (endID)));
 				username = str.substring((endID + 1), (endUsername));
 				password = str.substring((endUsername + 1), (endPassword));
 				naam = str.substring((endPassword + 1), (endRealname));
 				email = str.substring((endRealname + 1), (endEmail));
 				adres = str.substring((endEmail + 1), (endAdres));
 				postcode = str.substring((endAdres + 1), (endPostcode));
+				
+				k = new Klant(naam, adres, postcode, email, username, password);
+				Users.add(k);
 			}
+			
 		}
-		br.close();
-		
-		k = new Klant(naam, adres, postcode, email, username, password);
-		Users.add(k);
+		br.close();	
 	}
 	
 	public static void leesAutosIn(ArrayList<Auto> Autos) throws IOException {
@@ -67,16 +66,16 @@ public class Database {
 				int endMerk = str.indexOf(":");
 				int endId = str.indexOf(";");
 
-				//id = Integer.parseInt(str.substring(0, (endID)));
 				kenteken = str.substring(0, (endKenteken));
 				merk = str.substring((endKenteken + 1), (endMerk));
 				id = str.substring((endMerk + 1), (endId));
+				
+				a = new Auto(kenteken, merk, id);
+				Autos.add(a);
 			}
+			
 		}
 		br.close();
-		
-		a = new Auto(kenteken, merk, id);
-		Autos.add(a);
 	}
 	
 	public static void leesMonteursIn() {
