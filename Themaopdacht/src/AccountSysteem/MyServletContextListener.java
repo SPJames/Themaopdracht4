@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.*;
 
+import Klusbeheer.Klus;
 import Klusbeheer.Monteur;
 import klantenbinding.Klant;
 
@@ -20,6 +21,12 @@ public class MyServletContextListener implements ServletContextListener {
 		//monteurs initaliseren
 		
 		sce.getServletContext().setAttribute("allMonteurs", List2);
+		
+		ArrayList<Klus> List3 = new ArrayList<Klus>();
+
+		//Klussen initaliseren
+		
+		sce.getServletContext().setAttribute("allKlussen", List3);
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

@@ -20,11 +20,11 @@ public class LogoutServlet extends HttpServlet{
 /*	 		if(c.getName().equals("C_Password")){
 	 			c.setMaxAge(0);
 	 			resp.addCookie(c);
-	 		}
+	 		}*/
 	 		if(c.getName().equals("C_ID")){
 	 			c.setMaxAge(0);
 	 			resp.addCookie(c);
-	 		}*/
+	 		}
 	 		if(c.getName().equals("C_Usertype")){
 	 			c.setMaxAge(0);
 	 			resp.addCookie(c);

@@ -7,7 +7,12 @@ public class Tanken extends DienstType {
 	private double totaalB;
 	private Brandstof deBrandstof;
 
+	public Tanken(){
+		super();
+	}
+	
 	public Tanken(double aL) {
+		super();
 		aantalLiter = aL;
 	}
 

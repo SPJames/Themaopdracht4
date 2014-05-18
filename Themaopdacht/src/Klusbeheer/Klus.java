@@ -1,18 +1,50 @@
 package Klusbeheer;
 
-import financien.DienstType;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import financien.*;
 
 public class Klus {
-	private int klusnummer;
+	private static int klusnummer = 0;
+	private String title;
 	private String beschrijving;
 	private String werknemer;
 	private int aantalOnderdelen;
 	private DienstType hetType;
+	private static int id = 1;
 
-	public Klus(int kn, String b, String wn) {
-		klusnummer = kn;
+	public Klus(String t, String b, String type) {
+		klusnummer++;
+		title = t;
 		beschrijving = b;
-		werknemer = wn;
+		if(type.equals("rep")){
+			hetType = new Onderhoud();
+		}
+		else if(type.equals("park")){
+			hetType = new Parkeren();
+		}
+		else if(type.equals("park")){
+			hetType = new Tanken();
+		}else{/*fuck you*/}
+		
+	}
+
+	public void schrijfWeg(String[] Klus) throws IOException{
+		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/afspraken.dat", true);
+		
+		fw.write("\n"+ id++ +":"+ Klus[0]+";"+Klus[1]+","+Klus[2]+"."+Klus[3]+"|"+Klus[4]+"/");
+		fw.flush();
+		fw.close();
+		
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public int getKlusNummer() {

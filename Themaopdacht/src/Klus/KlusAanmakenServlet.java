@@ -1,23 +1,28 @@
 package Klus;
 
-import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Klusbeheer.Klus;
+
 public class KlusAanmakenServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-	private static int id = 1;
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		String[] userinfo = new String[5];
 		boolean error = false;
+		@SuppressWarnings("unchecked")
+		ArrayList<Klus> Klussen = (ArrayList<Klus>) req.getServletContext()
+				.getAttribute("allKlussen");
 		
-		userinfo[0] = req.getParameter("klantid");
-		userinfo[1] = req.getParameter("name");
+		userinfo[0] = req.getParameter("klantid");//userid voor foreign key
+		userinfo[1] = req.getParameter("name");//username voor foreign key
 		userinfo[2] = req.getParameter("title");
 		userinfo[3] = req.getParameter("diensttype");
 		userinfo[4] = req.getParameter("comments");
@@ -31,14 +36,11 @@ public class KlusAanmakenServlet extends HttpServlet{
 		RequestDispatcher rd = null; 
 		if (error){
 			req.setAttribute("msgs", "Input was empty");	
-			rd = req.getRequestDispatcher("register.jsp");
+			rd = req.getRequestDispatcher("afspraakmaken.jsp");
 		}else{
-			FileWriter fw = new FileWriter("C:/xampp/tomcat/webapps/AccountSysteem/afspraken.dat", true);
-			
-			fw.write("\n"+ id++ +":"+ userinfo[0]+";"+userinfo[1]+","+userinfo[2]+"."+userinfo[3]+"|"+userinfo[4]+"/");
-			fw.flush();
-			fw.close();
-			
+			Klus k = new Klus(userinfo[2],userinfo[4], userinfo[3]);
+			k.schrijfWeg(userinfo);
+			Klussen.add(k);
 			rd = req.getRequestDispatcher("index.jsp");
 			
 		}

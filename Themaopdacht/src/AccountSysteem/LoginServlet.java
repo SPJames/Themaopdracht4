@@ -50,6 +50,11 @@ public class LoginServlet extends HttpServlet {
 					Cookie c2 = new Cookie("C_Usertype", "Klant");
 					c2.setMaxAge(3600 * 24 * 365);
 					resp.addCookie(c2);
+					@SuppressWarnings("static-access")
+					String id = ""+k.getId();
+					Cookie c3 = new Cookie("C_ID", id);
+					c3.setMaxAge(3600 * 24 * 365);
+					resp.addCookie(c3);
 					rd = req.getRequestDispatcher("index.jsp");
 					break;
 				} else {

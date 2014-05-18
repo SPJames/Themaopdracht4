@@ -6,7 +6,11 @@ public class Onderhoud extends DienstType {
 	private double manUren, prijsPerManuur;
 	private double totaalMU, totaal;
 	private Onderdeel deOnderdelen;
-
+	
+	public Onderhoud(){
+		super();
+	}
+	
 	public Onderhoud(double mU, double pPM) {
 		super();
 		manUren = mU;
