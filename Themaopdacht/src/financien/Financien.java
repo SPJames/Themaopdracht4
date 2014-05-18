@@ -2,11 +2,8 @@ package financien;
 
 import java.util.ArrayList;
 
-import Klusbeheer.Monteur;
-
 public class Financien {
 	protected ArrayList<Factuur> alleFactures = new ArrayList<Factuur>();
-	private ArrayList<Betaling> alleBetalingen = new ArrayList<Betaling>();
 
 	public Financien() {
 	}

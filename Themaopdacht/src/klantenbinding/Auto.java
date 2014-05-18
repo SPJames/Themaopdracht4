@@ -4,8 +4,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import Klusbeheer.Klus;
-
 public class Auto {
 	private String kenteken;
 	private String merk;

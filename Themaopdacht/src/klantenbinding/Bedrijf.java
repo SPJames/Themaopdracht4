@@ -1,8 +1,6 @@
 package klantenbinding;
 
 import java.util.ArrayList;
-
-import financien.Financien;
 import voorraadbeheer.Voorraad;
 import Klusbeheer.Planner;
 
@@ -11,7 +9,6 @@ public class Bedrijf {
 	private String bedrijfsNaam;
 	private Planner dePlanner;
 	private Voorraad deVoorraad;
-	private Financien deFinancien;
 
 	public Bedrijf(String nm) {
 		setNaam(nm);
@@ -96,9 +93,6 @@ public class Bedrijf {
 		return dePlanner;
 	}
 
-	public void setDeFinancien(Financien f) {
-		deFinancien = f;
-	}
 
 	public String toString() {
 		String i = "";

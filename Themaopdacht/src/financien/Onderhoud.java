@@ -4,7 +4,7 @@ import voorraadbeheer.Onderdeel;
 
 public class Onderhoud extends DienstType {
 	private double manUren, prijsPerManuur;
-	private double totaalO, totaalMU, totaal;
+	private double totaalMU, totaal;
 	private Onderdeel deOnderdelen;
 
 	public Onderhoud(double mU, double pPM) {

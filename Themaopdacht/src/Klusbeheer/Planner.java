@@ -2,7 +2,7 @@ package Klusbeheer;
 import java.util.ArrayList;
 
 public class Planner {
-	private ArrayList<Weekplanning> alleWeekplanningen = new ArrayList();
+	private ArrayList<Weekplanning> alleWeekplanningen = new ArrayList<Weekplanning>();
 
 	public Planner() {
 
