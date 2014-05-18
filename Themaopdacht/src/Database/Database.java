@@ -6,10 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import klantenbinding.Auto;
 import klantenbinding.Klant;
 
 public class Database {
-	private static int klantid = 1;
+	private static int userid = 1;
 
 	// lees data in
 	public static void leesUsersIn(ArrayList<Klant> Users) throws IOException {
@@ -23,7 +24,7 @@ public class Database {
 		String username= null;
 		String password= null;
 
-		BufferedReader br = new BufferedReader(new FileReader("C:/apache-tomcat-8.0.5/webapps/AccountSysteem/afspraken.dat"));
+		BufferedReader br = new BufferedReader(new FileReader("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat"));
 		String str = "";
 		while ((str = br.readLine()) != null) {
 			if (str.length() > 0) {
@@ -50,7 +51,34 @@ public class Database {
 		k = new Klant(naam, adres, postcode, email, username, password);
 		Users.add(k);
 	}
+	
+	public static void leesAutosIn(ArrayList<Auto> Autos) throws IOException {
+		Auto a = null;
+		//int id = 0;
+		String kenteken = null;
+		String merk = null;
+		String id = null;
 
+		BufferedReader br = new BufferedReader(new FileReader("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat"));
+		String str = "";
+		while ((str = br.readLine()) != null) {
+			if (str.length() > 0) {
+				int endKenteken = str.indexOf(" ");
+				int endMerk = str.indexOf(":");
+				int endId = str.indexOf(";");
+
+				//id = Integer.parseInt(str.substring(0, (endID)));
+				kenteken = str.substring(0, (endKenteken));
+				merk = str.substring((endKenteken + 1), (endMerk));
+				id = str.substring((endMerk + 1), (endId));
+			}
+		}
+		br.close();
+		
+		a = new Auto(kenteken, merk, id);
+		Autos.add(a);
+	}
+	
 	public static void leesMonteursIn() {
 
 	}
@@ -63,13 +91,21 @@ public class Database {
 	public void schrijfUserWeg(String[] userinfo) throws IOException {
 		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat", true);
 
-		fw.write("\n" + klantid++ + " " + userinfo[0]/*username*/ + ":" + userinfo[2]/*password*/ + ";"
+		fw.write(userid++ + " " + userinfo[0]/*username*/ + ":" + userinfo[2]/*password*/ + ";"
 				+ userinfo[1]/*realname*/ + "'" + userinfo[4]/*email*/ + "," + userinfo[6]/*adress*/ + "."
-				+ userinfo[7]/*postcode*/ + "|");
+				+ userinfo[7]/*postcode*/ + "|" + "\n");
 		fw.flush();
 		fw.close();
 	}
 
+	public void schrijfAutoWeg(String kt, String merk, String id) throws IOException {
+		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat", true);
+
+		fw.write("\n"+ kt + ";" + merk + ":" + id + "|");
+		fw.flush();
+		fw.close();
+	}
+	
 	public void schrijfMonteurWeg() {
 
 	}
