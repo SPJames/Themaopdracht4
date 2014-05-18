@@ -8,6 +8,7 @@ import javax.servlet.*;
 import Database.Database;
 import Klusbeheer.Klus;
 import Klusbeheer.Monteur;
+import klantenbinding.Auto;
 import klantenbinding.Klant;
 
 public class MyServletContextListener implements ServletContextListener {
@@ -36,6 +37,12 @@ public class MyServletContextListener implements ServletContextListener {
 		//Klussen initaliseren
 		
 		sce.getServletContext().setAttribute("allKlussen", List3);
+		
+		ArrayList<Auto> List4 = new ArrayList<Auto>();
+
+		//Auto initaliseren
+		
+		sce.getServletContext().setAttribute("allAuto", List4);
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

@@ -30,7 +30,7 @@
 				 
 				if (ingelogd && (userType.equals("Klant"))) {
 					out.print("<li><a href='afspraakmaken.jsp'>Afspraak maken</a></li><li><a href='LogoutServlet' >Uitloggen "
-							+ userName + " </a></li>");
+							+ userName + " </a></li><li><a href='autos.jsp'> Auto overzicht </a></li>");
 				}
 				if (ingelogd && (userType.equals("Monteur"))) {
 					out.print("<li><a href='monteur/klussenlijst.jsp'>Klus updaten</a></li><li><a href='LogoutMonteurServlet' >Uitloggen "

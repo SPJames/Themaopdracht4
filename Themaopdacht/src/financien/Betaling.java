@@ -3,7 +3,6 @@ package financien;
 import java.util.ArrayList;
 
 import klantenbinding.Auto;
-import voorraadbeheer.Brandstof;
 
 public class Betaling {
 	private int kortingsPrecentage;
