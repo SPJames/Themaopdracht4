@@ -1,5 +1,7 @@
 package klantenbinding;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ public class Klant {
 	private Calendar laatstBezocht;
 	private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
 	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+	private static int id = 1;
 
 	public Klant(String nm, String ad, String pc, String em) {
 		setNaam(nm);
@@ -60,6 +63,14 @@ public class Klant {
 			String s = "Geen datum beschikbaar";
 			return s;
 		}
+	}
+	
+	public void schrijfWeg(String[] userinfo) throws IOException{
+		FileWriter fw = new FileWriter("C:/xampp/tomcat/webapps/AccountSysteem/users.dat", true);
+		
+		fw.write("\n"+ id++ +" "+userinfo[0]+":"+userinfo[2]+";"+userinfo[1]+" "+userinfo[4]+" "+userinfo[6]+" "+userinfo[7]);
+		fw.flush();
+		fw.close();
 	}
 
 	public void setLaatstBezocht(Calendar nd) {
@@ -115,8 +126,8 @@ public class Klant {
 		}
 	}
 
-	public String toString() {
+/*	public String toString() {
 		String s = getNaam() + "";
 		return s;
-	}
+	}*/
 }
