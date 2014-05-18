@@ -16,7 +16,7 @@
 				}
 			%>
 		</div>
-		<form action="../RegisterMonteurServlet.do" method="get">
+		<form action="/Themaopdracht4/RegisterMonteurServlet.do" method="get">
 			<fieldset>
 				<label for="Realname">Naam</label><input type="text" name="Realname"
 					placeholder="Realname" class="box" />
@@ -28,7 +28,7 @@
 			</fieldset>
 		</form>
 
-		<a href="../index.jsp">home</a>
+		<a href="/Themaopdracht4/index.jsp">home</a>
 	</div>
 </body>
 </html>

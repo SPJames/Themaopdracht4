@@ -28,7 +28,7 @@
 				 	}
 			%>
 		</div>
-		<form action='../LoginAdminServlet.do' method='get'>
+		<form action='/Themaopdracht4/LoginAdminServlet.do' method='get'>
 			<fieldset>
 				<label for="username">Username</label><input type='text'
 					name='username' placeholder="Username" class="box" /><br /> <label
@@ -38,7 +38,7 @@
 			</fieldset>
 		</form>
 
-		<a href="../index.jsp">home</a>
+		<a href="/Themaopdracht4/index.jsp">home</a>
 	</div>
 </body>
 </html>

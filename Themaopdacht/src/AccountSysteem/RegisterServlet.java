@@ -1,6 +1,8 @@
 package AccountSysteem;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,9 +47,12 @@ public class RegisterServlet extends HttpServlet {
 			rd = req.getRequestDispatcher("register.jsp");
 
 		} else {
-			Klant k = new Klant(userinfo[0], userinfo[6], userinfo[7],
-					userinfo[4]);
+			Klant k = new Klant(userinfo[0], userinfo[6], userinfo[7],userinfo[4],userinfo[0],userinfo[2]);
 			k.schrijfWeg(userinfo);
+			
+			@SuppressWarnings("unchecked")
+			ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext().getAttribute("allUsers");
+			Users.add(k);
 
 			rd = req.getRequestDispatcher("login.jsp");
 		}

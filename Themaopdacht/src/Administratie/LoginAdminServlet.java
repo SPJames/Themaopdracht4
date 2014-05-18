@@ -32,16 +32,10 @@ public class LoginAdminServlet extends HttpServlet {
 			if((username.equals("Admin")) && (password.equals("Admin"))){
 				Cookie c = new Cookie("C_Username", "Admin");
 				c.setMaxAge(3600 * 24);
-				Cookie c2 = new Cookie("C_Password", "Admin");
-				c2.setMaxAge(3600 * 24);
-				Cookie c3 = new Cookie("C_ID", "1");
-				c3.setMaxAge(3600 * 24);
-				Cookie c4 = new Cookie("C_Usertype", "Admin");
-				c4.setMaxAge(3600 * 24);
+				Cookie c1 = new Cookie("C_Usertype", "Admin");
+				c1.setMaxAge(3600 * 24);
 				resp.addCookie(c);
-				resp.addCookie(c2);
-				resp.addCookie(c3);
-				resp.addCookie(c4);
+				resp.addCookie(c1);
 				rd = req.getRequestDispatcher("index.jsp");
 			}
 

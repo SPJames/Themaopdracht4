@@ -12,18 +12,39 @@ public class Klant {
 	private String adres;
 	private String postcode;
 	private String email;
+	private String username;
+	private String password;
+	public String getUsername() {
+		return username;
+	}
+
 	private Calendar laatstBezocht;
 	private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
 	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	private static int id = 1;
 
-	public Klant(String nm, String ad, String pc, String em) {
+	public Klant(String nm, String ad, String pc, String em, String un, String pw) {
 		setNaam(nm);
 		setAdres(ad);
 		setPostcode(pc);
 		setEmail(em);
+		setUsername(un);
+		setPassword(pw);
+		
 	}
 
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getNaam() {
 		return naam;
 	}
@@ -66,7 +87,7 @@ public class Klant {
 	}
 	
 	public void schrijfWeg(String[] userinfo) throws IOException{
-		FileWriter fw = new FileWriter("C:/xampp/tomcat/webapps/AccountSysteem/users.dat", true);
+		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat", true);
 		
 		fw.write("\n"+ id++ +" "+userinfo[0]+":"+userinfo[2]+";"+userinfo[1]+" "+userinfo[4]+" "+userinfo[6]+" "+userinfo[7]);
 		fw.flush();

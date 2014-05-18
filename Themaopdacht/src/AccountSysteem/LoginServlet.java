@@ -1,7 +1,5 @@
 package AccountSysteem;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -14,67 +12,54 @@ import javax.servlet.http.HttpServletResponse;
 
 import klantenbinding.Klant;
 
-public class LoginServlet extends HttpServlet{
-	
+public class LoginServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("pwd");
 		boolean error = false;
-		//lijst met users 'importeren'
+		// lijst met users 'importeren'
 		@SuppressWarnings("unchecked")
-		ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext().getAttribute("allUsers");
-		
-		if(username.equals("") || username.equals(null)){
+		ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext()
+				.getAttribute("allUsers");
+
+		if (username.equals("") || username.equals(null)) {
 			error = true;
 		}
-		if(password.equals("") || password.equals(null)){
+		if (password.equals("") || password.equals(null)) {
 			error = true;
 		}
 		RequestDispatcher rd = null;
-		if(error){
+		if (Users.size() == 0) {
+			req.setAttribute("msgs", "No accounts registered");
+			rd = req.getRequestDispatcher("login.jsp");
+		}
+		if (error) {
 			req.setAttribute("msgs", "Input was empty");
 			rd = req.getRequestDispatcher("login.jsp");
-		}else{
-			BufferedReader br = new BufferedReader(new FileReader("C:/xampp/tomcat/webapps/AccountSysteem/users.dat"));
-			String str = "";
-			while((str=br.readLine())!=null){
-				if(str.length()>0){
-					int firstSpace = str.indexOf(" ");
-					int endName = str.indexOf(":");
-					int endPassword = str.indexOf(";");
-					String id = str.substring(0, (firstSpace));
-					String str1 = str.substring((firstSpace+1), (endName));
-					String str2 = str.substring((endName+1), (endPassword));
-				
-					if((str1.contains(username)) && (str2.contains(password))){
-						rd = req.getRequestDispatcher("index.jsp");
-						req.setAttribute("msgs", null);
-						
-						Cookie c = new Cookie("C_Username", username);
-						c.setMaxAge(3600*24);
-						Cookie c2 = new Cookie("C_Password", password);
-						c2.setMaxAge(3600*24);
-						Cookie c3 = new Cookie("C_ID", id);
-						c3.setMaxAge(3600*24);
-						Cookie c4 = new Cookie("C_Usertype", "Klant");
-						c4.setMaxAge(3600*24);
-						resp.addCookie(c);
-						resp.addCookie(c2);
-						resp.addCookie(c3);
-						resp.addCookie(c4);
-						break;
-					}else{
-						req.setAttribute("msgs", "Unknown username/password combo");
-						rd = req.getRequestDispatcher("login.jsp");
-					}
+		} else {
+			for (Klant k : Users) {
+				if (k.getUsername().equals(username)
+						&& k.getPassword().equals(password)) {
+					Cookie c = new Cookie("C_Username", username);
+					c.setMaxAge(3600 * 24 * 365);
+					resp.addCookie(c);
+					Cookie c2 = new Cookie("C_Usertype", "Klant");
+					c2.setMaxAge(3600 * 24 * 365);
+					resp.addCookie(c2);
+					rd = req.getRequestDispatcher("index.jsp");
+					break;
+				} else {
+					req.setAttribute("msgs", "Unknown username/password combo");
+					rd = req.getRequestDispatcher("login.jsp");
 				}
-			}
-			br.close();
-			
-		}
-		rd.forward(req,resp);
-	}
 
+			}
+
+		}
+		rd.forward(req, resp);
+	}
 }
