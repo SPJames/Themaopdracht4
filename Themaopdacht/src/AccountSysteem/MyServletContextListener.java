@@ -1,9 +1,11 @@
 package AccountSysteem;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.*;
 
+import Database.Database;
 import Klusbeheer.Klus;
 import Klusbeheer.Monteur;
 import klantenbinding.Klant;
@@ -11,6 +13,13 @@ import klantenbinding.Klant;
 public class MyServletContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
 		ArrayList<Klant> List = new ArrayList<Klant>();
+		
+		//lees bestaande users in
+		try {
+			Database.leesUsersIn(List);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		//users initaliseren
 		

@@ -12,7 +12,7 @@ public class Database {
 	private static int klantid = 1;
 
 	// lees data in
-	public void leesUsersIn(ArrayList<Klant> Users) throws IOException {
+	public static void leesUsersIn(ArrayList<Klant> Users) throws IOException {
 		
 		Klant k = null;
 		//int id = 0;
@@ -51,11 +51,11 @@ public class Database {
 		Users.add(k);
 	}
 
-	public void leesMonteursIn() {
+	public static void leesMonteursIn() {
 
 	}
 
-	public void leesKlussenIn() {
+	public static void leesKlussenIn() {
 
 	}
 
