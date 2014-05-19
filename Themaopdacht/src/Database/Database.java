@@ -15,14 +15,12 @@ public class Database {
 	// lees data in
 	public static void leesUsersIn(ArrayList<Klant> Users) throws IOException {
 		
-		Klant k = null;
-		//int id = 0;
-		String naam = null;
-		String adres = null;
-		String postcode = null;
-		String email= null;
-		String username= null;
-		String password= null;
+//		String naam = null;
+//		String adres = null;
+//		String postcode = null;
+//		String email= null;
+//		String username= null;
+//		String password= null;
 
 		BufferedReader br = new BufferedReader(new FileReader("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat"));
 		String str = "";
@@ -33,20 +31,19 @@ public class Database {
 				int endPassword = str.indexOf(";");
 				int endRealname = str.indexOf("'");
 				int endEmail = str.indexOf(",");
-				int endAdres = str.indexOf(".");
+				int endAdres = str.indexOf("/");
 				int endPostcode = str.indexOf("|");
 
-				username = str.substring((endID + 1), (endUsername));
-				password = str.substring((endUsername + 1), (endPassword));
-				naam = str.substring((endPassword + 1), (endRealname));
-				email = str.substring((endRealname + 1), (endEmail));
-				adres = str.substring((endEmail + 1), (endAdres));
-				postcode = str.substring((endAdres + 1), (endPostcode));
+				String username = str.substring((endID + 1), (endUsername));
+				String password = str.substring((endUsername + 1), (endPassword));
+				String naam = str.substring((endPassword + 1), (endRealname));
+				String email = str.substring((endRealname + 1), (endEmail));
+				String adres = str.substring((endEmail + 1), (endAdres));
+				String postcode = str.substring((endAdres + 1), (endPostcode));
 				
-				k = new Klant(naam, adres, postcode, email, username, password);
+				Klant k = new Klant(naam, adres, postcode, email, username, password);
 				Users.add(k);
 			}
-			
 		}
 		br.close();	
 	}
@@ -58,7 +55,7 @@ public class Database {
 		String merk = null;
 		String id = null;
 
-		BufferedReader br = new BufferedReader(new FileReader("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat"));
+		BufferedReader br = new BufferedReader(new FileReader("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/autos.dat"));
 		String str = "";
 		while ((str = br.readLine()) != null) {
 			if (str.length() > 0) {
@@ -87,17 +84,17 @@ public class Database {
 	}
 
 	// schrijf data weg
-	public void schrijfUserWeg(String[] userinfo) throws IOException {
+	public static void schrijfUserWeg(String[] userinfo) throws IOException {
 		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat", true);
 
 		fw.write(userid++ + " " + userinfo[0]/*username*/ + ":" + userinfo[2]/*password*/ + ";"
-				+ userinfo[1]/*realname*/ + "'" + userinfo[4]/*email*/ + "," + userinfo[6]/*adress*/ + "."
+				+ userinfo[1]/*realname*/ + "'" + userinfo[4]/*email*/ + "," + userinfo[6]/*adress*/ + "/"
 				+ userinfo[7]/*postcode*/ + "|" + "\n");
 		fw.flush();
 		fw.close();
 	}
 
-	public void schrijfAutoWeg(String kt, String merk, String id) throws IOException {
+	public static void schrijfAutoWeg(String kt, String merk, String id) throws IOException {
 		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat", true);
 
 		fw.write("\n"+ kt + ";" + merk + ":" + id + "|");
@@ -105,11 +102,11 @@ public class Database {
 		fw.close();
 	}
 	
-	public void schrijfMonteurWeg() {
+	public static void schrijfMonteurWeg() {
 
 	}
 
-	public void schrijfKlusWeg() {
+	public static void schrijfKlusWeg() {
 
 	}
 }

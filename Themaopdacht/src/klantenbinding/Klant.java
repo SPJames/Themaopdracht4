@@ -1,7 +1,7 @@
 package klantenbinding;
 
-import java.io.FileWriter;
-import java.io.IOException;
+//import java.io.FileWriter;
+//import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -86,13 +86,13 @@ public class Klant {
 		}
 	}
 	
-	public void schrijfWeg(String[] userinfo) throws IOException{
-		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat", true);
-		
-		fw.write("\n"+ id++ +" "+userinfo[0]+":"+userinfo[2]+";"+userinfo[1]+" "+userinfo[4]+" "+userinfo[6]+" "+userinfo[7]);
-		fw.flush();
-		fw.close();
-	}
+//	public void schrijfWeg(String[] userinfo) throws IOException{
+//		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat", true);
+//		
+//		fw.write("\n"+ id++ +" "+userinfo[0]+":"+userinfo[2]+";"+userinfo[1]+" "+userinfo[4]+" "+userinfo[6]+" "+userinfo[7]);
+//		fw.flush();
+//		fw.close();
+//	}
 
 	public static int getId() {
 		return id;

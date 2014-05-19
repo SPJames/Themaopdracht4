@@ -18,11 +18,12 @@ public class MyServletContextListener implements ServletContextListener {
 		//lees bestaande users in
 		
 		//ERROR, onbekend waarom. Oorsprong ligt waarschijnlijk in database.java
-//		try {
-//			Database.leesUsersIn(List);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			Database.leesUsersIn(List);
+			System.out.println("succes");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		//users initaliseren
 		
