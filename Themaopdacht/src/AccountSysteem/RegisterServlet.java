@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Database.Database;
+//import Database.Database;
 import klantenbinding.Klant;
 
 public class RegisterServlet extends HttpServlet {
@@ -49,7 +49,9 @@ public class RegisterServlet extends HttpServlet {
 
 		} else {
 			Klant k = new Klant(userinfo[1], userinfo[6], userinfo[7],userinfo[4],userinfo[0],userinfo[2]);
-			Database.schrijfUserWeg(userinfo);
+			
+			// werk voor sprint 3
+			//Database.schrijfUserWeg(userinfo);
 			
 			@SuppressWarnings("unchecked")
 			ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext().getAttribute("allUsers");

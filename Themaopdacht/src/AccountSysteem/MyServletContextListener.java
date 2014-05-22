@@ -1,11 +1,11 @@
 package AccountSysteem;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.*;
 
-import Database.Database;
+//import Database.Database;
 import Klusbeheer.Klus;
 import Klusbeheer.Monteur;
 import klantenbinding.Auto;
@@ -16,14 +16,13 @@ public class MyServletContextListener implements ServletContextListener {
 		ArrayList<Klant> List = new ArrayList<Klant>();
 		
 		//lees bestaande users in
-		
-		//ERROR, onbekend waarom. Oorsprong ligt waarschijnlijk in database.java
-		try {
-			Database.leesUsersIn(List);
-			System.out.println("succes");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		//Werk voor sprint 3
+//		try {
+//			Database.leesUsersIn(List);
+//			System.out.println("succes");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
 		//users initaliseren
 		

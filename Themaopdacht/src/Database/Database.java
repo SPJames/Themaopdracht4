@@ -22,6 +22,8 @@ public class Database {
 //		String username= null;
 //		String password= null;
 
+		
+		//syntax in file moet correct zijn, anders ListenerErrors
 		BufferedReader br = new BufferedReader(new FileReader("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat"));
 		String str = "";
 		while ((str = br.readLine()) != null) {
