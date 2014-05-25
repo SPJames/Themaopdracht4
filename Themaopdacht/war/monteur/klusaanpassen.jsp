@@ -6,6 +6,7 @@
 <body>
 <jsp:include page="../menu.jsp" >
 	<jsp:param name="path" value="../" />
+	<jsp:param name="name" value="Home" />
 </jsp:include>
 	<%@ page import="java.io.BufferedReader"%>
 	<%@ page import="java.io.FileReader"%>
@@ -63,8 +64,5 @@
 		<textarea rows="10" cols="50" name="comments"><%= comments %></textarea>
 		<input type="submit" value="Verzenden" />
 	</form>
-
-
-	<a href="testpage.html">Home</a>
 </body>
 </html>

@@ -3,7 +3,9 @@
 	<jsp:param name="css" value="register" />
 </jsp:include>
 <body>
-<jsp:include page="menu.jsp" />
+<jsp:include page="menu.jsp">
+	<jsp:param name="name" value="Home" />
+</jsp:include>
 	<div id="register">
 		<h2>Wijzig accountgegevens</h2>
 		
@@ -59,8 +61,6 @@
 				<input type="submit" value="Verzenden" class="down" />
 			</fieldset>
 		</form>
-
-		<a href="index.jsp">home</a>
 	</div>
 </body>
 </html>

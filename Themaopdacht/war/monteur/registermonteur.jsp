@@ -6,6 +6,7 @@
 <body>
 <jsp:include page="../menu.jsp" >
 	<jsp:param name="path" value="../" />
+	<jsp:param name="name" value="Home" />
 </jsp:include>
 	<div id="register">
 		<h2>Register</h2>
@@ -28,8 +29,6 @@
 				<input type="submit" value="Verzenden" class="down" />
 			</fieldset>
 		</form>
-
-		<a href="/Themaopdracht4/index.jsp">home</a>
 	</div>
 </body>
 </html>

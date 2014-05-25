@@ -4,7 +4,7 @@
 </jsp:include>
 <body>
 	<jsp:include page="menu.jsp" />
-	<div id="Content">hier text enzo voor de pagina weet ik veel wat.
-	</div>
+	<div id="Content"><p>Welkom bij <b>AutoTotaalDiensten!</b></p>
+ 	</div>
 </body>
 <html>

@@ -3,7 +3,9 @@
 	<jsp:param name="css" value="home" />
 </jsp:include>
 <body>
-<jsp:include page="menu.jsp" />
+<jsp:include page="menu.jsp">
+	<jsp:param name="name" value="Home" />
+</jsp:include>
 	<h2>Afspraak maken</h2>
 	<div>
 			<%
@@ -40,8 +42,5 @@
 		<textarea rows="10" cols="50" name="comments"></textarea>
 		<input type="submit" value="Verzenden" />
 	</form>
-
-
-	<a href="testpage.html">Home</a>
 </body>
 </html>

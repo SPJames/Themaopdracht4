@@ -3,7 +3,9 @@
 	<jsp:param name="css" value="login" />
 </jsp:include>
 <body>
-<jsp:include page="menu.jsp" />
+<jsp:include page="menu.jsp">
+	<jsp:param name="name" value="Home" />
+</jsp:include>
 	<div id="login">
 		<h2>Login</h2>
 		<div>
@@ -28,8 +30,6 @@
 					name='Go' class="down" /><br />
 			</fieldset>
 		</form>
-
-		<a href="index.jsp">home</a>
 	</div>
 </body>
 </html>

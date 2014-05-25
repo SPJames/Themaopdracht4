@@ -3,7 +3,9 @@
 	<jsp:param name="css" value="home" />
 </jsp:include>
 <body>
-<jsp:include page="menu.jsp" />
+<jsp:include page="menu.jsp">
+	<jsp:param name="name" value="Home" />
+</jsp:include>
 	<%!String id = "";%>
 	<%@ page import="klantenbinding.Auto"%>
 	<%@ page import="java.util.ArrayList"%>
