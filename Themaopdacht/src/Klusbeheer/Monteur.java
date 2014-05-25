@@ -9,6 +9,10 @@ public class Monteur {
 	private Klus deKlus;
 	private static int id = 1;
 
+	public static int getId() {
+		return id;
+	}
+
 	public Monteur(String nm, String pw) {
 		setNaam(nm);
 		setPassword(pw);

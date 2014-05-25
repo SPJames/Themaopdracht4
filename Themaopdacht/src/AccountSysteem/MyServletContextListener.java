@@ -13,6 +13,7 @@ import klantenbinding.Klant;
 
 public class MyServletContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
+		
 		ArrayList<Klant> List = new ArrayList<Klant>();
 		
 		//lees bestaande users in
@@ -25,12 +26,15 @@ public class MyServletContextListener implements ServletContextListener {
 //		}
 
 		//users initaliseren
-		
+		Klant u = new Klant("James","Straat 1","3612AH","test@test.com","Test","derp");
+		List.add(u);
 		sce.getServletContext().setAttribute("allUsers", List);
 		
 		ArrayList<Monteur> List2 = new ArrayList<Monteur>();
 
 		//monteurs initaliseren
+		Monteur m = new Monteur("Klaas","monteur1");
+		List2.add(m);
 		
 		sce.getServletContext().setAttribute("allMonteurs", List2);
 		

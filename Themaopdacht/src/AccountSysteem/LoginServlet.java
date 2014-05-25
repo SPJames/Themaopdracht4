@@ -5,22 +5,24 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Klusbeheer.Monteur;
 import klantenbinding.Klant;
 
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("static-access")
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("pwd");
 		boolean error = false;
+		boolean done = false;
 		// lijst met users 'importeren'
 		@SuppressWarnings("unchecked")
 		ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext()
@@ -34,34 +36,57 @@ public class LoginServlet extends HttpServlet {
 		}
 		RequestDispatcher rd = null;
 		if (Users.size() == 0) {
-			req.setAttribute("msgs", "No accounts registered");
+			req.setAttribute("msgs", "Er zijn nog geen accounts in het systeem");
 			rd = req.getRequestDispatcher("login.jsp");
 		}
 		if (error) {
-			req.setAttribute("msgs", "Input was empty");
+			req.setAttribute("msgs", "Username/password was leeg");
 			rd = req.getRequestDispatcher("login.jsp");
 		} else {
-			for (Klant k : Users) {
-				if (k.getUsername().equals(username)
-						&& k.getPassword().equals(password)) {
-					Cookie c = new Cookie("C_Username", username);
-					c.setMaxAge(3600 * 24 * 365);
-					resp.addCookie(c);
-					Cookie c2 = new Cookie("C_Usertype", "Klant");
-					c2.setMaxAge(3600 * 24 * 365);
-					resp.addCookie(c2);
-					@SuppressWarnings("static-access")
-					String id = ""+k.getId();
-					Cookie c3 = new Cookie("C_ID", id);
-					c3.setMaxAge(3600 * 24 * 365);
-					resp.addCookie(c3);
-					rd = req.getRequestDispatcher("index.jsp");
-					break;
-				} else {
-					req.setAttribute("msgs", "Unknown username/password combo");
-					rd = req.getRequestDispatcher("login.jsp");
-				}
+			if (username.equals("Admin") && password.equals("Admin")) {
+				req.getSession().setAttribute("Access", "Admin");
+				req.getSession().setAttribute("Username", "Admin");
+				rd = req.getRequestDispatcher("index.jsp");
+				done = true;
+			}
+			@SuppressWarnings("unchecked")
+			ArrayList<Monteur> monteurs = (ArrayList<Monteur>) req
+					.getServletContext().getAttribute("allMonteurs");
+			if (!(done)) {
+				for (Monteur m : monteurs) {
+					if (m.getNaam().equals(username)
+							&& m.getPassword().equals(password)) {
+						req.getSession().setAttribute("Access","Monteur");
+						req.getSession().setAttribute("Username",m.getNaam());
+						req.getSession().setAttribute("ID", m.getId());
+						done = true;
+						rd = req.getRequestDispatcher("index.jsp");
+						
 
+						break;
+					} else {
+						req.setAttribute("msgs", "Dit is geen geldige login");
+						rd = req.getRequestDispatcher("login.jsp");
+					}
+				}
+			}
+			if (!(done)) {
+				for (Klant k : Users) {
+					if (k.getUsername().equals(username)
+							&& k.getPassword().equals(password)) {
+						req.getSession().setAttribute("Access", "Klant");
+						req.getSession().setAttribute("Username",
+								k.getUsername());
+						req.getSession().setAttribute("ID", k.getId());
+						done = true;
+						rd = req.getRequestDispatcher("index.jsp");
+						break;
+					} else {
+						req.setAttribute("msgs", "Dit is geen geldige login");
+						rd = req.getRequestDispatcher("login.jsp");
+					}
+
+				}
 			}
 
 		}

@@ -9,29 +9,19 @@
 	<div id="login">
 		<h2>Login</h2>
 		<div>
-			<%
-				Object msgs = request.getAttribute("msgs");
-				 	if(msgs != null){
-				 		out.println(msgs);
-				 	}
-			%>
-			<%
-				Cookie[] cookies = null;
-				 	cookies = request.getCookies();
-				 	if(cookies!=null){
-					 	for (Cookie c : cookies) { 
-					 		if (c.getName().equals("C_Usertype") && c.getValue().equals("Klant")) { 
-					 			response.sendRedirect("index.jsp");
-					 		 	break; 
-					 		} 
-					 	} 
-				 	}
-			%>
+		<%
+			String name = "";
+			if(!(session.getAttribute("Username").equals(""))){
+				name = (String)session.getAttribute("Username");
+			}else{
+				name = "Username";
+			}
+		%>
 		</div>
 		<form action='LoginServlet.do' method='get'>
 			<fieldset>
 				<label for="username">Username</label><input type='text'
-					name='username' placeholder="Username" class="box" /><br /> <label
+					name='username' placeholder="<%= name %>" class="box" /><br /> <label
 					for="pwd">Password</label><input type='password' name='pwd'
 					placeholder="Password" class="box" /><br /> <input type='submit'
 					name='Go' class="down" /><br />

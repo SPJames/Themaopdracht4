@@ -67,27 +67,6 @@
 	
 	
 	<!-- hier onder beginen je monteur servlets -->
-	<servlet> 
-		<servlet-name>Login Monteur Servlet</servlet-name> 
-		<servlet-class>Monteur.LoginMonteurServlet 
-			</servlet-class> 
-	</servlet> 
- 
-	<servlet-mapping> 
-		<servlet-name>Login Monteur Servlet</servlet-name> 
-		<url-pattern>/LoginMonteurServlet.do</url-pattern> 
-	</servlet-mapping>
-	
-	<servlet> 
-		<servlet-name>Logout Monteur Servlet</servlet-name> 
-		<servlet-class>Monteur.LogoutMonteurServlet 
-			</servlet-class> 
-	</servlet> 
- 
-	<servlet-mapping> 
-		<servlet-name>Logout Monteur Servlet</servlet-name> 
-		<url-pattern>/LogoutMonteurServlet</url-pattern> 
-	</servlet-mapping> 
 	
 	<servlet> 
 		<servlet-name>Register Monteur Servlet</servlet-name> 
@@ -101,17 +80,6 @@
 	</servlet-mapping> 
 	
 	<!-- hier onder beginen je admin servlets  -->
-	
-	<servlet> 
-		<servlet-name>Login Admin Servlet</servlet-name> 
-		<servlet-class>Administratie.LoginAdminServlet 
-			</servlet-class> 
-	</servlet> 
- 
-	<servlet-mapping> 
-		<servlet-name>Login Admin Servlet</servlet-name> 
-		<url-pattern>/LoginAdminServlet.do</url-pattern> 
-	</servlet-mapping> 
 	
 	<servlet> 
 		<servlet-name>Klus Factureren Servlet</servlet-name> 
