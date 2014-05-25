@@ -3,6 +3,7 @@
 	<jsp:param name="css" value="home" />
 </jsp:include>
 <body>
+<jsp:include page="menu.jsp" />
 	<%!String id = "";%>
 	<%@ page import="klantenbinding.Auto"%>
 	<%@ page import="java.util.ArrayList"%>

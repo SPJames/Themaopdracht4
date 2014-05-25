@@ -1,8 +1,12 @@
 <jsp:include page="../Header.jsp">
 	<jsp:param name="title" value="Klus Aanpassen" />
 	<jsp:param name="css" value="register" />
+	<jsp:param name="path" value="../" />
 </jsp:include>
 <body>
+<jsp:include page="../menu.jsp" >
+	<jsp:param name="path" value="../" />
+</jsp:include>
 	<%@ page import="java.io.BufferedReader"%>
 	<%@ page import="java.io.FileReader"%>
 	<h2>Klus aanpassen</h2>

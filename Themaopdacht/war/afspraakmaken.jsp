@@ -3,7 +3,7 @@
 	<jsp:param name="css" value="home" />
 </jsp:include>
 <body>
-
+<jsp:include page="menu.jsp" />
 	<h2>Afspraak maken</h2>
 	<div>
 			<%

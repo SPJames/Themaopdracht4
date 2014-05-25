@@ -3,6 +3,9 @@
 	<jsp:param name="css" value="klussenlijst" />
 </jsp:include>
 <body>
+<jsp:include page="../menu.jsp" >
+	<jsp:param name="path" value="../" />
+</jsp:include>
 	<div id="klus">
 		<h2>Klussen</h2>
 

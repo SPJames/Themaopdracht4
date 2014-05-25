@@ -3,6 +3,9 @@
 	<jsp:param name="css" value="home" />
 </jsp:include>
 <body>
+<jsp:include page="../menu.jsp" >
+	<jsp:param name="path" value="../" />
+</jsp:include>
 	<%@ page import="java.io.BufferedReader"%>
 	<%@ page import="java.io.FileReader"%>
 	<h2>Klus aanpassen</h2>

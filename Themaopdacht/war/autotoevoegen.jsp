@@ -3,6 +3,7 @@
 	<jsp:param name="css" value="register" />
 </jsp:include>
 <body>
+<jsp:include page="menu.jsp" />
 	<%!String id = "";%>
 	<%
 		Cookie[] cookies = null;

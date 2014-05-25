@@ -3,6 +3,7 @@
 	<jsp:param name="css" value="login" />
 </jsp:include>
 <body>
+<jsp:include page="menu.jsp" />
 	<div id="login">
 		<h2>Login</h2>
 		<div>

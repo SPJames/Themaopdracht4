@@ -1,9 +1,12 @@
 <jsp:include page="../Header.jsp">
 	<jsp:param name="title" value="Register Monteur" />
 	<jsp:param name="css" value="register" />
-	<jsp:param name="path" value="monteur/" />
+	<jsp:param name="path" value="../" />
 </jsp:include>
 <body>
+<jsp:include page="../menu.jsp" >
+	<jsp:param name="path" value="../" />
+</jsp:include>
 	<div id="register">
 		<h2>Register</h2>
 		<div>
