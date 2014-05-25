@@ -1,9 +1,7 @@
-<!DOCTYPE>
-<html>
-<head>
-<title>Auto Toevoegen</title>
-<link rel="stylesheet" type="text/css" href="style-home.css" />
-</head>
+<jsp:include page="Header.jsp">
+	<jsp:param name="title" value="Overzicht Auto's" />
+	<jsp:param name="css" value="home" />
+</jsp:include>
 <body>
 	<%!String id = "";%>
 	<%@ page import="klantenbinding.Auto"%>

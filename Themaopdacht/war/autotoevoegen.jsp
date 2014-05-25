@@ -1,9 +1,7 @@
-<!DOCTYPE>
-<html>
-<head>
-<title>Auto Toevoegen</title>
-<link rel="stylesheet" type="text/css" href="style-register.css" />
-</head>
+<jsp:include page="Header.jsp">
+	<jsp:param name="title" value="Auto Toevoegen" />
+	<jsp:param name="css" value="register" />
+</jsp:include>
 <body>
 	<%!String id = "";%>
 	<%

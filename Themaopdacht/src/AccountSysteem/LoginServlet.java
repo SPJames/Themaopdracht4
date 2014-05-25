@@ -56,12 +56,11 @@ public class LoginServlet extends HttpServlet {
 				for (Monteur m : monteurs) {
 					if (m.getNaam().equals(username)
 							&& m.getPassword().equals(password)) {
-						req.getSession().setAttribute("Access","Monteur");
-						req.getSession().setAttribute("Username",m.getNaam());
+						req.getSession().setAttribute("Access", "Monteur");
+						req.getSession().setAttribute("Username", m.getNaam());
 						req.getSession().setAttribute("ID", m.getId());
 						done = true;
 						rd = req.getRequestDispatcher("index.jsp");
-						
 
 						break;
 					} else {
