@@ -19,7 +19,7 @@
 				}
 
 				if (ingelogd && (userType.equals("Klant"))) { %>
-					<li><a href='${param.path}afspraakmaken.jsp'>Afspraak maken</a></li><li><a href='${param.path}LogoutServlet' >Uitloggen <%=userName%></a></li><li><a href='autos.jsp'> Auto overzicht </a></li>
+					<li><a href='${param.path}afspraakmaken.jsp'>Afspraak maken</a></li><li><a href='${param.path}LogoutServlet' >Uitloggen <%=userName%></a></li><li><a href='autos.jsp'> Auto overzicht </a></li><li><a href='accountwijzigen.jsp'> Wijzig account </a></li>
 				<%}
 				if (ingelogd && (userType.equals("Monteur"))) {%>
 				<li><a href='${param.path}monteur/klussenlijst.jsp'>Klus updaten</a></li><li><a href='${param:path}LogoutServlet' >Uitloggen <%=userName%> </a></li>

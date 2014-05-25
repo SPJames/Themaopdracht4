@@ -14,9 +14,6 @@ public class Klant {
 	private String email;
 	private String username;
 	private String password;
-	public String getUsername() {
-		return username;
-	}
 
 	private Calendar laatstBezocht;
 	private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
@@ -32,7 +29,10 @@ public class Klant {
 		setPassword(pw);
 		
 	}
-
+	
+	public String getUsername() {
+		return username;
+	}
 	
 	public void setUsername(String username) {
 		this.username = username;
