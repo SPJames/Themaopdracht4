@@ -7,6 +7,18 @@ import klantenbinding.Auto;
 public class Betaling {
 	private int kortingsPrecentage;
 	private int btw;
+	public ArrayList<DienstType> getAlleDiensten() {
+		return alleDiensten;
+	}
+
+	public void setAlleDiensten(ArrayList<DienstType> alleDiensten) {
+		this.alleDiensten = alleDiensten;
+	}
+
+	public boolean isBetaald() {
+		return betaald;
+	}
+
 	private boolean betaald;
 	private double totaal = 0;
 	private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
