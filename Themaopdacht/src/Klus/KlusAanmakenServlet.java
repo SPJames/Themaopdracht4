@@ -26,12 +26,14 @@ public class KlusAanmakenServlet extends HttpServlet{
 		userinfo[1] = req.getParameter("name");//username voor foreign key
 		userinfo[2] = req.getParameter("diensttype");
 		userinfo[3] = req.getParameter("comments");
+		userinfo[4] = req.getParameter("auto");
 		Auto auto = null;
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<Auto> autos = (ArrayList<Auto>) req.getServletContext().getAttribute("allAutos");
 		for(Auto a : autos) {
-			if (a.getKenteken() == req.getParameter("auto")) {
+			if (a.getKenteken().equals(req.getParameter("auto"))) {
+
 				auto = a;
 			}
 		}
@@ -66,7 +68,7 @@ public class KlusAanmakenServlet extends HttpServlet{
 			}
 			rd = req.getRequestDispatcher("index.jsp");
 			auto.setInReparatie(true);
-			System.out.println(Klussen.size());
+			
 			
 		}
 		rd.forward(req,resp);

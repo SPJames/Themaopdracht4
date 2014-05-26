@@ -30,7 +30,7 @@
 			if (ingelogd && (userType.equals("Monteur"))) {
 		%>
 		<li><a href='${param.path}monteur/klussenlijst.jsp'>Klus updaten</a></li>
-		<li><a href='${param:path}LogoutServlet'>Uitloggen <%=userName%></a></li>
+		<li><a href='${param.path}LogoutServlet'>Uitloggen <%=userName%></a></li>
 		<%
 			}
 			if (ingelogd && (userType.equals("Admin"))) {

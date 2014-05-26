@@ -39,7 +39,7 @@
 				for (Auto a : Autos) {
 					if (a.getKlantid().equals(id) && !a.isInReparatie()) { %>
 					
-						<option value="rep"><%= a.getKenteken() %></option>
+						<option value="<%= a.getKenteken() %>"><%= a.getKenteken() %></option>
 					
 					<%}
 				}
