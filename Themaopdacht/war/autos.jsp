@@ -32,11 +32,12 @@
 			@SuppressWarnings("unchecked")
 			ArrayList<Auto> Autos = (ArrayList<Auto>) application.getAttribute("allAutos");
 			if (Autos.size() > 0) {
-				for (Auto a : Autos) {%>
-					
+				for (Auto a : Autos) {
+					if (id.equals(a.getKlantid())) {
+						%>
 						<tr><td> <%=a.getMerk()%> </td><td> <%=a.getKenteken()%></td></tr>
-					
-					<%
+						<%
+					}
 				}
 			}
 		%>

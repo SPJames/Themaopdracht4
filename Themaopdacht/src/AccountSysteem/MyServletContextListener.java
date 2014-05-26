@@ -28,7 +28,9 @@ public class MyServletContextListener implements ServletContextListener {
 
 		//users initaliseren
 		Klant u = new Klant("James","Straat 1","3612AH","test@test.com","Test","derp");
+		Klant u2 = new Klant("Johnny Test","Straat 2","3613AH","test@test.test","Test2","derp");
 		List.add(u);
+		List.add(u2);
 		sce.getServletContext().setAttribute("allUsers", List);
 		
 		ArrayList<Monteur> List2 = new ArrayList<Monteur>();
@@ -51,7 +53,7 @@ public class MyServletContextListener implements ServletContextListener {
 		
 		sce.getServletContext().setAttribute("allAutos", List4);
 		
-		Parkeerplaats[] List5 = new Parkeerplaats[30];
+		Parkeerplaats[] List5 = new Parkeerplaats[50];
 		
 		sce.getServletContext().setAttribute("allParkeerplaatsen", List5);
 	}

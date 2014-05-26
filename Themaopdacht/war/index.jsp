@@ -4,9 +4,50 @@
 </jsp:include>
 <body>
 	<jsp:include page="menu.jsp" />
-	
+
+	<%@ page import="Klusbeheer.Klus"%>
+	<%@ page import="java.util.ArrayList"%>
+
 	<div id="Content"><p>Welkom bij <b>AutoTotaalDiensten!</b></p>
+	
 	<!-- openstaande klussen van klant, zodat hij/zij voortgang kan volgen-->
+	
+	<% if ((session.getAttribute("Access") != null) && (session.getAttribute("Access").equals("Klant"))) {%>
+	
+	<p>Uw openstaande klussen:</p>
+		
+	<table>
+		<tr>
+			<th>Auto</th>
+			<th>Diensttype</th>
+			<th>Parkeerplek</th>
+			<th>Voortgang</th>
+		</tr>
+		<%
+			@SuppressWarnings("unchecked")
+			ArrayList<Klus> Klussen = (ArrayList<Klus>) application.getAttribute("allKlussen");
+			if (Klussen.size() > 0) {
+				for (Klus k : Klussen) {
+					String id = "" + session.getAttribute("ID");
+					if ((k.getAuto().getKlantid().equals(id))) {
+						String afgerond = "In behandeling";
+						if (k.isKlusafgerond()) {
+							afgerond = "Afgerond";
+						}
+						%>
+					
+							<tr><td> <%=k.getAuto().getKenteken()%> </td><td> <%=k.getHetType().dienstType()%></td> <td> <%=k.getParkeerplaats() + 1%></td> <td> <%=afgerond%></td></tr>
+					
+						<%
+					}
+				}
+			}
+		%>
+	</table>
+	<% } %>
+	
+	<!-- einde openstaande klussen klanten -->
+	
  	</div>
  	
  	<%

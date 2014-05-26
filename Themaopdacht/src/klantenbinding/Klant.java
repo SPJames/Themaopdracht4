@@ -18,7 +18,8 @@ public class Klant {
 	private Calendar laatstBezocht;
 	private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
 	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-	private static int id = 1;
+	private static int getal = 1;
+	private int id;
 
 	public Klant(String nm, String ad, String pc, String em, String un, String pw) {
 		setNaam(nm);
@@ -27,7 +28,7 @@ public class Klant {
 		setEmail(em);
 		setUsername(un);
 		setPassword(pw);
-		
+		id = getal++;
 	}
 	
 	public String getUsername() {
@@ -94,7 +95,7 @@ public class Klant {
 //		fw.close();
 //	}
 
-	public static int getId() {
+	public int getId() {
 		return id;
 	}
 

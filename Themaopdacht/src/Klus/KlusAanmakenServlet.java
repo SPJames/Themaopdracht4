@@ -50,26 +50,34 @@ public class KlusAanmakenServlet extends HttpServlet{
 			req.setAttribute("msgs", "Input was empty");	
 			rd = req.getRequestDispatcher("afspraakmaken.jsp");
 		}else{
+			int plek = -1;
 			Klus k = new Klus(auto,userinfo[3], userinfo[2]);
 			k.schrijfWeg(userinfo);
 			Klussen.add(k);
-			if(userinfo[2].equals("park")) {
-				Parkeerplaats[] parkeer = (Parkeerplaats[]) req.getServletContext().getAttribute("allParkeerplaatsen");
-				int plek = -1;
-				for (Parkeerplaats p : parkeer) {
-					if (p == null) {
-						plek = Arrays.asList(parkeer).indexOf(p);
-						parkeer[plek] = new Parkeerplaats(auto);
-						break;
-					}
+			Parkeerplaats[] parkeer = (Parkeerplaats[]) req.getServletContext().getAttribute("allParkeerplaatsen");
+			for (Parkeerplaats p : parkeer) {
+				if (p == null) {
+					plek = Arrays.asList(parkeer).indexOf(p);
+					parkeer[plek] = new Parkeerplaats(auto);
+					break;
 				}
+			}
+			if(plek == -1) {
+				req.setAttribute("msgs", "Er is op dit moment geen plek beschikbaar. Probeer het later nog eens.");	
+				rd = req.getRequestDispatcher("afspraakmaken.jsp");
+				plek = -2;
+			} else {
 				k.setParkeerplaats(plek);
 				req.setAttribute("plek", (plek + 1));
 			}
-			rd = req.getRequestDispatcher("index.jsp");
-			auto.setInReparatie(true);
-			
-			
+
+			if(plek == -2) {
+				req.setAttribute("msgs", "Er is op dit moment geen plek beschikbaar. Probeer het later nog eens.");	
+				rd = req.getRequestDispatcher("afspraakmaken.jsp");
+			} else {
+				rd = req.getRequestDispatcher("index.jsp");
+				auto.setInReparatie(true);
+			}
 		}
 		rd.forward(req,resp);
 	}

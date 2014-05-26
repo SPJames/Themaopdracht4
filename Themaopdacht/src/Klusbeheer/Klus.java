@@ -6,17 +6,18 @@ import klantenbinding.Auto;
 import financien.*;
 
 public class Klus {
-	private static int klusnummer = 0;
 	private Auto auto;
 	private String beschrijving;
 	private String werknemer;
 	private int aantalOnderdelen;
 	private DienstType hetType;
 	private int parkeerplaats;
-	private static int id = 1;
+	private static int nummer = 1;
+	private int klusnummer;
+	private boolean klusafgerond = false;
 
 	public Klus(Auto a, String b, String type) {
-		klusnummer++;
+		klusnummer = nummer++;
 		setAuto(a);
 		beschrijving = b;
 		if(type.equals("rep")){
@@ -25,7 +26,7 @@ public class Klus {
 		else if(type.equals("park")){
 			hetType = new Parkeren();
 		}
-		else if(type.equals("park")){
+		else if(type.equals("tank")){
 			hetType = new Tanken();
 		}else{/*fuck you*/}
 		
@@ -92,19 +93,19 @@ public class Klus {
 		this.parkeerplaats = parkeerplaats;
 	}
 
-	public static int getId() {
-		return id;
-	}
-
-	public static void setId(int id) {
-		Klus.id = id;
-	}
-
 	public Auto getAuto() {
 		return auto;
 	}
 
 	public void setAuto(Auto auto) {
 		this.auto = auto;
+	}
+
+	public boolean isKlusafgerond() {
+		return klusafgerond;
+	}
+
+	public void setKlusafgerond(boolean klusafgerond) {
+		this.klusafgerond = klusafgerond;
 	}
 }

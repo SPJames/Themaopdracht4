@@ -72,7 +72,7 @@ public class AccountWijzigenServlet extends HttpServlet {
 			
 			req.getSession().setAttribute("Access", "Klant");
 			req.getSession().setAttribute("Username", newKlant.getUsername());
-			req.getSession().setAttribute("ID", Klant.getId());
+			req.getSession().setAttribute("ID", klant.getId());
 			
 			rd = req.getRequestDispatcher("accountwijzigen.jsp");
 		}
