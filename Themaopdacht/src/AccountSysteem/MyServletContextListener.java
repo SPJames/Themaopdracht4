@@ -48,7 +48,7 @@ public class MyServletContextListener implements ServletContextListener {
 
 		//Auto initaliseren
 		
-		sce.getServletContext().setAttribute("allAuto", List4);
+		sce.getServletContext().setAttribute("allAutos", List4);
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

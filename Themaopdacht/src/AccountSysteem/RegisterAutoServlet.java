@@ -21,6 +21,7 @@ public class RegisterAutoServlet extends HttpServlet {
 		String kt = req.getParameter("Kenteken");
 		String id = req.getParameter("klantid");
 		boolean error = false;
+		boolean error2 = false;
 
 		if (merk.equals("") || merk.equals(null)) {
 			error = true;
@@ -30,21 +31,26 @@ public class RegisterAutoServlet extends HttpServlet {
 		}
 		RequestDispatcher rd = null;
 		if (error) {
-			req.setAttribute("msgs",
-					"Input was empty or password/email didn't match");
-			rd = req.getRequestDispatcher("register.jsp");
-
+			req.setAttribute("msgs", "Een of meerdere velden waren leeg.");
+			rd = req.getRequestDispatcher("autotoevoegen.jsp");
 		} else {
 			Auto a = new Auto(kt, merk, id);
-			
 			@SuppressWarnings("unchecked")
 			ArrayList<Auto> Autos = (ArrayList<Auto>) req.getServletContext().getAttribute("allAutos");
-			Autos.add(a);
-			
-			rd = req.getRequestDispatcher("login.jsp");
+			for(Auto auto : Autos) {
+				if (auto.getKenteken().equals(kt)) {
+					req.setAttribute("msgs", "Deze auto bestaat al.");
+					rd = req.getRequestDispatcher("autotoevoegen.jsp");
+					error2 = true;
+					break;
+				}
+			}
+			if(!error2) {
+				Autos.add(a);
+				req.setAttribute("msgs", "Auto succesvol toegevoegd!");
+				rd = req.getRequestDispatcher("autos.jsp");
+			}
 		}
-
 		rd.forward(req, resp);
-
 	}
 }

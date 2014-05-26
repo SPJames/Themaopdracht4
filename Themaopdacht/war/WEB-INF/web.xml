@@ -53,6 +53,17 @@
 		<url-pattern>/LogoutServlet</url-pattern> 
 	</servlet-mapping> 
 	
+	<servlet> 
+		<servlet-name>Register Auto Servlet</servlet-name> 
+		<servlet-class>AccountSysteem.RegisterAutoServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Register Auto Servlet</servlet-name> 
+		<url-pattern>/RegisterAutoServlet.do</url-pattern> 
+	</servlet-mapping> 
+	
 	<!-- hier onder beginen je klus servlets -->
 	<servlet> 
 		<servlet-name>Klus Aanmaken Servlet</servlet-name> 

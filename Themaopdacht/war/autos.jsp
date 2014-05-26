@@ -6,23 +6,23 @@
 <jsp:include page="menu.jsp">
 	<jsp:param name="name" value="Home" />
 </jsp:include>
-	<%!String id = "";%>
 	<%@ page import="klantenbinding.Auto"%>
 	<%@ page import="java.util.ArrayList"%>
+	<%!String id = "";%>
 	<%
-		Cookie[] cookies = null;
-		cookies = request.getCookies();
-		if (cookies != null) {
-			for (Cookie c : cookies) {
-				if (c.getName().equals("C_ID")) {
-					id = c.getValue();
-					break;
-				}
-			}
-		}
+		id = "" + (int) session.getAttribute("ID");
 	%>
 
+<div id="Content">
 	<h2>Auto Toevoegen</h2>
+	
+	<%
+		Object msgs = request.getAttribute("msgs");
+		if (msgs != null) {
+			out.println(msgs);
+		}
+	%>
+	
 	<table>
 		<tr>
 			<th>Merk</th>
@@ -30,24 +30,20 @@
 		</tr>
 		<%
 			@SuppressWarnings("unchecked")
-			ArrayList<Auto> Autos = (ArrayList<Auto>) getServletContext()
-					.getAttribute("allAutos");
-			if (Autos.size() != 0) {
+			ArrayList<Auto> Autos = (ArrayList<Auto>) application.getAttribute("allAutos");
+			System.out.println(Autos.size());
+			if (Autos.size() > 0) {
 				for (Auto a : Autos) {
-					if (a.getKlantid().equals(id)) {
-						out.println("<tr>");
-						out.println("<td>");
-						out.prinln(a.getMerk());
-						out.println("</td>");
-						out.println("<td>");
-						out.prinln(a.getKenteken());
-						out.println("</td>");
-						out.println("</tr>");
-					}
+					if (a.getKlantid().equals(id)) { %>
+					
+						<tr><td> <%=a.getMerk()%> </td> <td> <%=a.getKenteken()%></td> </tr>
+					
+					<%}
 				}
 			}
 		%>
 	</table>
 	<a href="autotoevoegen.jsp">Voeg een auto toe</a>
+</div>
 </body>
 <html>
