@@ -1,22 +1,23 @@
 package Klusbeheer;
 
-import java.io.FileWriter;
 import java.io.IOException;
 
+import klantenbinding.Auto;
 import financien.*;
 
 public class Klus {
 	private static int klusnummer = 0;
-	private String title;
+	private Auto auto;
 	private String beschrijving;
 	private String werknemer;
 	private int aantalOnderdelen;
 	private DienstType hetType;
+	private int parkeerplaats;
 	private static int id = 1;
 
-	public Klus(String t, String b, String type) {
+	public Klus(Auto a, String b, String type) {
 		klusnummer++;
-		title = t;
+		setAuto(a);
 		beschrijving = b;
 		if(type.equals("rep")){
 			hetType = new Onderhoud();
@@ -31,20 +32,11 @@ public class Klus {
 	}
 
 	public void schrijfWeg(String[] Klus) throws IOException{
-		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/afspraken.dat", true);
-		
-		fw.write("\n"+ id++ +":"+ Klus[0]+";"+Klus[1]+","+Klus[2]+"."+Klus[3]+"|"+Klus[4]+"/");
-		fw.flush();
-		fw.close();
-		
-	}
-	
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
+//		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/afspraken.dat", true);
+//		
+//		fw.write("\n"+ id++ +":"+ Klus[0]+";"+Klus[1]+","+Klus[2]+"."+Klus[3]+"|"+Klus[4]+"/");
+//		fw.flush();
+//		fw.close();
 	}
 
 	public int getKlusNummer() {
@@ -90,5 +82,29 @@ public class Klus {
 	public String toString() {
 		String s = "" + getKlusNummer();
 		return s;
+	}
+
+	public int getParkeerplaats() {
+		return parkeerplaats;
+	}
+
+	public void setParkeerplaats(int parkeerplaats) {
+		this.parkeerplaats = parkeerplaats;
+	}
+
+	public static int getId() {
+		return id;
+	}
+
+	public static void setId(int id) {
+		Klus.id = id;
+	}
+
+	public Auto getAuto() {
+		return auto;
+	}
+
+	public void setAuto(Auto auto) {
+		this.auto = auto;
 	}
 }

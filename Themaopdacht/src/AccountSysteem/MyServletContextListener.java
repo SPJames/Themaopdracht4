@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.servlet.*;
 
+import Klus.Parkeerplaats;
 //import Database.Database;
 import Klusbeheer.Klus;
 import Klusbeheer.Monteur;
@@ -49,6 +50,10 @@ public class MyServletContextListener implements ServletContextListener {
 		//Auto initaliseren
 		
 		sce.getServletContext().setAttribute("allAutos", List4);
+		
+		Parkeerplaats[] List5 = new Parkeerplaats[30];
+		
+		sce.getServletContext().setAttribute("allParkeerplaatsen", List5);
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

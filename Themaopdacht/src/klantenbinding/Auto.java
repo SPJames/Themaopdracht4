@@ -9,6 +9,7 @@ public class Auto {
 	private String merk;
 	private String klantid;
 	private Calendar laatstOnderhouden;
+	private boolean inReparatie = false;
 	DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); // zo staat de datum als
 														// dag-maand-jaar ipv //
 														// Calendar....
@@ -54,6 +55,14 @@ public class Auto {
 
 	public void setLaatstOnderhouden(Calendar lo) {
 		laatstOnderhouden = lo;
+	}
+
+	public boolean isInReparatie() {
+		return inReparatie;
+	}
+
+	public void setInReparatie(boolean inReparatie) {
+		this.inReparatie = inReparatie;
 	}
 
 }
