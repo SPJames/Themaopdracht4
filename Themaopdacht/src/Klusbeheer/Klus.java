@@ -10,13 +10,14 @@ public class Klus {
 	private String beschrijving;
 	private String werknemer;
 	private int aantalOnderdelen;
+	private int klantID;
 	private DienstType hetType;
 	private int parkeerplaats;
 	private static int nummer = 1;
 	private int klusnummer;
 	private boolean klusafgerond = false;
 
-	public Klus(Auto a, String b, String type) {
+	public Klus(Auto a, String b, String type, int id) {
 		klusnummer = nummer++;
 		setAuto(a);
 		beschrijving = b;
@@ -28,8 +29,8 @@ public class Klus {
 		}
 		else if(type.equals("tank")){
 			hetType = new Tanken();
-		}else{/*fuck you*/}
-		
+		}
+		klantID = id;
 	}
 
 	public void schrijfWeg(String[] Klus) throws IOException{
@@ -64,8 +65,16 @@ public class Klus {
 		aantalOnderdelen = aO;
 	}
 
-	public void setHetType(DienstType dt) {
-		hetType = dt;
+	public void setHetType(String dt) {
+		if(dt.equals("Onderhoud")){
+			hetType = new Onderhoud();
+		}
+		else if(dt.equals("Parkeren")){
+			hetType = new Parkeren();
+		}
+		else if(dt.equals("Tanken")){
+			hetType = new Tanken();
+		}
 	}
 
 	public DienstType getHetType() {
@@ -107,5 +116,13 @@ public class Klus {
 
 	public void setKlusafgerond(boolean klusafgerond) {
 		this.klusafgerond = klusafgerond;
+	}
+
+	public int getKlantID() {
+		return klantID;
+	}
+
+	public void setKlantID(int klantID) {
+		this.klantID = klantID;
 	}
 }

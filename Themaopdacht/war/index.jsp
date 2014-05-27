@@ -24,12 +24,13 @@
 			<th>Voortgang</th>
 		</tr>
 		<%
+			System.out.println("inlog ID: " + session.getAttribute("ID"));
 			@SuppressWarnings("unchecked")
 			ArrayList<Klus> Klussen = (ArrayList<Klus>) application.getAttribute("allKlussen");
 			if (Klussen.size() > 0) {
 				for (Klus k : Klussen) {
-					String id = "" + session.getAttribute("ID");
-					if ((k.getAuto().getKlantid().equals(id))) {
+					System.out.println("klus klant ID: " + k.getKlantID());
+					if ((k.getKlantID() == (int) session.getAttribute("ID"))) {
 						String afgerond = "In behandeling";
 						if (k.isKlusafgerond()) {
 							afgerond = "Afgerond";

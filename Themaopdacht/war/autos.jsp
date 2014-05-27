@@ -7,6 +7,7 @@
 	<jsp:param name="name" value="Home" />
 </jsp:include>
 	<%@ page import="klantenbinding.Auto"%>
+	<%@ page import="klantenbinding.Klant"%>
 	<%@ page import="java.util.ArrayList"%>
 	<%!String id = "";%>
 	<%
@@ -29,17 +30,23 @@
 			<th>Kenteken</th>
 		</tr>
 		<%
+		
 			@SuppressWarnings("unchecked")
-			ArrayList<Auto> Autos = (ArrayList<Auto>) application.getAttribute("allAutos");
-			if (Autos.size() > 0) {
-				for (Auto a : Autos) {
-					if (id.equals(a.getKlantid())) {
-						%>
-						<tr><td> <%=a.getMerk()%> </td><td> <%=a.getKenteken()%></td></tr>
-						<%
+			ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("allUsers");
+			for(Klant k : klanten) {
+				if(k.getId()==(Integer.parseInt(id))) {
+					ArrayList<Auto> autos = k.getAlleAutos();
+					if (autos.size() > 0) {
+						for (Auto a : autos) {
+								%>
+								<tr><td> <%=a.getMerk()%> </td><td> <%=a.getKenteken()%></td></tr>
+								<%
+						}
 					}
+					break;
 				}
 			}
+			
 		%>
 	</table>
 	<a href="autotoevoegen.jsp">Voeg een auto toe</a>

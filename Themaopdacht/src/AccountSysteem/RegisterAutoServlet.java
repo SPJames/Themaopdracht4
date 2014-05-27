@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import klantenbinding.Auto;
+import klantenbinding.Klant;
 
 public class RegisterAutoServlet extends HttpServlet {
 
@@ -46,6 +47,13 @@ public class RegisterAutoServlet extends HttpServlet {
 				}
 			}
 			if(!error2) {
+				@SuppressWarnings("unchecked")
+				ArrayList<Klant> klanten = (ArrayList<Klant>) req.getServletContext().getAttribute("allUsers");
+				for(Klant k : klanten) {
+					if(k.getUsername().equals(req.getSession().getAttribute("Username"))) {
+						k.voegAutoToe(a);
+					}
+				}
 				Autos.add(a);
 				req.setAttribute("msgs", "Auto succesvol toegevoegd!");
 				rd = req.getRequestDispatcher("autos.jsp");

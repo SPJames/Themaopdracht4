@@ -19,8 +19,7 @@ public class RegisterMonteurServlet extends HttpServlet{
 		String[] userinfo = new String[3];
 		boolean error = false;
 		@SuppressWarnings("unchecked")
-		ArrayList<Monteur> Monteurs = (ArrayList<Monteur>) req.getServletContext()
-				.getAttribute("allMonteurs");
+		ArrayList<Monteur> Monteurs = (ArrayList<Monteur>) req.getServletContext().getAttribute("allMonteurs");
 
 		userinfo[0] = req.getParameter("Realname");
 		userinfo[1] = req.getParameter("pwd");
@@ -37,13 +36,12 @@ public class RegisterMonteurServlet extends HttpServlet{
 		RequestDispatcher rd = null;
 		
 		if (error) {
-			req.setAttribute("msgs",
-					"Input was empty or password/email didn't match");
+			req.setAttribute("msgs", "Input was empty or password/email didn't match");
 			rd = req.getRequestDispatcher("/monteur/registermonteur.jsp");
 
 		} else {
 			Monteur m = new Monteur(userinfo[0], userinfo[1]);
-			m.schrijfWeg(userinfo);
+			//m.schrijfWeg(userinfo);
 			Monteurs.add(m);
 
 			rd = req.getRequestDispatcher("/monteur/loginmonteur.jsp");

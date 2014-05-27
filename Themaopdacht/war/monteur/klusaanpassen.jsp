@@ -8,8 +8,8 @@
 	<jsp:param name="path" value="../" />
 	<jsp:param name="name" value="Home" />
 </jsp:include>
-	<%@ page import="java.io.BufferedReader"%>
-	<%@ page import="java.io.FileReader"%>
+		<%@ page import="Klusbeheer.Klus"%>
+		<%@ page import="java.util.ArrayList"%>
 	<h2>Klus aanpassen</h2>
 	<div>
 		<%
@@ -19,50 +19,39 @@
 				}
 			%>
 	</div>
-	<%! String id = "";
-		String klantid ="";
-		String klantname="";
-		String title="";
-		String type="";
-		String comments="";
-	%>
 	<%
-	//lezen uit file gegevens
-	BufferedReader br = new BufferedReader(new FileReader("C:/xampp/tomcat/webapps/AccountSysteem/afspraken.dat"));
-			String str = "";
-			while((str=br.readLine())!=null){
-				int endID = str.indexOf(":");
-				int endKlantID = str.indexOf(";");
-				int endKlantName = str.indexOf(",");
-				int endTitle = str.indexOf(".");
-				int endType = str.indexOf("|");
-				int end = str.indexOf("/");
-				id = str.substring(0, (endID));
-				klantid = str.substring((endID+1), (endKlantID));
-				klantname = str.substring((endKlantID+1), (endKlantName));
-				title = str.substring((endKlantName+1), (endTitle));
-				type = str.substring((endTitle+1), (endType));
-				comments = str.substring((endType+1), (end));
-				if(request.getParameter("id").equals(id)){
-					break;
-				}
-			}
-	br.close();
-	
-	%>
-	<form action="../KlusAanmakenServlet.do" method="get">
-		<input type="hidden" name="klantid" value="<%= id %>" />
-		<input type="hidden" name="name" value="<%= klantname %>" />
-		<input type="text" name="title" value="<%= title %>" />
+				@SuppressWarnings("unchecked")
+				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("allKlussen");
+				for (Klus k : klussen) {
+					if (Integer.parseInt(request.getParameter("id")) == k.getKlusNummer()) {
+						String id = "" + k.getKlusNummer();
+						
+						String auto = k.getAuto().getKenteken();
+						String type = k.getHetType().toString();
+						String commentaar = k.getBeschrijving();
+						//String parkeerplaats = "" + k.getParkeerplaats();
+						
+						%>
+						
+		<form action="../KlusBijwerkenServlet.do" method="get">
+		<input type="hidden" name="klusid" value="<%= id %>" />
+		<input type="text" name="auto" value="<%= auto %>" readonly="readonly" />
 		<!-- diensttype -->
 		<select name="diensttype" autofocus="<%= type %>">
-			<option value="rep">Reparatie/Onderhoud/APK</option>
-			<option value="park">Parkeren</option>
-			<option value="tank">Tanken</option>
+			<option value="Onderhoud">Reparatie/Onderhoud/APK</option>
+			<option value="Parkeren">Parkeren</option>
+			<option value="Tanken">Tanken</option>
 		</select>
 		<!-- beschrijving klus -->
-		<textarea rows="10" cols="50" name="comments"><%= comments %></textarea>
+		<textarea rows="10" cols="50" name="comments"><%= commentaar %></textarea>
 		<input type="submit" value="Verzenden" />
-	</form>
+		</form>
+						
+						<%
+					}
+				}
+	
+	%>
+	
 </body>
 </html>

@@ -77,8 +77,30 @@
 	</servlet-mapping> 
 	
 	<servlet> 
-		<servlet-name>Klus Afronden Servlet</servlet-name> 
+		<servlet-name>Klus Uitkiezen Servlet</servlet-name> 
 		<servlet-class>Klus.KlusAfrondenServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Klus Uitkiezen Servlet</servlet-name> 
+		<url-pattern>/KlusUitkiezenServlet</url-pattern> 
+	</servlet-mapping> 
+	
+	<servlet> 
+		<servlet-name>Klus Bijwerken Servlet</servlet-name> 
+		<servlet-class>Klus.KlusUitkiezenServlet 
+			</servlet-class> 
+	</servlet> 
+ 
+	<servlet-mapping> 
+		<servlet-name>Klus Bijwerken Servlet</servlet-name> 
+		<url-pattern>/KlusBijwerkenServlet.do</url-pattern> 
+	</servlet-mapping> 
+		
+	<servlet> 
+		<servlet-name>Klus Afronden Servlet</servlet-name> 
+		<servlet-class>Klus.KlusBijwerkenServlet 
 			</servlet-class> 
 	</servlet> 
  

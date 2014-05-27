@@ -98,14 +98,26 @@ public class Klant {
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 
 
 	public void setLaatstBezocht(Calendar nd) {
 		laatstBezocht = nd;
 	}
+	
+	public Calendar getLaatstBezochtRaw() {
+		return laatstBezocht;
+	}
 
 	public ArrayList<Auto> getAlleAutos() {
 		return alleAutos;
+	}
+	
+	public void setAlleAutos(ArrayList<Auto> alleAutos) {
+		this.alleAutos = alleAutos;
 	}
 
 	public void voegAutoToe(Auto nwA) {

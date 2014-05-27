@@ -2,6 +2,7 @@ package AccountSysteem;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+
+
+import klantenbinding.Auto;
 //import Database.Database;
 import klantenbinding.Klant;
 
@@ -64,9 +68,14 @@ public class AccountWijzigenServlet extends HttpServlet {
 			
 			// werk voor sprint 3
 			//Database.schrijfUserWeg(userinfo);
-			
+			int id = klant.getId();
+			Calendar laatstbezocht = klant.getLaatstBezochtRaw();
+			ArrayList<Auto> autos = klant.getAlleAutos();
 			Users.remove(klant);
 			Users.add(newKlant);
+			newKlant.setId(id);
+			newKlant.setAlleAutos(autos);
+			newKlant.setLaatstBezocht(laatstbezocht);
 			
 			req.setAttribute("msgs", "Gegevens succesvol opgeslagen!");
 			

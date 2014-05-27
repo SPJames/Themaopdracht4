@@ -16,6 +16,7 @@
 				}
 			%>
 		</div>
+		<%@ page import="klantenbinding.Klant" %>
 		<%@ page import="klantenbinding.Auto" %>
 		<%@ page import="java.util.ArrayList"%>
 		
@@ -33,15 +34,22 @@
 		<!-- Auto -->
 		<select name="auto">
 			<% 
+			
 			@SuppressWarnings("unchecked")
-			ArrayList<Auto> Autos = (ArrayList<Auto>) application.getAttribute("allAutos");
-			if (Autos.size() > 0) {
-				for (Auto a : Autos) {
-					if (a.getKlantid().equals(id) && !a.isInReparatie()) { %>
-					
-						<option value="<%= a.getKenteken() %>"><%= a.getKenteken() %></option>
-					
-					<%}
+			ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("allUsers");
+			for(Klant k : klanten) {
+				if(k.getId()==(Integer.parseInt(id))) {
+					ArrayList<Auto> autos = k.getAlleAutos();
+					if (autos.size() > 0) {
+						for (Auto a : autos) {
+							if (!a.isInReparatie()) {
+								%>
+								<option value="<%= a.getKenteken() %>"><%= a.getKenteken() %></option>
+								<%
+							}
+						}
+					}
+					break;
 				}
 			}
 			%>

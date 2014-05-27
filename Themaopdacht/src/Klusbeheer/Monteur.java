@@ -6,7 +6,6 @@ import java.io.IOException;
 public class Monteur {
 	private String naam;
 	private String password;
-	private Klus deKlus;
 	private static int nummer = 1;
 	private int id;
 
@@ -26,15 +25,6 @@ public class Monteur {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-
-	public Klus getDeKlus() {
-		return deKlus;
-	}
-
-	public void setDeKlus(Klus dK) {
-		deKlus = dK;
 	}
 
 	public String getNaam() {
