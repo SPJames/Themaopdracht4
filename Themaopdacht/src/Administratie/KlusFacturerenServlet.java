@@ -28,11 +28,13 @@ public class KlusFacturerenServlet extends HttpServlet {
 		String title = "";
 		String type = "";
 		String comments = "";
+		// verbeteren van absoluut path!!
 		BufferedReader br = new BufferedReader(new FileReader(
 				"C:/xampp/tomcat/webapps/AccountSysteem/klussenaf.dat"));
 		String str = "";
 		while ((str = br.readLine()) != null) {
 			if (str.length() > 0) {
+				// inlezen van het bestand
 				int endID = str.indexOf(":");
 				int endKlantID = str.indexOf(";");
 				int endKlantName = str.indexOf(",");
@@ -53,6 +55,7 @@ public class KlusFacturerenServlet extends HttpServlet {
 		}
 		br.close();
 
+		// absoluut path weg!!
 		FileWriter fw = new FileWriter(
 				"C:/xampp/tomcat/webapps/AccountSysteem/factuurgemaakt.dat",
 				true);
@@ -62,12 +65,15 @@ public class KlusFacturerenServlet extends HttpServlet {
 		fw.flush();
 		fw.close();
 
+		// same here!
 		BufferedReader br2 = new BufferedReader(new FileReader(
 				"C:/xampp/tomcat/webapps/AccountSysteem/klussenaf.dat"));
 		BufferedWriter out = new BufferedWriter(new FileWriter(
 				"C:/xampp/tomcat/webapps/AccountSysteem/klussenaf.dat"));
 
 		str = "";
+
+		// inlezen van bestand
 		ArrayList<String> overige = new ArrayList<String>();
 		while ((str = br2.readLine()) != null) {
 			int endID = str.indexOf(":");
@@ -88,7 +94,7 @@ public class KlusFacturerenServlet extends HttpServlet {
 		br2.close();
 		out.flush();
 		out.close();
-		
+
 		rd = req.getRequestDispatcher("administratie/factuur.jsp");
 		rd.forward(req, resp);
 	}

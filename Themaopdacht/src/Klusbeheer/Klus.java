@@ -21,24 +21,25 @@ public class Klus {
 		klusnummer = nummer++;
 		setAuto(a);
 		beschrijving = b;
-		if(type.equals("rep")){
+		if (type.equals("rep")) {
 			hetType = new Onderhoud();
-		}
-		else if(type.equals("park")){
+		} else if (type.equals("park")) {
 			hetType = new Parkeren();
-		}
-		else if(type.equals("tank")){
+		} else if (type.equals("tank")) {
 			hetType = new Tanken();
 		}
 		klantID = id;
 	}
 
-	public void schrijfWeg(String[] Klus) throws IOException{
-//		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/afspraken.dat", true);
-//		
-//		fw.write("\n"+ id++ +":"+ Klus[0]+";"+Klus[1]+","+Klus[2]+"."+Klus[3]+"|"+Klus[4]+"/");
-//		fw.flush();
-//		fw.close();
+	public void schrijfWeg(String[] Klus) throws IOException {
+		// FileWriter fw = new
+		// FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/afspraken.dat",
+		// true);
+		//
+		// fw.write("\n"+ id++ +":"+
+		// Klus[0]+";"+Klus[1]+","+Klus[2]+"."+Klus[3]+"|"+Klus[4]+"/");
+		// fw.flush();
+		// fw.close();
 	}
 
 	public int getKlusNummer() {
@@ -66,13 +67,11 @@ public class Klus {
 	}
 
 	public void setHetType(String dt) {
-		if(dt.equals("Onderhoud")){
+		if (dt.equals("Onderhoud")) {
 			hetType = new Onderhoud();
-		}
-		else if(dt.equals("Parkeren")){
+		} else if (dt.equals("Parkeren")) {
 			hetType = new Parkeren();
-		}
-		else if(dt.equals("Tanken")){
+		} else if (dt.equals("Tanken")) {
 			hetType = new Tanken();
 		}
 	}

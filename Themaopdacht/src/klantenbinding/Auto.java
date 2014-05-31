@@ -19,7 +19,7 @@ public class Auto {
 		setMerk(mk);
 		setKlantid(id);
 	}
-	
+
 	public void setKlantid(String klantid) {
 		this.klantid = klantid;
 	}

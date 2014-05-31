@@ -93,7 +93,6 @@ public class Bedrijf {
 		return dePlanner;
 	}
 
-
 	public String toString() {
 		String i = "";
 		for (Klant k : alleKlanten) {

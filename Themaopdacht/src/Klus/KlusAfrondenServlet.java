@@ -15,15 +15,9 @@ public class KlusAfrondenServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
-		
-		
-		
-		
+
 		RequestDispatcher rd = null;
-		
-		
-		
+
 		rd = req.getRequestDispatcher("monteur/klussenlijst.jsp");
 		rd.forward(req, resp);
 	}

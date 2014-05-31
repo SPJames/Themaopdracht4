@@ -14,51 +14,52 @@ import klantenbinding.Klant;
 
 public class MyServletContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
-		
-		//users initaliseren
+
+		// users initaliseren
 		ArrayList<Klant> List = new ArrayList<Klant>();
-		
-		Klant u = new Klant("James","Straat 1","3612AH","test@test.com","Test","derp");
+
+		Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com",
+				"Test", "derp");
 		List.add(u);
-		Klant u2 = new Klant("Johnny Test","Straat 2","3613AH","test@test.test","Test2","derp");
+		Klant u2 = new Klant("Johnny Test", "Straat 2", "3613AH",
+				"test@test.test", "Test2", "derp");
 		List.add(u2);
-		
+
 		sce.getServletContext().setAttribute("allUsers", List);
-		
-		//monteurs initaliseren
+
+		// monteurs initaliseren
 		ArrayList<Monteur> List2 = new ArrayList<Monteur>();
 
-		Monteur m = new Monteur("Klaas","monteur1");
+		Monteur m = new Monteur("Klaas", "monteur1");
 		List2.add(m);
-		Monteur m2 = new Monteur("Kees","monteur2");
+		Monteur m2 = new Monteur("Kees", "monteur2");
 		List2.add(m2);
-		
+
 		sce.getServletContext().setAttribute("allMonteurs", List2);
-		
-		//Klussen initaliseren
+
+		// Klussen initaliseren
 		ArrayList<Klus> List3 = new ArrayList<Klus>();
-		
+
 		sce.getServletContext().setAttribute("allKlussen", List3);
-		
-		//Auto initaliseren
+
+		// Auto initaliseren
 		ArrayList<Auto> List4 = new ArrayList<Auto>();
-		
+
 		sce.getServletContext().setAttribute("allAutos", List4);
-		
-		//Parkeerplaats initialiseren
+
+		// Parkeerplaats initialiseren
 		Parkeerplaats[] List5 = new Parkeerplaats[50];
-		
+
 		sce.getServletContext().setAttribute("allParkeerplaatsen", List5);
-		
-		
-		//lees bestaande users in
-		//Werk voor sprint 3
-//		try {
-//			Database.leesUsersIn(List);
-//			System.out.println("succes");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+
+		// lees bestaande users in
+		// Werk voor sprint 3
+		// try {
+		// Database.leesUsersIn(List);
+		// System.out.println("succes");
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

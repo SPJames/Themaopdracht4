@@ -24,6 +24,7 @@ public class RegisterAutoServlet extends HttpServlet {
 		boolean error = false;
 		boolean error2 = false;
 
+		// checken of alles is ingevuld
 		if (merk.equals("") || merk.equals(null)) {
 			error = true;
 		}
@@ -31,29 +32,34 @@ public class RegisterAutoServlet extends HttpServlet {
 			error = true;
 		}
 		RequestDispatcher rd = null;
-		if (error) {
+		if (error) { // foutmelding
 			req.setAttribute("msgs", "Een of meerdere velden waren leeg.");
 			rd = req.getRequestDispatcher("autotoevoegen.jsp");
 		} else {
 			Auto a = new Auto(kt, merk, id);
 			@SuppressWarnings("unchecked")
-			ArrayList<Auto> Autos = (ArrayList<Auto>) req.getServletContext().getAttribute("allAutos");
-			for(Auto auto : Autos) {
-				if (auto.getKenteken().equals(kt)) {
+			ArrayList<Auto> Autos = (ArrayList<Auto>) req.getServletContext()
+					.getAttribute("allAutos");
+			for (Auto auto : Autos) {
+				if (auto.getKenteken().equals(kt)) { // foutmelding, als auto al
+														// bestaat
 					req.setAttribute("msgs", "Deze auto bestaat al.");
 					rd = req.getRequestDispatcher("autotoevoegen.jsp");
 					error2 = true;
 					break;
 				}
 			}
-			if(!error2) {
+			if (!error2) { // foutmelding
 				@SuppressWarnings("unchecked")
-				ArrayList<Klant> klanten = (ArrayList<Klant>) req.getServletContext().getAttribute("allUsers");
-				for(Klant k : klanten) {
-					if(k.getUsername().equals(req.getSession().getAttribute("Username"))) {
+				ArrayList<Klant> klanten = (ArrayList<Klant>) req
+						.getServletContext().getAttribute("allUsers");
+				for (Klant k : klanten) {
+					if (k.getUsername().equals(
+							req.getSession().getAttribute("Username"))) {
 						k.voegAutoToe(a);
 					}
 				}
+				// auto toevoegen aan account
 				Autos.add(a);
 				req.setAttribute("msgs", "Auto succesvol toegevoegd!");
 				rd = req.getRequestDispatcher("autos.jsp");

@@ -6,20 +6,18 @@ import java.util.Calendar;
 
 import klantenbinding.Auto;
 
-
-
 public class Parkeerplaats {
 	private Auto auto;
 	private Calendar reseveringsDatum;
-	
+
 	private Calendar cal = Calendar.getInstance();
 	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-	
+
 	public Parkeerplaats(Auto a) {
 		setAuto(a);
 		setReseveringsDatum(cal);
 	}
-	
+
 	public Auto getAuto() {
 		return auto;
 	}

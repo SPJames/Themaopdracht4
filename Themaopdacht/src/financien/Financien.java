@@ -12,8 +12,8 @@ public class Financien {
 
 	public boolean heeftFactuur(int fN) {
 		boolean result = false;
-		for(Factuur f: alleFactures){
-			if(f.getFactuurNummer()==fN){
+		for (Factuur f : alleFactures) {
+			if (f.getFactuurNummer() == fN) {
 				result = true;
 			}
 		}
@@ -32,15 +32,15 @@ public class Financien {
 	}
 
 	public boolean voegFactuurToe(Factuur nwF) {
-		//if(heeftFactuur(nwF.getFactuurNummer())){
-		//	return false;
-		//}
-		//else{
-			alleFactures.add(nwF);	
-			return true;
-		//}
+		// if(heeftFactuur(nwF.getFactuurNummer())){
+		// return false;
+		// }
+		// else{
+		alleFactures.add(nwF);
+		return true;
+		// }
 	}
-	
+
 	public ArrayList<Factuur> getAlleFactures() {
 		return alleFactures;
 	}

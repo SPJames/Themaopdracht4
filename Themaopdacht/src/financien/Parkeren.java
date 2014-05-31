@@ -5,10 +5,10 @@ public class Parkeren extends DienstType {
 	private int aantalDagen;
 	private double totaal = 0;
 
-	public Parkeren(){
+	public Parkeren() {
 		super();
 	}
-	
+
 	public Parkeren(double dP, int aD) {
 		super();
 		dagPrijs = dP;

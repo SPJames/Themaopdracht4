@@ -24,7 +24,7 @@ public class AccountWijzigenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		//Klant klant wordt de huidige gebruiker.
+		//Klant wordt de huidige gebruiker.
 		@SuppressWarnings("unchecked")
 		ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext().getAttribute("allUsers");
 		Klant klant = null;
@@ -55,6 +55,8 @@ public class AccountWijzigenServlet extends HttpServlet {
 		if(!(userinfo[2].equals(klant.getPassword()))) {
 			error2 = true;
 		}
+		
+		//fout melding teruggeven
 		RequestDispatcher rd = null;
 		if (error1) {
 			req.setAttribute("msgs", "Invoer was leeg");
@@ -63,7 +65,7 @@ public class AccountWijzigenServlet extends HttpServlet {
 		} else if(error2) {
 			req.setAttribute("msgs", "Wachtwoord is incorrect");
 			rd = req.getRequestDispatcher("accountwijzigen.jsp");
-		} else { //sla nieuwe klant op
+		} else { //sla nieuwe klant op, als invoer correct is
 			Klant newKlant = new Klant(userinfo[1],userinfo[4],userinfo[5],userinfo[3],userinfo[0],userinfo[2]);
 			
 			// werk voor sprint 3

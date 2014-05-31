@@ -15,8 +15,6 @@ import klantenbinding.Klant;
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
-	//test van cindy
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -24,17 +22,21 @@ public class LoginServlet extends HttpServlet {
 		String password = req.getParameter("pwd");
 		boolean error = false;
 		boolean done = false;
+
 		// lijst met users 'importeren'
 		@SuppressWarnings("unchecked")
 		ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext()
 				.getAttribute("allUsers");
 
+		// checken of er iets is ingevoerd
 		if (username.equals("") || username.equals(null)) {
 			error = true;
 		}
 		if (password.equals("") || password.equals(null)) {
 			error = true;
 		}
+
+		// foutmelding geven
 		RequestDispatcher rd = null;
 		if (Users.size() == 0) {
 			req.setAttribute("msgs", "Er zijn nog geen accounts in het systeem");
@@ -43,13 +45,14 @@ public class LoginServlet extends HttpServlet {
 		if (error) {
 			req.setAttribute("msgs", "Username/password was leeg");
 			rd = req.getRequestDispatcher("login.jsp");
-		} else {
+		} else { // inloggen als admin
 			if (username.equals("Admin") && password.equals("Admin")) {
 				req.getSession().setAttribute("Access", "Admin");
 				req.getSession().setAttribute("Username", "Admin");
 				rd = req.getRequestDispatcher("index.jsp");
 				done = true;
 			}
+			// inloggen als monteur
 			@SuppressWarnings("unchecked")
 			ArrayList<Monteur> monteurs = (ArrayList<Monteur>) req
 					.getServletContext().getAttribute("allMonteurs");
@@ -65,12 +68,13 @@ public class LoginServlet extends HttpServlet {
 
 						break;
 					} else {
+						// foutmelding monteur
 						req.setAttribute("msgs", "Dit is geen geldige login");
 						rd = req.getRequestDispatcher("login.jsp");
 					}
 				}
 			}
-			if (!(done)) {
+			if (!(done)) { // als klant inloggen
 				for (Klant k : Users) {
 					if (k.getUsername().equals(username)
 							&& k.getPassword().equals(password)) {
@@ -82,6 +86,7 @@ public class LoginServlet extends HttpServlet {
 						rd = req.getRequestDispatcher("index.jsp");
 						break;
 					} else {
+						// foutmelding klant
 						req.setAttribute("msgs", "Dit is geen geldige login");
 						rd = req.getRequestDispatcher("login.jsp");
 					}

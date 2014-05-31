@@ -30,17 +30,21 @@ public class RegisterServlet extends HttpServlet {
 		userinfo[6] = req.getParameter("Adress");
 		userinfo[7] = req.getParameter("Postcode");
 
+		// checken of alle 8 de velden zijn ingevuld
 		for (int i = 0; i < 8; i++) {
 			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
 				error = true;
 			}
 		}
+
+		// chekcen of password en email overeen komen
 		if (!userinfo[2].equals(userinfo[3])) {
 			error = true;
 		}
 		if (!userinfo[4].equals(userinfo[5])) {
 			error = true;
 		}
+		// foutmelding
 		RequestDispatcher rd = null;
 		if (error) {
 			req.setAttribute("msgs",
@@ -48,13 +52,16 @@ public class RegisterServlet extends HttpServlet {
 			rd = req.getRequestDispatcher("register.jsp");
 
 		} else {
-			Klant k = new Klant(userinfo[1], userinfo[6], userinfo[7],userinfo[4],userinfo[0],userinfo[2]);
-			
+			// klant opslaan
+			Klant k = new Klant(userinfo[1], userinfo[6], userinfo[7],
+					userinfo[4], userinfo[0], userinfo[2]);
+
 			// werk voor sprint 3
-			//Database.schrijfUserWeg(userinfo);
-			
+			// Database.schrijfUserWeg(userinfo);
+
 			@SuppressWarnings("unchecked")
-			ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext().getAttribute("allUsers");
+			ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext()
+					.getAttribute("allUsers");
 			Users.add(k);
 
 			rd = req.getRequestDispatcher("login.jsp");

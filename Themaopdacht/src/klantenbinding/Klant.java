@@ -21,7 +21,8 @@ public class Klant {
 	private static int getal = 1;
 	private int id;
 
-	public Klant(String nm, String ad, String pc, String em, String un, String pw) {
+	public Klant(String nm, String ad, String pc, String em, String un,
+			String pw) {
 		setNaam(nm);
 		setAdres(ad);
 		setPostcode(pc);
@@ -30,11 +31,11 @@ public class Klant {
 		setPassword(pw);
 		id = getal++;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
-	
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -46,6 +47,7 @@ public class Klant {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getNaam() {
 		return naam;
 	}
@@ -86,28 +88,30 @@ public class Klant {
 			return s;
 		}
 	}
-	
-//	public void schrijfWeg(String[] userinfo) throws IOException{
-//		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat", true);
-//		
-//		fw.write("\n"+ id++ +" "+userinfo[0]+":"+userinfo[2]+";"+userinfo[1]+" "+userinfo[4]+" "+userinfo[6]+" "+userinfo[7]);
-//		fw.flush();
-//		fw.close();
-//	}
+
+	// public void schrijfWeg(String[] userinfo) throws IOException{
+	// FileWriter fw = new
+	// FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat",
+	// true);
+	//
+	// fw.write("\n"+ id++
+	// +" "+userinfo[0]+":"+userinfo[2]+";"+userinfo[1]+" "+userinfo[4]+" "+userinfo[6]+" "+userinfo[7]);
+	// fw.flush();
+	// fw.close();
+	// }
 
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public void setLaatstBezocht(Calendar nd) {
 		laatstBezocht = nd;
 	}
-	
+
 	public Calendar getLaatstBezochtRaw() {
 		return laatstBezocht;
 	}
@@ -115,7 +119,7 @@ public class Klant {
 	public ArrayList<Auto> getAlleAutos() {
 		return alleAutos;
 	}
-	
+
 	public void setAlleAutos(ArrayList<Auto> alleAutos) {
 		this.alleAutos = alleAutos;
 	}
@@ -165,8 +169,7 @@ public class Klant {
 		}
 	}
 
-/*	public String toString() {
-		String s = getNaam() + "";
-		return s;
-	}*/
+	/*
+	 * public String toString() { String s = getNaam() + ""; return s; }
+	 */
 }

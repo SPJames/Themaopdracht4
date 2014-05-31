@@ -7,6 +7,7 @@ import klantenbinding.Auto;
 public class Betaling {
 	private int kortingsPrecentage;
 	private int btw;
+
 	public ArrayList<DienstType> getAlleDiensten() {
 		return alleDiensten;
 	}
