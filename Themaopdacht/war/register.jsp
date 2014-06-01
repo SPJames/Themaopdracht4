@@ -30,9 +30,9 @@
 					placeholder="example@example.com" class="box" /> 
 				<label for="email2">Re-enter email</label><input type="email"
 					name="email2" placeholder="example@example.com" class="box" />
-				<label for="Adress">Adress</label><input type="text" name="Adress"
+				<label for="Adress">Address</label><input type="text" name="Adress"
 					placeholder="Adress" class="box" />
-				<label for="Postcode">Postcode</label><input type="text" name="Postcode" 
+				<label for="Postcode">Zipcode</label><input type="text" name="Postcode" 
 					placeholder="Postcode" class="box" />
 				<input type="submit" value="Verzenden" class="down" />
 			</fieldset>
