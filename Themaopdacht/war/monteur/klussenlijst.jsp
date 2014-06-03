@@ -1,10 +1,11 @@
 <jsp:include page="../Header.jsp">
 	<jsp:param name="title" value="Klussen lijst" />
 	<jsp:param name="css" value="klussenlijst" />
+	<jsp:param name="path" value="/Themaopdracht4/monteur/" />
 </jsp:include>
 <body>
 <jsp:include page="../menu.jsp" >
-	<jsp:param name="path" value="../" />
+	<jsp:param name="path" value="/Themaopdracht4/monteur/" />
 	<jsp:param name="name" value="Home" />
 </jsp:include>
 	<div id="klus">

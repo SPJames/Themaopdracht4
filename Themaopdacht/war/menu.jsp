@@ -5,6 +5,7 @@
 			boolean ingelogd = false;
 			String userName = "";
 			String userType = "";
+			String loc = "derp";
 
 			Object login = session.getAttribute("Username");
 			if (login != null) {
@@ -18,20 +19,25 @@
 					ingelogd = true;
 				}
 			}
+			loc = request.getParameter("naam");
 
 			if (ingelogd && (userType.equals("Klant"))) {
 		%>
-		<li><a href='${param.path}afspraakmaken.jsp'>Afspraak maken</a></li>
-		<li><a href='${param.path}LogoutServlet'>Uitloggen (<%=userName%>)</a></li>
-		<li><a href='${param.path}autos.jsp'> Auto overzicht </a></li>
-		<li><a href='${param.path}accountwijzigen.jsp'> Wijzig account </a></li>
+		<li><a href='afspraakmaken.jsp'>Afspraak maken</a></li>
+		<li><a href='LogoutServlet'>Uitloggen (<%=userName%>)</a></li>
+		<li><a href='autos.jsp'> Auto overzicht </a></li>
+		<li><a href='accountwijzigen.jsp'> Wijzig account </a></li>
 		<%
 			}
 			if (ingelogd && (userType.equals("Monteur"))) {
+				if(loc != null){
 		%>
-		<li><a href='${param.path}monteur/klussenlijst.jsp'>Klussenlijst</a></li>
+				<li><a href='monteur/klussenlijst.jsp'>Klussenlijst</a></li>
+			<%}else{%>
+				<li><a href='${param.path}klussenlijst.jsp'>Klussenlijst</a></li>
+		<%}%>
 		<li><a href='${param.path}LogoutServlet'>Uitloggen (<%=userName%>)</a></li>
-		<%
+			<%
 			}
 			if (ingelogd && (userType.equals("Admin"))) {
 		%>
@@ -42,11 +48,11 @@
 			}
 			if (!ingelogd) {
 		%>
-		<li><a href='${param.path}register.jsp'>Register</a></li>
-		<li><a href='${param.path}login.jsp'>Login</a></li>
+		<li><a href='register.jsp'>Register</a></li>
+		<li><a href='login.jsp'>Login</a></li>
 		<%
 			}
 		%>
-		<li><a href='${param.path}index.jsp'>${param.name}</a></li>
+		<li><a href='/Themaopdracht4/index.jsp'>${param.name}</a></li>
 	</ul>
 </div>

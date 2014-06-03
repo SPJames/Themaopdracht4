@@ -3,7 +3,9 @@
 	<jsp:param name="css" value="home" />
 </jsp:include>
 <body>
-	<jsp:include page="menu.jsp" />
+	<jsp:include page="menu.jsp" >
+		<jsp:param name="naam"	value="index.jsp" />
+	</jsp:include>
 
 	<%@ page import="Klusbeheer.Klus"%>
 	<%@ page import="java.util.ArrayList"%>
