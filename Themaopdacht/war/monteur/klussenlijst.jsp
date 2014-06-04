@@ -40,7 +40,7 @@
 				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("allKlussen");
 				for (Klus k : klussen) {
 					if (session.getAttribute("Username").equals(k.getWerknemer()) && !k.isKlusafgerond()) {
-						String id = "" + k.getKlusNummer();
+						int id = k.getKlusNummer();
 						
 						String klantname = "";
 						for(Klant klant : klanten) {
@@ -50,8 +50,6 @@
 						}
 						
 						String auto = k.getAuto().getKenteken();
-						
-						//fout met type formatting!
 						String type = k.getHetType().dienstType();
 						String commentaar = k.getBeschrijving();
 						String parkeerplaats = "" + (k.getParkeerplaats() + 1);
@@ -64,14 +62,14 @@
 							<td><%=commentaar%></td>
 							<td><%=parkeerplaats%></td>
 							<td><a href="klusaanpassen.jsp?id=<%=id%>">edit</a></td>
-							<td><a href="../KlusAfrondenServlet?id=<%= id %>">afronden</a></td>
+							<td><a href="../KlusAfrondenServlet?id=<%=id%>">afronden</a></td>
 						</tr>
 					<%
 					}
 				}
 				for (Klus k : klussen) {
 					if(k.getWerknemer() == null && !k.isKlusafgerond()) {
-						String id = "" + k.getKlusNummer();
+						int id = k.getKlusNummer();
 						
 						String klantname = "";
 						for(Klant klant : klanten) {
@@ -81,7 +79,7 @@
 						}
 						
 						String auto = k.getAuto().getKenteken();
-						String type = k.getHetType().toString();
+						String type = k.getHetType().dienstType();
 						String commentaar = k.getBeschrijving();
 						String parkeerplaats = "" + (k.getParkeerplaats() + 1);
 						%>

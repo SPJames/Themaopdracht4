@@ -5,13 +5,16 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import klantenbinding.Auto;
 import Klusbeheer.Klus;
 
-public class KlusBijwerkenServlet {
+public class KlusBijwerkenServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
@@ -47,6 +50,7 @@ public class KlusBijwerkenServlet {
 			// foutmelding
 			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
 				req.setAttribute("msgs", "Sommige velden waren leeg.");
+				rd = req.getRequestDispatcher("monteur/klusaanpassen.jsp");
 				break;
 			} else {
 				if (i == 1) {
@@ -54,12 +58,13 @@ public class KlusBijwerkenServlet {
 				} else if (i == 2) {
 					klus.setBeschrijving(userinfo[2]);
 					req.setAttribute("msgs", "Klus succesvol aangepast.");
+					rd = req.getRequestDispatcher("monteur/klussenlijst.jsp");
 					auto.setInReparatie(true);
 				}
 			}
 		}
 
-		rd = req.getRequestDispatcher("klusaanpassen.jsp");
+		
 		rd.forward(req, resp);
 	}
 }

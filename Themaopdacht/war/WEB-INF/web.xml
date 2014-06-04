@@ -14,7 +14,6 @@
 		<servlet-class>AccountSysteem.RegisterServlet 
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Register Servlet</servlet-name> 
 		<url-pattern>/RegisterServlet.do</url-pattern> 
@@ -25,7 +24,6 @@
 		<servlet-class>AccountSysteem.LoginServlet 
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Login Servlet</servlet-name> 
 		<url-pattern>/LoginServlet.do</url-pattern> 
@@ -36,7 +34,6 @@
 		<servlet-class>AccountSysteem.AccountWijzigenServlet
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Account Wijzigen Servlet</servlet-name> 
 		<url-pattern>/AccountWijzigenServlet.do</url-pattern> 
@@ -47,7 +44,6 @@
 		<servlet-class>AccountSysteem.LogoutServlet 
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Logout Servlet</servlet-name> 
 		<url-pattern>/LogoutServlet</url-pattern> 
@@ -58,7 +54,6 @@
 		<servlet-class>AccountSysteem.RegisterAutoServlet 
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Register Auto Servlet</servlet-name> 
 		<url-pattern>/RegisterAutoServlet.do</url-pattern> 
@@ -70,7 +65,6 @@
 		<servlet-class>Klus.KlusAanmakenServlet 
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Klus Aanmaken Servlet</servlet-name> 
 		<url-pattern>/KlusAanmakenServlet.do</url-pattern> 
@@ -81,7 +75,6 @@
 		<servlet-class>Klus.KlusUitkiezenServlet 
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Klus Uitkiezen Servlet</servlet-name> 
 		<url-pattern>/KlusUitkiezenServlet</url-pattern> 
@@ -92,7 +85,6 @@
 		<servlet-class>Klus.KlusBijwerkenServlet 
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Klus Bijwerken Servlet</servlet-name> 
 		<url-pattern>/KlusBijwerkenServlet.do</url-pattern> 
@@ -103,7 +95,6 @@
 		<servlet-class>Klus.KlusAfrondenServlet 
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Klus Afronden Servlet</servlet-name> 
 		<url-pattern>/KlusAfrondenServlet</url-pattern> 
@@ -117,7 +108,6 @@
 		<servlet-class>Monteur.RegisterMonteurServlet 
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Register Monteur Servlet</servlet-name> 
 		<url-pattern>/RegisterMonteurServlet.do</url-pattern> 
@@ -130,7 +120,6 @@
 		<servlet-class>Administratie.KlusFacturerenServlet 
 			</servlet-class> 
 	</servlet> 
- 
 	<servlet-mapping> 
 		<servlet-name>Klus Factureren Servlet</servlet-name> 
 		<url-pattern>/KlusFacturerenServlet</url-pattern> 

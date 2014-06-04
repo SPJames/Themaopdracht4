@@ -10,6 +10,11 @@
 		<h2>Login</h2>
 		<div>
 			<%
+				Object msgs = request.getAttribute("msgs");
+				if (msgs != null) {
+					out.println(msgs);
+				}
+				
 				String name = "";
 				Object login = session.getAttribute("Username");
 				if (login != null) {
