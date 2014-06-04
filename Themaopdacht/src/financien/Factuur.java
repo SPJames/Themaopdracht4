@@ -1,11 +1,15 @@
 package financien;
 
-public class Factuur {
-	private int factuurNummer;
-	private Betaling deBetalingen;
+import Klusbeheer.Klus;
 
-	public Factuur(int fN) {
-		factuurNummer = fN;
+public class Factuur {
+	private Klus klus;
+	private static int nummer = 1;
+	private int factuurNummer;
+
+	public Factuur(Klus k) {
+		setKlus(k);
+		factuurNummer = nummer++;
 	}
 
 	public void setFactuurNummer(int fN) {
@@ -16,17 +20,17 @@ public class Factuur {
 		return factuurNummer;
 	}
 
-	public void setDeBetalingen(Betaling dB) {
-		deBetalingen = dB;
-	}
-
-	public Betaling getDeBetalingen() {
-		return deBetalingen;
-	}
-
 	public String toString() {
 		String s = "" + getFactuurNummer();
 		return s;
+	}
+
+	public Klus getKlus() {
+		return klus;
+	}
+
+	public void setKlus(Klus klus) {
+		this.klus = klus;
 	}
 
 }

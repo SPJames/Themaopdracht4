@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.servlet.*;
 
+import financien.Factuur;
 import Klus.Parkeerplaats;
 //import Database.Database;
 import Klusbeheer.Klus;
@@ -51,6 +52,11 @@ public class MyServletContextListener implements ServletContextListener {
 		Parkeerplaats[] List5 = new Parkeerplaats[50];
 
 		sce.getServletContext().setAttribute("allParkeerplaatsen", List5);
+		
+		// facturen initialiseren
+		ArrayList<Factuur> List7 = new ArrayList<Factuur>();
+
+		sce.getServletContext().setAttribute("alleFacturen", List7);
 
 		// lees bestaande users in
 		// Werk voor sprint 3
