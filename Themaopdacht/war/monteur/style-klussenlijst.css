@@ -13,7 +13,7 @@ body {
 	border-radius: 5px;
 	margin-left: auto;
 	margin-right: auto;
-	width: 500px;
+	width: 800px;
 }
 
 ul {
@@ -24,12 +24,20 @@ ul {
 
 li {
 	display: inline-block;
-	width: 150px;
+	width: 125px;
 	margin-top: 15px;
 }
 
 ul li a {
 	text-decoration: none;
+}
+
+tr {
+	text-align: right;
+}
+
+th {
+	width: 200px;
 }
 
 #klus {
@@ -39,5 +47,6 @@ ul li a {
 	border-radius: 5px;
 	margin-left: auto;
 	margin-right: auto;
-	width: 500px;
+	width: 800px;
+	min-height: 300px;
 }
