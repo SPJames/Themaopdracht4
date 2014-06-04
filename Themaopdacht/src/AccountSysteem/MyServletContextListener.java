@@ -12,6 +12,7 @@ import Klusbeheer.Klus;
 import Klusbeheer.Monteur;
 import klantenbinding.Auto;
 import klantenbinding.Klant;
+import voorraadbeheer.Onderdeel;
 
 public class MyServletContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
@@ -52,6 +53,17 @@ public class MyServletContextListener implements ServletContextListener {
 		Parkeerplaats[] List5 = new Parkeerplaats[50];
 
 		sce.getServletContext().setAttribute("allParkeerplaatsen", List5);
+		
+		//onderdelen initialiseren en 3 test waarde toevoegen
+		ArrayList<Onderdeel> List6 = new ArrayList<Onderdeel>();
+		Onderdeel o = new Onderdeel(1, 30, "Wieldopje", 5.5);
+		Onderdeel o2 = new Onderdeel(2, 999, "Headlightfuel", 40.0);
+		Onderdeel o3 = new Onderdeel(3, 3, "Ramenlappers", 1.0);
+		List6.add(o);
+		List6.add(o2);
+		List6.add(o3);
+		sce.getServletContext().setAttribute("alleOnderdelen", List6);
+
 		
 		// facturen initialiseren
 		ArrayList<Factuur> List7 = new ArrayList<Factuur>();
