@@ -1,58 +1,61 @@
-
+<!-- menu gebruitk door alle jsp's -->
 <div id="Menu">
 	<ul>
 		<%
+			//home alleen weergeven wanneer je niet op de homepage bent
+			if (request.getParameter("home") == null){
+				%>
+					<li><a href='/atd/index.jsp'>Home</a></li>
+				<%
+			}
+		
 			boolean ingelogd = false;
-			String userName = "";
-			String userType = "";
-			String loc = "derp";
+			String username = "";
+			String usertype = "";
 
 			Object login = session.getAttribute("Username");
 			if (login != null) {
 
 				if (!(session.getAttribute("Username").equals(""))) {
-					userName = (String) session.getAttribute("Username");
+					username = (String) session.getAttribute("Username");
 					ingelogd = true;
 				}
 				if (!(session.getAttribute("Access").equals(""))) {
-					userType = (String) session.getAttribute("Access");
+					usertype = (String) session.getAttribute("Access");
 					ingelogd = true;
 				}
 			}
-			loc = request.getParameter("naam");
-
-			if (ingelogd && (userType.equals("Klant"))) {
-		%>
-		<li><a href='afspraakmaken.jsp'>Afspraak maken</a></li>
-		<li><a href='LogoutServlet'>Uitloggen (<%=userName%>)</a></li>
-		<li><a href='autos.jsp'> Auto overzicht </a></li>
-		<li><a href='accountwijzigen.jsp'> Wijzig account </a></li>
-		<%
-			}
-			if (ingelogd && (userType.equals("Monteur"))) {
-				if(loc != null){
-		%>
-				<li><a href='monteur/klussenlijst.jsp'>Klussenlijst</a></li>
-			<%}else{%>
-				<li><a href='${param.path}klussenlijst.jsp'>Klussenlijst</a></li>
-		<%}%>
-		<li><a href='${param.path}LogoutServlet'>Uitloggen (<%=userName%>)</a></li>
+			
+			if(ingelogd) {
+				if (usertype.equals("Klant")) {
+				%>
+					<li><a href='/atd/klant/afspraakmaken.jsp'>Afspraak Maken</a></li>
+					<li><a href='/atd/klant/autolijst.jsp'> Auto Overzicht </a></li>
+					<li><a href='/atd/klant/accountwijzigen.jsp'> Account Wijzigen </a></li>
+				<%
+				}
+				if (usertype.equals("Monteur")) {
+				%>
+					<li><a href='/atd/monteur/klussenlijst.jsp'>Klussen Lijst</a></li>
+				<%
+				}
+				if (usertype.equals("Admin")) {
+				%>
+					<li><a href='/atd/admin/klussenlijstaf.jsp'>Factuur Maken</a></li>
+					<li><a href='/atd/admin/facturen.jsp'>Factuur overzicht</a></li>
+					<li><a href='/atd/admin/registreermonteur.jsp'>Nieuwe Monteur Toevoegen</a></li>
+					<%
+			//uitlog knop is bij iedereen zichtbaar als laatste optie wanneer je ingelogd bent
+				}%>
+				<li><a href='/atd/UitlogServlet'>Uitloggen (<%=username%>)</a></li>
+			<%
+			} else if (!ingelogd) {
+			%>
+				<li><a href='/atd/registreren.jsp'>Registreer</a></li>
+				<li><a href='/atd/inloggen.jsp'>Log in</a></li>
 			<%
 			}
-			if (ingelogd && (userType.equals("Admin"))) {
 		%>
-		<li><a href='${param.path}administratie/klussenlijstaf.jsp'>Factuur Maken</a></li>
-		<li><a href='${param.path}LogoutServlet'>Uitloggen (<%=userName%>)</a></li>
-		<li><a href='${param.path}monteur/registermonteur.jsp'>Nieuwe monteur toevoegen</a></li>
-		<%
-			}
-			if (!ingelogd) {
-		%>
-		<li><a href='register.jsp'>Register</a></li>
-		<li><a href='login.jsp'>Login</a></li>
-		<%
-			}
-		%>
-		<li><a href='/Themaopdracht4/index.jsp'>${param.name}</a></li>
+		
 	</ul>
 </div>

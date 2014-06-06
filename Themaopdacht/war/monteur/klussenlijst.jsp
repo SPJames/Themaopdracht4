@@ -1,13 +1,13 @@
-<jsp:include page="../Header.jsp">
+<jsp:include page="../header.jsp">
 	<jsp:param name="title" value="Klussen lijst" />
 	<jsp:param name="css" value="klussenlijst" />
-	<jsp:param name="path" value="/Themaopdracht4/monteur/" />
 </jsp:include>
 <body>
-<jsp:include page="../menu.jsp" >
-	<jsp:param name="path" value="/Themaopdracht4/monteur/" />
-	<jsp:param name="name" value="Home" />
-</jsp:include>
+<jsp:include page="../menu.jsp"/>
+	<%@ page import="domein.klusbeheer.Klus"%>
+	<%@ page import="domein.klantenbinding.Klant"%>
+	<%@ page import="domein.klusbeheer.Monteur"%>
+	<%@ page import="java.util.ArrayList"%>
 	<div id="klus">
 		<h2>Klussen</h2>
 		
@@ -20,24 +20,13 @@
 		%>
 		</div>
 		
-		<table>
-			<tr>
-				<th>Klus ID</th>
-				<th>Klant naam</th>
-				<th>Auto</th>
-				<th>Diensttype</th>
-				<th>Comments</th>
-				<th>Parkeerplaats</th>
-			</tr>
-			<%@ page import="Klusbeheer.Klus"%>
-			<%@ page import="klantenbinding.Klant"%>
-			<%@ page import="Klusbeheer.Monteur"%>
-			<%@ page import="java.util.ArrayList"%>
+		
+			
 			<%
 				@SuppressWarnings("unchecked")
-				ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("allUsers");
+				ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
 				@SuppressWarnings("unchecked")
-				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("allKlussen");
+				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("alleKlussen");
 				for (Klus k : klussen) {
 					if (session.getAttribute("Username").equals(k.getWerknemer()) && !k.isKlusafgerond()) {
 						int id = k.getKlusNummer();
@@ -54,6 +43,16 @@
 						String commentaar = k.getBeschrijving();
 						String parkeerplaats = "" + (k.getParkeerplaats() + 1);
 						%>
+					<p>Uw klussen:</p>
+					<table>
+						<tr>
+							<th>Klus ID</th>
+							<th>Klant naam</th>
+							<th>Auto</th>
+							<th>Diensttype</th>
+							<th>Comments</th>
+							<th>Parkeerplaats</th>
+						</tr>
 						<tr>
 							<td><%=id%></td>
 							<td><%=klantname%></td>
@@ -62,12 +61,11 @@
 							<td><%=commentaar%></td>
 							<td><%=parkeerplaats%></td>
 							<td><a href="klusaanpassen.jsp?id=<%=id%>">edit</a></td>
-							<td><a href="../KlusAfrondenServlet?id=<%=id%>">afronden</a></td>
+							<td><a href="KlusAfrondenServlet?id=<%=id%>">afronden</a></td>
 						</tr>
+					</table>
 					<%
 					}
-				}
-				for (Klus k : klussen) {
 					if(k.getWerknemer() == null && !k.isKlusafgerond()) {
 						int id = k.getKlusNummer();
 						
@@ -83,6 +81,16 @@
 						String commentaar = k.getBeschrijving();
 						String parkeerplaats = "" + (k.getParkeerplaats() + 1);
 						%>
+					<p>beschikbare klussen</p>
+					<table>
+						<tr>
+							<th>Klus ID</th>
+							<th>Klant naam</th>
+							<th>Auto</th>
+							<th>Diensttype</th>
+							<th>Comments</th>
+							<th>Parkeerplaats</th>
+						</tr>
 						<tr>
 							<td><%=id%></td>
 							<td><%=klantname%></td>
@@ -90,13 +98,13 @@
 							<td><%=type%></td>
 							<td><%=commentaar%></td>
 							<td><%=parkeerplaats%></td>
-							<td><a href="../KlusUitkiezenServlet?id=<%=id%>">uitkiezen</a></td>
+							<td><a href="KlusUitkiezenServlet?id=<%=id%>">uitkiezen</a></td>
 						</tr>
+					</table>
 						<%
 					}
 				}
 			%>
-		</table>
 	</div>
 </body>
 </html>

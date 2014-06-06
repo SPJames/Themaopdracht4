@@ -1,15 +1,11 @@
-<jsp:include page="../Header.jsp">
+<jsp:include page="../header.jsp">
 	<jsp:param name="title" value="Klus Aanpassen" />
 	<jsp:param name="css" value="register" />
-	<jsp:param name="path" value="../" />
 </jsp:include>
 <body>
-<jsp:include page="../menu.jsp" >
-	<jsp:param name="path" value="/Themaopdracht4/monteur/" />
-	<jsp:param name="name" value="Home" />
-</jsp:include>
-		<%@ page import="Klusbeheer.Klus"%>
-		<%@ page import="java.util.ArrayList"%>
+<jsp:include page="../menu.jsp"/>
+	<%@ page import="domein.klusbeheer.Klus"%>
+	<%@ page import="java.util.ArrayList"%>
 	<h2>Klus aanpassen</h2>
 	<div>
 		<%
@@ -21,7 +17,7 @@
 	</div>
 	<%
 				@SuppressWarnings("unchecked")
-				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("allKlussen");
+				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("alleKlussen");
 				for (Klus k : klussen) {
 					if (Integer.parseInt(request.getParameter("id")) == k.getKlusNummer()) {
 						String id = "" + k.getKlusNummer();
@@ -29,11 +25,9 @@
 						String auto = k.getAuto().getKenteken();
 						String type = k.getHetType().toString();
 						String commentaar = k.getBeschrijving();
-						//String parkeerplaats = "" + k.getParkeerplaats();
-						
 						%>
 						
-		<form action="../KlusBijwerkenServlet.do" method="get">
+	<form action="KlusBijwerkenServlet.do" method="get">
 		<input type="hidden" name="klusid" value="<%= id %>" />
 		<input type="text" name="auto" value="<%= auto %>" readonly="readonly" />
 		<!-- diensttype -->
@@ -45,13 +39,11 @@
 		<!-- beschrijving klus -->
 		<textarea rows="10" cols="50" name="comments"><%= commentaar %></textarea>
 		<input type="submit" value="Verzenden" />
-		</form>
+	</form>
 						
 						<%
 					}
 				}
-	
-	%>
-	
+				%>
 </body>
 </html>
