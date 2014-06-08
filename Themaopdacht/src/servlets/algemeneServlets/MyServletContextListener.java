@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.*;
 
-import controller.Factuur;
-
+import domein.financien.Factuur;
 import domein.klantenbinding.Auto;
 import domein.klantenbinding.Klant;
 import domein.klusbeheer.Klus;

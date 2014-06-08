@@ -1,10 +1,6 @@
-package controller;
+package domein.voorraadbeheer;
 
 import java.util.ArrayList;
-
-import controller.Bestelling;
-import domein.voorraadbeheer.Brandstof;
-import domein.voorraadbeheer.Onderdeel;
 /**
  * deze klasse houdt de arrayListen voor de soorten brandstof, onderdelen en bestellingen bij
  * deze lijsten kunnen hier ingevult/gewijzigd worden

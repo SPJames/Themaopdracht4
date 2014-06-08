@@ -28,7 +28,7 @@
 			<%@ page import="domein.klusbeheer.Klus"%>
 			<%@ page import="domein.klantenbinding.Klant"%>
 			<%@ page import="java.util.ArrayList"%>
-			<%@ page import="controller.Factuur"%>
+			<%@ page import="domein.financien.Factuur"%>
 			<%
 			@SuppressWarnings("unchecked")
 			ArrayList<Factuur>facturen = (ArrayList<Factuur>) application.getAttribute("alleFacturen");

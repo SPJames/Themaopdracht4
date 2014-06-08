@@ -1,4 +1,4 @@
-package controller;
+package domein.financien;
 
 import domein.klusbeheer.Klus;
 

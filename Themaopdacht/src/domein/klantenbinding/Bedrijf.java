@@ -3,7 +3,7 @@ package domein.klantenbinding;
 import java.util.ArrayList;
 
 import domein.klusbeheer.Planner;
-import controller.Voorraad;
+import domein.voorraadbeheer.Voorraad;
 /**
  * deze klasse houdt de lijst van met alle klanten bij
  * de naam van het bedrijf kan ingevuld/gewijzigd worden

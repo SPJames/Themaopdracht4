@@ -1,9 +1,6 @@
-package controller;
+package domein.voorraadbeheer;
 
 import java.util.ArrayList;
-
-import domein.voorraadbeheer.Brandstof;
-import domein.voorraadbeheer.Onderdeel;
 
 /**
  * in deze klasse worden de gegevens van een bestelling ingevuld/bijgewerkt
