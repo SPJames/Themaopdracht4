@@ -16,6 +16,22 @@ public class RegistreerAutoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * In deze servlet kan een klant een auto registreren.
+	 * Hiervoor moet het merk en het kenteken worden opgegeven.
+	 * 
+	 *  Eerst wordt gekeken of alle velden ingevuld zijn. Als dit niet het geval was wordt de gebruiker
+	 *  teruggestuurd naar het auto registreren formulier en wordt er een foutmelding gegeven.
+	 *  
+	 *  Als wel alles is ingevuld wordt gekeken of er al een auto bestaat met deze kenmerken.
+	 *  Als dit zo is dan wordt de klant teruggestuurd naar het auto registreren formulier en wordt 
+	 *  er een foutmelding weergegeven.
+	 *  
+	 *  Als de auto nog niet bestond wordt deze nu in de lijst met autos voor de ingelogde klant toegevoegd.
+	 *  Hiernaast wordt de auto ook aan de lijst met alle autos toegevoegd.
+	 *  Hierna wordt de klant doorgestuurd naar hun persoonlijke auto overzicht en wordt er een melding
+	 *  weergegeven dat het toevoegen gelukt is.
+	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String merk = req.getParameter("merk");

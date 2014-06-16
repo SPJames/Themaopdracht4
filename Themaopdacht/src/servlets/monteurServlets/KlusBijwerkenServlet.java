@@ -16,6 +16,17 @@ import domein.klusbeheer.Klus;
 public class KlusBijwerkenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * In deze servlet kan een klus bijgewerkt worden.
+	 * Eerst wordt de klus opgehaalt.
+	 * 
+	 * Aan het eind wordt gecontroleert of alle velden zijn ingevuld. Zo niet dan wordt de monteur
+	 * teruggestuurd naar deze pagina en wordt er een foutmelding weergegeven.
+	 * 
+	 * Als alle velden zijn ingevuld worden de nieuwe gegevens opgeslagen en wordt de monteur
+	 * teruggestuurd naar de klussenlijst en wordt daar een melding weergegeven dat de wijzigingen
+	 * doorgevoert zijn.
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		ServletContext sc = req.getServletContext();

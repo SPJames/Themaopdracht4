@@ -14,6 +14,18 @@ import domein.klusbeheer.Klus;
 public class KlusUitkiezenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * In deze servlet kunnen monteurs een klus uitkiezen om aan te werken.
+	 * Er wordt gecontroleert of de klus al een werknemer heeft en of deze overeenkomt
+	 * met de ingelogde monteur. 
+	 * 
+	 * Als de klus al een werknemer heeft en deze is niet de ingelogde monteur dan wordt de monteur
+	 * teruggestuurd naar deze pagina en wordt er een foutmelding weergegeven.
+	 * 
+	 * Als de monteur nog geen werknemer heeft of de werknemer is de ingelogde monteur
+	 * dan wordt  de ingelogde monteur aan de klus toegewezen en wordt de monteur doorgestuurd
+	 * naar deze pagina en wordt een melding weergegeven dat het uitkiezen gelukt is.
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 

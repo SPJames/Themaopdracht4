@@ -16,6 +16,15 @@ public class KlusFacturerenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * In deze klasse wordt de facuur van een klus gemaakt.
+	 * 
+	 * De klus wordt opgehaald. 
+	 * Er wordt een factuur bij aangemaakt en deze wordt aan de lijst facturen toegevoegd.
+	 * Hierna wordt de klus verwijdert uit de lijst klussen.
+	 * 
+	 * De gebruiker wordt doorgestuurd naar klussenlijstaf en er wordt een melding weergegeven.
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		RequestDispatcher rd = null;
