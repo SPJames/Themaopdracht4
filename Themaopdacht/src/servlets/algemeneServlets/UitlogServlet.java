@@ -10,6 +10,11 @@ public class UitlogServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Via deze server kan een gebruiker uitloggen.
+	 * De attributen die waren opgeslagen bij het inloggen worden leeggemaakt en de 
+	 * gebruiker wordt doorgestuurd naar de hoofdpagina.
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// attributen leeg maken, bij uitloggen
