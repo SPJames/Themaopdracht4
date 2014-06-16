@@ -39,6 +39,7 @@
 				if (usertype.equals("Admin")) {%>
 					<li><a href='/atd/admin/klussenlijstaf.jsp'>Factuur Maken</a></li>
 					<li><a href='/atd/admin/facturen.jsp'>Factuur overzicht</a></li>
+					<li><a href='/atd/admin/klantoverzicht.jsp'>Klanten overzicht</a></li>
 					<li><a href='/atd/admin/registreermonteur.jsp'>Nieuwe Monteur Toevoegen</a></li>
 		<%//uitlog knop is bij iedereen zichtbaar als laatste optie wanneer je ingelogd bent
 				}%>
