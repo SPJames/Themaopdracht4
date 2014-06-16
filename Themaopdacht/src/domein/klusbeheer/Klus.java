@@ -19,6 +19,7 @@ public class Klus {
 	private static int nummer = 1;
 	private int klusnummer;
 	private boolean klusafgerond = false;
+	private int weeknr;
 
 	/**
 	 * de klus wordt aangemaakt, de klus krijgt een auto waarvoor de klus is
