@@ -8,6 +8,8 @@ body {
 
 #Content p {
 	padding-top: 20px;
+	margin-left: 100px;
+	margin-right: 100px;
 }
 
 #Menu {
@@ -53,4 +55,9 @@ ul li a {
 	margin-right: auto;
 	width: 800px;
 	min-height: 300px;
+}
+
+img {
+	height: 80px;
+	padding-top: 10px;
 }
