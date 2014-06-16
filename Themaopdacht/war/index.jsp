@@ -31,9 +31,10 @@
 			doorgeven wat voor problemen u waarneemt met uw auto. <br />Na het
 			maken van de afspraak hoeft u alleen maar uw auto af te leveren in de
 			aan u toegewezen parkeerplaats in onze beveiligde en overdekte
-			parkeergarage. <br /> <br />Er wordt contact met u opgenomen wanneer
-			u uw auto weer op kan halen.
+			parkeergarage. <br /> <br />Er wordt contact met u opgenomen
+			wanneer u uw auto weer op kan halen.
 		</p>
+		<hr />
 
 		<!-- openstaande klussen van klant, zodat hij/zij voortgang kan volgen-->
 
@@ -84,5 +85,11 @@
 		<!-- einde openstaande klussen klanten -->
 
 	</div>
+
+	<jsp:include page="footer.jsp">
+		<jsp:param name="footer" value="footer" />
+		<jsp:param name="css" value="footer" />
+	</jsp:include>
+
 </body>
 <html>
