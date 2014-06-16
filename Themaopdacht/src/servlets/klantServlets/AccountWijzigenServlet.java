@@ -15,6 +15,20 @@ public class AccountWijzigenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * In deze servlet kan een klant de gegevens van zijn/haar account wijzigen.
+	 * Eerst wordt de klant opgezocht.
+	 * 
+	 * Na het veranderen wordt gecontroleert of alle vakjes ingevuld zijn, zoniet wordt
+	 * de klant teruggestuurd naar deze pagina met een foutmelding.
+	 * 
+	 * Als alles ingevult is wort gecontroleert of het wachtwoord is verandert en zoja of beide
+	 * ingevulde wachtwoorden met elkaar overeenkomen. zoniet wordt de klant teruggestuurd naar deze
+	 * pagina met een foutmelding.
+	 * 
+	 * Als er geen foutmeldingen zijn worden de nieuwe gegevens opgeslagen en wordt de klant doorgestuurd
+	 * naar deze pagina met de melding dat de gegevens zijn gewijzigd.
+	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
@@ -65,6 +79,8 @@ public class AccountWijzigenServlet extends HttpServlet {
 			}
 		}
 		
+		//nog controle toevoegen voor nieuw emailadress
+		
 		//fout melding teruggeven
 		RequestDispatcher rd = null;
 		if (error1) {
@@ -90,6 +106,7 @@ public class AccountWijzigenServlet extends HttpServlet {
 			req.getSession().setAttribute("Username", klant.getUsername());
 			req.getSession().setAttribute("ID", klant.getId());
 			
+			//kunnen we niet beter naar het klant hoofdmenu gaan?
 			rd = req.getRequestDispatcher("accountwijzigen.jsp");
 		}
 

@@ -14,6 +14,20 @@ import domein.klusbeheer.Monteur;
 public class RegistreerMonteurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * In deze servlet kan de admin een monteur toevoegen.
+	 * 
+	 * Er wordt een gebruikersnaam en een wachtwoord opgegeven.
+	 * Er wordt gecontroleerd of de gegevens ingevoerd zijn.
+	 * Zoniet dan wordt de admin teruggestuurd naar deze pagina en wordt er een foutmelding weergegeven.
+	 * 
+	 * Als alles ingevuld is wordt gecontroleert of de wachtworden overeenkomen met elkaar.
+	 * Zo niet dan wordt de admin teruggestuurd naar deze pagina en wordt er een foutmelding weergegeven.
+	 * 
+	 * Als er geen foutmeldingen zijn wordt de monteur opgeslagen, aan de lijst van monteurs toegevoegd,
+	 * wordt de admin doorgestuurd naar de index en wordt een melding weergegeven dat het registreren
+	 * gelukt is.
+	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
@@ -40,7 +54,7 @@ public class RegistreerMonteurServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 
 		if (error) {
-			// foutmelding
+			// foutmelding							monteur heeft geen email
 			req.setAttribute("msgs", "Invoer was leeg of de email/het wachtwoord matchte niet");
 			rd = req.getRequestDispatcher("registermonteur.jsp");
 

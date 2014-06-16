@@ -14,6 +14,12 @@ public class KlusAfrondenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * In deze servlet kan een klus worden afgerond.
+	 * De klusstatus wordt op afgerond gezet en er verschijnt een bericht dat de klus
+	 * succesvol is afgerond.
+	 * De monteur wordt doorgestuurd naar de klussenlijst.
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		

@@ -18,6 +18,23 @@ public class KlusAanmakenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * In deze servlet kan een klant een afspraak maken.
+	 * De username, klantid, diensttype, comments en een auto moeten worden meegegeven.
+	 * 
+	 * Er wordt gecontroleerd of alle velden zijn ingevuld, als dit niet zo is wordt de klant teruggestuurd
+	 * naar deze pagina en wordt er een foutmelding weergegeven.
+	 * 
+	 * Als alles ingevuld is wordt er gekeken of de auto al aan een klus is gekoppelt, zoja
+	 * dan wordt de klant teruggestuurd naar deze pagina en wordt er een foutmelding weergegeven.
+	 * 
+	 * Als de auto nog niet aan een klus was toegewezen wordt de eerste lege parkeerplek aan deze klus toegewezen.
+	 * Als er geen beschikbare parkeerplekken zijn wordt de klant teruggestuurd naar deze pagina
+	 * en wordt er een foutmelding weergegeven.
+	 * 
+	 * Als er geen foutmeldingen zijn wordt de klant naar de hoofdpagina gestuurd en verschijnt er een melding
+	 * dat de klus is aangemaakt. Voor de meegegeven auto wordt aangegeven dat deze bij een nog niet afgesloten klus hoort.
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String[] userinfo = new String[5];

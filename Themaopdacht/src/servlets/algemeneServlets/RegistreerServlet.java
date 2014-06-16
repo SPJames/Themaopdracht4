@@ -22,6 +22,7 @@ public class RegistreerServlet extends HttpServlet {
 	 * 
 	 * Er wordt eerst gecontroleert of alle vakken ingevuld zijn, en of de ingevoerde wachtwoorden en 
 	 * emailadressen (beide moesten 2 maal ingevoerd worden) met elkaar overeen komen.
+	 * Het email adres wordt ook op syntax gecontroleerd (@ en .com)
 	 * 
 	 * Als één of meerdere van bovenstaande controles een foutmelding opgeven dan wordt de gebruiker
 	 * teruggestuurd naar deze pagina en wordt er een error bericht weergegeven.
@@ -59,7 +60,7 @@ public class RegistreerServlet extends HttpServlet {
 		}
 		
 		// foutmelding
-		if (error) {
+		if (error) {	//misschien netter om kwamen niet overeen neer te zetten ipv matchte?
 			req.setAttribute("msgs", "Enkele velden waren leeg en/of het wachtwoord/email matchte niet.");
 			req.getRequestDispatcher("registreren.jsp").forward(req, resp);
 		} else {
