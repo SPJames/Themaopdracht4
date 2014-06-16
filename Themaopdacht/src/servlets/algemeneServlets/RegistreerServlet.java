@@ -16,6 +16,20 @@ public class RegistreerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Deze servlet wordt gebruikt om een nieuwe klant te registreren.
+	 * Door de user moeten een aantal vakken worden ingevuld.
+	 * 
+	 * Er wordt eerst gecontroleert of alle vakken ingevuld zijn, en of de ingevoerde wachtwoorden en 
+	 * emailadressen (beide moesten 2 maal ingevoerd worden) met elkaar overeen komen.
+	 * 
+	 * Als één of meerdere van bovenstaande controles een foutmelding opgeven dan wordt de gebruiker
+	 * teruggestuurd naar deze pagina en wordt er een error bericht weergegeven.
+	 * 
+	 *  Als er geen foutmeldingen gegeven zijn wordt aan de hand van de ingevoerde gegevens een nieuwe
+	 *  klant geregistreerd en toegevoegd aan de lijst met klantaccounts.
+	 *  Hierna wordt de gebruiker doorgestuurd naar het inlogscherm.
+	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String[] userinfo = new String[8];

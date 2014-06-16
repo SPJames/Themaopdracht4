@@ -13,6 +13,17 @@ import domein.klusbeheer.Parkeerplaats;
 import domein.voorraadbeheer.Onderdeel;
 
 public class MyServletContextListener implements ServletContextListener {
+	
+	/**
+	 *In deze servlet worden alle arraylisten geinitialiseert zodat elke andere servlet ze kan gebruiken.
+	 *De geinitialiseerde lijsten worden ook meteen opgeslagen als attributen.
+	 *
+	 *Ook worden er enkele standaard gebruikers aangemaakt die wij als programmeurs kunnen gebruiken om
+	 *dit programma te testen zonder dat we steeds opnieuw gebruikers aan moeten maken.
+	 *
+	 * Verder worden er ook een aantal onderdelen geinitialiseerd, zodat we deze meteen kunnen gebruiken bij het 
+	 * testen van bepaalde klassen.
+	 */
 	public void contextInitialized(ServletContextEvent sce) {
 		
 		//arrays initialiseren

@@ -18,6 +18,26 @@ public class InlogServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Via deze servlet kan er ingelogd worden
+	 * Er wordt gecontroleert of de vakken username en pwd zijn ingevuld
+	 * 
+	 * Als username en/of wachtwoord niet zijn ingevuld wordt de gebruiker teruggestuurd naar 
+	 * de inlogpagina en wordt er een error bericht weergegeven.
+	 * 
+	 * Als deze ingevuld zijn wordt gekeken of er wordt ingelogd als Admin, monteur of klant
+	 * Dit wordt gedaan door voor admin de naam en pw te vergelijken (er is maar één admin),
+	 * en voor monteur/klant wordt gekeken of de naam met het wachtwoord overeen komen met 
+	 * de geregistreerde monteurs/klanten.
+	 * 
+	 * Als de naam en het wachtwoord ergens mee overeenkomen dan wordt er ingelogd en wordt
+	 * de gebruiker doorgestuurt naar de index.jsp met een menu dat er anders uitziet afhankelijk van
+	 * welke soort gebruiker er is ingelogd. Dit wordt bepaalt afhankelijk van het Access attribuut.
+	 * Verder worden de username en waar nodig het ID opgeslagen als attributen.
+	 * 
+	 * Als de naam en het wachtwoord niet is gevonden wordt de gebruiker teruggestuurt naar de inlogpagina
+	 * en wordt er een error bericht weergegeven.
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		String username = req.getParameter("username");
