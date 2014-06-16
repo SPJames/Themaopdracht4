@@ -19,12 +19,17 @@
 				<label for="username">Username</label>
 				<input type='text' name='username' placeholder="Username" class="box" value="${param.username}"/><br /> 
 				
-				<label for="pwd">Password</label>
-				<input type='password' name='pwd' placeholder="Password" class="box" /><br /> 
+				<label for="pwd">Wachtwoord</label>
+				<input type='password' name='pwd' placeholder="Wachtwoord" class="box" /><br /> 
 				
 				<input type='submit' name='Go' class="down" /><br />
 			</fieldset>
 		</form>
 	</div>
+	
+	<jsp:include page="footer.jsp">
+		<jsp:param name="footer" value="footer" />
+		<jsp:param name="css" value="footer" />
+	</jsp:include>
 </body>
 </html>

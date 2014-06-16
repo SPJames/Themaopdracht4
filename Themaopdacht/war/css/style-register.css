@@ -64,7 +64,7 @@ label {
 	margin-left: 250px;
 }
 
-p {
+#register p {
 	display: inline-block;
 	float: left;
 	height: 20px;

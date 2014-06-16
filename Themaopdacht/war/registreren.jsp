@@ -44,5 +44,10 @@
 			</fieldset>
 		</form>
 	</div>
+	
+	<jsp:include page="footer.jsp">
+		<jsp:param name="footer" value="footer" />
+		<jsp:param name="css" value="footer" />
+	</jsp:include>
 </body>
 </html>
