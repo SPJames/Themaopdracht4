@@ -47,7 +47,7 @@ public class RegistreerServlet extends HttpServlet {
 		// foutmelding
 		if (error) {
 			req.setAttribute("msgs", "Enkele velden waren leeg en/of het wachtwoord/email matchte niet.");
-			req.getRequestDispatcher("register.jsp").forward(req, resp);
+			req.getRequestDispatcher("registreren.jsp").forward(req, resp);
 		} else {
 			// klant opslaan
 			Klant k = new Klant(userinfo[1], userinfo[6], userinfo[7], userinfo[4], userinfo[0], userinfo[2]);
@@ -56,7 +56,7 @@ public class RegistreerServlet extends HttpServlet {
 			ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext().getAttribute("alleUsers");
 			Users.add(k);
 
-			resp.sendRedirect("login.jsp");
+			resp.sendRedirect("inloggen.jsp");
 		}
 	}
 }
