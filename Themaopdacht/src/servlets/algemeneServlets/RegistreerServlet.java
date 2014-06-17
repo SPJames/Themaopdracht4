@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import Database.Database;
-
+import servlets.email.RegisterEmail;
 import domein.klantenbinding.Klant;
+//import Database.Database;
 
 public class RegistreerServlet extends HttpServlet {
 
@@ -72,6 +72,10 @@ public class RegistreerServlet extends HttpServlet {
 			Users.add(k);
 
 			resp.sendRedirect("inloggen.jsp");
+			RegisterEmail m = new RegisterEmail((String) req.getParameter("email"),
+					(String) req.getParameter("username"),
+					(String) req.getParameter("realname"),
+					(String) req.getParameter("pwd"));
 		}
 	}
 }
