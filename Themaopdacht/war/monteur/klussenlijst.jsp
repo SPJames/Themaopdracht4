@@ -19,9 +19,6 @@
 			}
 		%>
 		</div>
-		
-		
-			
 			<%
 				@SuppressWarnings("unchecked")
 				ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
@@ -52,6 +49,7 @@
 							<th>Diensttype</th>
 							<th>Comments</th>
 							<th>Parkeerplaats</th>
+							<th>Gebruikte Onderdelen</th>
 						</tr>
 						<tr>
 							<td><%=id%></td>
@@ -60,6 +58,7 @@
 							<td><%=type%></td>
 							<td><%=commentaar%></td>
 							<td><%=parkeerplaats%></td>
+							<td><%=k.getGebruikt().size()%></td>
 							<td><a href="klusaanpassen.jsp?id=<%=id%>">edit</a></td>
 							<td><a href="KlusAfrondenServlet?id=<%=id%>">afronden</a></td>
 						</tr>

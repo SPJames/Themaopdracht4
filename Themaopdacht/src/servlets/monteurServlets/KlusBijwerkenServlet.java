@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.klantenbinding.Auto;
 import domein.klusbeheer.Klus;
+import domein.voorraadbeheer.Onderdeel;
 
 public class KlusBijwerkenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,14 +32,27 @@ public class KlusBijwerkenServlet extends HttpServlet {
 			throws ServletException, IOException {
 		ServletContext sc = req.getServletContext();
 		
+		boolean error = false;
+		
 		String[] userinfo = new String[3];
 		@SuppressWarnings("unchecked")
 		ArrayList<Klus> Klussen = (ArrayList<Klus>) sc.getAttribute("alleKlussen");
+		@SuppressWarnings("unchecked")
+		ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) sc.getAttribute("alleOnderdelen");
 
 		userinfo[0] = req.getParameter("klusid");// klusid voor foreign key
 		userinfo[1] = req.getParameter("diensttype");
 		userinfo[2] = req.getParameter("comments");
 		Auto auto = null;
+		
+		String[] onderdeelnaam = new String[onderdelen.size()];
+		for(int i=0; i<onderdelen.size(); i++) {
+			onderdeelnaam[i] = req.getParameter("onderdeel"+i);
+		}
+		int[] onderdeelaantal = new int[onderdelen.size()];
+		for(int i=0; i<onderdelen.size(); i++) {
+			onderdeelaantal[i] = Integer.parseInt(req.getParameter("aantal"+i));
+		}
 
 		Klus klus = null;
 		for (Klus k : Klussen) {
@@ -62,6 +76,7 @@ public class KlusBijwerkenServlet extends HttpServlet {
 			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
 				req.setAttribute("msgs", "Sommige velden waren leeg.");
 				rd = req.getRequestDispatcher("klusaanpassen.jsp");
+				error = true;
 				break;
 			} else {
 				if (i == 1) {
@@ -74,6 +89,20 @@ public class KlusBijwerkenServlet extends HttpServlet {
 				}
 			}
 		}
+		if(!error) {
+			for(int i=0;i < onderdelen.size(); i++) {
+				if (!(onderdeelnaam[i].equals("")) && !(onderdeelaantal[i] == 0)) {
+					Onderdeel ond = null;
+					for(Onderdeel o : onderdelen) {
+						if(o.getNaam().equals(onderdeelnaam[i])) {
+							ond = o;
+						}
+					}
+					klus.addOnderdeel(ond, onderdeelaantal[i]);
+				}
+			}
+		}
+		
 		rd.forward(req, resp);
 	}
 }
