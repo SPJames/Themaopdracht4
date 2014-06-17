@@ -30,7 +30,7 @@ public class KlusBijwerkenServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		ServletContext sc = req.getServletContext();
-
+		
 		String[] userinfo = new String[3];
 		@SuppressWarnings("unchecked")
 		ArrayList<Klus> Klussen = (ArrayList<Klus>) sc.getAttribute("alleKlussen");

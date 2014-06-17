@@ -9,6 +9,7 @@
 
 		<%@ page import="domein.financien.Factuur"%>
 		<%@ page import="domein.klantenbinding.Klant"%>
+		<%@ page import="domein.klusbeheer.Klus" %>
 		<%@ page import="java.util.*"%>
 
 		<div>
@@ -19,8 +20,9 @@
 				}
 
 				@SuppressWarnings("unchecked")
-				ArrayList<Klant> klanten = (ArrayList<Klant>) application
-						.getAttribute("alleUsers");
+				ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
+				@SuppressWarnings("unchecked")
+				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("alleKlussen");
 				if (klanten.size() > 0) {
 			%>
 			<table>
@@ -31,7 +33,7 @@
 				</tr>
 				<%
 					for (Klant k : klanten) {
-							if (k.getId() == (Integer) request.getAttribute("id")) {
+							if (k.getId() == Integer.parseInt(request.getParameter("klantid"))){
 				%>
 				<tr>
 					<td><%=k.getId()%></td>
@@ -42,8 +44,22 @@
 				}
 				%>
 			</table>
+			
+			<div>
+				<%
+					for(Klus k: klussen){
+				%>
+					<%=k.getHetType().dienstType()%><br />
+					<%=k.getKlusNummer()%><br />
+					<%=k.getAuto()%><br />
+					<%=k.getBeschrijving()%><br />
+					<%=k.getWerknemer() %><br />
+					<%=k.getParkeerplaats() %><br />
+
+				<%} %>
+			</div>
 			<%
-				} else {
+				}else {
 			%>
 			<p>Er zijn nog geen facturen.</p>
 			<%

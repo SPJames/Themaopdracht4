@@ -1,9 +1,11 @@
 package domein.klusbeheer;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import domein.financien.*;
 import domein.klantenbinding.Auto;
+import domein.voorraadbeheer.*;
 
 /**
  * in deze klasse worden de gegevens van een klus ingevuld/bewerkt
@@ -19,7 +21,13 @@ public class Klus {
 	private static int nummer = 1;
 	private int klusnummer;
 	private boolean klusafgerond = false;
-	private int weeknr;
+	private HashMap<Onderdeel, Integer> gebruikt = new HashMap<Onderdeel, Integer>();
+	//private int weeknr;
+
+
+	public HashMap<Onderdeel, Integer> getGebruikt() {
+		return gebruikt;
+	}
 
 	/**
 	 * de klus wordt aangemaakt, de klus krijgt een auto waarvoor de klus is

@@ -72,6 +72,7 @@ public class RegistreerServlet extends HttpServlet {
 			Users.add(k);
 
 			resp.sendRedirect("inloggen.jsp");
+			@SuppressWarnings("unused")
 			RegisterEmail m = new RegisterEmail((String) req.getParameter("email"),
 					(String) req.getParameter("username"),
 					(String) req.getParameter("realname"),

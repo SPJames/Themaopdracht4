@@ -39,7 +39,7 @@
 				for (Klus k : klussen) {
 					if (k.isKlusafgerond()) {
 						int id = k.getKlusNummer();
-							
+						int klantid = k.getKlantID();	
 						String klantname = "";
 						for(Klant klant : klanten) {
 							if(klant.getId() == k.getKlantID()) {
@@ -59,7 +59,7 @@
 							<td><%=type%></td>
 							<td><%=commentaar%></td>
 							<td><%=parkeerplaats%></td>
-							<td><a href="facturen.jsp?id=">factureren</a></td>
+							<td><a href="facturen.jsp?klusid=<%=id%>&klantid=<%=klantid%>">factureren</a></td>
 						</tr>
 						<%
 					}

@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import servlets.email.KlusAfgerondEmail;
-import servlets.email.RegisterEmail;
 import domein.klusbeheer.Klus;
 
 public class KlusAfrondenServlet extends HttpServlet {
