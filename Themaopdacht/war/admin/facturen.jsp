@@ -16,15 +16,17 @@
 			<%
 				Object msgs = request.getAttribute("msgs");
 				if (msgs != null) {
+			%>
+			<div id="msgs">
+				<%
 					out.println(msgs);
-				}
-
 				@SuppressWarnings("unchecked")
 				ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
 				@SuppressWarnings("unchecked")
 				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("alleKlussen");
 				if (klanten.size() > 0) {
 			%>
+			</div>
 			<table>
 				<tr>
 					<th>ID</th>

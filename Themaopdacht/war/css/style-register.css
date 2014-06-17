@@ -93,3 +93,13 @@ label {
 	width: 350px;
 	height: auto;
 }
+
+#msgs {
+	border: 2px solid red;
+	border-radius: 5px;
+	background: red;
+	min-height: 10px;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}

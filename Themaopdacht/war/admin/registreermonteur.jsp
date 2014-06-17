@@ -10,10 +10,12 @@
 			<%
 				Object msgs = request.getAttribute("msgs");
 				if (msgs != null) {
-					out.println(msgs);
-				}
 			%>
-		</div>
+			<div id="msgs">
+				<%
+					out.println(msgs);
+				%>
+			</div>
 		<form action="RegistreerMonteurServlet.do" method="get">
 			<fieldset>
 				<label for="Realname">Naam</label><input type="text" name="Realname"
