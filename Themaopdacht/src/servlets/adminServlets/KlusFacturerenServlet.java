@@ -31,7 +31,7 @@ public class KlusFacturerenServlet extends HttpServlet {
 		
 		int klusid = Integer.parseInt(req.getParameter("id"));
 		@SuppressWarnings("unchecked")
-		ArrayList<Factuur>facturen = (ArrayList<Factuur>)req.getServletContext().getAttribute("alleFacturen");
+		ArrayList<Factuur> facturen = (ArrayList<Factuur>)req.getServletContext().getAttribute("alleFacturen");
 		@SuppressWarnings("unchecked")
 		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");
 		

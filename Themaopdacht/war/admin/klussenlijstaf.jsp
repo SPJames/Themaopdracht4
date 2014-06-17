@@ -59,7 +59,7 @@
 							<td><%=type%></td>
 							<td><%=commentaar%></td>
 							<td><%=parkeerplaats%></td>
-							<td><a href="KlusFacturerenServlet?id=<%=id%>">factureren</a></td>
+							<td><a href="facturen.jsp?id=">factureren</a></td>
 						</tr>
 						<%
 					}
