@@ -58,16 +58,18 @@
 					}
 				%>
 			</select>
-
+		
 			<!-- diensttype -->
 			<select name="diensttype">
 				<option value="rep">Reparatie/Onderhoud/APK</option>
 				<option value="park">Parkeren</option>
 				<option value="tank">Tanken</option>
 			</select>
+		
+			
 			<!-- beschrijving klus -->
 			<textarea rows="10" cols="50" name="comments"></textarea>
-			<input type="submit" value="Verzenden" />
+			<input class="down-afspraak" type="submit" value="Verzenden" />
 		</form>
 	</div>
 </body>
