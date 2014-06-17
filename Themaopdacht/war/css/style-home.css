@@ -61,3 +61,13 @@ img {
 	height: 80px;
 	padding-top: 10px;
 }
+
+#msgs {
+	border: 2px solid #369100;
+	border-radius: 5px;
+	background: #9CEF6C;
+	min-height: 10px;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}

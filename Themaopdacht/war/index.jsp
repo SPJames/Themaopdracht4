@@ -15,7 +15,13 @@
 			<%
 				Object msgs = request.getAttribute("msgs");
 				if (msgs != null) {
+			%>
+			<div id="msgs">
+				<%
 					out.println(msgs);
+				%>
+			</div>
+			<%
 				}
 			%>
 		</div>
@@ -56,7 +62,8 @@
 			</tr>
 			<%
 				for (Klus k : Klussen) {
-							if ((k.getKlantID() == (Integer)session.getAttribute("ID"))) {
+							if ((k.getKlantID() == (Integer) session
+									.getAttribute("ID"))) {
 								String afgerond = "In behandeling";
 								if (k.isKlusafgerond()) {
 									afgerond = "Afgerond";
