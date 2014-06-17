@@ -59,7 +59,7 @@
 							<option value="<%=o.getNaam()%>"><%=o.getNaam()%></option>				
 						<%}%>
 				</select><br />
-				<input type="number" name="aantal<%=i%>" min="1"><br />
+				<input type="number" name="aantal<%=i%>" min="0" value="0"><br />
 				<button type="button" onClick="showNext(<%=i%>)">Show next</button><br />
 			</div>
 		<%} %>

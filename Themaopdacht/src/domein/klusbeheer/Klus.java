@@ -28,6 +28,14 @@ public class Klus {
 	public HashMap<Onderdeel, Integer> getGebruikt() {
 		return gebruikt;
 	}
+	
+	public void addOnderdeel (Onderdeel ond, int aant) {
+		if(gebruikt.containsKey(ond)) {
+			gebruikt.put(ond, gebruikt.get(ond) + aant);
+		} else {
+			gebruikt.put(ond, aant);
+		}
+	}
 
 	/**
 	 * de klus wordt aangemaakt, de klus krijgt een auto waarvoor de klus is
