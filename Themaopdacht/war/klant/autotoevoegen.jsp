@@ -6,7 +6,7 @@
 <jsp:include page="../menu.jsp" />
 	<%!int id = 0;%>
 	<%
-		id = (int)session.getAttribute("ID");
+		id = (Integer)session.getAttribute("ID");
 	%>
 <div id="register">
 	<h2>Auto Toevoegen</h2>

@@ -55,7 +55,7 @@
 			</tr>
 			<%
 				for (Klus k : Klussen) {
-							if ((k.getKlantID() == (int) session.getAttribute("ID"))) {
+							if ((k.getKlantID() == (Integer)session.getAttribute("ID"))) {
 								String afgerond = "In behandeling";
 								if (k.isKlusafgerond()) {
 									afgerond = "Afgerond";
