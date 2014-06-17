@@ -38,7 +38,7 @@ public class Factuur {
 
 	public void setManurenprijs(Klus k) {
 		double prijs = 0.0;
-		prijs = k.getManuren() * 0.0; // 0.0 = prijs per uur
+		prijs = /*k.getManuren() * */ 0.0; // 0.0 = prijs per uur
 		
 		manurenprijs = prijs;
 	}
@@ -60,7 +60,7 @@ public class Factuur {
 	}
 
 	public void setBrandstofprijs(Klus k) {
-		HashMap<Brandstof, Integer>gebruikteBrandstof = k.getGebruikteBrandstof(); // get de gebruikte brandstof
+		HashMap<Brandstof, Integer>gebruikteBrandstof = null /*k.getGebruikteBrandstof()*/; // get de gebruikte brandstof
 		for (Brandstof b : gebruikteBrandstof.keySet()) {
 			double a = gebruikteBrandstof.get(b) * 0.0; // 0.0 = prijs per uur
 		    brandstofprijs.put(b.getBrandstofType(), a);
