@@ -7,7 +7,7 @@
 	<%@ page import="domein.klantenbinding.Auto"%>
 	<%@ page import="domein.klantenbinding.Klant"%>
 	<%@ page import="java.util.ArrayList"%>
-	<% int id = (int) session.getAttribute("ID");%>
+	<% int id = (Integer) session.getAttribute("ID");%>
 
 <div id="Content">
 	<h2>Auto Toevoegen</h2>

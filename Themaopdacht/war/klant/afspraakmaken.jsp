@@ -21,7 +21,7 @@
 		<%
 		String id = "";
 		String name = "";
-		id = "" + (int) session.getAttribute("ID");
+		id = "" + (Integer) session.getAttribute("ID");
 		name = (String) session.getAttribute("Username"); 
 		%>
 
