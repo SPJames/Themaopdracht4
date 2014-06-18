@@ -50,9 +50,9 @@ public class MyServletContextListener implements ServletContextListener {
 		List2.add(m2);
 
 		//onderdelen initialiseren
-		Onderdeel o = new Onderdeel(1, 30, "Wieldopje", 5.5);
-		Onderdeel o2 = new Onderdeel(2, 999, "Headlightfuel", 40.0);
-		Onderdeel o3 = new Onderdeel(3, 3, "Ramenlappers", 1.0);
+		Onderdeel o = new Onderdeel(30, "Wieldopje", 5.5);
+		Onderdeel o2 = new Onderdeel(999, "Headlightfuel", 40.0);
+		Onderdeel o3 = new Onderdeel(3, "Ramenlappers", 1.0);
 		List6.add(o);
 		List6.add(o2);
 		List6.add(o3);
