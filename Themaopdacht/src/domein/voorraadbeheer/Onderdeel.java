@@ -8,6 +8,7 @@ public class Onderdeel {
 	private String naam;
 	private double prijsArtikel;
 	private double totaal;
+	private static int getal = 1;
 
 	/**
 	 * het onderdeel wordt aangemaakt het krijgt een artikelnummer, het aantal artikelen dat
@@ -17,8 +18,8 @@ public class Onderdeel {
 	 * @param nm	de naam
 	 * @param pA	de prijs per artikel
 	 */
-	public Onderdeel(int aN, int aan, String nm, double pA) {
-		artikelNr = aN;
+	public Onderdeel(int aan, String nm, double pA) {
+		artikelNr = getal++;
 		aantal = aan;
 		naam = nm;
 		prijsArtikel = pA;

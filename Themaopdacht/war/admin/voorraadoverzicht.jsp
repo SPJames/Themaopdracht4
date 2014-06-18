@@ -56,6 +56,7 @@
 		<%
 			}
 		%>
+		<a href='onderdeeltoevoegen.jsp'>Nieuw Onderdeel Toevoegen</a>
 	</div>
 </body>
 <html>
