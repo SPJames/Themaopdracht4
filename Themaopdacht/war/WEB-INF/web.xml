@@ -132,6 +132,15 @@
 		<url-pattern>/admin/RegistreerMonteurServlet.do</url-pattern>
 	</servlet-mapping>
 
+	<!-- Voorraad Overzicht Servlet -->
+	<servlet>
+		<servlet-name>Voorraad Overzicht Servlet</servlet-name>
+		<servlet-class>servlets.adminServlets.VoorraadOverzichtServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Voorraad Overzicht Servlet</servlet-name>
+		<url-pattern>/admin/VoorraadOverzichtServlet.do</url-pattern>
+	</servlet-mapping>
 <!-- Filter Servlets -->
 	<!-- Hier komen filter mappings -->
 

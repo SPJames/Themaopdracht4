@@ -41,6 +41,7 @@
 					<li><a href='/atd/admin/facturen.jsp'>Factuur overzicht</a></li>
 					<li><a href='/atd/admin/klantoverzicht.jsp'>Klanten overzicht</a></li>
 					<li><a href='/atd/admin/registreermonteur.jsp'>Nieuwe Monteur Toevoegen</a></li>
+					<li><a href='/atd/admin/voorraadoverzicht.jsp'>Vo0rraad Overzicht</a></li>
 		<%//uitlog knop is bij iedereen zichtbaar als laatste optie wanneer je ingelogd bent
 				}%>
 				<li><a href='/atd/UitlogServlet'>Uitloggen (<%=username%>)
