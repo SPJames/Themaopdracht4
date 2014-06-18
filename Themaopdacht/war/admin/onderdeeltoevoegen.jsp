@@ -4,6 +4,7 @@
 </jsp:include>
 <body>
 	<jsp:include page="../menu.jsp" />
+	<%@ page import="domein.voorraadbeheer.Onderdeel"%>
 	<div id="register">
 		<h2>Onderdeel Toevoegen</h2>
 		<div>
@@ -20,14 +21,6 @@
 				}
 			%>
 		</div>
-		<%@ page import="domein.voorraadbeheer.Onderdeel"%>
-
-		<%
-			int artikelnr = 0;
-			String name = "";
-			int aantal = 0;
-			double prijsArtikel = 0.0;
-		%>
 
 		<form action="OnderdeelToevoegenServlet.do" method="get">
 			<fieldset>
@@ -43,5 +36,6 @@
 			</fieldset>
 		</form>
 	</div>
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>

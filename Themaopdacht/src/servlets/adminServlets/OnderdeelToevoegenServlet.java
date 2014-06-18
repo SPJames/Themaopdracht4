@@ -3,8 +3,6 @@ package servlets.adminServlets;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import domein.voorraadbeheer.*;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
