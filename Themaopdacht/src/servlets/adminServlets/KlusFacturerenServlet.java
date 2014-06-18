@@ -29,7 +29,7 @@ public class KlusFacturerenServlet extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher rd = null;
 		
-		int klusid = Integer.parseInt(req.getParameter("id"));
+		int klusid = Integer.parseInt(req.getParameter("klusid"));
 		@SuppressWarnings("unchecked")
 		ArrayList<Factuur> facturen = (ArrayList<Factuur>)req.getServletContext().getAttribute("alleFacturen");
 		@SuppressWarnings("unchecked")

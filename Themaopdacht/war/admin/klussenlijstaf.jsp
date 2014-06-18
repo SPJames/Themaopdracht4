@@ -16,7 +16,11 @@
 				<%
 					out.println(msgs);
 				%>
-			</div>
+		</div>
+			<%
+				}
+			%>
+		</div>
 		
 		<table>
 			<tr>
@@ -52,7 +56,7 @@
 						String auto = k.getAuto().getKenteken();
 						String type = k.getHetType().dienstType();
 						String commentaar = k.getBeschrijving();
-						String parkeerplaats = "" + (k.getParkeerplaats() + 1);
+						int parkeerplaats = k.getParkeerplaats() + 1;
 						%>
 						<tr>
 							<td><%=id%></td>
@@ -61,7 +65,7 @@
 							<td><%=type%></td>
 							<td><%=commentaar%></td>
 							<td><%=parkeerplaats%></td>
-							<td><a href="facturen.jsp?klusid=<%=id%>&klantid=<%=klantid%>">factureren</a></td>
+							<td><a href="KlusFacturerenServlet?klusid=<%=id%>">factureren</a></td>
 						</tr>
 						<%
 					}

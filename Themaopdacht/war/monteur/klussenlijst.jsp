@@ -49,7 +49,11 @@
 							<th>Diensttype</th>
 							<th>Comments</th>
 							<th>Parkeerplaats</th>
+							<th>Manuren</th>
 							<th>Gebruikte Onderdelen</th>
+							<th>Gebruikte Brandstof</th>
+							<th></th>
+							<th></th>
 						</tr>
 						<tr>
 							<td><%=id%></td>
@@ -58,7 +62,9 @@
 							<td><%=type%></td>
 							<td><%=commentaar%></td>
 							<td><%=parkeerplaats%></td>
-							<td><%=k.getGebruikt().size()%></td>
+							<td><%=k.getManuren()%></td>
+							<td><%=k.getGebruikteOnderdelen().size()%></td>
+							<td><%=k.getGebruikteBrandstof().size()%></td>
 							<td><a href="klusaanpassen.jsp?id=<%=id%>">edit</a></td>
 							<td><a href="KlusAfrondenServlet?id=<%=id%>">afronden</a></td>
 						</tr>

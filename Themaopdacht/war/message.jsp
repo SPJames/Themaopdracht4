@@ -5,5 +5,10 @@
 		if (msgs != null) {
 			out.println(msgs);
 		}
+		
+		Object error = request.getAttribute("error");
+		if (error != null) {
+			out.println(error);
+		}
 	%>
 </div>

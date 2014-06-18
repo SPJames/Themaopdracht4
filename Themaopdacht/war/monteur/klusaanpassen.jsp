@@ -7,13 +7,17 @@
 	<%@ page import="domein.klusbeheer.Klus"%>
 	<%@ page import="java.util.ArrayList"%>
 	<%@ page import="domein.voorraadbeheer.Onderdeel" %>
+	<%@ page import="domein.voorraadbeheer.Brandstof" %>
 	<h2>Klus aanpassen</h2>
 	<script>
-	$(document).ready(function(){$("#onderdeel0").css("display","inline");});
+	$(document).ready(function(){$("#onderdeel0").css("display","inline");$("#brandstof0").css("display","inline");});
 	function showNext(num){
 		$("#onderdeel"+(num+1)).css("display","inline");
-	
 	}
+	function showNext2(num){
+		$("#brandstof"+(num+1)).css("display","inline");
+	}
+	
 	</script>
 	<div>
 		<%
@@ -28,6 +32,8 @@
 				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("alleKlussen");
 				@SuppressWarnings("unchecked")
 				ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) application.getAttribute("alleOnderdelen");
+				@SuppressWarnings("unchecked")
+				ArrayList<Brandstof> brandstof = (ArrayList<Brandstof>) application.getAttribute("alleBrandstof");
 				for (Klus k : klussen) {
 					if (Integer.parseInt(request.getParameter("id")) == k.getKlusNummer()) {
 						String id = "" + k.getKlusNummer();
@@ -48,8 +54,9 @@
 		</select>
 		<!-- beschrijving klus -->
 		<textarea rows="10" cols="50" name="comments"><%= commentaar %></textarea>
-		
+		<input type="number" name="manuren" value="<%= k.getManuren() %>" />
 		<br />
+		
 		<!-- onderdelen -->
 		<div id="onderdelen">
 		<%for(int i =0; i<onderdelen.size();i++){ %>
@@ -64,6 +71,21 @@
 			</div>
 		<%} %>
 		</div>
+		
+		<!-- brandstof -->
+		<%for(int i =0; i<brandstof.size();i++){ %>
+			<div id="brandstof<%=i%>" style="display:none;">
+				<select name="brandstof<%=i%>">
+					<% for(Brandstof b: brandstof){%>
+							<option value="<%=b.getBrandstofType()%>"><%=b.getBrandstofType()%></option>				
+						<%}%>
+				</select><br />
+				<input type="number" step="any" name="liters<%=i%>" min="0" value="0"><br />
+				<button type="button" onClick="showNext2(<%=i%>)">Show next</button><br />
+			</div>
+		<%} %>
+		</div>
+		
 		<input type="submit" value="Verzenden" />
 	</form>
 						

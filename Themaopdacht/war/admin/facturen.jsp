@@ -5,7 +5,7 @@
 <body>
 	<jsp:include page="../menu.jsp" />
 	<div id="klus">
-		<h2>Afgeronde klussen</h2>
+		<h2>Facturen</h2>
 
 		<%@ page import="domein.financien.Factuur"%>
 		<%@ page import="domein.klantenbinding.Klant"%>
@@ -20,46 +20,34 @@
 			<div id="msgs">
 				<%
 					out.println(msgs);
-				@SuppressWarnings("unchecked")
-				ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
-				@SuppressWarnings("unchecked")
-				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("alleKlussen");
-				if (klanten.size() > 0) {
+				%>
+		</div>
+			<%
+				}
 			%>
-			</div>
+		</div>
+				
+				<%
+				@SuppressWarnings("unchecked")
+				ArrayList<Factuur> facturen = (ArrayList<Factuur>) application.getAttribute("alleFacturen");
+				if (facturen.size() > 0) {
+			%>
 			<table>
 				<tr>
-					<th>ID</th>
-					<th>Naam</th>
-					<th></th>
+					<th>Factuur ID</th>
+					<th>Totaalprijs (btw + korting)</th>
 				</tr>
 				<%
-					for (Klant k : klanten) {
-							if (k.getId() == Integer.parseInt(request.getParameter("klantid"))){
+					for (Factuur f : facturen) {
 				%>
 				<tr>
-					<td><%=k.getId()%></td>
-					<td><%=k.getNaam()%></td>
+					<td><%=f.getFactuurNummer()%></td>
+					<td><%=f.getTotaalprijsKorting()%></td>
 				</tr>
 				<%
-					}
 				}
 				%>
 			</table>
-			
-			<div>
-				<%
-					for(Klus k: klussen){
-				%>
-					<%=k.getHetType().dienstType()%><br />
-					<%=k.getKlusNummer()%><br />
-					<%=k.getAuto()%><br />
-					<%=k.getBeschrijving()%><br />
-					<%=k.getWerknemer() %><br />
-					<%=k.getParkeerplaats() %><br />
-
-				<%} %>
-			</div>
 			<%
 				}else {
 			%>
@@ -67,7 +55,6 @@
 			<%
 				}
 			%>
-		</div>
 	</div>
 </body>
 </html>
