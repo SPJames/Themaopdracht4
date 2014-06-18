@@ -113,7 +113,7 @@
 	<!-- Klus Factureren Servlet -->
 	<servlet>
 		<servlet-name>Klus Factureren Servlet</servlet-name>
-		<servlet-class>servlets.Administratie.KlusFacturerenServlet
+		<servlet-class>servlets.adminServlets.KlusFacturerenServlet
 		</servlet-class>
 	</servlet>
 	<servlet-mapping>
