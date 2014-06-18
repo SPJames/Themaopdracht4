@@ -35,6 +35,7 @@
 				<th>Naam</th>
 				<th>Aantal</th>
 				<th>Prijs per artikel</th>
+				<th></th>
 			</tr>
 			<%
 				for (Onderdeel o : onderdelen) {

@@ -34,9 +34,9 @@
 							int aantal = o.getAantal();
 							double prijs = o.getPrijsArtikel();
 			%>
-			<form action="OnderdeelToevoegenServlet.do" method="get">
+			<form action="OnderdeelBewerkenServlet.do" method="get">
 				<fieldset>
-					<input type="hidden" name="klusid" value="<%= id %>" />
+					<input type="hidden" name="artikelid" value="<%= id %>" />
 					<label for="artikelnaam">Artikel Naam</label>
 					<input type="text"	name="artikelnaam"  class="box"
 						value="<%= naam %>" readonly="readonly" />
