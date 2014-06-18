@@ -1,114 +1,55 @@
 package database;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import domein.financien.Factuur;
 import domein.klantenbinding.Auto;
 import domein.klantenbinding.Klant;
+import domein.klusbeheer.Klus;
+import domein.klusbeheer.Monteur;
+import domein.klusbeheer.Parkeerplaats;
+import domein.voorraadbeheer.Brandstof;
+import domein.voorraadbeheer.Onderdeel;
 
 public class Database {
-	private static int userid = 1;
+	private File currentDirectory = new File(new File(".").getAbsolutePath());
+	
+	private HashMap<Integer, Object> data = new HashMap<Integer, Object>();
+	
+	private ArrayList<Klant> list;
+	private ArrayList<Monteur> list2;
+	private ArrayList<Klus> list3;
+	private ArrayList<Auto> list4;
+	private Parkeerplaats[] list5;
+	private ArrayList<Onderdeel> list6;
+	private ArrayList<Factuur> list7;
+	private ArrayList<Brandstof> list8;
 
 	// lees data in
-	public static void leesUsersIn(ArrayList<Klant> Users) throws IOException {
+	public HashMap<Integer, Object> leesIn() throws IOException{
+		String directory = currentDirectory.getCanonicalPath() + "/../../../data/data.dat";
 		
-//		String naam = null;
-//		String adres = null;
-//		String postcode = null;
-//		String email= null;
-//		String username= null;
-//		String password= null;
-
+		HashMap<Integer, Object> map = null;
 		
-		//syntax in file moet correct zijn, anders ListenerErrors
-		BufferedReader br = new BufferedReader(new FileReader("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat"));
-		String str = "";
-		while ((str = br.readLine()) != null) {
-			if (str.length() > 0) {
-				int endID = str.indexOf(" ");
-				int endUsername = str.indexOf(":");
-				int endPassword = str.indexOf(";");
-				int endRealname = str.indexOf("'");
-				int endEmail = str.indexOf(",");
-				int endAdres = str.indexOf("/");
-				int endPostcode = str.indexOf("|");
-
-				String username = str.substring((endID + 1), (endUsername));
-				String password = str.substring((endUsername + 1), (endPassword));
-				String naam = str.substring((endPassword + 1), (endRealname));
-				String email = str.substring((endRealname + 1), (endEmail));
-				String adres = str.substring((endEmail + 1), (endAdres));
-				String postcode = str.substring((endAdres + 1), (endPostcode));
-				
-				Klant k = new Klant(naam, adres, postcode, email, username, password);
-				Users.add(k);
-			}
-		}
-		br.close();	
+		return map;
 	}
-	
-	public static void leesAutosIn(ArrayList<Auto> Autos) throws IOException {
-		Auto a = null;
-		//int id = 0;
-		String kenteken = null;
-		String merk = null;
-		String id = null;
-
-		BufferedReader br = new BufferedReader(new FileReader("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/autos.dat"));
-		String str = "";
-		while ((str = br.readLine()) != null) {
-			if (str.length() > 0) {
-				int endKenteken = str.indexOf(" ");
-				int endMerk = str.indexOf(":");
-				int endId = str.indexOf(";");
-
-				kenteken = str.substring(0, (endKenteken));
-				merk = str.substring((endKenteken + 1), (endMerk));
-				id = str.substring((endMerk + 1), (endId));
-				
-				a = new Auto(kenteken, merk, id);
-				Autos.add(a);
-			}
-			
-		}
-		br.close();
-	}
-	
-	public static void leesMonteursIn() {
-
-	}
-
-	public static void leesKlussenIn() {
-
-	}
-
-	// schrijf data weg
-	public static void schrijfUserWeg(String[] userinfo) throws IOException {
-		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat", true);
-
-		fw.write(userid++ + " " + userinfo[0]/*username*/ + ":" + userinfo[2]/*password*/ + ";"
-				+ userinfo[1]/*realname*/ + "'" + userinfo[4]/*email*/ + "," + userinfo[6]/*adress*/ + "/"
-				+ userinfo[7]/*postcode*/ + "|" + "\n");
-		fw.flush();
-		fw.close();
-	}
-
-	public static void schrijfAutoWeg(String kt, String merk, String id) throws IOException {
-		FileWriter fw = new FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat", true);
-
-		fw.write("\n"+ kt + ";" + merk + ":" + id + "|");
-		fw.flush();
-		fw.close();
-	}
-	
-	public static void schrijfMonteurWeg() {
-
-	}
-
-	public static void schrijfKlusWeg() {
-
+	public void schrijfWeg(ArrayList<Klant> list, ArrayList<Monteur> list2, ArrayList<Klus> list3, ArrayList<Auto> list4, Parkeerplaats[] list5, ArrayList<Onderdeel> list6, ArrayList<Factuur> list7, ArrayList<Brandstof> list8) throws IOException{
+		data.put(1, (Object) list);
+		data.put(2, (Object) list2);
+		data.put(3, (Object) list3);
+		data.put(4, (Object) list4);
+		data.put(5, (Object) list5);
+		data.put(6, (Object) list6);
+		data.put(7, (Object) list7);
+		data.put(8, (Object) list8);
+		
+		String directory = currentDirectory.getCanonicalPath() + "/../../../data/data.dat";
+		
+		FileOutputStream fos = new FileOutputStream(directory);
+	    ObjectOutputStream oos = new ObjectOutputStream(fos);
+	      oos.writeObject(data);
+	      oos.close();
 	}
 }
