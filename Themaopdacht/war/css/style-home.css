@@ -10,6 +10,7 @@ body {
 	padding-top: 20px;
 	margin-left: 100px;
 	margin-right: 100px;
+	padding-bottom: 10px;
 }
 
 #Menu {
@@ -60,6 +61,11 @@ ul li a {
 img {
 	height: 80px;
 	padding-top: 10px;
+}
+
+h2 {
+	text-align: center;
+	padding: 10px;
 }
 
 #msgs {

@@ -45,8 +45,8 @@ ul li a {
 }
 
 h2 {
-	padding-top: 10px;
 	text-align: center;
+	padding: 10px;
 }
 
 fieldset {
@@ -92,4 +92,30 @@ label {
 #text {
 	width: 350px;
 	height: auto;
+}
+
+#msgs {
+	border: 2px solid #FF7373;
+	border-radius: 5px;
+	background: red;
+	min-height: 10px;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.down-afspraak {
+	margin-bottom: 10px;
+	border: 2px solid black;
+	color: white;
+	background: #888;
+	border-radius: 5px;
+	margin-right: auto;
+	margin-left: auto;
+	border: 2px solid black;
+}
+
+.down-afspraak:hover {
+	color: blue;
+	background: #E2EAED;
 }

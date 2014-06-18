@@ -8,13 +8,15 @@
 		<h2>Afgeronde klussen</h2>
 		
 		<div>
-		<%
-			Object msgs = request.getAttribute("msgs");
-			if (msgs != null) {
-				out.println(msgs);
-			}
-		%>
-		</div>
+			<%
+				Object msgs = request.getAttribute("msgs");
+				if (msgs != null) {
+			%>
+			<div id="msgs">
+				<%
+					out.println(msgs);
+				%>
+			</div>
 		
 		<table>
 			<tr>

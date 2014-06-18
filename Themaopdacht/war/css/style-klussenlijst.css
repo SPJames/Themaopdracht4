@@ -54,6 +54,11 @@ td {
 	padding: 10px;
 }
 
+h2 {
+	text-align: center;
+	padding: 10px;
+}
+
 #klus {
 	background: #fff;
 	box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.15);
@@ -63,4 +68,14 @@ td {
 	margin-right: auto;
 	width: 800px;
 	min-height: 300px;
+}
+
+#msgs {
+	border: 2px solid #369100;
+	border-radius: 5px;
+	background: #9CEF6C;
+	min-height: 10px;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
 }
