@@ -1,41 +1,23 @@
+<%@ page import="domein.klantenbinding.Auto"%>
+<%@ page import="domein.klantenbinding.Klant"%>
+<%@ page import="java.util.ArrayList"%>
 <jsp:include page="../header.jsp">
 	<jsp:param name="title" value="Overzicht Auto's" />
 	<jsp:param name="css" value="home" />
 </jsp:include>
 <body>
 	<jsp:include page="../menu.jsp" />
-	<%@ page import="domein.klantenbinding.Auto"%>
-	<%@ page import="domein.klantenbinding.Klant"%>
-	<%@ page import="java.util.ArrayList"%>
-	<%
-		int id = (Integer) session.getAttribute("ID");
-	%>
 
 	<div id="Content">
 		<h2>Auto Toevoegen</h2>
 
-		<div>
-			<%
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-			</div>
-			<%
-				}
-			%>
-		</div>
-
+		<jsp:include page="../message.jsp" />
 
 		<%
 			@SuppressWarnings("unchecked")
-			ArrayList<Klant> klanten = (ArrayList<Klant>) application
-					.getAttribute("alleUsers");
+			ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
 			for (Klant k : klanten) {
-				if (k.getId() == id) {
+				if (k.getId() == (Integer) session.getAttribute("ID")) {
 					ArrayList<Auto> autos = k.getAlleAutos();
 					if (autos.size() > 0) {
 		%>
@@ -67,5 +49,6 @@
 		%>
 		<a href="autotoevoegen.jsp">Voeg een auto toe</a>
 	</div>
+	<jsp:include page="../footer.jsp" />
 </body>
 <html>

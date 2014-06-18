@@ -1,3 +1,6 @@
+<%@ page import="domein.klusbeheer.Klus"%>
+<%@ page import="java.util.ArrayList"%>
+
 <jsp:include page="header.jsp">
 	<jsp:param name="title" value="Home pagina" />
 	<jsp:param name="css" value="home" />
@@ -7,24 +10,8 @@
 		<jsp:param name="home" value="home" />
 	</jsp:include>
 
-	<%@ page import="domein.klusbeheer.Klus"%>
-	<%@ page import="java.util.ArrayList"%>
-
 	<div id="Content">
-		<div>
-			<%
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-			</div>
-			<%
-				}
-			%>
-		</div>
+		<jsp:include page="message.jsp" />
 		<img src="/atd/images/atd-logo.png" alt="atd-logo" />
 
 		<p>
@@ -45,11 +32,9 @@
 		<!-- openstaande klussen van klant, zodat hij/zij voortgang kan volgen-->
 
 		<%
-			if ((session.getAttribute("Access") != null)
-					&& (session.getAttribute("Access").equals("Klant"))) {
+			if ((session.getAttribute("Access") != null) && (session.getAttribute("Access").equals("Klant"))) {
 				@SuppressWarnings("unchecked")
-				ArrayList<Klus> Klussen = (ArrayList<Klus>) application
-						.getAttribute("alleKlussen");
+				ArrayList<Klus> Klussen = (ArrayList<Klus>) application.getAttribute("alleKlussen");
 				if (Klussen.size() > 0) {
 		%>
 		<p>Uw openstaande klussen:</p>
@@ -61,13 +46,12 @@
 				<th>Voortgang</th>
 			</tr>
 			<%
-				for (Klus k : Klussen) {
-							if ((k.getKlantID() == (Integer) session
-									.getAttribute("ID"))) {
-								String afgerond = "In behandeling";
-								if (k.isKlusafgerond()) {
-									afgerond = "Afgerond";
-								}
+					for (Klus k : Klussen) {
+						if ((k.getKlantID() == (Integer) session.getAttribute("ID"))) {
+							String afgerond = "In behandeling";
+							if (k.isKlusafgerond()) {
+								afgerond = "Afgerond";
+							}
 			%>
 			<tr>
 				<td><%=k.getAuto().getKenteken()%></td>
@@ -76,27 +60,22 @@
 				<td><%=afgerond%></td>
 			</tr>
 			<%
-				}
 						}
+					}
 			%>
 		</table>
 		<%
-			} else {
+				} else {
 		%>
 		<p>Er staan op dit moment geen klussen op uw naam.</p>
 		<%
-			}
+				}
 			}
 		%>
 
 		<!-- einde openstaande klussen klanten -->
 
 	</div>
-
-	<jsp:include page="footer.jsp">
-		<jsp:param name="footer" value="footer" />
-		<jsp:param name="css" value="footer" />
-	</jsp:include>
-
+	<jsp:include page="footer.jsp"/>
 </body>
 <html>

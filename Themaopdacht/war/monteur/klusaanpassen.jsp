@@ -1,13 +1,14 @@
+<%@ page import="domein.klusbeheer.Klus"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="domein.voorraadbeheer.Onderdeel" %>
+<%@ page import="domein.voorraadbeheer.Brandstof" %>
 <jsp:include page="../header.jsp">
 	<jsp:param name="title" value="Klus Aanpassen" />
 	<jsp:param name="css" value="register" />
 </jsp:include>
 <body>
 <jsp:include page="../menu.jsp"/>
-	<%@ page import="domein.klusbeheer.Klus"%>
-	<%@ page import="java.util.ArrayList"%>
-	<%@ page import="domein.voorraadbeheer.Onderdeel" %>
-	<%@ page import="domein.voorraadbeheer.Brandstof" %>
+<div id="klus">
 	<h2>Klus aanpassen</h2>
 	<script>
 	$(document).ready(function(){$("#onderdeel0").css("display","inline");$("#brandstof0").css("display","inline");});
@@ -17,16 +18,8 @@
 	function showNext2(num){
 		$("#brandstof"+(num+1)).css("display","inline");
 	}
-	
 	</script>
-	<div>
-		<%
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-					out.println(msgs);
-				}
-			%>
-	</div>
+	<jsp:include page="../message.jsp" />
 	<%
 				@SuppressWarnings("unchecked")
 				ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("alleKlussen");
@@ -36,24 +29,19 @@
 				ArrayList<Brandstof> brandstof = (ArrayList<Brandstof>) application.getAttribute("alleBrandstof");
 				for (Klus k : klussen) {
 					if (Integer.parseInt(request.getParameter("id")) == k.getKlusNummer()) {
-						String id = "" + k.getKlusNummer();
-						
-						String auto = k.getAuto().getKenteken();
-						String type = k.getHetType().toString();
-						String commentaar = k.getBeschrijving();
 						%>
 						
 	<form action="KlusBijwerkenServlet.do" method="get">
-		<input type="hidden" name="klusid" value="<%= id %>" />
-		<input type="text" name="auto" value="<%= auto %>" readonly="readonly" />
+		<input type="hidden" name="klusid" value="<%= "" + k.getKlusNummer() %>" />
+		<input type="text" name="auto" value="<%= k.getAuto().getKenteken() %>" readonly="readonly" />
 		<!-- diensttype -->
-		<select name="diensttype" autofocus="<%= type %>">
+		<select name="diensttype" autofocus="<%= k.getHetType().toString() %>">
 			<option value="Onderhoud">Reparatie/Onderhoud/APK</option>
 			<option value="Parkeren">Parkeren</option>
 			<option value="Tanken">Tanken</option>
 		</select>
 		<!-- beschrijving klus -->
-		<textarea rows="10" cols="50" name="comments"><%= commentaar %></textarea>
+		<textarea rows="10" cols="50" name="comments"><%= k.getBeschrijving() %></textarea>
 		<input type="number" name="manuren" value="<%= k.getManuren() %>" />
 		<br />
 		
@@ -84,14 +72,15 @@
 				<button type="button" onClick="showNext2(<%=i%>)">Show next</button><br />
 			</div>
 		<%} %>
-		</div>
+		
 		
 		<input type="submit" value="Verzenden" />
 	</form>
-						
+</div>					
 						<%
 					}
 				}
 				%>
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

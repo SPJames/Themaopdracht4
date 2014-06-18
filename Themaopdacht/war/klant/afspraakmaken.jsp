@@ -1,3 +1,6 @@
+<%@ page import="domein.klantenbinding.Klant"%>
+<%@ page import="domein.klantenbinding.Auto"%>
+<%@ page import="java.util.ArrayList"%>
 <jsp:include page="../header.jsp">
 	<jsp:param name="title" value="Afspraak maken" />
 	<jsp:param name="css" value="register" />
@@ -6,41 +9,22 @@
 	<jsp:include page="../menu.jsp" />
 	<div id="register">
 		<h2>Afspraak maken</h2>
-		<div>
-			<%
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-			</div>
-			<%
-				}
-			%>
-		</div>
-		<%@ page import="domein.klantenbinding.Klant"%>
-		<%@ page import="domein.klantenbinding.Auto"%>
-		<%@ page import="java.util.ArrayList"%>
-
+		<jsp:include page="../message.jsp" />
+		
 		<%
-			String id = "";
-			String name = "";
-			id = "" + (Integer) session.getAttribute("ID");
-			name = (String) session.getAttribute("Username");
+			String id = "" + (Integer) session.getAttribute("ID");
+			String name = (String) session.getAttribute("Username");
 		%>
 
 		<form action="KlusAanmakenServlet.do" method="get">
-			<input type="hidden" name="klantid" value="<%=id%>" /> <input
-				type="hidden" name="name" value="<%=name%>" />
+			<input type="hidden" name="klantid" value="<%=id%>" /> 
+			<input type="hidden" name="name" value="<%=name%>" />
 
 			<!-- Auto -->
 			<select name="auto">
 				<%
 					@SuppressWarnings("unchecked")
-					ArrayList<Klant> klanten = (ArrayList<Klant>) application
-							.getAttribute("alleUsers");
+					ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
 					for (Klant k : klanten) {
 						if (k.getId() == (Integer.parseInt(id))) {
 							ArrayList<Auto> autos = k.getAlleAutos();
@@ -72,5 +56,6 @@
 			<input class="down-afspraak" type="submit" value="Verzenden" />
 		</form>
 	</div>
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>

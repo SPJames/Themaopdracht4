@@ -4,13 +4,12 @@
 </jsp:include>
 <body>
 	<jsp:include page="../menu.jsp" />
-	<div>
 		<script type="text/JavaScript" src="/atd/scripts/Calendar.js"></script>
 
-		<%!int dag;
-	String dagtekst;%>
+		<%!int dag; String dagtekst;%>
 
 		<div id="klus">
+			<jsp:include page="message.jsp" />
 			<table>
 				<thead>
 					<tr>
@@ -121,5 +120,6 @@
 				</tbody>
 			</table>
 		</div>
+	<jsp:include page="../footer.jsp"/>
 </body>
 </html>

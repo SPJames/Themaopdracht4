@@ -1,24 +1,17 @@
+<%@ page import="domein.klusbeheer.Klus"%>
+<%@ page import="domein.klantenbinding.Klant"%>
+<%@ page import="domein.klusbeheer.Monteur"%>
+<%@ page import="java.util.ArrayList"%>
 <jsp:include page="../header.jsp">
 	<jsp:param name="title" value="Klussen lijst" />
 	<jsp:param name="css" value="klussenlijst" />
 </jsp:include>
 <body>
 <jsp:include page="../menu.jsp"/>
-	<%@ page import="domein.klusbeheer.Klus"%>
-	<%@ page import="domein.klantenbinding.Klant"%>
-	<%@ page import="domein.klusbeheer.Monteur"%>
-	<%@ page import="java.util.ArrayList"%>
 	<div id="klus">
 		<h2>Klussen</h2>
 		
-		<div>
-		<%
-			Object msgs = request.getAttribute("msgs");
-			if (msgs != null) {
-				out.println(msgs);
-			}
-		%>
-		</div>
+		<jsp:include page="../message.jsp" />
 			<%
 				@SuppressWarnings("unchecked")
 				ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
@@ -111,5 +104,6 @@
 				}
 			%>
 	</div>
+	<jsp:include page="../footer.jsp"/>
 </body>
 </html>
