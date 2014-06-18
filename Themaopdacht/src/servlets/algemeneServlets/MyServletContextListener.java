@@ -10,6 +10,7 @@ import domein.klantenbinding.Klant;
 import domein.klusbeheer.Klus;
 import domein.klusbeheer.Monteur;
 import domein.klusbeheer.Parkeerplaats;
+import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
 public class MyServletContextListener implements ServletContextListener {
@@ -34,6 +35,7 @@ public class MyServletContextListener implements ServletContextListener {
 		Parkeerplaats[] List5 = new Parkeerplaats[50];
 		ArrayList<Onderdeel> List6 = new ArrayList<Onderdeel>();
 		ArrayList<Factuur> List7 = new ArrayList<Factuur>();
+		ArrayList<Brandstof> List8 = new ArrayList<Brandstof>();
 		
 		// users initaliseren
 		Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com", "Test", "derp");
@@ -54,6 +56,14 @@ public class MyServletContextListener implements ServletContextListener {
 		List6.add(o);
 		List6.add(o2);
 		List6.add(o3);
+		
+		//Brandstof initialiseren
+		Brandstof b = new Brandstof("Euro95", 50, 1, 1.0);
+		Brandstof b2 = new Brandstof("Diesel", 20, 2, 3.2);
+		Brandstof b3 = new Brandstof("Benzine", 69, 3, 0.1);
+		List8.add(b);
+		List8.add(b2);
+		List8.add(b3);
 
 		//attributen opslaan
 		sce.getServletContext().setAttribute("alleUsers", List);
@@ -63,6 +73,7 @@ public class MyServletContextListener implements ServletContextListener {
 		sce.getServletContext().setAttribute("alleParkeerplaatsen", List5);
 		sce.getServletContext().setAttribute("alleOnderdelen", List6);
 		sce.getServletContext().setAttribute("alleFacturen", List7);
+		sce.getServletContext().setAttribute("alleBrandstof", List8);
 		
 	}
 

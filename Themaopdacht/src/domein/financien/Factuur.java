@@ -14,6 +14,10 @@ public class Factuur {
 	private static int nummer = 1;
 	private int factuurNummer;
 	
+	private double btw = 1.21;
+	
+	private double korting = 1.0;
+	
 	private double manurenprijs;
 	private HashMap<String, Double> onderdelenprijs = new HashMap<String, Double>();
 	private HashMap<String, Double> brandstofprijs = new HashMap<String, Double>();
@@ -40,7 +44,7 @@ public class Factuur {
 
 	public void setManurenprijs(Klus k) {
 		double prijs = 0.0;
-		prijs = /*k.getManuren() * */ 0.0; // 0.0 = prijs per uur
+		prijs = k.getManuren() *  0.0; // 0.0 = prijs per uur
 		
 		manurenprijs = prijs;
 	}
@@ -50,9 +54,9 @@ public class Factuur {
 	}
 
 	public void setOnderdelenprijs(Klus k) {
-		HashMap<Onderdeel, Integer>gebruikteOnderdelen = k.getGebruikt();
+		HashMap<Onderdeel, Integer>gebruikteOnderdelen = k.getGebruikteOnderdelen();
 		for (Onderdeel o : gebruikteOnderdelen.keySet()) {
-			double a = gebruikteOnderdelen.get(o) * 0.0; // 0.0 = prijs per uur
+			double a = gebruikteOnderdelen.get(o) * o.getPrijsArtikel(); // 0.0 = prijs per uur
 		    onderdelenprijs.put(o.getNaam(), a);
 		}
 	}
@@ -62,29 +66,37 @@ public class Factuur {
 	}
 
 	public void setBrandstofprijs(Klus k) {
-		HashMap<Brandstof, Integer>gebruikteBrandstof = null /*k.getGebruikteBrandstof()*/; // get de gebruikte brandstof
+		HashMap<Brandstof, Double>gebruikteBrandstof = k.getGebruikteBrandstof(); // get de gebruikte brandstof
 		for (Brandstof b : gebruikteBrandstof.keySet()) {
-			double a = gebruikteBrandstof.get(b) * 0.0; // 0.0 = prijs per uur
+			double a = gebruikteBrandstof.get(b) * b.getPrijsPerLiter(); // 0.0 = prijs per uur
 		    brandstofprijs.put(b.getBrandstofType(), a);
 		}
 	}
 
-	public double getTotaalprijs() {
+	public double getTotaalprijsExBtw() {
 		return totaalprijs;
+	}
+	
+	public double getTotaalprijs() {
+		return totaalprijs * btw;
+	}
+	
+	public double getTotaalprijsKorting() {
+		return (totaalprijs * korting) * btw;
 	}
 
 	public void setTotaalprijs(Klus k) {
 		double prijs = 0.0;
 		
 		for (String o : onderdelenprijs.keySet()) {
-			prijs =+ onderdelenprijs.get(o);
+			prijs += onderdelenprijs.get(o);
 		}
 		
 		for (String b : brandstofprijs.keySet()) {
-			prijs =+ brandstofprijs.get(b);
+			prijs += brandstofprijs.get(b);
 		}
 		
-		prijs =+ manurenprijs;
+		prijs += manurenprijs;
 		
 		totaalprijs = prijs;
 	}
@@ -128,6 +140,14 @@ public class Factuur {
 	 */
 	public void setKlus(Klus klus) {
 		this.klus = klus;
+	}
+
+	public double getKorting() {
+		return korting;
+	}
+
+	public void setKorting(double korting) {
+		this.korting = korting;
 	}
 
 }

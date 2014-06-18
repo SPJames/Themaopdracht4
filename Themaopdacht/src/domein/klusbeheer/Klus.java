@@ -14,26 +14,27 @@ public class Klus {
 	private Auto auto;
 	private String beschrijving;
 	private String werknemer;
-	private int aantalOnderdelen;
 	private int klantID;
 	private DienstType hetType;
 	private int parkeerplaats;
 	private static int nummer = 1;
 	private int klusnummer;
 	private boolean klusafgerond = false;
-	private HashMap<Onderdeel, Integer> gebruikt = new HashMap<Onderdeel, Integer>();
+	private HashMap<Onderdeel, Integer> gebruikteOnderdelen = new HashMap<Onderdeel, Integer>();
+	private HashMap<Brandstof, Double> gebruikteBrandstof = new HashMap<Brandstof, Double>();
+	private int manuren;
 	//private int weeknr;
 
 
-	public HashMap<Onderdeel, Integer> getGebruikt() {
-		return gebruikt;
+	public HashMap<Onderdeel, Integer> getGebruikteOnderdelen() {
+		return gebruikteOnderdelen;
 	}
 	
 	public void addOnderdeel (Onderdeel ond, int aant) {
-		if(gebruikt.containsKey(ond)) {
-			gebruikt.put(ond, gebruikt.get(ond) + aant);
+		if(gebruikteOnderdelen.containsKey(ond)) {
+			gebruikteOnderdelen.put(ond, gebruikteOnderdelen.get(ond) + aant);
 		} else {
-			gebruikt.put(ond, aant);
+			gebruikteOnderdelen.put(ond, aant);
 		}
 	}
 
@@ -59,6 +60,7 @@ public class Klus {
 			hetType = new Tanken();
 		}
 		klantID = id;
+		manuren = 0;
 	}
 
 	//kan deze methode verwijdert worden?
@@ -103,22 +105,6 @@ public class Klus {
 	 */
 	public void setBeschrijving(String b) {
 		beschrijving = b;
-	}
-
-	/**
-	 * deze methode vraagt op hoeveel soorten onderdelen er zijn gebruikt
-	 * @return het aantal gebruikte soorten onderdelen
-	 */
-	public int getAantalOnderdelen() {
-		return aantalOnderdelen;
-	}
-
-	/**
-	 * deze methode vult in hoeveel soorten onderdelen er zijn gebruikt
-	 * @param aO het aantal gebruikte onderdelen
-	 */
-	public void setAantalOnderdelen(int aO) {
-		aantalOnderdelen = aO;
 	}
 
 	/**
@@ -230,5 +216,25 @@ public class Klus {
 	 */
 	public void setKlantID(int klantID) {
 		this.klantID = klantID;
+	}
+
+	public HashMap<Brandstof, Double> getGebruikteBrandstof() {
+		return gebruikteBrandstof;
+	}
+
+	public void addBrandstof (Brandstof br, Double aant) {
+		if(gebruikteBrandstof.containsKey(br)) {
+			gebruikteBrandstof.put(br, gebruikteBrandstof.get(br) + aant);
+		} else {
+			gebruikteBrandstof.put(br, aant);
+		}
+	}
+
+	public int getManuren() {
+		return manuren;
+	}
+
+	public void addManuren(int manuren) {
+		this.manuren += manuren;
 	}
 }

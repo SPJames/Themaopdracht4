@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.klantenbinding.Auto;
 import domein.klusbeheer.Klus;
+import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
 public class KlusBijwerkenServlet extends HttpServlet {
@@ -39,12 +40,17 @@ public class KlusBijwerkenServlet extends HttpServlet {
 		ArrayList<Klus> Klussen = (ArrayList<Klus>) sc.getAttribute("alleKlussen");
 		@SuppressWarnings("unchecked")
 		ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) sc.getAttribute("alleOnderdelen");
+		@SuppressWarnings("unchecked")
+		ArrayList<Brandstof> brandstof = (ArrayList<Brandstof>) sc.getAttribute("alleBrandstof");
 
 		userinfo[0] = req.getParameter("klusid");// klusid voor foreign key
 		userinfo[1] = req.getParameter("diensttype");
 		userinfo[2] = req.getParameter("comments");
 		Auto auto = null;
 		
+		int manuren = Integer.parseInt(req.getParameter("manuren"));
+		
+		//onderdelen
 		String[] onderdeelnaam = new String[onderdelen.size()];
 		for(int i=0; i<onderdelen.size(); i++) {
 			onderdeelnaam[i] = req.getParameter("onderdeel"+i);
@@ -52,6 +58,16 @@ public class KlusBijwerkenServlet extends HttpServlet {
 		int[] onderdeelaantal = new int[onderdelen.size()];
 		for(int i=0; i<onderdelen.size(); i++) {
 			onderdeelaantal[i] = Integer.parseInt(req.getParameter("aantal"+i));
+		}
+		
+		//brandstof
+		String[] brandstofnaam = new String[brandstof.size()];
+		for(int i=0; i<brandstof.size(); i++) {
+			brandstofnaam[i] = req.getParameter("brandstof"+i);
+		}
+		double[] brandstofliters = new double[brandstof.size()];
+		for(int i=0; i<brandstof.size(); i++) {
+			brandstofliters[i] = Double.parseDouble(req.getParameter("liters"+i));
 		}
 
 		Klus klus = null;
@@ -90,6 +106,24 @@ public class KlusBijwerkenServlet extends HttpServlet {
 			}
 		}
 		if(!error) {
+			if(manuren != 0) {
+				klus.addManuren(manuren);
+			}
+			
+			//brandstof
+			for(int i=0;i < brandstof.size(); i++) {
+				if (!(brandstofnaam[i].equals("")) && !(brandstofliters[i] == 0)) {
+					Brandstof br = null;
+					for(Brandstof b : brandstof) {
+						if(b.getBrandstofType().equals(brandstofnaam[i])) {
+							br = b;
+						}
+					}
+					klus.addBrandstof(br, brandstofliters[i]);
+				}
+			}
+			
+			//onderdelen
 			for(int i=0;i < onderdelen.size(); i++) {
 				if (!(onderdeelnaam[i].equals("")) && !(onderdeelaantal[i] == 0)) {
 					Onderdeel ond = null;
