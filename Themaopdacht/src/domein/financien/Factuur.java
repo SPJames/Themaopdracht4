@@ -1,6 +1,5 @@
 package domein.financien;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import domein.klusbeheer.Klus;
@@ -30,6 +29,9 @@ public class Factuur {
 		setKlus(k);
 		factuurNummer = nummer++;
 		setManurenprijs(k);
+		setBrandstofprijs(k);
+		setOnderdelenprijs(k);
+		setTotaalprijs(k);
 	}
 
 	public double getManurenprijs() {
