@@ -141,6 +141,16 @@
 		<servlet-name>Onderdeel Toevoegen Servlet</servlet-name>
 		<url-pattern>/admin/OnderdeelToevoegenServlet.do</url-pattern>
 	</servlet-mapping>
+	
+	<!--  Onderdeel Bewerken Servlet (Admin) -->
+	<servlet>
+		<servlet-name>Onderdeel Bewerken Servlet</servlet-name>
+		<servlet-class>servlets.adminServlets.OnderdeelBewerkenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Onderdeel Bewerken Servlet</servlet-name>
+		<url-pattern>/admin/OnderdeelBewerkenServlet.do</url-pattern>
+	</servlet-mapping>
 <!-- Filter Servlets -->
 	<!-- Hier komen filter mappings -->
 

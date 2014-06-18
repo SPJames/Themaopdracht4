@@ -44,6 +44,7 @@
 				<td><%=o.getNaam()%></td>
 				<td><%=o.getAantal() %></td>
 				<td><%=o.getPrijsArtikel() %></td>
+				<td><a href="onderdeelbewerken.jsp?id=<%=o.getArtikelNr()%>">Wijzigen</a></td>
 			</tr>
 			<%
 				}
@@ -58,5 +59,6 @@
 		%>
 		<a href='onderdeeltoevoegen.jsp'>Nieuw Onderdeel Toevoegen</a>
 	</div>
+	<jsp:include page="../footer.jsp" />
 </body>
 <html>
