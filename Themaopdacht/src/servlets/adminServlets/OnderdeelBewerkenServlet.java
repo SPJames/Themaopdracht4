@@ -26,13 +26,12 @@ public class OnderdeelBewerkenServlet extends HttpServlet {
 		userinfo[1] = req.getParameter("artikelnaam");
 		userinfo[2] = req.getParameter("aantal");
 		userinfo[3] = req.getParameter("PrijsArtikel");
-		int aantal = Integer.parseInt(userinfo[2]);
-		System.out.println(aantal);
+	
 		Onderdeel onderdeel = null;
 		RequestDispatcher rd = null;
 			
 		for(Onderdeel o : onderdelen){
-			if(o.getNaam() == userinfo[0])
+			if(o.getArtikelNr() == Integer.parseInt((userinfo[0])))
 			{
 				onderdeel = o;
 			}
@@ -46,7 +45,7 @@ public class OnderdeelBewerkenServlet extends HttpServlet {
 				break;
 			} else {
 				if (i == 2) {
-					onderdeel.setAantal(aantal);
+					onderdeel.setAantal(Integer.parseInt(userinfo[2]));
 				} else if (i==3) {
 					onderdeel.setPrijsArtikel(Double.parseDouble(userinfo[3]));
 					req.setAttribute("msgs", "Onderdeel succesvol aangepast!");

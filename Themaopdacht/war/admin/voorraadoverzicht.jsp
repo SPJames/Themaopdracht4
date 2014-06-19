@@ -7,6 +7,7 @@
 	<%@ page import="domein.voorraadbeheer.Onderdeel"%>
 	<%@ page import="domein.voorraadbeheer.Brandstof" %>
 	<%@ page import="java.util.ArrayList"%>
+	<script type="text/javascript" src="/atd/admin/verwissel.js"></script>
 
 	<div id="Content">
 		<h2>Voorraad overzicht</h2>
@@ -21,10 +22,12 @@
 					out.println(msgs);
 				%>
 			</div>
-		<%
+			<%
 				}
-		%>
+			%>
 		</div>
+		<button onClick="swap('onderdelen','brandstof')">Onderdelen</button>
+		<button onClick="swap('brandstof', 'onderdelen')">Brandstof</button>
 		<div id="onderdelen">
 		<%
 			@SuppressWarnings("unchecked")
@@ -60,9 +63,7 @@
 		<a href='onderdeeltoevoegen.jsp'>Nieuw Onderdeel Toevoegen</a>
 		</div>
 		
-		<p></p>
-		
-		<div id="brandstof">
+		<div id="brandstof" style="display:none">
 		<%
 			@SuppressWarnings("unchecked")
 			ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) application.getAttribute("alleBrandstof");

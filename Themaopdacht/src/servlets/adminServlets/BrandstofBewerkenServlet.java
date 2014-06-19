@@ -32,7 +32,7 @@ public class BrandstofBewerkenServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 			
 		for(Brandstof b : brandstoffen){
-			if(b.getBrandstofType() == userinfo[1])
+			if(b.getTsic() == Integer.parseInt(userinfo[0]))
 			{
 				brandstof = b;
 			}
