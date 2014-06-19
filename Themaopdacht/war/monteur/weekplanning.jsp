@@ -4,12 +4,13 @@
 </jsp:include>
 <body>
 	<jsp:include page="../menu.jsp" />
+	<div>
 		<script type="text/JavaScript" src="/atd/scripts/Calendar.js"></script>
 
-		<%!int dag; String dagtekst;%>
+		<%!int dag;
+		String dagtekst;%>
 
 		<div id="klus">
-			<jsp:include page="message.jsp" />
 			<table>
 				<thead>
 					<tr>
@@ -103,23 +104,9 @@
 					<%
 						}
 					%>
-
-					<%-- <%!int klusnr = 1;%>
-
-					<%
-						for (int i = 0; i < 25; i++) {
-					%>
-					<tr>
-						<td onClick="klusaanpassen.jsp?id=">Klus nr: <%=klusnr++%>
-						</td>
-					</tr>
-					<%
-						}
-					%> --%>
-
+					
 				</tbody>
 			</table>
 		</div>
-	<jsp:include page="../footer.jsp"/>
 </body>
 </html>

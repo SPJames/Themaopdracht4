@@ -10,17 +10,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-/**
- * In deze klasse wordt een mail gestuurd als een auto voor controle naar de garage moet komen
- */
 public class AutoControlenEmail {
 
-	/**
-	 * In deze methode wordt de mail gestuurd. Eerst wordt ingelogd in de mailaccount
-	 * vervolgens wordt de van te voren opgestelde mail verstuurd naar de meegeven ontvanger
-	 * @param to het emailadres waar de mail naar toe gestuurd moet worden
-	 * @param fn de naam van de ontvanger
-	 */
 	public AutoControlenEmail(String to, String fn) {
 
 		final String username = "atd.probe0001@gmail.com";

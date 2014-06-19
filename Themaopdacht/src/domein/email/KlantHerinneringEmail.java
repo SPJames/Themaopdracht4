@@ -9,17 +9,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-/**
- * in deze klasse wordt een mail gestuurd als een klant een tijd niet bij de garage is geweest
- */
 public class KlantHerinneringEmail {
 
-	/**
-	 * In deze methode wordt de mail gestuurd. Eerst wordt ingelogd.
-	 * Vervolgens wordt de van te voren opgestelde mail gestuurd naar de megegeven ontvanger
-	 * @param to het emailadres waar de mail naartoe moet
-	 * @param fn de naam van de ontvanger
-	 */
 	public KlantHerinneringEmail(String to, String fn) {
 
 		final String username = "atd.probe0001@gmail.com";
