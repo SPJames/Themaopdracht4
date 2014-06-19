@@ -35,7 +35,7 @@
 		<input type="hidden" name="klusid" value="<%= "" + k.getKlusNummer() %>" />
 		<input type="text" name="auto" value="<%= k.getAuto().getKenteken() %>" readonly="readonly" />
 		<!-- diensttype -->
-		<select name="diensttype" autofocus="<%= k.getHetType().toString() %>">
+		<select name="diensttype" autofocus="<%= k.getHetType().dienstType() %>">
 			<option value="Onderhoud">Reparatie/Onderhoud/APK</option>
 			<option value="Parkeren">Parkeren</option>
 			<option value="Tanken">Tanken</option>
