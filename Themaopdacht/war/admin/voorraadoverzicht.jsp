@@ -7,25 +7,12 @@
 	<%@ page import="domein.voorraadbeheer.Onderdeel"%>
 	<%@ page import="domein.voorraadbeheer.Brandstof" %>
 	<%@ page import="java.util.ArrayList"%>
-	<script type="text/javascript" src="/atd/admin/verwissel.js"></script>
+	<script type="text/javascript" src="/atd/scripts/verwissel.js"></script>
 
 	<div id="Content">
 		<h2>Voorraad overzicht</h2>
 
-		<div>
-			<%
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-			</div>
-			<%
-				}
-			%>
-		</div>
+		<jsp:include page="../messages.jsp" />
 		<button onClick="swap('onderdelen','brandstof')">Onderdelen</button>
 		<button onClick="swap('brandstof', 'onderdelen')">Brandstof</button>
 		<div id="onderdelen">
