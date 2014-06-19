@@ -5,5 +5,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="war/lib/javax.mail.jar"/>
 	<classpathentry kind="lib" path="war/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="war/lib/selenium-java-2.41.0.jar"/>
+	<classpathentry kind="lib" path="war/lib/selenium-server-standalone-2.41.0.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
