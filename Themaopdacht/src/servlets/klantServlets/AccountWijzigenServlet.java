@@ -84,10 +84,10 @@ public class AccountWijzigenServlet extends HttpServlet {
 		//fout melding teruggeven
 		RequestDispatcher rd = null;
 		if (error1) {
-			req.setAttribute("msgs", "Invoer was leeg of incorrect");
+			req.setAttribute("error", "Invoer was leeg of incorrect");
 			rd = req.getRequestDispatcher("accountwijzigen.jsp");
 		} else if(error2) {
-			req.setAttribute("msgs", "Wachtwoord is incorrect");
+			req.setAttribute("error", "Wachtwoord is incorrect");
 			rd = req.getRequestDispatcher("accountwijzigen.jsp");
 		} else { //sla nieuwe klant op, als invoer correct is
 			klant.setUsername(userinfo[0]);

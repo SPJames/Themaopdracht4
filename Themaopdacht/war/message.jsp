@@ -16,11 +16,11 @@
 			<!-- error -->
 			<%
 				Object error = request.getAttribute("error");
-				if (msgs != null) {
+				if (error != null) {
 			%>
 			<div id="error">
 				<%
-					out.println(msgs);
+					out.println(error);
 				%>
 			</div>
 			<%

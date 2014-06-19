@@ -63,11 +63,11 @@ public class InlogServlet extends HttpServlet {
 		// foutmelding geven
 		RequestDispatcher rd = null;
 		if (Users.size() == 0) {
-			req.setAttribute("msgs", "Er zijn nog geen accounts in het systeem");
+			req.setAttribute("error", "Er zijn nog geen accounts in het systeem");
 			rd = req.getRequestDispatcher("inloggen.jsp");
 		}
 		if (error) {
-			req.setAttribute("msgs", "Username/password was leeg");
+			req.setAttribute("error", "Username/password was leeg");
 			rd = req.getRequestDispatcher("inloggen.jsp");
 		} else { 
 			
@@ -78,7 +78,7 @@ public class InlogServlet extends HttpServlet {
 				done = true;
 			} else {
 				// foutmelding monteur
-				req.setAttribute("msgs", "Dit is geen geldige login");
+				req.setAttribute("error", "Dit is geen geldige login");
 				rd = req.getRequestDispatcher("inloggen.jsp");
 			}
 			
@@ -93,7 +93,7 @@ public class InlogServlet extends HttpServlet {
 						break;
 					} else {
 						// foutmelding monteur
-						req.setAttribute("msgs", "Dit is geen geldige login");
+						req.setAttribute("error", "Dit is geen geldige login");
 						rd = req.getRequestDispatcher("inloggen.jsp");
 					}
 				}
@@ -110,7 +110,7 @@ public class InlogServlet extends HttpServlet {
 						break;
 					} else {
 						// foutmelding klant
-						req.setAttribute("msgs", "Dit is geen geldige login");
+						req.setAttribute("error", "Dit is geen geldige login");
 						rd = req.getRequestDispatcher("inloggen.jsp");
 					}
 				}

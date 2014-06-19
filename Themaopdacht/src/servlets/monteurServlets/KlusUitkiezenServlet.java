@@ -47,7 +47,7 @@ public class KlusUitkiezenServlet extends HttpServlet {
 			req.setAttribute("msgs", "Klus succesvol uitgekozen!");
 			rd = req.getRequestDispatcher("klussenlijst.jsp");
 		} else{ 
-			req.setAttribute("msgs", "Deze klus is al aan iemand toegewezen!");
+			req.setAttribute("error", "Deze klus is al aan iemand toegewezen!");
 			rd = req.getRequestDispatcher("klussenlijst.jsp");
 		}
 		rd.forward(req, resp);

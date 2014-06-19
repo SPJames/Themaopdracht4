@@ -41,7 +41,7 @@ public class BrandstofBewerkenServlet extends HttpServlet {
 		for (int i = 0; i < 4; i++) {
 			// foutmelding
 			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
-				req.setAttribute("msgs", "Sommige velden waren leeg.");
+				req.setAttribute("error", "Sommige velden waren leeg.");
 				rd = req.getRequestDispatcher("brandstofbewerken.jsp");
 				break;
 			} else {

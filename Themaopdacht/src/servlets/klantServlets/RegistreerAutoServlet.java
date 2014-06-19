@@ -49,7 +49,7 @@ public class RegistreerAutoServlet extends HttpServlet {
 		}
 		RequestDispatcher rd = null;
 		if (error) { // foutmelding
-			req.setAttribute("msgs", "Een of meerdere velden waren leeg.");
+			req.setAttribute("error", "Een of meerdere velden waren leeg.");
 			rd = req.getRequestDispatcher("autotoevoegen.jsp");
 		} else {
 			Auto a = new Auto(kt, merk, id);
@@ -57,7 +57,7 @@ public class RegistreerAutoServlet extends HttpServlet {
 			ArrayList<Auto> Autos = (ArrayList<Auto>) req.getServletContext().getAttribute("alleAutos");
 			for (Auto auto : Autos) {
 				if (auto.getKenteken().equals(kt)) { // foutmelding als auto al bestaat
-					req.setAttribute("msgs", "Deze auto bestaat al.");
+					req.setAttribute("error", "Deze auto bestaat al.");
 					rd = req.getRequestDispatcher("autotoevoegen.jsp");
 					error2 = true;
 					break;

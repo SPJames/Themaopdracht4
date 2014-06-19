@@ -55,7 +55,7 @@ public class RegistreerMonteurServlet extends HttpServlet {
 
 		if (error) {
 			// foutmelding							monteur heeft geen email
-			req.setAttribute("msgs", "Invoer was leeg of de email/het wachtwoord matchte niet");
+			req.setAttribute("error", "Invoer was leeg of de email/het wachtwoord matchte niet");
 			rd = req.getRequestDispatcher("registermonteur.jsp");
 
 		} else {

@@ -46,11 +46,11 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 		
 		onderdeel = new Onderdeel(Integer.parseInt(userinfo[1]), userinfo[0], Double.parseDouble(userinfo[2]));
 		if(error){
-			req.setAttribute("msgs", "één of meerdere velden waren leeg");
+			req.setAttribute("error", "één of meerdere velden waren leeg");
 			rd = req.getRequestDispatcher("onderdeeltoevoegen.jsp");
 		}
 		if(error2){
-			req.setAttribute("msgs", "Dit onderdeel bestaat al, ga naar onderdeel wijzigen om dit onderdeel aan te passen");
+			req.setAttribute("error", "Dit onderdeel bestaat al, ga naar onderdeel wijzigen om dit onderdeel aan te passen");
 			rd = req.getRequestDispatcher("onderdeeltoevoegen.jsp");
 		}
 		if(!error && !error2){

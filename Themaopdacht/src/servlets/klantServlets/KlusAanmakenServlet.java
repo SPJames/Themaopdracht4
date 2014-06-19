@@ -67,7 +67,7 @@ public class KlusAanmakenServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 		if (error) {
 			// foutmelding
-			req.setAttribute("msgs", "Input was empty");
+			req.setAttribute("error", "Input was empty");
 			rd = req.getRequestDispatcher("afspraakmaken.jsp");
 		} else if (!(auto.isInReparatie())) {
 			// aanmaken nieuwe klus
@@ -93,14 +93,14 @@ public class KlusAanmakenServlet extends HttpServlet {
 			}
 			if (plek == -2) {
 				// foutmelding, als er geen parkeerplek is
-				req.setAttribute("msgs", "Er is op dit moment geen plek beschikbaar. Probeer het later nog eens.");
+				req.setAttribute("error", "Er is op dit moment geen plek beschikbaar. Probeer het later nog eens.");
 				rd = req.getRequestDispatcher("afspraakmaken.jsp");
 			} else {
 				rd = req.getRequestDispatcher("../index.jsp");
 				auto.setInReparatie(true);
 			}
 		} else if (auto.isInReparatie()){ 
-			req.setAttribute("msgs", "Deze auto is al in reparatie!");
+			req.setAttribute("error", "Deze auto is al in reparatie!");
 			rd = req.getRequestDispatcher("afspraakmaken.jsp");
 		}
 		rd.forward(req, resp);

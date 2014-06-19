@@ -61,7 +61,7 @@ public class RegistreerServlet extends HttpServlet {
 		
 		// foutmelding
 		if (error) {	//misschien netter om kwamen niet overeen neer te zetten ipv matchte?
-			req.setAttribute("msgs", "Enkele velden waren leeg en/of het wachtwoord/email matchte niet.");
+			req.setAttribute("error", "Enkele velden waren leeg en/of het wachtwoord/email matchte niet.");
 			req.getRequestDispatcher("registreren.jsp").forward(req, resp);
 		} else {
 			// klant opslaan

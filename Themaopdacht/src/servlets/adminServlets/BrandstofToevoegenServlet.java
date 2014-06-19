@@ -46,11 +46,11 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 		
 		brandstof = new Brandstof(userinfo[0], Integer.parseInt(userinfo[1]), Double.parseDouble(userinfo[2]));
 		if(error){
-			req.setAttribute("msgs", "één of meerdere velden waren leeg");
+			req.setAttribute("error", "één of meerdere velden waren leeg");
 			rd = req.getRequestDispatcher("brandstoftoevoegen.jsp");
 		}
 		if(error2){
-			req.setAttribute("msgs", "Dit brandstoftype bestaat al, ga naar brandstof wijzigen om dit type aan te passen");
+			req.setAttribute("error", "Dit brandstoftype bestaat al, ga naar brandstof wijzigen om dit type aan te passen");
 			rd = req.getRequestDispatcher("brandstoftoevoegen.jsp");
 		}
 		if(!error && !error2){
