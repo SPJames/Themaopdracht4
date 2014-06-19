@@ -7,6 +7,7 @@ public class Brandstof {
 	private String brandstofType;
 	private int liter, tsic;
 	private double prijsPerLiter;
+	private static int getal = 1;
 
 	/**
 	 * de brandstofsoort wordt aangemaakt. het brandstoftype, de hoeveelheid in liters
@@ -16,10 +17,10 @@ public class Brandstof {
 	 * @param ts het tsic nummer
 	 * @param ppl de prijs per liter
 	 */
-	public Brandstof(String tp, int l, int ts, double ppl) {
+	public Brandstof(String tp, int l, double ppl) {
 		brandstofType = tp;
 		liter = l;
-		tsic = ts;
+		tsic = getal++;
 		prijsPerLiter = ppl;
 	}
 

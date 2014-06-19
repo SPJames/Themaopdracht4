@@ -5,6 +5,7 @@
 <body>
 	<jsp:include page="../menu.jsp" />
 	<%@ page import="domein.voorraadbeheer.Onderdeel"%>
+	<%@ page import="domein.voorraadbeheer.Brandstof" %>
 	<%@ page import="java.util.ArrayList"%>
 
 	<div id="Content">
@@ -20,15 +21,17 @@
 					out.println(msgs);
 				%>
 			</div>
-			<%
+		<%
 				}
-
-				@SuppressWarnings("unchecked")
-				ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) application
-						.getAttribute("alleOnderdelen");
-				if (onderdelen.size() > 0) {
-			%>
+		%>
 		</div>
+		<div id="onderdelen">
+		<%
+			@SuppressWarnings("unchecked")
+			ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) application.getAttribute("alleOnderdelen");
+			if (onderdelen.size() > 0) {
+		%>
+		
 		<table>
 			<tr>
 				<th>Artikel nr</th>
@@ -51,14 +54,48 @@
 				}
 			%>
 		</table>
-		<%
-			} else {
-		%>
-		<p>Er is nog geen voorraad.</p>
-		<%
-			}
-		%>
+		<% } else{ %>
+		<p>Er zijn geen onderdelen in voorraad.</p>
+		<% } %>
 		<a href='onderdeeltoevoegen.jsp'>Nieuw Onderdeel Toevoegen</a>
+		</div>
+		
+		<p></p>
+		
+		<div id="brandstof">
+		<%
+			@SuppressWarnings("unchecked")
+			ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) application.getAttribute("alleBrandstof");
+			if (brandstoffen.size() > 0) {
+		%>
+		
+		<table>
+			<tr>
+				<th>tsic</th>
+				<th>Brandstof Type</th>
+				<th>Liters</th>
+				<th>Prijs per liter</th>
+				<th></th>
+			</tr>
+			<%
+				for (Brandstof b : brandstoffen) {
+			%>
+			<tr>
+				<td><%=b.getTsic()%></td>
+				<td><%=b.getBrandstofType()%></td>
+				<td><%=b.getLiter()%></td>
+				<td><%=b.getPrijsPerLiter()%></td>
+				<td><a href="brandstofbewerken.jsp?id=<%=b.getBrandstofType()%>">Wijzigen</a></td>
+			</tr>
+			<%
+				}
+			%>
+		</table>
+		<% } else{ %>
+		<p>Er is geen brandstof in voorraad.</p>
+		<% } %>
+		<a href='brandstoftoevoegen.jsp'>Nieuw Brandstof Toevoegen</a>
+		</div>
 	</div>
 	<jsp:include page="../footer.jsp" />
 </body>

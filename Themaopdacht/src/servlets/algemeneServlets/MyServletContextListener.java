@@ -58,9 +58,9 @@ public class MyServletContextListener implements ServletContextListener {
 		List6.add(o3);
 		
 		//Brandstof initialiseren
-		Brandstof b = new Brandstof("Euro95", 50, 1, 1.0);
-		Brandstof b2 = new Brandstof("Diesel", 20, 2, 3.2);
-		Brandstof b3 = new Brandstof("Benzine", 69, 3, 0.1);
+		Brandstof b = new Brandstof("Euro95", 50, 1.0);
+		Brandstof b2 = new Brandstof("Diesel", 20, 3.2);
+		Brandstof b3 = new Brandstof("Benzine", 69, 0.1);
 		List8.add(b);
 		List8.add(b2);
 		List8.add(b3);

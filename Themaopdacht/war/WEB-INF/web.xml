@@ -151,6 +151,25 @@
 		<servlet-name>Onderdeel Bewerken Servlet</servlet-name>
 		<url-pattern>/admin/OnderdeelBewerkenServlet.do</url-pattern>
 	</servlet-mapping>
+		<!-- Brandstof Toevoegen Servlet (Admin) -->
+	<servlet>
+		<servlet-name>Brandstof Toevoegen Servlet</servlet-name>
+		<servlet-class>servlets.adminServlets.BrandstofToevoegenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Brandstof Toevoegen Servlet</servlet-name>
+		<url-pattern>/admin/BrandstofToevoegenServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Brandstof Bewerken Servlet (Admin) -->
+	<servlet>
+		<servlet-name>Brandstof Bewerken Servlet</servlet-name>
+		<servlet-class>servlets.adminServlets.BrandstofBewerkenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Brandstof Bewerken Servlet</servlet-name>
+		<url-pattern>/admin/BrandstofBewerkenServlet.do</url-pattern>
+	</servlet-mapping>
 <!-- Filter Servlets -->
 	<!-- Hier komen filter mappings -->
 
