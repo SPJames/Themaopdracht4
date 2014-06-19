@@ -170,6 +170,17 @@
 		<servlet-name>Brandstof Bewerken Servlet</servlet-name>
 		<url-pattern>/admin/BrandstofBewerkenServlet.do</url-pattern>
 	</servlet-mapping>
+	
+	<!-- KiezenEmail Servlet  -->
+	<servlet>
+		<servlet-name>KiezenEmail</servlet-name>
+		<servlet-class>servlets.email.KiezenEmail</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>KiezenEmail</servlet-name>
+		<url-pattern>/KiezenEmail.do</url-pattern>
+	</servlet-mapping>
+	
 <!-- Filter Servlets -->
 	<!-- Hier komen filter mappings -->
 

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import servlets.email.KlusAfgerondEmail;
+import domein.klantenbinding.Klant;
 import domein.klusbeheer.Klus;
 
 public class KlusAfrondenServlet extends HttpServlet {
@@ -31,10 +33,21 @@ public class KlusAfrondenServlet extends HttpServlet {
 				k.setKlusafgerond(true);
 				req.setAttribute("msgs", "klus " + id + " succesvol afgerond");
 
-				//hier zit nog een fout!!
-//				KlusAfgerondEmail m = new KlusAfgerondEmail(
-//						(String) req.getParameter("email"),
-//						(String) req.getParameter("realname"));
+				// klanten gegevens ophalen voor email
+				@SuppressWarnings("unchecked")
+				ArrayList<Klant> klanten = (ArrayList<Klant>) req
+						.getServletContext().getAttribute("alleUsers");
+
+				Klant klant = null;
+				for (Klant kl : klanten) {
+					if (id == kl.getId()) {
+						klant = kl;
+					}
+				}
+
+				// hier zit nog een fout!!
+				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()),
+						klant.getNaam());
 			}
 		}
 

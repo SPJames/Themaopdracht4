@@ -1,8 +1,8 @@
 <%@ page import="domein.klantenbinding.Klant"%>
 <%@ page import="java.util.ArrayList;"%>
 <jsp:include page="../header.jsp">
-	<jsp:param name="title" value="wijzig accountgegevens" />
-	<jsp:param name="css" value="register" />
+	<jsp:param name="title" value="Wijzig accountgegevens" />
+	<jsp:param name="css" value="accountwijzigen" />
 </jsp:include>
 <body>
 	<jsp:include page="../menu.jsp" />
@@ -50,7 +50,7 @@
 
 				<label for="pwd">Huidige wachtwoord</label> 
 					<input type="password" name="pwd" placeholder="password" class="box" /> 
-				<input type="submit" value="Verzenden" class="down" />
+				<input type="submit" value="Verzenden" class="down-afspraak" />
 			</fieldset>
 		</form>
 	</div>
