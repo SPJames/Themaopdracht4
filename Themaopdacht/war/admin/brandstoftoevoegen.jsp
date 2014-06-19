@@ -1,10 +1,10 @@
 <jsp:include page="../header.jsp">
-	<jsp:param name="title" value="Onderdeel Toevoegen" />
+	<jsp:param name="title" value="Brandstof Toevoegen" />
 	<jsp:param name="css" value="register" />
 </jsp:include>
 <body>
 	<jsp:include page="../menu.jsp" />
-	<%@ page import="domein.voorraadbeheer.Onderdeel"%>
+	<%@ page import="domein.voorraadbeheer.Brandstof"%>
 	<div id="register">
 		<h2>Brandstof Toevoegen</h2>
 		<div>

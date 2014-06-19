@@ -85,7 +85,7 @@
 				<td><%=b.getBrandstofType()%></td>
 				<td><%=b.getLiter()%></td>
 				<td><%=b.getPrijsPerLiter()%></td>
-				<td><a href="brandstofbewerken.jsp?id=<%=b.getBrandstofType()%>">Wijzigen</a></td>
+				<td><a href="brandstofbewerken.jsp?id=<%=b.getTsic()%>">Wijzigen</a></td>
 			</tr>
 			<%
 				}

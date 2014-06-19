@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domein.voorraadbeheer.Onderdeel;
+import domein.voorraadbeheer.Brandstof;
 
-public class OnderdeelBewerkenServlet extends HttpServlet {
+public class BrandstofBewerkenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 		
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -20,21 +20,21 @@ public class OnderdeelBewerkenServlet extends HttpServlet {
 		String[] userinfo = new String[4];
 			
 		@SuppressWarnings("unchecked")
-		ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) sc.getAttribute("alleOnderdelen");
+		ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) sc.getAttribute("alleBrandstof");
 		
 		userinfo[0] = req.getParameter("artikelid");
-		userinfo[1] = req.getParameter("artikelnaam");
+		userinfo[1] = req.getParameter("type");
 		userinfo[2] = req.getParameter("aantal");
-		userinfo[3] = req.getParameter("PrijsArtikel");
+		userinfo[3] = req.getParameter("PrijsLiter");
 		int aantal = Integer.parseInt(userinfo[2]);
 		System.out.println(aantal);
-		Onderdeel onderdeel = null;
+		Brandstof brandstof = null;
 		RequestDispatcher rd = null;
 			
-		for(Onderdeel o : onderdelen){
-			if(o.getNaam() == userinfo[0])
+		for(Brandstof b : brandstoffen){
+			if(b.getBrandstofType() == userinfo[1])
 			{
-				onderdeel = o;
+				brandstof = b;
 			}
 		}
 			
@@ -42,14 +42,14 @@ public class OnderdeelBewerkenServlet extends HttpServlet {
 			// foutmelding
 			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
 				req.setAttribute("msgs", "Sommige velden waren leeg.");
-				rd = req.getRequestDispatcher("onderdeelbewerken.jsp");
+				rd = req.getRequestDispatcher("brandstofbewerken.jsp");
 				break;
 			} else {
 				if (i == 2) {
-					onderdeel.setAantal(aantal);
+					brandstof.setLiter(aantal);
 				} else if (i==3) {
-					onderdeel.setPrijsArtikel(Double.parseDouble(userinfo[3]));
-					req.setAttribute("msgs", "Onderdeel succesvol aangepast!");
+					brandstof.setPrijsPerLiter(Double.parseDouble(userinfo[3]));
+					req.setAttribute("msgs", "Brandstof succesvol aangepast!");
 					rd = req.getRequestDispatcher("voorraadoverzicht.jsp");
 				}
 			}
