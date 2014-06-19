@@ -11,6 +11,7 @@ body {
 	margin-left: 100px;
 	margin-right: 100px;
 	padding-bottom: 10px;
+	text-align: left;
 }
 
 #Menu {
@@ -58,7 +59,7 @@ ul li a {
 	min-height: 300px;
 }
 
-img {
+.logo {
 	height: 80px;
 	padding-top: 10px;
 }

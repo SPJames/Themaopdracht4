@@ -12,7 +12,7 @@
 
 	<div id="Content">
 		<jsp:include page="message.jsp" />
-		<img src="/atd/images/atd-logo.png" alt="atd-logo" />
+		<img src="/atd/images/atd-logo.png" class="logo" alt="atd-logo" />
 
 		<p>
 			Welkom bij de garage van <b>Auto Totaal Diensten.</b><br /> Bij ons
