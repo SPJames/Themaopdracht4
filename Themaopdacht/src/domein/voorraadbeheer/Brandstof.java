@@ -11,10 +11,9 @@ public class Brandstof {
 
 	/**
 	 * de brandstofsoort wordt aangemaakt. het brandstoftype, de hoeveelheid in liters
-	 * het tsic nummer en de prijs per liter wordt ingevuld
+	 * en de prijs per liter wordt ingevuld
 	 * @param tp het brandstoftype
 	 * @param l hoeveelheid liters
-	 * @param ts het tsic nummer
 	 * @param ppl de prijs per liter
 	 */
 	public Brandstof(String tp, int l, double ppl) {

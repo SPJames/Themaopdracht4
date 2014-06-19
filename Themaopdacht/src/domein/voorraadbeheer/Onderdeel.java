@@ -13,7 +13,6 @@ public class Onderdeel {
 	/**
 	 * het onderdeel wordt aangemaakt het krijgt een artikelnummer, het aantal artikelen dat
 	 * van dit onderdeel aanwezig is, een naam en een prijs per gebruikt artikel
-	 * @param aN	het artikelnummer
 	 * @param aan	het aantal
 	 * @param nm	de naam
 	 * @param pA	de prijs per artikel

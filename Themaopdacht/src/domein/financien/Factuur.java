@@ -38,10 +38,18 @@ public class Factuur {
 		setTotaalprijs(k);
 	}
 
+	/**
+	 * In deze methode wordt de waarde van het attribuut manurenprijs opgevraagt
+	 * @return de kosten van een uur werktijd
+	 */
 	public double getManurenprijs() {
 		return manurenprijs;
 	}
 
+	/**
+	 * In deze methode wordt de kosten voor manuren berekend per klus
+	 * @param k de klus waarvan de kosten moeten worden berekend
+	 */
 	public void setManurenprijs(Klus k) {
 		double prijs = 0.0;
 		prijs = k.getManuren() *  0.0; // 0.0 = prijs per uur
@@ -49,10 +57,18 @@ public class Factuur {
 		manurenprijs = prijs;
 	}
 
+	/**
+	 * In deze methode wordt de prijs van een onderdeel opgevraagd
+	 * @return de prijs van een onderdeel
+	 */
 	public HashMap<String, Double> getOnderdelenprijs() {
 		return onderdelenprijs;
 	}
 
+	/**
+	 * in deze methode wordt de prijs van de gebruikte onderdelen berekend
+	 * @param k de klus waarvan de prijs berekend moet worden
+	 */
 	public void setOnderdelenprijs(Klus k) {
 		HashMap<Onderdeel, Integer>gebruikteOnderdelen = k.getGebruikteOnderdelen();
 		for (Onderdeel o : gebruikteOnderdelen.keySet()) {
@@ -61,10 +77,18 @@ public class Factuur {
 		}
 	}
 
+	/**
+	 * deze methode vraagt de brandstofprijs op
+	 * @return de brandstofprijs
+	 */
 	public HashMap<String, Double> getBrandstofprijs() {
 		return brandstofprijs;
 	}
 
+	/**
+	 * deze methode berekend de totale brandstofprijs voor een klus
+	 * @param k de klus waarvan de brandstofkosten berekend moeten worden
+	 */
 	public void setBrandstofprijs(Klus k) {
 		HashMap<Brandstof, Double>gebruikteBrandstof = k.getGebruikteBrandstof(); // get de gebruikte brandstof
 		for (Brandstof b : gebruikteBrandstof.keySet()) {
@@ -73,18 +97,34 @@ public class Factuur {
 		}
 	}
 
+	/**
+	 * deze methode vraagt de totaalprijs exclusief de btw op
+	 * @return de totaalprijs exclusief de btw
+	 */
 	public double getTotaalprijsExBtw() {
 		return totaalprijs;
 	}
 	
+	/**
+	 * deze methode vraagt de totaalprijs met btw op
+	 * @return de totaalprijs met btw
+	 */
 	public double getTotaalprijs() {
 		return totaalprijs * btw;
 	}
 	
+	/**
+	 * deze methode vraagt de totaalprijs met btw en korting op
+	 * @return de totaalprijs met btw en korting
+	 */
 	public double getTotaalprijsKorting() {
 		return (totaalprijs * korting) * btw;
 	}
 
+	/**
+	 * deze methode berekend de totaalprijs aan onderdelen en benzine en werktijd voor een klus
+	 * @param k de meegegeven klus
+	 */
 	public void setTotaalprijs(Klus k) {
 		double prijs = 0.0;
 		
@@ -142,12 +182,19 @@ public class Factuur {
 		this.klus = klus;
 	}
 
+	/**
+	 * deze methode vraagt de waarde korting op
+	 * @return het percentage korting dat gegeven gaat worden
+	 */
 	public double getKorting() {
 		return korting;
 	}
 
+	/**
+	 * deze methode vult de waarde korting in
+	 * @param korting het percentage korting dat gegeven gaat worden
+	 */
 	public void setKorting(double korting) {
 		this.korting = korting;
 	}
-
 }

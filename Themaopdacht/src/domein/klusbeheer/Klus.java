@@ -25,11 +25,22 @@ public class Klus {
 	private int manuren;
 	//private int weeknr;
 
-
+	/**
+	 * Deze methode vraagt de hashmap gebruikteonderdelen op
+	 * @return een lijst met de onderdelen die in deze klus gebruikt zijn
+	 */
 	public HashMap<Onderdeel, Integer> getGebruikteOnderdelen() {
 		return gebruikteOnderdelen;
 	}
 	
+	/**
+	 * Deze methode voegt een onderdelen aan de hashmap gebruikte onderdelen toe als het onderdeel nog
+	 * niet in de hashmap staat.
+	 * als het onderdeel al wel in de hashmap staat dan wordt de meegegeven waarde aantal 
+	 * bij de waarde aantal in de hasmap opgeteld
+	 * @param ond het toe te voegen onderdeel
+	 * @param aant de hoeveelheid van het toe te voegen onderdeel
+	 */
 	public void addOnderdeel (Onderdeel ond, int aant) {
 		if(gebruikteOnderdelen.containsKey(ond)) {
 			gebruikteOnderdelen.put(ond, gebruikteOnderdelen.get(ond) + aant);
@@ -218,10 +229,22 @@ public class Klus {
 		this.klantID = klantID;
 	}
 
+	/**
+	 * deze methode vraagt de hasmap gebruiktebrandstof op
+	 * @return een lijst met de gebruikte brandstof in deze klus
+	 */
 	public HashMap<Brandstof, Double> getGebruikteBrandstof() {
 		return gebruikteBrandstof;
 	}
 
+	/**
+	 * Deze methode voegt gebruikte brandstof aan de hashmap gebruikteBrandstof toe als de brandstof 
+	 * er nog niet in stond.
+	 * Als de brandstof er wel in staat wordt de meegegeven waarde aantal bij de bestaande waarde aantal
+	 * in de map opgeteld
+	 * @param br type van de gebruikte brandstof
+	 * @param aant gebruikte aantal liters van deze brandstof
+	 */
 	public void addBrandstof (Brandstof br, Double aant) {
 		if(gebruikteBrandstof.containsKey(br)) {
 			gebruikteBrandstof.put(br, gebruikteBrandstof.get(br) + aant);
@@ -230,10 +253,18 @@ public class Klus {
 		}
 	}
 
+	/**
+	 * deze methode vraagt het aantal gewerkt manuren op
+	 * @return gewerkte manuren voor deze klus
+	 */
 	public int getManuren() {
 		return manuren;
 	}
-
+	
+	/**
+	 * deze methode voegt een aantal gewerkte manuren toe aan de klus
+	 * @param manuren het aantal gewerkte uren aan deze klus
+	 */
 	public void addManuren(int manuren) {
 		this.manuren += manuren;
 	}
