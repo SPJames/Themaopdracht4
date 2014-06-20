@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * Deze klasse wordt gebruikt om de gegevens van een auto in te vullen of te bewerken
+ * Deze klasse wordt gebruikt om de gegevens van een auto op te slaan of te bewerken
  */
 public class Auto {
 	private String kenteken;
@@ -19,7 +19,7 @@ public class Auto {
 	/**
 	 * Deze methode maakt een auto aan en vult het kenteken, 
 	 * het merk van de auto en het klantid van de eigenaar in
-	 * @param kt is het kenteken
+	 * @param kt is het kenteken van de auto
 	 * @param mk is het merk van de auto
 	 * @param id is het klantenid van de eigenaar
 	 */
@@ -75,16 +75,6 @@ public class Auto {
 	 */
 	public void setMerk(String mk) {
 		merk = mk;
-	}
-
-	//het kenteken is al een string dus dit is eigenlijk onnodig
-	/**
-	 * deze methode geeft het kenteken weer in de vorm van een string
-	 * @return het kenteken
-	 */
-	public String toString() {
-		String s = getKenteken() + "";
-		return s;
 	}
 
 	/**
