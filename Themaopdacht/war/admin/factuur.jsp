@@ -18,25 +18,20 @@
 					.getAttribute("alleFacturen");
 		%>
 
-		<p>Factuur ID</p>
-		<br />
-		<p>Totaalprijs</p>
+		<p>Factuur ID</p><p><%=f.getFactuurNummer()%></p>
 		<br />
 
 		<%
 			for (Factuur f : facturen) {
 		%>
-
-		<p><%=f.getFactuurNummer()%></p>
+		<p>Totaalprijs (zonder Btw):</p><p><%=f.getTotaalprijsExBtw()%></p>
 		<br />
-		<p><%=f.getTotaalprijsExBtw()%></p>
+		<hr width="400" />
+		<p>Totaalprijs (met Btw):</p><p><%=f.getTotaalprijs()%></p>
 		<br />
-		<hr />
-		<p><%=f.getTotaalprijs()%></p>
+		<p>Kortingsprecentage:</p><p><%=f.getKorting()%></p>
 		<br />
-		<p><%=f.getKorting()%></p>
-		<br />
-		<p><%=f.getTotaalprijsKorting()%></p>
+		<p>Totaalprijs (met korting):</p><p><%=f.getTotaalprijsKorting()%></p>
 		<br />
 
 		<%
