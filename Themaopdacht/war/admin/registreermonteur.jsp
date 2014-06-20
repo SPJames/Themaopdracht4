@@ -6,16 +6,7 @@
 <jsp:include page="../menu.jsp"/>
 	<div id="register">
 		<h2>Register</h2>
-		<div>
-			<%
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-			</div>
+		<jsp:include page="../message.jsp"/>
 		<form action="RegistreerMonteurServlet.do" method="get">
 			<fieldset>
 				<label for="Realname">Naam</label><input type="text" name="Realname"
