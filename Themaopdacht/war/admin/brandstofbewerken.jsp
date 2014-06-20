@@ -11,7 +11,7 @@
 		<h2>Brandstof Bewerken</h2>
 
 		<div>
-			<%
+			<%	//div voor meldingen, is alleen zichtbaar als er een melding is
 				Object msgs = request.getAttribute("msgs");
 				if (msgs != null) {
 			%>
@@ -22,7 +22,7 @@
 			</div>
 			<%
 				}
-				
+				//de meegegeven brandstof opzoeken
 				@SuppressWarnings("unchecked")
 				ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) application
 						.getAttribute("alleBrandstof");
@@ -31,9 +31,10 @@
 						if(b.getTsic() == Integer.parseInt(request.getParameter("id"))){
 							int id = b.getTsic();
 							String naam = b.getBrandstofType();
-							int aantal = b.getLiter();
+							double aantal = b.getLiter();
 							double prijs = b.getPrijsPerLiter();
 			%>
+			<!-- aantal aanwezige liters en de prijs per liter kunnen gewijzigd worden -->
 			<form action="BrandstofBewerkenServlet.do" method="get">
 				<fieldset>
 					<input type="hidden" name="artikelid" value="<%= id %>" />
@@ -44,7 +45,7 @@
 					<input type="number" name="aantal"  class="box" min="1"
 						value="<%=aantal %>" />
 					<label for="PrijsLiter">Prijs per Liter</label>
-					<input type="number" step="any" name="PrijsLiter" class="box" min="1.50" value="<%= prijs %>" />
+					<input type="number" step="any" name="PrijsLiter" class="box" min="1.00" value="<%= prijs %>" />
 					<input type="submit" value="Veranderen" class="down"/>	
 				</fieldset>
 			</form>	

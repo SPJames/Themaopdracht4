@@ -8,7 +8,7 @@
 	<div id="register">
 		<h2>Brandstof Toevoegen</h2>
 		<div>
-			<%
+			<% //div voor meldingen, alleen zichtbaar als er een melding is
 				Object msgs = request.getAttribute("msgs");
 				if (msgs != null) {
 			%>
@@ -21,7 +21,7 @@
 				}
 			%>
 		</div>
-
+	<!-- Hier worden de gegevens van de nieuwe brandstof ingevoerd -->
 		<form action="BrandstofToevoegenServlet.do" method="get">
 			<fieldset>
 				<label for="type">Brandstof Type</label>
@@ -31,7 +31,7 @@
 				<input type="number" name="aantal"  class="box" min="1"
 					value="1" />
 				<label for="PrijsLiter">Prijs per Liter</label>
-				<input type="number" step="any" name="PrijsLiter" class="box" min="1.50" value="1.50" />
+				<input type="number" step="any" name="PrijsLiter" class="box" min="1.00" value="1.50" />
 				<input type="submit" value="Toevoegen" class="down"/>	
 			</fieldset>
 		</form>

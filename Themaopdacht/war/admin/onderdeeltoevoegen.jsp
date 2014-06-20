@@ -21,7 +21,7 @@
 				}
 			%>
 		</div>
-
+		<!-- gegevens van het nieuwe onderdeel kunnen worden ingevoerd -->
 		<form action="OnderdeelToevoegenServlet.do" method="get">
 			<fieldset>
 				<label for="artikelnaam">Artikel Naam</label>

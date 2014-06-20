@@ -22,7 +22,7 @@
 			</div>
 			<%
 				}
-				
+				//gegevens van het meegegeven onderdeel worden opgevraagd
 				@SuppressWarnings("unchecked")
 				ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) application
 						.getAttribute("alleOnderdelen");
@@ -34,6 +34,7 @@
 							int aantal = o.getAantal();
 							double prijs = o.getPrijsArtikel();
 			%>
+			<!-- van het meegegeven onderdeel kunnen aantal en prijs per artikel worden gewijzigd -->
 			<form action="OnderdeelBewerkenServlet.do" method="get">
 				<fieldset>
 					<input type="hidden" name="artikelid" value="<%= id %>" />

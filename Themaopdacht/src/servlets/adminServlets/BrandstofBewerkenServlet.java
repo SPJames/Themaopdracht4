@@ -32,15 +32,15 @@ public class BrandstofBewerkenServlet extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) sc.getAttribute("alleBrandstof");
 		
+		//de doorgegeven/gewijzigde gegevens
 		userinfo[0] = req.getParameter("artikelid");
 		userinfo[1] = req.getParameter("type");
 		userinfo[2] = req.getParameter("aantal");
 		userinfo[3] = req.getParameter("PrijsLiter");
-		int aantal = Integer.parseInt(userinfo[2]);
-		System.out.println(aantal);
 		Brandstof brandstof = null;
 		RequestDispatcher rd = null;
 			
+		//de aan te passen brandstof opzoeken
 		for(Brandstof b : brandstoffen){
 			if(b.getTsic() == Integer.parseInt(userinfo[0]))
 			{
@@ -49,15 +49,15 @@ public class BrandstofBewerkenServlet extends HttpServlet {
 		}
 			
 		for (int i = 0; i < 4; i++) {
-			// foutmelding
+			// er was een vak leeg
 			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
 				req.setAttribute("error", "Sommige velden waren leeg.");
 				rd = req.getRequestDispatcher("brandstofbewerken.jsp");
 				break;
 			} else {
-				if (i == 2) {
-					brandstof.setLiter(aantal);
-				} else if (i==3) {
+				if (i == 2) {//aantal liters opslaan
+					brandstof.setLiter(Double.parseDouble(userinfo[2]));
+				} else if (i==3) {//prijs per liter opslaan
 					brandstof.setPrijsPerLiter(Double.parseDouble(userinfo[3]));
 					req.setAttribute("msgs", "Brandstof succesvol aangepast!");
 					rd = req.getRequestDispatcher("voorraadoverzicht.jsp");

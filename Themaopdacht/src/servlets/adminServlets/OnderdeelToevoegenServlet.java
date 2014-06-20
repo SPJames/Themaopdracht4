@@ -30,6 +30,7 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[3];
 		
+		//de meegegeven gegevens
 		userinfo[0] = req.getParameter("artikelnaam");
 		userinfo[1] = req.getParameter("aantal");
 		userinfo[2] = req.getParameter("PrijsArtikel");
@@ -38,6 +39,7 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 		boolean error = false;	//leeg veld
 		boolean error2 = false;	//bestaat al
 		
+		//is overal iets ingevuld?
 		for(int i = 0;  i < 3; i++){
 			if(userinfo[i].equals(null) || userinfo[i].equals("")){
 				error = true;
@@ -47,6 +49,7 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 		@SuppressWarnings("unchecked")
 		ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) sc.getAttribute("alleOnderdelen");
 		
+		// bestaat het onderdeel al?
 		RequestDispatcher rd = null;
 		for(Onderdeel o : onderdelen){
 			if(o.getNaam() == userinfo[0])
@@ -55,16 +58,17 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 			}
 		}
 		
+		//een nieuw onderdeel aanmaken met de ingevoerde gegevens
 		onderdeel = new Onderdeel(Integer.parseInt(userinfo[1]), userinfo[0], Double.parseDouble(userinfo[2]));
-		if(error){
+		if(error){ //eerste error bericht
 			req.setAttribute("error", "één of meerdere velden waren leeg");
 			rd = req.getRequestDispatcher("onderdeeltoevoegen.jsp");
 		}
-		if(error2){
+		if(error2){//tweede error bericht
 			req.setAttribute("error", "Dit onderdeel bestaat al, ga naar onderdeel wijzigen om dit onderdeel aan te passen");
 			rd = req.getRequestDispatcher("onderdeeltoevoegen.jsp");
 		}
-		if(!error && !error2){
+		if(!error && !error2){ //geen errors, alles kan doorgevoerd worden
 			onderdelen.add(onderdeel);
 			req.setAttribute("msgs", "Onderdeel succesvol toegevoegd!");
 			rd = req.getRequestDispatcher("voorraadoverzicht.jsp");

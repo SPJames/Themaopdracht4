@@ -31,6 +31,7 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[3];
 		
+		//de ingevoerde gegevens
 		userinfo[0] = req.getParameter("type");
 		userinfo[1] = req.getParameter("aantal");
 		userinfo[2] = req.getParameter("PrijsLiter");
@@ -39,15 +40,18 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 		boolean error = false;	//leeg veld
 		boolean error2 = false;	//bestaat al
 		
+		//is er een veld leeg?
 		for(int i = 0;  i < 3; i++){
 			if(userinfo[i].equals(null) || userinfo[i].equals("")){
 				error = true;
 			}
 		}
 		
+		//alle aanwezige brandstof opvragen
 		@SuppressWarnings("unchecked")
 		ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) sc.getAttribute("alleBrandstof");
 		
+		//bestaat deze brandstof al?
 		RequestDispatcher rd = null;
 		for(Brandstof b : brandstoffen){
 			if(b.getBrandstofType() == userinfo[0])
@@ -56,16 +60,17 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 			}
 		}
 		
-		brandstof = new Brandstof(userinfo[0], Integer.parseInt(userinfo[1]), Double.parseDouble(userinfo[2]));
-		if(error){
+		//nieuwe brandstof aanmaken met ingevoerde gegevens
+		brandstof = new Brandstof(userinfo[0], Double.parseDouble(userinfo[1]), Double.parseDouble(userinfo[2]));
+		if(error){//error 1, er was een leeg veld
 			req.setAttribute("error", "één of meerdere velden waren leeg");
 			rd = req.getRequestDispatcher("brandstoftoevoegen.jsp");
 		}
-		if(error2){
+		if(error2){//error 2, deze brandstof bestond al
 			req.setAttribute("error", "Dit brandstoftype bestaat al, ga naar brandstof wijzigen om dit type aan te passen");
 			rd = req.getRequestDispatcher("brandstoftoevoegen.jsp");
 		}
-		if(!error && !error2){
+		if(!error && !error2){ //geen errors de brandstof is toegevoegd
 			brandstoffen.add(brandstof);
 			req.setAttribute("msgs", "Brandstof succesvol toegevoegd!");
 			rd = req.getRequestDispatcher("voorraadoverzicht.jsp");

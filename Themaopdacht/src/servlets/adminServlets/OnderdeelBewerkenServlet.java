@@ -31,6 +31,7 @@ public class OnderdeelBewerkenServlet extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) sc.getAttribute("alleOnderdelen");
 		
+		//de doorgegeven/gewijzigde gegevens
 		userinfo[0] = req.getParameter("artikelid");
 		userinfo[1] = req.getParameter("artikelnaam");
 		userinfo[2] = req.getParameter("aantal");
@@ -39,6 +40,7 @@ public class OnderdeelBewerkenServlet extends HttpServlet {
 		Onderdeel onderdeel = null;
 		RequestDispatcher rd = null;
 			
+		//het te wijzigen onderdeel pakken
 		for(Onderdeel o : onderdelen){
 			if(o.getArtikelNr() == Integer.parseInt((userinfo[0])))
 			{
@@ -47,15 +49,15 @@ public class OnderdeelBewerkenServlet extends HttpServlet {
 		}
 			
 		for (int i = 0; i < 4; i++) {
-			// foutmelding
+			// er is een veld niet ingevuld
 			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
 				req.setAttribute("error", "Sommige velden waren leeg.");
 				rd = req.getRequestDispatcher("onderdeelbewerken.jsp");
 				break;
 			} else {
-				if (i == 2) {
+				if (i == 2) { //aantal onderdelen opslaan
 					onderdeel.setAantal(Integer.parseInt(userinfo[2]));
-				} else if (i==3) {
+				} else if (i==3) { //prijs per artikel opslaan
 					onderdeel.setPrijsArtikel(Double.parseDouble(userinfo[3]));
 					req.setAttribute("msgs", "Onderdeel succesvol aangepast!");
 					rd = req.getRequestDispatcher("voorraadoverzicht.jsp");

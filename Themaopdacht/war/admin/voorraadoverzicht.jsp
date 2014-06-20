@@ -13,9 +13,11 @@
 		<h2>Voorraad overzicht</h2>
 
 		<jsp:include page="../messages.jsp" />
+		<!-- deze buttons roepen de script verwissel aan (war/scripts/verwissel.js) -->
 		<button onClick="swap('onderdelen','brandstof')">Onderdelen</button>
 		<button onClick="swap('brandstof', 'onderdelen')">Brandstof</button>
-		<div id="onderdelen">
+		
+		<div id="onderdelen">	<!-- In deze div staat een tabel met alle aanwezige onderdelen -->
 		<%
 			@SuppressWarnings("unchecked")
 			ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) application.getAttribute("alleOnderdelen");
@@ -50,7 +52,8 @@
 		<a href='onderdeeltoevoegen.jsp'>Nieuw Onderdeel Toevoegen</a>
 		</div>
 		
-		<div id="brandstof" style="display:none">
+		<!-- In deze div staat de tabel voor alle aanwezige brandstof -->
+		<div id="brandstof" style="display:none"> 
 		<%
 			@SuppressWarnings("unchecked")
 			ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) application.getAttribute("alleBrandstof");
