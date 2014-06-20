@@ -18,8 +18,9 @@ public class SecurityFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest r2 = (HttpServletRequest) req;
-		if (r2.getSession().getAttribute("user") == null) {
-			r2.getRequestDispatcher("/login.jsp").forward(req, resp);
+		// Klant mag niet bij Admin- en/of Monteur-gedeelte komen
+		if (r2.getSession().getAttribute("Klant") == null) {
+			r2.getRequestDispatcher("/atd/login.jsp").forward(req, resp);
 		} else {
 			chain.doFilter(req, resp);
 		}
