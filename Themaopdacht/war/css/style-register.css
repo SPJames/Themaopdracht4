@@ -119,3 +119,17 @@ label {
 	color: blue;
 	background: #E2EAED;
 }
+
+#select {
+	margin-top: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 10px;
+}
+
+textarea {
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	max-width: 700px;
+}

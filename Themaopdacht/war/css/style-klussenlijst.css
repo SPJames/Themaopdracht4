@@ -36,6 +36,7 @@ table,th,td {
 	border: 1px solid black;
 	margin-right: auto;
 	margin-left: auto;
+	max-width: 800px;
 }
 
 tr {

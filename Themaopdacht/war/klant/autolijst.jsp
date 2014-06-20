@@ -40,7 +40,7 @@
 		<%
 			} else {
 		%>
-		<p>U heeft nog geen autos.</p>
+		<p>U heeft nog geen auto's.</p>
 		<%
 			}
 					break;

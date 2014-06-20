@@ -20,6 +20,7 @@
 			<input type="hidden" name="klantid" value="<%=id%>" /> 
 			<input type="hidden" name="name" value="<%=name%>" />
 
+			<div id="select">
 			<!-- Auto -->
 			<select name="auto">
 				<%
@@ -50,6 +51,7 @@
 				<option value="tank">Tanken</option>
 			</select>
 		
+			</div>
 			
 			<!-- beschrijving klus -->
 			<textarea rows="10" cols="50" name="comments"></textarea>
