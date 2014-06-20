@@ -34,7 +34,7 @@ public class KlusAfrondenServlet extends HttpServlet {
 		for (Klus k : klussen) {
 			if (id == k.getKlusNummer()) {
 				k.setKlusafgerond(true);
-				req.setAttribute("msgs", "klus " + id + " succesvol afgerond");
+				req.setAttribute("msgs", "Klus " + id + " succesvol afgerond");
 
 				// klanten gegevens ophalen voor email
 				@SuppressWarnings("unchecked")

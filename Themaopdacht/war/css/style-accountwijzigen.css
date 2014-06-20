@@ -91,6 +91,16 @@ label {
 	margin-right: auto;
 }
 
+#error {
+	border: 2px solid #FF7373;
+	border-radius: 5px;
+	background: red;
+	min-height: 10px;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .down-afspraak {
 	margin-top: 230px;
 	border: 2px solid black;

@@ -18,16 +18,17 @@ public class RegistreerMonteurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Er wordt een gebruikersnaam en een wachtwoord opgegeven.
-	 * Er wordt gecontroleerd of de gegevens ingevoerd zijn.
-	 * Zoniet dan wordt de admin teruggestuurd naar deze pagina en wordt er een foutmelding weergegeven.
+	 * Er wordt een gebruikersnaam en een wachtwoord opgegeven. Er wordt
+	 * gecontroleerd of de gegevens ingevoerd zijn. Zoniet dan wordt de admin
+	 * teruggestuurd naar deze pagina en wordt er een foutmelding weergegeven.
 	 * 
-	 * Als alles ingevuld is wordt gecontroleert of de wachtworden overeenkomen met elkaar.
-	 * Zo niet dan wordt de admin teruggestuurd naar deze pagina en wordt er een foutmelding weergegeven.
+	 * Als alles ingevuld is wordt gecontroleert of de wachtworden overeenkomen
+	 * met elkaar. Zo niet dan wordt de admin teruggestuurd naar deze pagina en
+	 * wordt er een foutmelding weergegeven.
 	 * 
-	 * Als er geen foutmeldingen zijn wordt de monteur opgeslagen, aan de lijst van monteurs toegevoegd,
-	 * wordt de admin doorgestuurd naar de index en wordt een melding weergegeven dat het registreren
-	 * gelukt is.
+	 * Als er geen foutmeldingen zijn wordt de monteur opgeslagen, aan de lijst
+	 * van monteurs toegevoegd, wordt de admin doorgestuurd naar de index en
+	 * wordt een melding weergegeven dat het registreren gelukt is.
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -52,19 +53,21 @@ public class RegistreerMonteurServlet extends HttpServlet {
 		if (!userinfo[1].equals(userinfo[2])) {
 			error = true;
 		}
+
 		RequestDispatcher rd = null;
 
-		if (error) {
-			// foutmelding							monteur heeft geen email
-			req.setAttribute("error", "Invoer was leeg of de email/het wachtwoord matchte niet");
-			rd = req.getRequestDispatcher("registermonteur.jsp");
+		if (error == true) {
+			// foutmelding
+			req.setAttribute("error","Invoer was leeg of wachtwoord is niet gelijk");
+			rd = req.getRequestDispatcher("registreermonteur.jsp");
 
 		} else {
 			// monteur opslaan
 			Monteur m = new Monteur(userinfo[0], userinfo[1]);
 			// m.schrijfWeg(userinfo);
 			Monteurs.add(m);
-			req.setAttribute("msgs", "De nieuwe monteur "+userinfo[0]+" is succesvol opgeslagen!");
+			req.setAttribute("msgs", "De nieuwe monteur " + userinfo[0]
+					+ " is succesvol opgeslagen!");
 			rd = req.getRequestDispatcher("../index.jsp");
 
 		}
