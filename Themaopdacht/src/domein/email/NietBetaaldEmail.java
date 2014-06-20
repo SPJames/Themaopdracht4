@@ -10,10 +10,20 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * Deze klasse genereert een email als een klant niet op tijd betaald heeft
+ */
 public class NietBetaaldEmail {
 
+	/**
+	 * Deze methode logt eerst in bij de account die de mail moet sturen.
+	 * De mail is van te voren opgesteld en wordt gestuurd naar het megegeven emailadres.
+	 * @param to het emailadres waar de mail naartoe moet worden gestuurd
+	 * @param fn de naam van de ontvangende klant
+	 */
 	public NietBetaaldEmail(String to, String fn) {
 		
+		//inloggen
 		final String username = "atd.probe0001@gmail.com";
 		final String password = "Wachtwoord1";
 
@@ -31,7 +41,7 @@ public class NietBetaaldEmail {
 				});
 
 		try {
-		
+			//de gegenereerde email. de naam van de klant wordt ingevuld
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(to));
 			message.setRecipients(Message.RecipientType.TO,

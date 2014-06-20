@@ -28,7 +28,7 @@ public class Parkeren extends DienstType {
 
 	/**
 	 * deze methode vult het aantal geparkeerde dagen in
-	 * @param aD de int waarde voor aantalDagen
+	 * @param aD de int waarde voor aantal geparkeerde dagen
 	 */
 	public void setAantalDagen(int aD) {
 		aantalDagen = aD;

@@ -19,8 +19,8 @@ public class Onderhoud extends DienstType {
 	/**
 	 * Deze methode maakt een onderhoudsdienst aan en
 	 * vult het aantal gewerkte manuren en de kosten per manuren in
-	 * @param mU is de double voor manUren
-	 * @param pPM is de double voor prijsPerManuur
+	 * @param mU is de double voor het aantal gewerkte manUren
+	 * @param pPM is de double voor de prijsPerManuur
 	 */
 	public Onderhoud(double mU, double pPM) {
 		super();
@@ -91,10 +91,4 @@ public class Onderhoud extends DienstType {
 		totaal = totaalManuurPrijs() + deOnderdelen.totaalPrijsOnderdeel();
 		return totaal;
 	}
-
-	//KAN DIT WEG?
-	// public void setGebruikteOnderdelen(int gO){
-	// gebruikteOnderdelen = gO;
-	// }
-
 }

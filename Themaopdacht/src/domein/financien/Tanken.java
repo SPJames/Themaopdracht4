@@ -39,6 +39,7 @@ public class Tanken extends DienstType {
 	 * Deze methode vult het goede type brandstof in
 	 * @param br het type brandstof
 	 */
+	//deze methode moet want de prijs per liter verschilt per brandstof type
 	public void setDeBrandstof(Brandstof br) {
 		deBrandstof = br;
 	}

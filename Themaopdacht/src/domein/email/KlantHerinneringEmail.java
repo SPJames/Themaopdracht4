@@ -9,10 +9,20 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * deze klasse genereerd een email als de klant een tijd niet geweest is.
+ */
 public class KlantHerinneringEmail {
 
+	/**
+	 * deze methode logt eerst in bij de account die de mail moet sturen
+	 * de gegenereerde mail wordt gestuurd naar het meegegeven email-adres
+	 * @param to het emailadres waar de mail naartoe gestuurd moet worden
+	 * @param fn de naam van de klant
+	 */
 	public KlantHerinneringEmail(String to, String fn) {
 
+		//inloggen
 		final String username = "atd.probe0001@gmail.com";
 		final String password = "Wachtwoord1";
 
@@ -31,6 +41,7 @@ public class KlantHerinneringEmail {
 
 		try {
 
+			//de gegenereerde mail, de naam van de klant wordt ingevuld
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(to));
 			message.setRecipients(Message.RecipientType.TO,
