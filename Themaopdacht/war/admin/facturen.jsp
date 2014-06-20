@@ -9,52 +9,46 @@
 
 		<%@ page import="domein.financien.Factuur"%>
 		<%@ page import="domein.klantenbinding.Klant"%>
-		<%@ page import="domein.klusbeheer.Klus" %>
+		<%@ page import="domein.klusbeheer.Klus"%>
 		<%@ page import="java.util.*"%>
 
-		<div>
+		<jsp:include page="message.jsp" />
+
+		<%
+			@SuppressWarnings("unchecked")
+			ArrayList<Factuur> facturen = (ArrayList<Factuur>) application
+					.getAttribute("alleFacturen");
+			if (facturen.size() > 0) {
+		%>
+		<table>
+			<tr>
+				<th>Factuur ID</th>
+				<th>Totaalprijs (btw + korting)</th>
+			</tr>
 			<%
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
+				for (Factuur f : facturen) {
 			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-		</div>
-			<%
-				}
-			%>
-		</div>
-				
-				<%
-				@SuppressWarnings("unchecked")
-				ArrayList<Factuur> facturen = (ArrayList<Factuur>) application.getAttribute("alleFacturen");
-				if (facturen.size() > 0) {
-			%>
-			<table>
-				<tr>
-					<th>Factuur ID</th>
-					<th>Totaalprijs (btw + korting)</th>
-				</tr>
-				<%
-					for (Factuur f : facturen) {
-				%>
-				<tr>
-					<td><%=f.getFactuurNummer()%></td>
-					<td><%=f.getTotaalprijsKorting()%></td>
-				</tr>
-				<%
-				}
-				%>
-			</table>
-			<%
-				}else {
-			%>
-			<p>Er zijn nog geen facturen.</p>
+			<tr>
+				<td><%=f.getFactuurNummer()%></td>
+				<td><%=f.getFactuurNummer()%></td>
+				<td><%=f.getTotaalprijsExBtw()%></td>
+				<hr />
+				<td><%=f.getTotaalprijs()%></td>
+				<td><%=f.getKorting()%></td>
+				<td><%=f.getTotaalprijsKorting()%></td>
+			</tr>
+
 			<%
 				}
 			%>
+		</table>
+		<%
+			} else {
+		%>
+		<p>Er zijn nog geen facturen.</p>
+		<%
+			}
+		%>
 	</div>
 </body>
 </html>

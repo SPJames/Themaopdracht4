@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import servlets.email.RegisterEmail;
+import domein.email.RegisterEmail;
 import domein.klantenbinding.Klant;
 //import Database.Database;
 

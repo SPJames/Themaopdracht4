@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import servlets.email.KlusAfgerondEmail;
+import domein.email.KlusAfgerondEmail;
 import domein.klantenbinding.Klant;
 import domein.klusbeheer.Klus;
 /**
@@ -47,7 +47,6 @@ public class KlusAfrondenServlet extends HttpServlet {
 					}
 				}
 
-				// hier zit nog een fout!!
 				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()),
 						klant.getNaam());
 			}
