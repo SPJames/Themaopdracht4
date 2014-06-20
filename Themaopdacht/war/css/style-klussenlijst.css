@@ -60,6 +60,11 @@ h2 {
 	padding: 10px;
 }
 
+p {
+	text-align: left;
+	max-width: 600px;
+}
+
 #klus {
 	background: #fff;
 	box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.15);

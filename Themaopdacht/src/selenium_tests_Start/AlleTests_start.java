@@ -4,9 +4,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import selenium_admin_tests.AlleTestsAdmin;
-import selenium_klant_tests.AlleTests;
-import selenium_monteur_tests.AlleTestsMonteur;
+import selenium_admin_tests.*;
+import selenium_klant_tests.*;
+import selenium_monteur_tests.*;
 
 @RunWith(Suite.class)
 @SuiteClasses({ AlleTests.class, AlleTestsMonteur.class, AlleTestsAdmin.class })

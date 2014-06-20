@@ -12,7 +12,7 @@
 	<div id="Content">
 		<h2>Voorraad overzicht</h2>
 
-		<jsp:include page="../messages.jsp" />
+		<%-- <jsp:include page="../messages.jsp" /> --%>
 		<!-- deze buttons roepen de script verwissel aan (war/scripts/verwissel.js) -->
 		<button onClick="swap('onderdelen','brandstof')">Onderdelen</button>
 		<button onClick="swap('brandstof', 'onderdelen')">Brandstof</button>

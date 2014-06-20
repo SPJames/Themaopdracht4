@@ -16,7 +16,7 @@ public class Factuur {
 	
 	private double btw = 1.21;
 	
-	private double korting = 1.0;
+	private double korting;
 	
 	private double manurenprijs;
 	private HashMap<String, Double> onderdelenprijs = new HashMap<String, Double>();
@@ -52,7 +52,7 @@ public class Factuur {
 	 */
 	public void setManurenprijs(Klus k) {
 		double prijs = 0.0;
-		prijs = k.getManuren() *  0.0; // 0.0 = prijs per uur
+		prijs = k.getManuren() *  10.0; // 10.0 = prijs per uur
 		
 		manurenprijs = prijs;
 	}
@@ -72,7 +72,7 @@ public class Factuur {
 	public void setOnderdelenprijs(Klus k) {
 		HashMap<Onderdeel, Integer>gebruikteOnderdelen = k.getGebruikteOnderdelen();
 		for (Onderdeel o : gebruikteOnderdelen.keySet()) {
-			double a = gebruikteOnderdelen.get(o) * o.getPrijsArtikel(); // 0.0 = prijs per uur
+			double a = gebruikteOnderdelen.get(o) * o.getPrijsArtikel(); 
 		    onderdelenprijs.put(o.getNaam(), a);
 		}
 	}
@@ -92,7 +92,7 @@ public class Factuur {
 	public void setBrandstofprijs(Klus k) {
 		HashMap<Brandstof, Double>gebruikteBrandstof = k.getGebruikteBrandstof(); // get de gebruikte brandstof
 		for (Brandstof b : gebruikteBrandstof.keySet()) {
-			double a = gebruikteBrandstof.get(b) * b.getPrijsPerLiter(); // 0.0 = prijs per uur
+			double a = gebruikteBrandstof.get(b) * b.getPrijsPerLiter(); 
 		    brandstofprijs.put(b.getBrandstofType(), a);
 		}
 	}
@@ -118,7 +118,7 @@ public class Factuur {
 	 * @return de totaalprijs met btw en korting
 	 */
 	public double getTotaalprijsKorting() {
-		return (totaalprijs * korting) * btw;
+		return (totaalprijs/korting) * btw;
 	}
 
 	/**

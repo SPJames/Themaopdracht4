@@ -17,22 +17,15 @@
 			ArrayList<Factuur> facturen = (ArrayList<Factuur>) application
 					.getAttribute("alleFacturen");
 		%>
-
-		<p>Factuur ID</p><p><%=f.getFactuurNummer()%></p>
-		<br />
-
 		<%
 			for (Factuur f : facturen) {
 		%>
-		<p>Totaalprijs (zonder Btw):</p><p><%=f.getTotaalprijsExBtw()%></p>
-		<br />
+		<p>Factuur ID</p><p><%=f.getFactuurNummer()%></p><br />
 		<hr width="400" />
-		<p>Totaalprijs (met Btw):</p><p><%=f.getTotaalprijs()%></p>
-		<br />
-		<p>Kortingsprecentage:</p><p><%=f.getKorting()%></p>
-		<br />
-		<p>Totaalprijs (met korting):</p><p><%=f.getTotaalprijsKorting()%></p>
-		<br />
+		<p>Totaalprijs (zonder Btw):</p><p><%=f.getTotaalprijsExBtw()%></p><br />
+		<p>Totaalprijs (met Btw):</p><p><%=f.getTotaalprijs()%></p><br />
+		<p>Kortingsprecentage:</p><input type="text" name="korting" /><br />
+		<p>Totaalprijs (met korting):</p><p><%=f.getTotaalprijsKorting()%></p><br />
 
 		<%
 			}
