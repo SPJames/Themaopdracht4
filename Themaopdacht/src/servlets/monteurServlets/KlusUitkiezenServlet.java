@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domein.klusbeheer.Klus;
+import domein.klusbeheer.Weekplanning;
 
 /**
  * In deze servlet kunnen monteurs een klus uitkiezen om aan te werken.
@@ -40,6 +41,10 @@ public class KlusUitkiezenServlet extends HttpServlet {
 		for (Klus k : klussen) {
 			if ((k.getKlusNummer() == klusid) && !(werknemer.equals(k.getWerknemer()))) {
 				k.setWerknemer(werknemer);
+				//plan klus in
+				Weekplanning week = (Weekplanning) req.getServletContext().getAttribute("planning");
+				week.addKlus(k);
+				//
 				succes = true;
 				break;
 			}

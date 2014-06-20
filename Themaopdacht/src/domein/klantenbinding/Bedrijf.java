@@ -2,7 +2,6 @@ package domein.klantenbinding;
 
 import java.util.ArrayList;
 
-import domein.klusbeheer.Planner;
 import domein.voorraadbeheer.Voorraad;
 /**
  * deze klasse houdt de lijst van met alle klanten bij
@@ -13,7 +12,7 @@ import domein.voorraadbeheer.Voorraad;
 public class Bedrijf {
 	private ArrayList<Klant> alleKlanten = new ArrayList<Klant>();
 	private String bedrijfsNaam;
-	private Planner dePlanner;
+	//private Planner dePlanner;
 	private Voorraad deVoorraad;
 
 	/**
@@ -121,26 +120,12 @@ public class Bedrijf {
 		bedrijfsNaam = nm;
 	}
 
-	//in de onderstaande methoden worden de klassen waarin arraylists worden gemaakt geinitialiseerd
-	//zodat er in elke klasse met dezelfde arraylists gewerkt worden
-	public Planner getDePlanner() {
-		return dePlanner;
-	}
-
-	public void setDePlanner(Planner p) {
-		dePlanner = p;
-	}
-
 	public Voorraad getDeVoorraad() {
 		return deVoorraad;
 	}
 
 	public void setDeVoorraad(Voorraad v) {
 		deVoorraad = v;
-	}
-
-	public Planner getDeFinancien() {
-		return dePlanner;
 	}
 	
 	//het initialiseren is gestopt missen we niet een setDeFinancien?

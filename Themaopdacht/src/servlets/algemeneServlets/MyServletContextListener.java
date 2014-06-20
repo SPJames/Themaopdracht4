@@ -10,6 +10,7 @@ import domein.klantenbinding.Klant;
 import domein.klusbeheer.Klus;
 import domein.klusbeheer.Monteur;
 import domein.klusbeheer.Parkeerplaats;
+import domein.klusbeheer.Weekplanning;
 import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
@@ -36,6 +37,7 @@ public class MyServletContextListener implements ServletContextListener {
 		ArrayList<Onderdeel> List6 = new ArrayList<Onderdeel>();
 		ArrayList<Factuur> List7 = new ArrayList<Factuur>();
 		ArrayList<Brandstof> List8 = new ArrayList<Brandstof>();
+		Weekplanning planning = new Weekplanning();
 		
 		// users initaliseren
 		Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com", "Test", "derp");
@@ -74,6 +76,7 @@ public class MyServletContextListener implements ServletContextListener {
 		sce.getServletContext().setAttribute("alleOnderdelen", List6);
 		sce.getServletContext().setAttribute("alleFacturen", List7);
 		sce.getServletContext().setAttribute("alleBrandstof", List8);
+		sce.getServletContext().setAttribute("planning", planning);
 		
 	}
 
