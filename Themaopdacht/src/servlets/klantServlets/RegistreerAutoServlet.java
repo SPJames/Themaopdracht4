@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import domein.klantenbinding.Auto;
 import domein.klantenbinding.Klant;
 
+/**
+ * In deze servlet kan een klant een auto registreren.
+ */
 public class RegistreerAutoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * In deze servlet kan een klant een auto registreren.
 	 * Hiervoor moet het merk en het kenteken worden opgegeven.
 	 * 
 	 *  Eerst wordt gekeken of alle velden ingevuld zijn. Als dit niet het geval was wordt de gebruiker

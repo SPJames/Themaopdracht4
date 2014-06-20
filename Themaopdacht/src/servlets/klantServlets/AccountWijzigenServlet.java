@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.klantenbinding.Klant;
 
+/**
+ * In deze servlet kan een klant de gegevens van zijn/haar account wijzigen.
+ */
 public class AccountWijzigenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * In deze servlet kan een klant de gegevens van zijn/haar account wijzigen.
 	 * Eerst wordt de klant opgezocht.
 	 * 
 	 * Na het veranderen wordt gecontroleert of alle vakjes ingevuld zijn, zoniet wordt

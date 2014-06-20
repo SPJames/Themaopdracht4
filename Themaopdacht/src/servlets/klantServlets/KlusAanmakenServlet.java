@@ -14,12 +14,14 @@ import domein.klantenbinding.Auto;
 import domein.klusbeheer.Klus;
 import domein.klusbeheer.Parkeerplaats;
 
+/**
+ * In deze servlet kan een klant een afspraak maken.
+ */
 public class KlusAanmakenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * In deze servlet kan een klant een afspraak maken.
 	 * De username, klantid, diensttype, comments en een auto moeten worden meegegeven.
 	 * 
 	 * Er wordt gecontroleerd of alle velden zijn ingevuld, als dit niet zo is wordt de klant teruggestuurd
