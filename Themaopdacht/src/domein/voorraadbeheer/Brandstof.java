@@ -5,8 +5,8 @@ package domein.voorraadbeheer;
  */
 public class Brandstof {
 	private String brandstofType;
-	private int liter, tsic;
-	private double prijsPerLiter;
+	private int tsic;
+	private double prijsPerLiter, liter;
 	private static int getal = 1;
 
 	/**
@@ -16,7 +16,7 @@ public class Brandstof {
 	 * @param l hoeveelheid liters
 	 * @param ppl de prijs per liter
 	 */
-	public Brandstof(String tp, int l, double ppl) {
+	public Brandstof(String tp, double l, double ppl) {
 		brandstofType = tp;
 		liter = l;
 		tsic = getal++;
@@ -35,7 +35,7 @@ public class Brandstof {
 	 * deze methode vraagt het aantal liters op
 	 * @return het aantal liters
 	 */
-	public int getLiter() {
+	public double getLiter() {
 		return liter;
 	}
 
@@ -59,7 +59,7 @@ public class Brandstof {
 	 * deze methode vult het aantal liters in
 	 * @param l het aantal liters
 	 */
-	public void setLiter(int l) {
+	public void setLiter(double l) {
 		liter = l;
 	}
 

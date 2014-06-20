@@ -13,10 +13,17 @@ import domein.email.AutoControlenEmail;
 import domein.email.KlantHerinneringEmail;
 import domein.email.NietBetaaldEmail;
 import domein.klantenbinding.Klant;
-
+/**
+ * In deze klasse kan een email gekozen worden die naar een te kiezen klant gestuurd gaat worden
+ */
 public class KiezenEmail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Eerst wordt aangegeven naar welke klant de mail gestuurd moet worden.
+	 * Hierna wordt aangegeven welk type email er naar deze klant gestuurd gaat worden.
+	 * De gebruiker wordt teruggestuurd naar klantoverzicht.jsp en er wordt een melding weergegeven
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
