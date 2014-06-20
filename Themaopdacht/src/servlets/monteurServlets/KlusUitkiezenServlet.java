@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.klusbeheer.Klus;
 
+/**
+ * In deze servlet kunnen monteurs een klus uitkiezen om aan te werken.
+ */
 public class KlusUitkiezenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * In deze servlet kunnen monteurs een klus uitkiezen om aan te werken.
 	 * Er wordt gecontroleert of de klus al een werknemer heeft en of deze overeenkomt
 	 * met de ingelogde monteur. 
 	 * 

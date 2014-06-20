@@ -11,13 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import servlets.email.KlusAfgerondEmail;
 import domein.klantenbinding.Klant;
 import domein.klusbeheer.Klus;
-
+/**
+ * In deze servlet kan een klus worden afgerond. 
+ */
 public class KlusAfrondenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * In deze servlet kan een klus worden afgerond. De klusstatus wordt op
+	 * De klusstatus wordt op
 	 * afgerond gezet en er verschijnt een bericht dat de klus succesvol is
 	 * afgerond. De monteur wordt doorgestuurd naar de klussenlijst.
 	 */

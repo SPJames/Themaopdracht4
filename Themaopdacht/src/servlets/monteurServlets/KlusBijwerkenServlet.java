@@ -15,11 +15,13 @@ import domein.klusbeheer.Klus;
 import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
+/**
+ * In deze servlet kan een klus bijgewerkt worden.
+ */
 public class KlusBijwerkenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * In deze servlet kan een klus bijgewerkt worden.
 	 * Eerst wordt de klus opgehaalt.
 	 * 
 	 * Aan het eind wordt gecontroleert of alle velden zijn ingevuld. Zo niet dan wordt de monteur
