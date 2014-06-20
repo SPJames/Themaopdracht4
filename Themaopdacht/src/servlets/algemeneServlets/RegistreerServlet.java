@@ -1,5 +1,6 @@
 package servlets.algemeneServlets;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -12,12 +13,14 @@ import servlets.email.RegisterEmail;
 import domein.klantenbinding.Klant;
 //import Database.Database;
 
+/**
+ * Deze servlet wordt gebruikt om een nieuwe klant te registreren.
+ */
 public class RegistreerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Deze servlet wordt gebruikt om een nieuwe klant te registreren.
 	 * Door de user moeten een aantal vakken worden ingevuld.
 	 * 
 	 * Er wordt eerst gecontroleert of alle vakken ingevuld zijn, en of de ingevoerde wachtwoorden en 

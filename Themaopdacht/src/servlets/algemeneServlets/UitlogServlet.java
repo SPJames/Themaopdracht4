@@ -6,12 +6,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Via deze server kan een gebruiker uitloggen.
+ */
 public class UitlogServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Via deze server kan een gebruiker uitloggen.
 	 * De attributen die waren opgeslagen bij het inloggen worden leeggemaakt en de 
 	 * gebruiker wordt doorgestuurd naar de hoofdpagina.
 	 */

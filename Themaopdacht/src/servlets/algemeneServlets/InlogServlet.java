@@ -14,12 +14,14 @@ import javax.servlet.http.HttpSession;
 import domein.klantenbinding.Klant;
 import domein.klusbeheer.Monteur;
 
+/**
+ * Via deze servlet kan er ingelogd worden
+ */
 public class InlogServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Via deze servlet kan er ingelogd worden
 	 * Er wordt gecontroleert of de vakken username en pwd zijn ingevuld
 	 * 
 	 * Als username en/of wachtwoord niet zijn ingevuld wordt de gebruiker teruggestuurd naar 
