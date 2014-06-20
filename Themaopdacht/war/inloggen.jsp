@@ -9,15 +9,16 @@
 		<jsp:include page="message.jsp" />
 		<form action='InlogServlet.do' method='get'>
 			<fieldset>
-				<label for="username">Username</label> 
-					<input type='text' name='username' placeholder="Username" class="box" value="${param.username}" /><br /> 
-				<label for="pwd">Wachtwoord</label>
-					<input type='password' name='pwd' placeholder="Wachtwoord" class="box" /><br /> 
-				<input type='submit' name='Go' class="down" /><br />
+				<label for="username">Username</label> <input type='text'
+					name='username' placeholder="Username" class="box"
+					value="${param.username}" /><br /> <label for="pwd">Wachtwoord</label>
+				<input type='password' name='pwd' placeholder="Wachtwoord"
+					class="box" /><br /> <input type='submit' value="Verzenden"
+					name='Go' class="down" /><br />
 			</fieldset>
 		</form>
 	</div>
 
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
