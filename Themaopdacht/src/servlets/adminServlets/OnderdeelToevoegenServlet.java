@@ -12,9 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.voorraadbeheer.Onderdeel;
 
+/**
+ * In deze klasse kan de admin een nieuw onderdeel toevoegen aan de lijst onderdelen
+ */
 public class OnderdeelToevoegenServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Als er een vak leeg is wordt de gebruiker teruggestuurd naar dit scherm en wordt er een foutmelding
+	 * weergegeven.
+	 * als het onderdeel al in de lijst stond wordt de gebruiker naar dit scherm teruggestuurd
+	 * en wordt er een foutmelding gegeven.
+	 * als er geen foutmeldingen gegeven zijn wordt het onderdeel aan de lijst toegevoegd en wordt
+	 * de gebruiker teruggestuurd naar voorraadoverzicht.jsp waar een melding gegeven wordt
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[3];

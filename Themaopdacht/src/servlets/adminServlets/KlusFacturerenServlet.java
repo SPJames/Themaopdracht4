@@ -11,14 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.financien.Factuur;
 import domein.klusbeheer.Klus;
-
+/**
+ * In deze klasse wordt de facuur van een klus gemaakt.
+ */
+ 
 public class KlusFacturerenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * In deze klasse wordt de facuur van een klus gemaakt.
-	 * 
 	 * De klus wordt opgehaald. 
 	 * Er wordt een factuur bij aangemaakt en deze wordt aan de lijst facturen toegevoegd.
 	 * Hierna wordt de klus verwijdert uit de lijst klussen.

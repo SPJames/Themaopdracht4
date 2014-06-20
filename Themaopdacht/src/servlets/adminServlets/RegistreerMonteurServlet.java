@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.klusbeheer.Monteur;
 
+/**
+ * In deze servlet kan de admin een monteur toevoegen.
+ */
 public class RegistreerMonteurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * In deze servlet kan de admin een monteur toevoegen.
-	 * 
 	 * Er wordt een gebruikersnaam en een wachtwoord opgegeven.
 	 * Er wordt gecontroleerd of de gegevens ingevoerd zijn.
 	 * Zoniet dan wordt de admin teruggestuurd naar deze pagina en wordt er een foutmelding weergegeven.

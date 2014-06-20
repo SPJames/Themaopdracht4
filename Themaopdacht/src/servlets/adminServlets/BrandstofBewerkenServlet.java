@@ -12,9 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.voorraadbeheer.Brandstof;
 
+/**
+ * In deze klasse kan de administrator de hoeveelheid en/of prijs van brandstof aanpassen
+ */
 public class BrandstofBewerkenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-		
+	
+	/**
+	 * In deze methode worden de gewijzigde gegevens opgeslagen bij het juiste brandstoftype
+	 * Als er velden leegwaren wordt de gebruiker teruggestuurd naar deze pagina en wordt er een
+	 * foutmelding gegeven.
+	 * Als alles was ingevuld worden de gegevens gewijzigd en wordt de gebruiker doorgestuurd naar
+	 * voorraadoverzicht.jsp en wordt er een bericht weergegeven.
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[4];

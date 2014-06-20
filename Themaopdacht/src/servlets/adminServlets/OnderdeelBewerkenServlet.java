@@ -12,9 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.voorraadbeheer.Onderdeel;
 
+/**
+ * In deze klasse kan de admin de prijs en/of de hoeveelheid aanwezige onderdelen wijzigen
+ */
 public class OnderdeelBewerkenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 		
+	/**
+	 * Er wordt gecontroleert of alle vakken ingevuld zijn, zoniet dan wordt de gebruiker 
+	 * teruggestuurd naar dit scherm en wordt er een foutmelding weergegeven.
+	 * als alles ingevuld is worden de gewijzigde gegevens opgeslagen en wordt de gebruiker terug
+	 * gestuurd naar voorraadoverzicht.jsp en wordt er een melding weergegeven
+	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[4];
