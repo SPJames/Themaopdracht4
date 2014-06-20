@@ -11,17 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import domein.email.KlusAfgerondEmail;
 import domein.klantenbinding.Klant;
 import domein.klusbeheer.Klus;
+
 /**
- * In deze servlet kan een klus worden afgerond. 
+ * In deze servlet kan een klus worden afgerond.
  */
 public class KlusAfrondenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * De klusstatus wordt op
-	 * afgerond gezet en er verschijnt een bericht dat de klus succesvol is
-	 * afgerond. De monteur wordt doorgestuurd naar de klussenlijst.
+	 * De klusstatus wordt op afgerond gezet en er verschijnt een bericht dat de
+	 * klus succesvol is afgerond. De monteur wordt doorgestuurd naar de
+	 * klussenlijst.
 	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -42,7 +43,7 @@ public class KlusAfrondenServlet extends HttpServlet {
 
 				Klant klant = null;
 				for (Klant kl : klanten) {
-					if (id == kl.getId()) {
+					if (k.getKlantID() == kl.getId()) {
 						klant = kl;
 					}
 				}

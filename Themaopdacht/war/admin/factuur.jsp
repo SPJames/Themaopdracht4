@@ -5,45 +5,44 @@
 <body>
 	<jsp:include page="../menu.jsp" />
 	<div id="klus">
-		<h2>Facturen</h2>
+		<h2>Factuur Berekenen</h2>
 
 		<%@ page import="domein.financien.Factuur"%>
 		<%@ page import="domein.klantenbinding.Klant"%>
 		<%@ page import="domein.klusbeheer.Klus"%>
 		<%@ page import="java.util.*"%>
 
-		<jsp:include page="message.jsp" />
-
 		<%
 			@SuppressWarnings("unchecked")
 			ArrayList<Factuur> facturen = (ArrayList<Factuur>) application
 					.getAttribute("alleFacturen");
-			if (facturen.size() > 0) {
 		%>
-		<table>
-			<tr>
-				<th>Factuur ID</th>
-				<th>Totaalprijs (btw + korting)</th>
-			</tr>
-			<%
-				for (Factuur f : facturen) {
-			%>
-			<tr>
-				<td><%=f.getFactuurNummer()%></td>
-				<td><%=f.getTotaalprijsKorting()%></td>
-			</tr>
 
-			<%
-				}
-			%>
-		</table>
+		<p>Factuur ID</p>
+		<br />
+		<p>Totaalprijs</p>
+		<br />
+
 		<%
-			} else {
+			for (Factuur f : facturen) {
 		%>
-		<p>Er zijn nog geen facturen.</p>
+
+		<p><%=f.getFactuurNummer()%></p>
+		<br />
+		<p><%=f.getTotaalprijsExBtw()%></p>
+		<br />
+		<hr />
+		<p><%=f.getTotaalprijs()%></p>
+		<br />
+		<p><%=f.getKorting()%></p>
+		<br />
+		<p><%=f.getTotaalprijsKorting()%></p>
+		<br />
+
 		<%
 			}
 		%>
+
 	</div>
 </body>
 </html>
