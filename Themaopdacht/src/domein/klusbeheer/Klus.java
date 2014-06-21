@@ -1,6 +1,5 @@
 package domein.klusbeheer;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 import domein.financien.*;
@@ -23,7 +22,6 @@ public class Klus {
 	private HashMap<Onderdeel, Integer> gebruikteOnderdelen = new HashMap<Onderdeel, Integer>();
 	private HashMap<Brandstof, Double> gebruikteBrandstof = new HashMap<Brandstof, Double>();
 	private int manuren;
-	//private int weeknr;
 
 	/**
 	 * Deze methode vraagt de hashmap gebruikteonderdelen op
@@ -72,18 +70,6 @@ public class Klus {
 		}
 		klantID = id;
 		manuren = 0;
-	}
-
-	//kan deze methode verwijdert worden?
-	public void schrijfWeg(String[] Klus) throws IOException {
-		// FileWriter fw = new
-		// FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/afspraken.dat",
-		// true);
-		//
-		// fw.write("\n"+ id++ +":"+
-		// Klus[0]+";"+Klus[1]+","+Klus[2]+"."+Klus[3]+"|"+Klus[4]+"/");
-		// fw.flush();
-		// fw.close();
 	}
 
 	/**

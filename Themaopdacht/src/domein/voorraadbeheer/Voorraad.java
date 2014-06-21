@@ -210,10 +210,9 @@ public class Voorraad {
 	 */
 	public boolean heeftBestelling(int bN) {
 		boolean result = false;
-		for (Bestelling b : alleBestellingen) {
-			if (b.getBestellingsNr() == bN) {
-				result = true;
-			}
+		if(zoekBestelling(bN))
+		{
+			result = true;
 		}
 		return result;
 	}
