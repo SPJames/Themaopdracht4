@@ -44,7 +44,7 @@ public class RegistrerenKlant {
 		BufferedReader reader = null;
 
 		try {
-			File file = new File("tpwc1.csv");
+			File file = new File("/csv/registrerenKlant.csv");
 			reader = new BufferedReader(new FileReader(file));
 
 			String line;

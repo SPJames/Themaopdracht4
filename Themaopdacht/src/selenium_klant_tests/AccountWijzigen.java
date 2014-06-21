@@ -42,7 +42,7 @@ public class AccountWijzigen {
 		BufferedReader reader = null;
 
 		try {
-			File file = new File("tpwc3.csv");
+			File file = new File("/csv/accountWijzigen.csv");
 			reader = new BufferedReader(new FileReader(file));
 
 			String line;
