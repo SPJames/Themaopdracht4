@@ -65,47 +65,50 @@ public class KlusAanmakenServlet extends HttpServlet {
 				error = true;
 			}
 		}
-
 		RequestDispatcher rd = null;
-		if (error) {
-			// foutmelding
-			req.setAttribute("error", "Er is niks ingevuld");
-			rd = req.getRequestDispatcher("afspraakmaken.jsp");
-		} else if (!(auto.isInReparatie())) {
-			// aanmaken nieuwe klus
-			int plek = -1;
-			Klus k = new Klus(auto, userinfo[3], userinfo[2],
-					Integer.parseInt(userinfo[0]));
-			// k.schrijfWeg(userinfo);
-			Klussen.add(k);
-			
-			// parkeerplaats toewijzen
-			for (Parkeerplaats p : parkeer) {
-				if (p == null) {
-					plek = Arrays.asList(parkeer).indexOf(p);
-					parkeer[plek] = new Parkeerplaats(auto);
-					break;
-				}
-			}
-			if (plek == -1) {
-				plek = -2;
-			} else {
-				k.setParkeerplaats(plek);
-				req.setAttribute("msgs", "De klus is geregistreerd! Uw gereserveerde parkeerplek is " + (plek + 1));
-			}
-			if (plek == -2) {
-				// foutmelding, als er geen parkeerplek is
-				req.setAttribute("error", "Er is op dit moment geen plek beschikbaar. Probeer het later nog eens.");
+		if(auto == null) {
+			req.setAttribute("error", "U heeft geen auto die gerepareert kan worden.");
+			rd = req.getRequestDispatcher("index.jsp");
+		} else {
+			if (error) {
+				// foutmelding
+				req.setAttribute("error", "Er is niks ingevuld");
 				rd = req.getRequestDispatcher("afspraakmaken.jsp");
-			} else {
-				rd = req.getRequestDispatcher("../index.jsp");
-				auto.setInReparatie(true);
+			} else if (!(auto.isInReparatie())) {
+				// aanmaken nieuwe klus
+				int plek = -1;
+				Klus k = new Klus(auto, userinfo[3], userinfo[2],
+						Integer.parseInt(userinfo[0]));
+				// k.schrijfWeg(userinfo);
+				Klussen.add(k);
+				
+				// parkeerplaats toewijzen
+				for (Parkeerplaats p : parkeer) {
+					if (p == null) {
+						plek = Arrays.asList(parkeer).indexOf(p);
+						parkeer[plek] = new Parkeerplaats(auto);
+						break;
+					}
+				}
+				if (plek == -1) {
+					plek = -2;
+				} else {
+					k.setParkeerplaats(plek);
+					req.setAttribute("msgs", "De klus is geregistreerd! Uw gereserveerde parkeerplek is " + (plek + 1));
+				}
+				if (plek == -2) {
+					// foutmelding, als er geen parkeerplek is
+					req.setAttribute("error", "Er is op dit moment geen plek beschikbaar. Probeer het later nog eens.");
+					rd = req.getRequestDispatcher("afspraakmaken.jsp");
+				} else {
+					rd = req.getRequestDispatcher("../index.jsp");
+					auto.setInReparatie(true);
+				}
+			} else if (auto.isInReparatie()){ 
+				req.setAttribute("error", "Deze auto is al in reparatie!");
+				rd = req.getRequestDispatcher("afspraakmaken.jsp");
 			}
-		} else if (auto.isInReparatie()){ 
-			req.setAttribute("error", "Deze auto is al in reparatie!");
-			rd = req.getRequestDispatcher("afspraakmaken.jsp");
+			rd.forward(req, resp);
 		}
-		rd.forward(req, resp);
 	}
-
 }
