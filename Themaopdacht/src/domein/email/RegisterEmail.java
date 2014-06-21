@@ -8,18 +8,26 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
 /**
- * In deze klasse wordt een email gestuurd als een klant zich geregistreerd heeft
+ * In deze klasse wordt een email gestuurd als een klant zich geregistreerd
+ * heeft
  */
 public class RegisterEmail {
 
 	/**
 	 * Er wordt ingelogd in het dres waarvandaan de mail gestuurd gaat worden.
-	 * Een van te voren opgestelde mail wordt gestuurd naar het door de klant opgegeven emailadres
-	 * @param to het emailadres waar de mail naartoe gestuurd wordt
-	 * @param uname de gebruikersnaam van de klant
-	 * @param fn de naam van de klant
-	 * @param pass het wachtwoord van de klant
+	 * Een van te voren opgestelde mail wordt gestuurd naar het door de klant
+	 * opgegeven emailadres
+	 * 
+	 * @param to
+	 *            het emailadres waar de mail naartoe gestuurd wordt
+	 * @param uname
+	 *            de gebruikersnaam van de klant
+	 * @param fn
+	 *            de naam van de klant
+	 * @param pass
+	 *            het wachtwoord van de klant
 	 */
 	public RegisterEmail(String to, String uname, String fn, String pass) {
 
@@ -50,7 +58,8 @@ public class RegisterEmail {
 					+ fn
 					+ ","
 					+ "\n\nUw atd web account is gereed voor gebruik. Uw gebruikernaam is "
-					+ uname + ". Uw wachtwoord is " + pass + ".\nMet vriendelijke groeten, Auto Totaal Diensten\n");
+					+ uname + ". Uw wachtwoord is " + pass
+					+ "\nMet vriendelijke groeten,\n\nAuto Totaal Diensten\n");
 
 			Transport.send(message);
 

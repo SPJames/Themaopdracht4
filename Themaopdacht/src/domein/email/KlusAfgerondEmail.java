@@ -47,7 +47,7 @@ public class KlusAfgerondEmail {
 			message.setSubject("Uw auto staat klaar - ATD");
 			message.setText("Beste " + fn + ","
 					+ "\nUw auto staat klaar om afgehaald te worden."
-					+ "\nMet vriendelijke groeten, Auto Totaal Diensten\n");
+					+ "\nMet vriendelijke groeten,\n\nAuto Totaal Diensten\n");
 
 			Transport.send(message);
 

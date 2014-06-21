@@ -16,14 +16,18 @@ import javax.mail.internet.MimeMessage;
 public class NietBetaaldEmail {
 
 	/**
-	 * Deze methode logt eerst in bij de account die de mail moet sturen.
-	 * De mail is van te voren opgesteld en wordt gestuurd naar het megegeven emailadres.
-	 * @param to het emailadres waar de mail naartoe moet worden gestuurd
-	 * @param fn de naam van de ontvangende klant
+	 * Deze methode logt eerst in bij de account die de mail moet sturen. De
+	 * mail is van te voren opgesteld en wordt gestuurd naar het megegeven
+	 * emailadres.
+	 * 
+	 * @param to
+	 *            het emailadres waar de mail naartoe moet worden gestuurd
+	 * @param fn
+	 *            de naam van de ontvangende klant
 	 */
 	public NietBetaaldEmail(String to, String fn) {
-		
-		//inloggen
+
+		// inloggen
 		final String username = "atd.probe0001@gmail.com";
 		final String password = "Wachtwoord1";
 
@@ -41,7 +45,7 @@ public class NietBetaaldEmail {
 				});
 
 		try {
-			//de gegenereerde email. de naam van de klant wordt ingevuld
+			// de gegenereerde email. de naam van de klant wordt ingevuld
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(to));
 			message.setRecipients(Message.RecipientType.TO,
@@ -51,7 +55,8 @@ public class NietBetaaldEmail {
 					+ fn
 					+ ","
 					+ "\nWij hebben gemerkt dat u nog niet heeft betaald."
-					+ "\nBetalingen dienen uiterlijk binnen 90 dagen te worden overgemaakt naar Auto Totaal Diensten.");
+					+ "\nBetalingen dienen uiterlijk binnen 90 dagen te worden overgemaakt naar Auto Totaal Diensten."
+					+ "\nMet vriendelijke groeten,\n\nAuto Totaal Diensten\n");
 
 			Transport.send(message);
 

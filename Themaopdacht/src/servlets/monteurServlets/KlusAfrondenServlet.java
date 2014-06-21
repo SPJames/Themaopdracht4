@@ -29,18 +29,21 @@ public class KlusAfrondenServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		@SuppressWarnings("unchecked")
-		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");
-		Parkeerplaats[] parkeer = (Parkeerplaats[]) req.getServletContext().getAttribute("alleParkeerplaatsen");
+		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext()
+				.getAttribute("alleKlussen");
+		Parkeerplaats[] parkeer = (Parkeerplaats[]) req.getServletContext()
+				.getAttribute("alleParkeerplaatsen");
 		// auto vrijgeven + parkeerplaats resetten
 		int id = Integer.parseInt(req.getParameter("id"));
 		for (Klus k : klussen) {
 			if (id == k.getKlusNummer()) {
 				k.setKlusafgerond(true);
 				k.getAuto().setInReparatie(false);
-				for(int i=0; i<50; i++) {
-					if(parkeer[i] == null) {
+				for (int i = 0; i < 50; i++) {
+					if (parkeer[i] == null) {
 						break;
-					} else if (parkeer[i].getAuto().getKenteken().equals(k.getAuto().getKenteken())){
+					} else if (parkeer[i].getAuto().getKenteken()
+							.equals(k.getAuto().getKenteken())) {
 						System.out.println(parkeer[i].getAuto().getKenteken());
 						parkeer[i] = null;
 					}
@@ -60,7 +63,9 @@ public class KlusAfrondenServlet extends HttpServlet {
 				}
 
 				@SuppressWarnings("unused")
-				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()), klant.getNaam());
+				// hier zit nog een fout!!
+				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()),
+						klant.getNaam());
 			}
 		}
 

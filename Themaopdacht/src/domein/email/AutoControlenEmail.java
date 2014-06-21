@@ -11,20 +11,24 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * In deze klasse wordt een email gegenereed die een mail stuurt als een auto een apk keuring
- * moet krijgen
+ * In deze klasse wordt een email gegenereed die een mail stuurt als een auto
+ * een apk keuring moet krijgen
  */
 public class AutoControlenEmail {
 
 	/**
 	 * Deze methode logt eerst in in het emailadres dat de mail moet sturen
-	 * Hierna wordt een van te voren opgestelde mail verstuurd naar het megegeven emailadres.
-	 * @param to het emailadres waar de mail naartoe gestuurd moet worden
-	 * @param fn de naam van de klant
+	 * Hierna wordt een van te voren opgestelde mail verstuurd naar het
+	 * megegeven emailadres.
+	 * 
+	 * @param to
+	 *            het emailadres waar de mail naartoe gestuurd moet worden
+	 * @param fn
+	 *            de naam van de klant
 	 */
 	public AutoControlenEmail(String to, String fn) {
 
-		//inloggen bij de account die de mail moet sturen
+		// inloggen bij de account die de mail moet sturen
 		final String username = "atd.probe0001@gmail.com";
 		final String password = "Wachtwoord1";
 
@@ -43,7 +47,7 @@ public class AutoControlenEmail {
 
 		try {
 
-			//het opgestelde bericht, de naam van de klant wordt ingevuld
+			// het opgestelde bericht, de naam van de klant wordt ingevuld
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(to));
 			message.setRecipients(Message.RecipientType.TO,
@@ -53,7 +57,7 @@ public class AutoControlenEmail {
 					+ fn
 					+ ","
 					+ "\nWe sturen deze e-mail om je eraan te herinneren dat je auto een APK-keuring nodig heeft."
-					+ "\n");
+					+ "\nMet vriendelijke groeten,\n\nAuto Totaal Diensten\n");
 
 			Transport.send(message);
 

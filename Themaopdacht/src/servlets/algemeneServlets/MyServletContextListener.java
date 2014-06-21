@@ -1,8 +1,13 @@
 package servlets.algemeneServlets;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import javax.servlet.*;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
 import domein.financien.Factuur;
 import domein.klantenbinding.Auto;
@@ -15,20 +20,22 @@ import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
 public class MyServletContextListener implements ServletContextListener {
-	
+
 	/**
-	 *In deze servlet worden alle arraylisten geinitialiseert zodat elke andere servlet ze kan gebruiken.
-	 *De geinitialiseerde lijsten worden ook meteen opgeslagen als attributen.
-	 *
-	 *Ook worden er enkele standaard gebruikers aangemaakt die wij als programmeurs kunnen gebruiken om
-	 *dit programma te testen zonder dat we steeds opnieuw gebruikers aan moeten maken.
-	 *
-	 * Verder worden er ook een aantal onderdelen geinitialiseerd, zodat we deze meteen kunnen gebruiken bij het 
-	 * testen van bepaalde klassen.
+	 * In deze servlet worden alle arraylisten geinitialiseert zodat elke andere
+	 * servlet ze kan gebruiken. De geinitialiseerde lijsten worden ook meteen
+	 * opgeslagen als attributen.
+	 * 
+	 * Ook worden er enkele standaard gebruikers aangemaakt die wij als
+	 * programmeurs kunnen gebruiken om dit programma te testen zonder dat we
+	 * steeds opnieuw gebruikers aan moeten maken.
+	 * 
+	 * Verder worden er ook een aantal onderdelen geinitialiseerd, zodat we deze
+	 * meteen kunnen gebruiken bij het testen van bepaalde klassen.
 	 */
 	public void contextInitialized(ServletContextEvent sce) {
-		
-		//arrays initialiseren
+
+		// arrays initialiseren
 		ArrayList<Klant> List = new ArrayList<Klant>();
 		ArrayList<Monteur> List2 = new ArrayList<Monteur>();
 		ArrayList<Klus> List3 = new ArrayList<Klus>();
@@ -38,10 +45,12 @@ public class MyServletContextListener implements ServletContextListener {
 		ArrayList<Factuur> List7 = new ArrayList<Factuur>();
 		ArrayList<Brandstof> List8 = new ArrayList<Brandstof>();
 		Weekplanning planning = new Weekplanning();
-		
+
 		// users initaliseren
-		Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com", "Test", "derp");
-		Klant u2 = new Klant("Johnny Test", "Straat 2", "3613AH", "test@test.test", "Test2", "derp");
+		Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com",
+				"Test", "derp");
+		Klant u2 = new Klant("Johnny Test", "Straat 2", "3613AH",
+				"test@test.test", "Test2", "derp");
 		List.add(u);
 		List.add(u2);
 
@@ -51,15 +60,15 @@ public class MyServletContextListener implements ServletContextListener {
 		List2.add(m);
 		List2.add(m2);
 
-		//onderdelen initialiseren
+		// onderdelen initialiseren
 		Onderdeel o = new Onderdeel(30, "Wieldopje", 5.5);
 		Onderdeel o2 = new Onderdeel(999, "Headlightfuel", 40.0);
-		Onderdeel o3 = new Onderdeel(3, "Ramenlappers", 1.0);
+		Onderdeel o3 = new Onderdeel(3, "Ramenwissers", 1.0);
 		List6.add(o);
 		List6.add(o2);
 		List6.add(o3);
-		
-		//Brandstof initialiseren
+
+		// Brandstof initialiseren
 		Brandstof b = new Brandstof("Euro95", 50, 1.0);
 		Brandstof b2 = new Brandstof("Diesel", 20, 3.2);
 		Brandstof b3 = new Brandstof("Benzine", 69, 0.1);
@@ -67,7 +76,7 @@ public class MyServletContextListener implements ServletContextListener {
 		List8.add(b2);
 		List8.add(b3);
 
-		//attributen opslaan
+		// attributen opslaan
 		sce.getServletContext().setAttribute("alleUsers", List);
 		sce.getServletContext().setAttribute("alleMonteurs", List2);
 		sce.getServletContext().setAttribute("alleKlussen", List3);
@@ -77,7 +86,19 @@ public class MyServletContextListener implements ServletContextListener {
 		sce.getServletContext().setAttribute("alleFacturen", List7);
 		sce.getServletContext().setAttribute("alleBrandstof", List8);
 		sce.getServletContext().setAttribute("planning", planning);
-		
+
+		// Logger
+		Logger logger = Logger.getLogger("");
+		try {
+			FileHandler fh = new FileHandler("log.xml");
+			logger.addHandler(fh);
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+
+		logger.setLevel(Level.ALL);
+		logger.info("Logger initialized");
+
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
