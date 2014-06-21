@@ -29,8 +29,8 @@ public class Weekplanning {
 		boolean succes = false;
 		while(!succes) {
 			for(int i = 1; i<7; i++) {
-				if(planning[i-1][weekdag][weeknr] == null && (weekdag>1 && weekdag<7 )) {
-					planning[i-1][weekdag][weeknr] = k;
+				if(planning[i-1][weekdag-1][weeknr-1] == null && (weekdag>1 && weekdag<7 )) {
+					planning[i-1][weekdag-1][weeknr-1] = k;
 					succes = true;
 				}
 			}
@@ -46,5 +46,15 @@ public class Weekplanning {
 				}
 			}
 		}
+	}
+	
+	public String getKlussenOpDag(int dag) { //dag 1-7
+		String result = "";
+		for (int i = 0; i<6; i++) {
+			if(planning[i][dag-1][weeknr] == null) {
+				
+			}
+		}
+		return result;
 	}
 }

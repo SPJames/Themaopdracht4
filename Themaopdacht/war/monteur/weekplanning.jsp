@@ -54,8 +54,8 @@
 							boolean leeg = true;
 							String result = "";
 							for(int j=0; j<6; j++) {
-								if(klussen[j][dag][week.getWeekNr()] != null) {
-									result = result + klussen[j][dag][week.getWeekNr()].getKlusNummer()+" ";
+								if(klussen[j][dag][week.getWeekNr()-1] != null) {
+									result = result + klussen[j][dag][week.getWeekNr()-1].getKlusNummer()+" ";
 									leeg = false;
 								}
 							}
