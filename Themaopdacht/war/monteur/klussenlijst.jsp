@@ -12,6 +12,8 @@
 		<h2>Klussen</h2>
 		
 		<jsp:include page="../message.jsp" />
+			<p>klussen</p>
+			<table>
 			<%
 				@SuppressWarnings("unchecked")
 				ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
@@ -33,8 +35,6 @@
 						String commentaar = k.getBeschrijving();
 						String parkeerplaats = "" + (k.getParkeerplaats() + 1);
 						%>
-					<p>Uw klussen:</p>
-					<table>
 						<tr>
 							<th>Klus ID</th>
 							<th>Klant naam</th>
@@ -61,7 +61,6 @@
 							<td><a href="klusaanpassen.jsp?id=<%=id%>">edit</a></td>
 							<td><a href="KlusAfrondenServlet?id=<%=id%>">afronden</a></td>
 						</tr>
-					</table>
 					<%
 					}
 					if(k.getWerknemer() == null && !k.isKlusafgerond()) {
@@ -79,8 +78,7 @@
 						String commentaar = k.getBeschrijving();
 						String parkeerplaats = "" + (k.getParkeerplaats() + 1);
 						%>
-					<p>beschikbare klussen</p>
-					<table>
+					
 						<tr>
 							<th>Klus ID</th>
 							<th>Klant naam</th>
@@ -98,11 +96,12 @@
 							<td><%=parkeerplaats%></td>
 							<td><a href="KlusUitkiezenServlet?id=<%=id%>">uitkiezen</a></td>
 						</tr>
-					</table>
+					
 						<%
 					}
 				}
 			%>
+		</table>
 	</div>
 	<jsp:include page="../footer.jsp"/>
 </body>
