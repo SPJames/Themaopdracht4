@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domein.email.KlusAfgerondEmail;
-import domein.klantenbinding.Auto;
 import domein.klantenbinding.Klant;
 import domein.klusbeheer.Klus;
 import domein.klusbeheer.Parkeerplaats;
@@ -30,13 +29,18 @@ public class KlusAfrondenServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		@SuppressWarnings("unchecked")
-		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext()
-				.getAttribute("alleKlussen");
+		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");
+		Parkeerplaats[] parkeer = (Parkeerplaats[]) req.getServletContext().getAttribute("alleParkeerplaatsen");
 		int id = Integer.parseInt(req.getParameter("id"));
 		for (Klus k : klussen) {
 			if (id == k.getKlusNummer()) {
 				k.setKlusafgerond(true);
 				k.getAuto().setInReparatie(false);
+				for(int i=0; i<50; i++) {
+					if(parkeer[i].getAuto() == k.getAuto()) {
+						parkeer[i] = null;
+					}
+				}
 				req.setAttribute("msgs", "Klus " + id + " succesvol afgerond");
 
 				// klanten gegevens ophalen voor email
@@ -51,6 +55,7 @@ public class KlusAfrondenServlet extends HttpServlet {
 					}
 				}
 
+				@SuppressWarnings("unused")
 				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()),
 						klant.getNaam());
 			}
