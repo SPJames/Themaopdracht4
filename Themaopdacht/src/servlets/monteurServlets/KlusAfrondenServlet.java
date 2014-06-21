@@ -63,7 +63,6 @@ public class KlusAfrondenServlet extends HttpServlet {
 				}
 
 				@SuppressWarnings("unused")
-				// hier zit nog een fout!!
 				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()),
 						klant.getNaam());
 			}
