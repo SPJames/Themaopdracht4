@@ -1,4 +1,4 @@
-package servlet.filters;
+package servlets.filters;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-public class SecurityFilter implements Filter {
+public class SecurityFilterAdmin implements Filter {
 	public void init(FilterConfig arg0) throws ServletException {
 		/* Filter is being placed into service, do nothing. */
 	}
@@ -18,11 +18,17 @@ public class SecurityFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest r2 = (HttpServletRequest) req;
-		// Klant mag niet bij Admin- en/of Monteur-gedeelte komen
-		if (r2.getSession().getAttribute("Klant") == null) {
-			r2.getRequestDispatcher("/atd/login.jsp").forward(req, resp);
+		// Alleen admins mogen bij admin pagina's/servlets komen
+		if (r2.getSession().getAttribute("Access") != null) {
+			if (!r2.getSession().getAttribute("Access").equals("Admin")) {
+				r2.setAttribute("error", "U heeft geen toegang tot deze pagina");
+				r2.getRequestDispatcher("../error.jsp").forward(req, resp);
+			} else {
+				chain.doFilter(req, resp);
+			}
 		} else {
-			chain.doFilter(req, resp);
+			r2.setAttribute("error", "U moet inloggen om bij deze pagina te komen");
+			r2.getRequestDispatcher("../error.jsp").forward(req, resp);
 		}
 	}
 

@@ -182,6 +182,37 @@
 	</servlet-mapping>
 	
 <!-- Filter Servlets -->
-	<!-- Hier komen filter mappings -->
+    <!-- Klant filter -->
+    <filter>
+      <filter-name>Klant filter</filter-name>
+      <filter-class>servlets.filters.SecurityFilterKlant</filter-class>
+    </filter>
+    <filter-mapping>
+      <filter-name>Klant filter</filter-name>
+      <url-pattern>/klant/*</url-pattern>
+      <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    
+    <!-- Monteur filter -->
+    <filter>
+      <filter-name>Monteur filter</filter-name>
+      <filter-class>servlets.filters.SecurityFilterMonteur</filter-class>
+    </filter>
+    <filter-mapping>
+      <filter-name>Monteur filter</filter-name>
+      <url-pattern>/monteur/*</url-pattern>
+      <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    
+    <!-- Admin filter -->
+    <filter>
+      <filter-name>Admin filter</filter-name>
+      <filter-class>servlets.filters.SecurityFilterAdmin</filter-class>
+    </filter>
+    <filter-mapping>
+      <filter-name>Admin filter</filter-name>
+      <url-pattern>/admin/*</url-pattern>
+      <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
 
 </web-app>
