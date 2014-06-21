@@ -10,16 +10,7 @@
 	<div id="Content">
 		<h2>Onderdeel Bewerken</h2>
 
-		<div>
-			<%
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-			</div>
+		<jsp:include page="../message.jsp"/>
 			<%
 				}
 				//gegevens van het meegegeven onderdeel worden opgevraagd

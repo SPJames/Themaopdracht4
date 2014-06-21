@@ -7,20 +7,7 @@
 	<%@ page import="domein.voorraadbeheer.Brandstof"%>
 	<div id="register">
 		<h2>Brandstof Toevoegen</h2>
-		<div>
-			<% //div voor meldingen, alleen zichtbaar als er een melding is
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-			</div>
-			<%
-				}
-			%>
-		</div>
+		<jsp:include page="../message.jsp"/>
 	<!-- Hier worden de gegevens van de nieuwe brandstof ingevoerd -->
 		<form action="BrandstofToevoegenServlet.do" method="get">
 			<fieldset>

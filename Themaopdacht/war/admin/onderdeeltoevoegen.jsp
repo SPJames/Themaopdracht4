@@ -7,20 +7,7 @@
 	<%@ page import="domein.voorraadbeheer.Onderdeel"%>
 	<div id="register">
 		<h2>Onderdeel Toevoegen</h2>
-		<div>
-			<%
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-			</div>
-			<%
-				}
-			%>
-		</div>
+		<jsp:include page="../message.jsp"/>
 		<!-- gegevens van het nieuwe onderdeel kunnen worden ingevoerd -->
 		<form action="OnderdeelToevoegenServlet.do" method="get">
 			<fieldset>
