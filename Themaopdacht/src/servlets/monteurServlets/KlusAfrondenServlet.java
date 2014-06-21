@@ -37,7 +37,10 @@ public class KlusAfrondenServlet extends HttpServlet {
 				k.setKlusafgerond(true);
 				k.getAuto().setInReparatie(false);
 				for(int i=0; i<50; i++) {
-					if(parkeer[i].getAuto() == k.getAuto()) {
+					if(parkeer[i] == null) {
+						break;
+					} else if (parkeer[i].getAuto().getKenteken().equals(k.getAuto().getKenteken())){
+						System.out.println(parkeer[i].getAuto().getKenteken());
 						parkeer[i] = null;
 					}
 				}
@@ -56,8 +59,7 @@ public class KlusAfrondenServlet extends HttpServlet {
 				}
 
 				@SuppressWarnings("unused")
-				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()),
-						klant.getNaam());
+				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()), klant.getNaam());
 			}
 		}
 		// auto vrijgeven + parkeerplaats resetten

@@ -52,7 +52,7 @@
 				</select>
 				<!-- beschrijving klus -->
 				<textarea rows="10" cols="50" name="comments"><%=k.getBeschrijving()%></textarea>
-				<input type="number" name="manuren" value="<%=k.getManuren()%>" />
+				<input type="number" name="manuren" />
 				<br />
 
 				<!-- onderdelen -->

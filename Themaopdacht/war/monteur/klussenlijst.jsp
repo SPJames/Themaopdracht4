@@ -12,7 +12,6 @@
 		<h2>Klussen</h2>
 		
 		<jsp:include page="../message.jsp" />
-			<p>klussen</p>
 			<table>
 			<%
 				@SuppressWarnings("unchecked")
