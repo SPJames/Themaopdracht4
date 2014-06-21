@@ -31,6 +31,7 @@ public class KlusAfrondenServlet extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");
 		Parkeerplaats[] parkeer = (Parkeerplaats[]) req.getServletContext().getAttribute("alleParkeerplaatsen");
+		// auto vrijgeven + parkeerplaats resetten
 		int id = Integer.parseInt(req.getParameter("id"));
 		for (Klus k : klussen) {
 			if (id == k.getKlusNummer()) {
@@ -62,8 +63,6 @@ public class KlusAfrondenServlet extends HttpServlet {
 				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()), klant.getNaam());
 			}
 		}
-		// auto vrijgeven + parkeerplaats resetten
-	
 
 		req.getRequestDispatcher("klussenlijst.jsp").forward(req, resp);
 

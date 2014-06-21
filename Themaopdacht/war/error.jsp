@@ -15,12 +15,13 @@
 			if (error != null) {
 		%>
 		<div>
-		<%=error%>
+			<img src="/atd/images/error.jpg" alt="error" height="70" /><br />
+			<%=error%>
 		</div>
 		<%
 			}
 		%>
 	</div>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="footer.jsp" />
 </body>
 <html>
