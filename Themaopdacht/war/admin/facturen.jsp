@@ -12,7 +12,7 @@
 		<%@ page import="domein.klusbeheer.Klus"%>
 		<%@ page import="java.util.*"%>
 
-		<jsp:include page="message.jsp" />
+		<jsp:include page="../message.jsp"/>
 
 		<%
 			@SuppressWarnings("unchecked")

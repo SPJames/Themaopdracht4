@@ -10,16 +10,7 @@
 	<div id="Content">
 		<h2>Brandstof Bewerken</h2>
 
-		<div>
-			<%	//div voor meldingen, is alleen zichtbaar als er een melding is
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-			</div>
+		<jsp:include page="../message.jsp"/>
 			<%
 				}
 				//de meegegeven brandstof opzoeken

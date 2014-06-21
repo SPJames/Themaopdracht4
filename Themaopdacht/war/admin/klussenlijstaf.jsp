@@ -7,20 +7,7 @@
 	<div id="klus">
 		<h2>Afgeronde klussen</h2>
 		
-		<div>
-			<%
-				Object msgs = request.getAttribute("msgs");
-				if (msgs != null) {
-			%>
-			<div id="msgs">
-				<%
-					out.println(msgs);
-				%>
-		</div>
-			<%
-				}
-			%>
-		</div>
+		<jsp:include page="../message.jsp"/>
 		
 		<table>
 			<tr>
