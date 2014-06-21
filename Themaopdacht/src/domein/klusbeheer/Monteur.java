@@ -1,8 +1,5 @@
 package domein.klusbeheer;
 
-//import java.io.FileWriter;
-import java.io.IOException;
-
 /**
  * in deze klasse worden de gegevens van een monteur ingevult/bijgewerkt
  */
@@ -63,21 +60,5 @@ public class Monteur {
 	 */
 	public void setNaam(String nm) {
 		naam = nm;
-	}
-
-	//kan deze methode weg?
-	public void schrijfWeg(String[] monteur) throws IOException {
-		// FileWriter fw = new
-		// FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/monteur/monteurs.dat",true);
-		//
-		// fw.write("\n" + id++ + " " + monteur[0] + ":" + monteur[1] + ";");
-		// fw.flush();
-		// fw.close();
-	}
-
-	//deze methode is overbodig want we maken nu een string van een string
-	public String toString() {
-		String s = "" + getNaam();
-		return s;
 	}
 }
