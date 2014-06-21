@@ -1,4 +1,4 @@
-package selenium_monteur_tests;
+package selenium_admin_tests;
 
 import static org.junit.Assert.fail;
 
@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -15,11 +16,10 @@ import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SeleniumKlusUitkiezen {
+public class KlantOverzichtEmailSturen {
 	private WebDriver driver;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;
@@ -33,36 +33,19 @@ public class SeleniumKlusUitkiezen {
 	}
 
 	@Test
-	public void testSeleniumKlusUitkiezen() throws Exception {
-		driver.get(baseUrl + "/atd/inloggen.jsp");
+	public void testKlantOverzichtEmailSturen() throws Exception {
+		driver.get(baseUrl + "/atd/index.jsp");
+		driver.findElement(By.linkText("Log in")).click();
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys("Klaas");
+		driver.findElement(By.name("username")).sendKeys("Admin");
 		driver.findElement(By.name("pwd")).clear();
-		driver.findElement(By.name("pwd")).sendKeys("monteur1");
+		driver.findElement(By.name("pwd")).sendKeys("Admin");
 		driver.findElement(By.name("Go")).click();
-		driver.findElement(By.linkText("Klussen Lijst")).click();
-		driver.findElement(By.linkText("uitkiezen")).click();
-
-		driver.findElement(By.linkText("edit")).click();
-		driver.findElement(By.name("comments")).clear();
-		driver.findElement(By.name("comments")).sendKeys(
-				"auto heeft nieuwe wieldoppen gekregen");
-		driver.findElement(By.name("aantal0")).clear();
-		driver.findElement(By.name("aantal0")).sendKeys("4");
-		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+		driver.findElement(By.linkText("Klanten overzicht")).click();
+		driver.findElement(By.linkText("Stuur Herinnerings-email")).click();
+		driver.findElement(By.linkText("Stuur Niet Betaald-email")).click();
+		driver.findElement(By.linkText("Stuur Auto Controlen-email")).click();
 	}
-
-//	@Test
-//	public void testSeleniumKlusAanpassen() throws Exception {
-//		driver.get(baseUrl + "/atd/monteur/KlusUitkiezenServlet?id=1");
-//		driver.findElement(By.linkText("edit")).click();
-//		driver.findElement(By.name("comments")).clear();
-//		driver.findElement(By.name("comments")).sendKeys(
-//				"auto heeft nieuwe wieldoppen gekregen");
-//		driver.findElement(By.name("aantal0")).clear();
-//		driver.findElement(By.name("aantal0")).sendKeys("4");
-//		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-//	}
 
 	@After
 	public void tearDown() throws Exception {

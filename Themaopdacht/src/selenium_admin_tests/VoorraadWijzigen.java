@@ -1,4 +1,4 @@
-package selenium_klant_tests;
+package selenium_admin_tests;
 
 import static org.junit.Assert.fail;
 
@@ -19,7 +19,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SeleniumAccountWijzigen {
+public class VoorraadWijzigen {
 	private WebDriver driver;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;
@@ -33,57 +33,24 @@ public class SeleniumAccountWijzigen {
 	}
 
 	@Test
-	public void generateData() throws Exception {
-		String username;
-		String adres;
-		String email;
-		String pwd;
-
-		BufferedReader reader = null;
-
-		try {
-			File file = new File("tpwc3.csv");
-			reader = new BufferedReader(new FileReader(file));
-
-			String line;
-			while ((line = reader.readLine()) != null) {
-				@SuppressWarnings("resource")
-				Scanner s = new Scanner(line);
-				s.useDelimiter(";");
-				while (s.hasNext()) {
-					username = s.next();
-					adres = s.next();
-					email = s.next();
-					pwd = s.next();
-					testSeleniumAccountWijzigen(username, adres, email, pwd);
-				}
-
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	// ?klantid=1&name=Test&auto=wfjbf&diensttype=rep&comments=afspraak+maken+graag
-	public void testSeleniumAccountWijzigen(String username, String adres,
-			String email, String pwd) throws Exception {
-		driver.get(baseUrl + "/atd/klant/KlusAanmakenServlet.do");
-		driver.findElement(By.linkText("Account Wijzigen")).click();
+	public void testVoorraadWijzigen() throws Exception {
+//		driver.get(baseUrl
+//				+ "/atd/admin/BrandstofToevoegenServlet.do?type=diesel&aantal=5&PrijsLiter=1.50");
+		driver.get(baseUrl + "/atd/index.jsp");
+		driver.findElement(By.linkText("Log in")).click();
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys(username);
-		driver.findElement(By.name("adres")).clear();
-		driver.findElement(By.name("adres")).sendKeys(adres);
-		driver.findElement(By.name("email")).clear();
-		driver.findElement(By.name("email")).sendKeys(email);
+		driver.findElement(By.name("username")).sendKeys("Admin");
 		driver.findElement(By.name("pwd")).clear();
-		driver.findElement(By.name("pwd")).sendKeys(pwd);
+		driver.findElement(By.name("pwd")).sendKeys("Admin");
+		driver.findElement(By.name("Go")).click();
+		
+		//hier gaat iets mis
+		driver.findElement(By.linkText("Voorraad Overzicht")).click();
+		driver.findElement(By.linkText("Wijzigen")).click();
+		driver.findElement(By.name("aantal")).clear();
+		driver.findElement(By.name("aantal")).sendKeys("18");
+		driver.findElement(By.name("PrijsArtikel")).clear();
+		driver.findElement(By.name("PrijsArtikel")).sendKeys("3.5");
 		driver.findElement(By.cssSelector("input.down")).click();
 	}
 

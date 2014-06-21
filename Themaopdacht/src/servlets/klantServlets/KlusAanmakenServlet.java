@@ -69,7 +69,7 @@ public class KlusAanmakenServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 		if (error) {
 			// foutmelding
-			req.setAttribute("error", "Input was empty");
+			req.setAttribute("error", "Er is niks ingevuld");
 			rd = req.getRequestDispatcher("afspraakmaken.jsp");
 		} else if (!(auto.isInReparatie())) {
 			// aanmaken nieuwe klus
@@ -78,8 +78,8 @@ public class KlusAanmakenServlet extends HttpServlet {
 					Integer.parseInt(userinfo[0]));
 			// k.schrijfWeg(userinfo);
 			Klussen.add(k);
-			// parkeerplaats toewijzen
 			
+			// parkeerplaats toewijzen
 			for (Parkeerplaats p : parkeer) {
 				if (p == null) {
 					plek = Arrays.asList(parkeer).indexOf(p);

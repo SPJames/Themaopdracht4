@@ -5,9 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import domein.klantenbinding.Auto;
+
 /**
- * deze klasse beheert de parkeerplaats
- * welke plekken er vanaf wanneer door welke auto bezet zijn
+ * deze klasse beheert de parkeerplaats welke plekken er vanaf wanneer door
+ * welke auto bezet zijn
  */
 public class Parkeerplaats {
 	private Auto auto;
@@ -17,8 +18,11 @@ public class Parkeerplaats {
 	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
 	/**
-	 * deze methode maakt de parkeerplaats aan en geeft een auto en de huidige datum mee
-	 * @param a de meegegeven auto die wil parkeren
+	 * deze methode maakt de parkeerplaats aan en geeft een auto en de huidige
+	 * datum mee
+	 * 
+	 * @param a
+	 *            de meegegeven auto die wil parkeren
 	 */
 	public Parkeerplaats(Auto a) {
 		setAuto(a);
@@ -27,6 +31,7 @@ public class Parkeerplaats {
 
 	/**
 	 * deze methode vraagt de auto op
+	 * 
 	 * @return de auto
 	 */
 	public Auto getAuto() {
@@ -35,7 +40,9 @@ public class Parkeerplaats {
 
 	/**
 	 * deze methode wijzigt de auto
-	 * @param auto de nieuwe auto
+	 * 
+	 * @param auto
+	 *            de nieuwe auto
 	 */
 	public void setAuto(Auto auto) {
 		this.auto = auto;
@@ -43,15 +50,19 @@ public class Parkeerplaats {
 
 	/**
 	 * deze methode vraagt de reserveringsdatum op
+	 * 
 	 * @return de reserveringsdatum
 	 */
+
 	public String getReseveringsDatum() {
-		return df.format(reseveringsDatum);
+		return df.format(reseveringsDatum.getTime());
 	}
 
 	/**
 	 * deze methode verandert de reserveringsdatum
-	 * @param reseveringsDatum de nieuwe reserveringsdatum
+	 * 
+	 * @param reseveringsDatum
+	 *            de nieuwe reserveringsdatum
 	 */
 	public void setReseveringsDatum(Calendar reseveringsDatum) {
 		this.reseveringsDatum = reseveringsDatum;

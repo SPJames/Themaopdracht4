@@ -1,4 +1,4 @@
-package selenium_klant_tests;
+package selenium_monteur_tests;
 
 import static org.junit.Assert.fail;
 
@@ -19,7 +19,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SeleniumAutoToevoegen {
+public class KlusUitkiezen {
 	private WebDriver driver;
 	private String baseUrl;
 	private boolean acceptNextAlert = true;
@@ -33,71 +33,36 @@ public class SeleniumAutoToevoegen {
 	}
 
 	@Test
-	public void generateData() throws Exception {
-		String username;
-		String pwd;
-		String merk;
-		String kenteken;
-		String comments;
-		
-		BufferedReader reader = null;
-
-		try {
-			File file = new File("tpwc2.csv");
-			reader = new BufferedReader(new FileReader(file));
-
-			String line;
-			while ((line = reader.readLine()) != null) {
-				@SuppressWarnings("resource")
-				Scanner s = new Scanner(line);
-				s.useDelimiter(";");
-				while (s.hasNext()) {
-					username = s.next();
-					pwd = s.next();
-					merk = s.next();
-					kenteken = s.next();
-					comments = s.next();
-					testSeleniumAutoToevoegen(username, pwd, merk, kenteken, comments);
-				}
-
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public void testSeleniumAutoToevoegen(String username, String pwd,
-			String merk, String kenteken, String comments) throws Exception {
+	public void testSeleniumKlusUitkiezen() throws Exception {
 		driver.get(baseUrl + "/atd/inloggen.jsp");
 		driver.findElement(By.name("username")).clear();
-		driver.findElement(By.name("username")).sendKeys(username);
+		driver.findElement(By.name("username")).sendKeys("Klaas");
 		driver.findElement(By.name("pwd")).clear();
-		driver.findElement(By.name("pwd")).sendKeys(pwd);
+		driver.findElement(By.name("pwd")).sendKeys("monteur1");
 		driver.findElement(By.name("Go")).click();
-		driver.findElement(By.linkText("Auto Overzicht")).click();
-		driver.findElement(By.linkText("Voeg een auto toe")).click();
-		driver.findElement(By.name("merk")).clear();
-		driver.findElement(By.name("merk")).sendKeys(merk);
-		driver.findElement(By.name("kenteken")).clear();
-		driver.findElement(By.name("kenteken")).sendKeys(kenteken);
-		driver.findElement(By.cssSelector("input.down")).click();
+		driver.findElement(By.linkText("Klussen Lijst")).click();
+		driver.findElement(By.linkText("uitkiezen")).click();
 
-		driver.findElement(By.linkText("Afspraak Maken")).click();
+		driver.findElement(By.linkText("edit")).click();
 		driver.findElement(By.name("comments")).clear();
-		driver.findElement(By.name("comments")).sendKeys(comments);
-		driver.findElement(By.cssSelector("input.down-afspraak")).click();
+		driver.findElement(By.name("comments")).sendKeys(
+				"auto heeft nieuwe wieldoppen gekregen");
+		driver.findElement(By.name("aantal0")).clear();
+		driver.findElement(By.name("aantal0")).sendKeys("4");
+		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
 	}
-	
-	
-		
 
+//	@Test
+//	public void testSeleniumKlusAanpassen() throws Exception {
+//		driver.get(baseUrl + "/atd/monteur/KlusUitkiezenServlet?id=1");
+//		driver.findElement(By.linkText("edit")).click();
+//		driver.findElement(By.name("comments")).clear();
+//		driver.findElement(By.name("comments")).sendKeys(
+//				"auto heeft nieuwe wieldoppen gekregen");
+//		driver.findElement(By.name("aantal0")).clear();
+//		driver.findElement(By.name("aantal0")).sendKeys("4");
+//		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+//	}
 
 	@After
 	public void tearDown() throws Exception {

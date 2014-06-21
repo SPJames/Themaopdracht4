@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domein.email.KlusAfgerondEmail;
+import domein.klantenbinding.Auto;
 import domein.klantenbinding.Klant;
 import domein.klusbeheer.Klus;
+import domein.klusbeheer.Parkeerplaats;
 
 /**
  * In deze servlet kan een klus worden afgerond.
@@ -52,6 +54,8 @@ public class KlusAfrondenServlet extends HttpServlet {
 						klant.getNaam());
 			}
 		}
+		// auto vrijgeven + parkeerplaats resetten
+	
 
 		req.getRequestDispatcher("klussenlijst.jsp").forward(req, resp);
 
