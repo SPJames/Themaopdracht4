@@ -19,6 +19,7 @@ public class Auto {
 	/**
 	 * Deze methode maakt een auto aan en vult het kenteken, 
 	 * het merk van de auto en het klantid van de eigenaar in
+	 * 
 	 * @param kt is het kenteken van de auto
 	 * @param mk is het merk van de auto
 	 * @param id is het klantenid van de eigenaar
@@ -31,6 +32,7 @@ public class Auto {
 
 	/**
 	 * deze methode vult het klantid van de eigenaar in
+	 * 
 	 * @param klantid de klantid
 	 */
 	public void setKlantid(String klantid) {
@@ -39,6 +41,7 @@ public class Auto {
 
 	/**
 	 * deze methode vraagt de klantid van de eigenaar op
+	 * 
 	 * @return de klantid
 	 */
 	public String getKlantid() {
@@ -47,6 +50,7 @@ public class Auto {
 
 	/**
 	 * deze methode vraagt het kenteken van de auto op
+	 * 
 	 * @return het kenteken
 	 */
 	public String getKenteken() {
@@ -55,6 +59,7 @@ public class Auto {
 
 	/**
 	 * deze methode vult het kenteken in
+	 * 
 	 * @param kt het kenteken
 	 */
 	public void setKenteken(String kt) {
@@ -63,6 +68,7 @@ public class Auto {
 
 	/**
 	 * deze methode vraagt het merk van de auto op
+	 * 
 	 * @return het auto merk
 	 */
 	public String getMerk() {
@@ -71,6 +77,7 @@ public class Auto {
 
 	/**
 	 * deze methode vult het merk van de auto in
+	 * 
 	 * @param mk het auto merk
 	 */
 	public void setMerk(String mk) {
@@ -79,6 +86,7 @@ public class Auto {
 
 	/**
 	 * deze methode vraagt de datum van de laatste onderhoudsbeurt op
+	 * 
 	 * @return de datum van de laatste onderhoudsbeurt
 	 */
 	public String getLaatstOnderhouden() {
@@ -87,6 +95,7 @@ public class Auto {
 
 	/**
 	 * deze methode vult de datum van de laatste onderhoudsbeurt in
+	 * 
 	 * @param lo de datum waarop de laatste onderhoudsbeurt geweest is
 	 */
 	public void setLaatstOnderhouden(Calendar lo) {
@@ -95,7 +104,8 @@ public class Auto {
 
 	/**
 	 * deze boolean geeft aan of de auto op dit moment gerepareert wordt of niet
-	 * @return de boolean inReparatie
+	 * 
+	 * @return of de auto bij een nog niet afgeronde klus hoort
 	 */
 	public boolean isInReparatie() {
 		return inReparatie;
@@ -103,10 +113,11 @@ public class Auto {
 
 	/**
 	 * deze methode vult de boolean inReparatie in
-	 * @param inReparatie een true of false waarde afhankelijk van of de auto gerepareert wordt
+	 * 
+	 * @param inReparatie een true of false waarde afhankelijk van of de auto bij een niet afgeronde 
+	 * klus hoort
 	 */
 	public void setInReparatie(boolean inReparatie) {
 		this.inReparatie = inReparatie;
 	}
-
 }

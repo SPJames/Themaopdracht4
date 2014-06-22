@@ -12,11 +12,11 @@ import domein.voorraadbeheer.Voorraad;
 public class Bedrijf {
 	private ArrayList<Klant> alleKlanten = new ArrayList<Klant>();
 	private String bedrijfsNaam;
-	//private Planner dePlanner;
 	private Voorraad deVoorraad;
 
 	/**
 	 * het bedrijf wordt aangemaakt en de bedrijfsnaam wordt opgegeven
+	 * 
 	 * @param nm de bedrijfsnaam
 	 */
 	public Bedrijf(String nm) {
@@ -25,6 +25,7 @@ public class Bedrijf {
 
 	/**
 	 * de lijst met alle klanten wordt opgevraagt
+	 * 
 	 * @return de inhoud van de ArrayList alleKlanten
 	 */
 	public ArrayList<Klant> getAlleKlanten() {
@@ -34,6 +35,7 @@ public class Bedrijf {
 	/**
 	 * deze methode voegt een klant toe aan de klantenlijst als deze er nog niet in stond
 	 * of een klant al in de lijst staat wordt gecontroleert dmv de methode heeftKlant()
+	 * 
 	 * @param nwK de toe te voegen klant
 	 * @return een boolean om aan te geven of het toevoegen gelukt is
 	 */
@@ -50,6 +52,7 @@ public class Bedrijf {
 	/**
 	 * er wordt mbv een emailadres en de methode zoekKlant() gekeken 
 	 * of een klant al in de klantenlijst staat
+	 * 
 	 * @param em het emailadres waar naar gezocht moet worden
 	 * @return een boolean om aan te geven of de klant in de ArrayList staat
 	 */
@@ -63,6 +66,7 @@ public class Bedrijf {
 
 	/**
 	 * deze methode wordt gebruikt om een klant te zoeken mbv het emailadres
+	 * 
 	 * @param em het emailadres van de te zoeken klant
 	 * @return de klant met het gezochte emailadres als de klant in de ArrayList staat
 	 */
@@ -78,6 +82,7 @@ public class Bedrijf {
 
 	/**
 	 * deze methode wordt gebruikt om een klant uit de ArrayList te halen
+	 * 
 	 * @param exk de te verwijderen klant
 	 * @return een boolean om aan te geven of het verwijderen gelukt is.
 	 */
@@ -93,6 +98,7 @@ public class Bedrijf {
 
 	/**
 	 * deze methode geeft weer hoeveel klanten er in de ArrayList alleKlanten staan
+	 * 
 	 * @return het aantal klanten
 	 */
 	public int aantalKlanten() {
@@ -106,6 +112,7 @@ public class Bedrijf {
 
 	/**
 	 * deze methode vraagt de bedrijfsnaam op
+	 * 
 	 * @return de bedrijfsnaam
 	 */
 	public String getNaam() {
@@ -114,25 +121,35 @@ public class Bedrijf {
 
 	/**
 	 * deze methode vult de bedrijfsnaam in
+	 * 
 	 * @param nm de bedrijfsnaam
 	 */
 	public void setNaam(String nm) {
 		bedrijfsNaam = nm;
 	}
 
+	/**
+	 * de arraylist van deVoorraad wordt opgevraagd
+	 * 
+	 * @return de inhoud van de arraylist deVoorraad
+	 */
 	public Voorraad getDeVoorraad() {
 		return deVoorraad;
 	}
 
+	/**
+	 * de arraylist deVoorraad wordt geinitialiseerd als v
+	 * 
+	 * @param v de naam van de geinitialiseerde arraylist deVoorraad
+	 */
 	public void setDeVoorraad(Voorraad v) {
 		deVoorraad = v;
 	}
-	
-	//het initialiseren is gestopt missen we niet een setDeFinancien?
 
 	/**
 	 * deze methode geeft een string weer waarin alle klanten worden weergegeven en 
 	 * hoeveel klanten er zijn
+	 * 
 	 * @return een string
 	 */
 	public String toString() {
@@ -144,5 +161,4 @@ public class Bedrijf {
 				+ "\nDeze contacten zijn: \n" + i;
 		return s;
 	}
-
 }
