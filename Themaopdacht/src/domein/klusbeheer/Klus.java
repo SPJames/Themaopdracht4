@@ -24,41 +24,18 @@ public class Klus {
 	private int manuren;
 
 	/**
-	 * Deze methode vraagt de hashmap gebruikteonderdelen op
-	 * @return een lijst met de onderdelen die in deze klus gebruikt zijn
-	 */
-	public HashMap<Onderdeel, Integer> getGebruikteOnderdelen() {
-		return gebruikteOnderdelen;
-	}
-	
-	/**
-	 * Deze methode voegt een onderdelen aan de hashmap gebruikte onderdelen toe als het onderdeel nog
-	 * niet in de hashmap staat.
-	 * als het onderdeel al wel in de hashmap staat dan wordt de meegegeven waarde aantal 
-	 * bij de waarde aantal in de hasmap opgeteld
-	 * @param ond het toe te voegen onderdeel
-	 * @param aant de hoeveelheid van het toe te voegen onderdeel
-	 */
-	public void addOnderdeel (Onderdeel ond, int aant) {
-		if(gebruikteOnderdelen.containsKey(ond)) {
-			gebruikteOnderdelen.put(ond, gebruikteOnderdelen.get(ond) + aant);
-		} else {
-			gebruikteOnderdelen.put(ond, aant);
-		}
-	}
-
-	/**
-	 * de klus wordt aangemaakt, de klus krijgt een auto waarvoor de klus is
-	 * een beschrijving van wat het probleem is/wat er gedaan moet worden
+	 * de klus wordt aangemaakt, de klus krijgt een auto mee waarvoor de klus is aangemaakt,
+	 * een beschrijving van wat het probleem is/wat er gedaan moet worden,
 	 * het type klus (onderhoud, tanken, parkeren)
 	 * en een idnummer als identintificatie. dit nummer wordt automatisch bijgewerkt
+	 * 
 	 * @param a de auto waarvoor de klus is
 	 * @param b de beschrijving van de klus
 	 * @param type het type klus
 	 * @param id het id nummer van de klus
 	 */
 	public Klus(Auto a, String b, String type, int id) {
-		klusnummer = nummer++;
+		klusnummer = nummer++; //het automatisch bijwerken
 		setAuto(a);
 		beschrijving = b;
 		if (type.equals("rep")) {
@@ -71,9 +48,36 @@ public class Klus {
 		klantID = id;
 		manuren = 0;
 	}
+	
+	/**
+	 * Deze methode vraagt de hashmap gebruikteonderdelen op
+	 * 
+	 * @return een lijst met de onderdelen die in deze klus gebruikt zijn
+	 */
+	public HashMap<Onderdeel, Integer> getGebruikteOnderdelen() {
+		return gebruikteOnderdelen;
+	}
+	
+	/**
+	 * Deze methode voegt een onderdelen aan de hashmap gebruikte onderdelen toe als het onderdeel nog
+	 * niet in de hashmap staat.
+	 * als het onderdeel al wel in de hashmap staat dan wordt de meegegeven waarde aantal 
+	 * bij de waarde aantal in de hasmap opgeteld
+	 * 
+	 * @param ond het toe te voegen onderdeel
+	 * @param aant de hoeveelheid van het toe te voegen onderdeel
+	 */
+	public void addOnderdeel (Onderdeel ond, int aant) {
+		if(gebruikteOnderdelen.containsKey(ond)) {
+			gebruikteOnderdelen.put(ond, gebruikteOnderdelen.get(ond) + aant);
+		} else {
+			gebruikteOnderdelen.put(ond, aant);
+		}
+	}
 
 	/**
 	 * deze methode vraagt het klusnummer op
+	 * 
 	 * @return het klusnummer
 	 */
 	public int getKlusNummer() {
@@ -82,6 +86,7 @@ public class Klus {
 
 	/**
 	 * deze methode vult het klusnummer in
+	 * 
 	 * @param kn het klusnummer
 	 */
 	public void setKlusNummer(int kn) {
@@ -90,7 +95,8 @@ public class Klus {
 
 	/**
 	 * deze methode vraagt de beschrijving op
-	 * @return de beschrijving
+	 * 
+	 * @return de beschrijving van het probleem
 	 */
 	public String getBeschrijving() {
 		return beschrijving;
@@ -98,7 +104,8 @@ public class Klus {
 
 	/**
 	 * deze methode vult de beschrijving in
-	 * @param b de beschrijving
+	 * 
+	 * @param b de beschrijving van het probleem
 	 */
 	public void setBeschrijving(String b) {
 		beschrijving = b;
@@ -106,6 +113,7 @@ public class Klus {
 
 	/**
 	 * deze methode geeft aan wat voor type klus het is
+	 * 
 	 * @param dt het diensttype
 	 */
 	public void setHetType(String dt) {
@@ -120,6 +128,7 @@ public class Klus {
 
 	/**
 	 * deze methode vraagt het diensttype op
+	 * 
 	 * @return het diensttype
 	 */
 	public DienstType getHetType() {
@@ -128,6 +137,7 @@ public class Klus {
 
 	/**
 	 * deze methode vraagt de werknemer op die aan deze klus gaat werken
+	 * 
 	 * @return de naam van de werknemer
 	 */
 	public String getWerknemer() {
@@ -136,6 +146,7 @@ public class Klus {
 
 	/**
 	 * deze methode vult in welke werknemer er aan deze klus gaat werken
+	 * 
 	 * @param wn de naam van de werknemer
 	 */
 	public void setWerknemer(String wn) {
@@ -144,6 +155,7 @@ public class Klus {
 
 	/**
 	 * deze methode geeft het klusnummer weer in een string
+	 * 
 	 * @return het klusnummer in een string
 	 */
 	public String toString() {
@@ -153,6 +165,7 @@ public class Klus {
 
 	/**
 	 * deze methode vraagt de parkeerplaats van de auto op
+	 * 
 	 * @return de parkeerplaats
 	 */
 	public int getParkeerplaats() {
@@ -161,6 +174,7 @@ public class Klus {
 
 	/**
 	 * deze methode vult de parkeerplaats van de auto in
+	 * 
 	 * @param parkeerplaats de parkeerplaats
 	 */
 	public void setParkeerplaats(int parkeerplaats) {
@@ -169,6 +183,7 @@ public class Klus {
 
 	/**
 	 * deze methode vraagt de auto die bij deze klus hoort op
+	 * 
 	 * @return de auto
 	 */
 	public Auto getAuto() {
@@ -177,6 +192,7 @@ public class Klus {
 
 	/**
 	 * deze methode vult de auto in die bij deze klus hoort
+	 * 
 	 * @param auto de auto
 	 */
 	public void setAuto(Auto auto) {
@@ -185,7 +201,8 @@ public class Klus {
 
 	/**
 	 * deze methode vraagt een boolean op die aangeeft of de klus is afgerond
-	 * @return een boolean
+	 * 
+	 * @return een true als de klus is afgerond, en anders een false
 	 */
 	public boolean isKlusafgerond() {
 		return klusafgerond;
@@ -193,7 +210,8 @@ public class Klus {
 
 	/**
 	 * deze methode vult de boolean in die aangeeft of de klus is afgerond
-	 * @param klusafgerond de waarde voor de boolean
+	 * 
+	 * @param klusafgerond true als de klus is afgerond anders false
 	 */
 	public void setKlusafgerond(boolean klusafgerond) {
 		this.klusafgerond = klusafgerond;
@@ -201,6 +219,7 @@ public class Klus {
 
 	/**
 	 * deze methode vraagt het klantnummer op van de eigenaar van de auto
+	 * 
 	 * @return het klantnummer
 	 */
 	public int getKlantID() {
@@ -209,6 +228,7 @@ public class Klus {
 
 	/**
 	 * deze methode vult het klantnummer in van de eigenaar van de auto
+	 * 
 	 * @param klantID het klantnummer
 	 */
 	public void setKlantID(int klantID) {
@@ -217,6 +237,7 @@ public class Klus {
 
 	/**
 	 * deze methode vraagt de hasmap gebruiktebrandstof op
+	 * 
 	 * @return een lijst met de gebruikte brandstof in deze klus
 	 */
 	public HashMap<Brandstof, Double> getGebruikteBrandstof() {
@@ -228,6 +249,7 @@ public class Klus {
 	 * er nog niet in stond.
 	 * Als de brandstof er wel in staat wordt de meegegeven waarde aantal bij de bestaande waarde aantal
 	 * in de map opgeteld
+	 * 
 	 * @param br type van de gebruikte brandstof
 	 * @param aant gebruikte aantal liters van deze brandstof
 	 */
@@ -241,6 +263,7 @@ public class Klus {
 
 	/**
 	 * deze methode vraagt het aantal gewerkt manuren op
+	 * 
 	 * @return gewerkte manuren voor deze klus
 	 */
 	public int getManuren() {
@@ -249,6 +272,7 @@ public class Klus {
 	
 	/**
 	 * deze methode voegt een aantal gewerkte manuren toe aan de klus
+	 * 
 	 * @param manuren het aantal gewerkte uren aan deze klus
 	 */
 	public void addManuren(int manuren) {

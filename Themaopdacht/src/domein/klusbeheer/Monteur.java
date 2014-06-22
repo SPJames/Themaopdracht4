@@ -10,28 +10,30 @@ public class Monteur {
 	private int id;
 
 	/**
-	 * in deze methode wordt het id van de monteur opgevraagd
-	 * @return het id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	//staat netter als de constructor bovenaan staat
-	/**
 	 * hier wordt de account van de monteur voor op de site aangemaakt
 	 * de account krijgt een id, dit nummer wordt automatisch bijgewerkt
+	 * 
 	 * @param nm de gebruikersnaam van de monteur
 	 * @param pw het wachtwoord van de monteur
 	 */
 	public Monteur(String nm, String pw) {
 		setNaam(nm);
 		setPassword(pw);
-		id = nummer++;
+		id = nummer++; //het automatisch ophogen
+	}
+	
+	/**
+	 * in deze methode wordt het id van de monteur opgevraagd
+	 * 
+	 * @return het id
+	 */
+	public int getId() {
+		return id;
 	}
 
 	/**
 	 * deze methode vraagt het wachtwoord op
+	 * 
 	 * @return het wachtwoord
 	 */
 	public String getPassword() {
@@ -40,6 +42,7 @@ public class Monteur {
 
 	/**
 	 * deze methode vult het wachtwoord in
+	 * 
 	 * @param password het wachtwoord
 	 */
 	public void setPassword(String password) {
@@ -48,6 +51,7 @@ public class Monteur {
 
 	/**
 	 * deze methode vraagt de gebruikersnaam op
+	 * 
 	 * @return de gebruikersnaam
 	 */
 	public String getNaam() {
@@ -56,6 +60,7 @@ public class Monteur {
 
 	/**
 	 * deze methode vult de gebruikersnaam in
+	 * 
 	 * @param nm de gebruikersnaam
 	 */
 	public void setNaam(String nm) {
