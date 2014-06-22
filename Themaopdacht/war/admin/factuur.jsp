@@ -20,12 +20,39 @@
 		<%
 			for (Factuur f : facturen) {
 		%>
-		<p>Factuur ID</p><p><%=f.getFactuurNummer()%></p><br />
+		<p>Factuur ID</p>
+		<p><%=f.getFactuurNummer()%></p>
+		<br />
+		<p>Manuren prijs:</p>
+		<p>
+			&euro;<%=f.getManurenprijs()%></p>
+		<br />
+		<p>Onderdelen:</p>
+		<p>
+			<%=f.getOnderdelenprijs()%></p>
+		<br />
+		<p>Brandstof:</p>
+		<p>
+			<%=f.getBrandstofprijs()%></p>
+		<br />
 		<hr width="400" />
-		<p>Totaalprijs (zonder Btw):</p><p><%=f.getTotaalprijsExBtw()%></p><br />
-		<p>Totaalprijs (met Btw):</p><p><%=f.getTotaalprijs()%></p><br />
-		<p>Kortingsprecentage:</p><input type="text" name="korting" /><br />
-		<p>Totaalprijs (met korting):</p><p><%=f.getTotaalprijsKorting()%></p><br />
+		<p>Totaalprijs (zonder Btw):</p>
+		<p>
+			&euro;<%=f.getTotaalprijsExBtw()%></p>
+		<br />
+		<p>Totaalprijs (met Btw):</p>
+		<p>
+			&euro;<%=f.getTotaalprijs()%></p>
+		<br />
+		<p>Kortingsprecentage:</p>
+		<!-- <input type="number" name="korting" min="10" max="100" /> -->
+		<p>
+			&euro;<%=f.getKorting()%></p>
+		<br />
+		<p>Totaalprijs (met korting):</p>
+		<p>
+			&euro;<%=f.getTotaalprijsKorting()%></p>
+		<br />
 
 		<%
 			}
