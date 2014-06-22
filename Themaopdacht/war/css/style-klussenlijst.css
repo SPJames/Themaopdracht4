@@ -36,17 +36,17 @@ table,th,td {
 	border: 1px solid black;
 	margin-right: auto;
 	margin-left: auto;
-	max-width: 800px;
+	max-width: 795px;
 }
 
 tr {
 	text-align: left;
 	padding: 10px;
-	width: 800px;
+	width: 790px;
 }
 
 th {
-	width: 800px;
+	width: 790px;
 	padding: 10px;
 }
 
@@ -60,9 +60,10 @@ h2 {
 	padding: 10px;
 }
 
-p {
+#klus p {
 	text-align: left;
 	max-width: 600px;
+	margin-left: 250px;
 }
 
 #klus {
@@ -74,6 +75,10 @@ p {
 	margin-right: auto;
 	width: 800px;
 	min-height: 300px;
+}
+
+#klus br {
+	margin-bottom: 2px;
 }
 
 #msgs {

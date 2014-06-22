@@ -90,7 +90,7 @@ public class MyServletContextListener implements ServletContextListener {
 		// Logger
 		Logger logger = Logger.getLogger("servlets.algemeneServlets");
 		try {
-			FileHandler fh = new FileHandler("log.xml");
+			FileHandler fh = new FileHandler("log-login.xml");
 			logger.addHandler(fh);
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
