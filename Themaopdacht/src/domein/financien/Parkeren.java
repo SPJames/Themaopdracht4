@@ -17,8 +17,9 @@ public class Parkeren extends DienstType {
 	/**
 	 * deze methode maakt de dienst parkeren aan en 
 	 * vult de prijs per dag en het aantal geparkeerde dagen in
-	 * @param dP de double waarde voor de prijs per dag
-	 * @param aD de double waarde voor het aantal dagen dat er geparkeerd is
+	 * 
+	 * @param dP de kosten van een dag parkeren
+	 * @param aD het aantal dagen dat een auto geparkeerd is
 	 */
 	public Parkeren(double dP, int aD) {
 		super();
@@ -28,7 +29,8 @@ public class Parkeren extends DienstType {
 
 	/**
 	 * deze methode vult het aantal geparkeerde dagen in
-	 * @param aD de int waarde voor aantal geparkeerde dagen
+	 * 
+	 * @param aD het aantal geparkeerde dagen
 	 */
 	public void setAantalDagen(int aD) {
 		aantalDagen = aD;
@@ -36,7 +38,8 @@ public class Parkeren extends DienstType {
 
 	/**
 	 * deze methode vraagt het aantal geparkeerde dagen op
-	 * @return de int waarde van aantalDagen
+	 * 
+	 * @return het aantal geparkeerde dagen
 	 */
 	public int getAantalDagen() {
 		return aantalDagen;
@@ -44,7 +47,8 @@ public class Parkeren extends DienstType {
 
 	/**
 	 * deze methode vraagt de prijs per dag op
-	 * @return de double waarde dagPrijs
+	 * 
+	 * @return de kosten van een dag parkeren
 	 */
 	public double getDagPrijs() {
 		return dagPrijs;
@@ -52,7 +56,8 @@ public class Parkeren extends DienstType {
 
 	/**
 	 * deze methode vult de prijs per dag in
-	 * @param dP de double waarde voor dagPrijs
+	 * 
+	 * @param dP de kosten van een dag parkeren
 	 */
 	public void setDagPrijs(double dP) {
 		dagPrijs = dP;
@@ -62,7 +67,8 @@ public class Parkeren extends DienstType {
 	/**
 	 * deze methode berekent de kosten van het parkeren door de prijs per dag
 	 * te vermenigvuldigen met het aantal geparkeerde dagen
-	 * @return de double waarde voor totaal
+	 * 
+	 * @return de totaalprijs voor het parkeren
 	 */
 	public double dienstPrijs() {
 		totaal = aantalDagen * dagPrijs;
@@ -71,6 +77,7 @@ public class Parkeren extends DienstType {
 
 	/**
 	 * deze methode geeft de naam van dit diensttype weer als een string
+	 * 
 	 * @return de string met de naam van dit diensttype
 	 */
 	public String dienstType() {

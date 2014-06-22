@@ -20,10 +20,8 @@ public class NietBetaaldEmail {
 	 * mail is van te voren opgesteld en wordt gestuurd naar het megegeven
 	 * emailadres.
 	 * 
-	 * @param to
-	 *            het emailadres waar de mail naartoe moet worden gestuurd
-	 * @param fn
-	 *            de naam van de ontvangende klant
+	 * @param to het emailadres waar de mail naartoe moet worden gestuurd
+	 * @param fn de naam van de ontvangende klant
 	 */
 	public NietBetaaldEmail(String to, String fn) {
 

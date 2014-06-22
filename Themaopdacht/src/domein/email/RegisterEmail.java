@@ -20,17 +20,14 @@ public class RegisterEmail {
 	 * Een van te voren opgestelde mail wordt gestuurd naar het door de klant
 	 * opgegeven emailadres
 	 * 
-	 * @param to
-	 *            het emailadres waar de mail naartoe gestuurd wordt
-	 * @param uname
-	 *            de gebruikersnaam van de klant
-	 * @param fn
-	 *            de naam van de klant
-	 * @param pass
-	 *            het wachtwoord van de klant
+	 * @param to het emailadres waar de mail naartoe gestuurd wordt
+	 * @param uname de gebruikersnaam van de klant
+	 * @param fn de naam van de klant
+	 * @param pass het wachtwoord van de klant
 	 */
 	public RegisterEmail(String to, String uname, String fn, String pass) {
 
+		//inloggen
 		final String username = "atd.probe0001@gmail.com";
 		final String password = "Wachtwoord1";
 
@@ -49,6 +46,8 @@ public class RegisterEmail {
 
 		try {
 
+			//de mail wordt gegenereert de naam van de klant, de username van de klant en het wachtwoord
+			//wordt meegegeven
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(to));
 			message.setRecipients(Message.RecipientType.TO,

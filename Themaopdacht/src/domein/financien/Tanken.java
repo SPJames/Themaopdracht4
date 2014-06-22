@@ -17,8 +17,8 @@ public class Tanken extends DienstType {
 	}
 
 	/**
-	 * deze methode maakt de dienst tanken aan en
-	 * vult het aantal getankte liters benzine in
+	 * deze methode maakt de dienst tanken aan en vult het aantal getankte liters benzine in
+	 * 
 	 * @param aL de double waarde voor het aantal getankte liters
 	 */
 	public Tanken(double aL) {
@@ -26,9 +26,9 @@ public class Tanken extends DienstType {
 		aantalLiter = aL;
 	}
 
-	//moet dit niet setAantalLiter zijn? of anders de atribuutnaam veranderen naar gebruikteLiter?
 	/**
 	 * deze methode vult het aantal getankte liters in
+	 * 
 	 * @param aL de double waarde voor het aantal getankte liters
 	 */
 	public void setGebruikteLiter(double aL) {
@@ -37,15 +37,17 @@ public class Tanken extends DienstType {
 
 	/**
 	 * Deze methode vult het goede type brandstof in
+	 * 
 	 * @param br het type brandstof
 	 */
-	//deze methode moet want de prijs per liter verschilt per brandstof type
+	//deze methode is nodig want de prijs per liter verschilt per brandstof type
 	public void setDeBrandstof(Brandstof br) {
 		deBrandstof = br;
 	}
 
 	/**
 	 * deze methode vraagt het brandstoftype op
+	 * 
 	 * @return het type brandstof
 	 */
 	public Brandstof getDeBrandstof() {
@@ -54,18 +56,19 @@ public class Tanken extends DienstType {
 
 	/**
 	 * deze methode vraagt het getankte aantal liters op
-	 * @return de double waarde van het getankte aantal liters
+	 * 
+	 * @return het getankte aantal liters
 	 */
 	public double getGebruikteLiter() {
 		return aantalLiter;
 	}
 
-	// prijs voor tanken
 	/**
 	 * Deze methode berekend de totaalprijs voor het tanken
 	 * Hiervoor worden de methode getGebruikteLiter en getPrijsPerLiter(uit klasse brandstof) gebruikt
 	 * de prijs per liter wordt vermenigvuldigt met het aantal getankte liters
-	 * @return de double waarde van de totaalprijs van het tanken
+	 * 
+	 * @return de totaalprijs van het tanken
 	 */
 	public double dienstPrijs() {
 		totaalB = getGebruikteLiter() * deBrandstof.getPrijsPerLiter();
@@ -74,7 +77,8 @@ public class Tanken extends DienstType {
 
 	/**
 	 * deze methode geeft de naam van dit diensttype weer als een string
-	 * @return een string met de naam van dit diensttype
+	 * 
+	 * @return de naam van dit diensttype
 	 */
 	public String dienstType() {
 		String s = "Tanken";

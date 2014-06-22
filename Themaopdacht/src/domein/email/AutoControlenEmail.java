@@ -21,10 +21,8 @@ public class AutoControlenEmail {
 	 * Hierna wordt een van te voren opgestelde mail verstuurd naar het
 	 * megegeven emailadres.
 	 * 
-	 * @param to
-	 *            het emailadres waar de mail naartoe gestuurd moet worden
-	 * @param fn
-	 *            de naam van de klant
+	 * @param to het emailadres waar de mail naartoe gestuurd moet worden
+	 * @param fn de naam van de klant
 	 */
 	public AutoControlenEmail(String to, String fn) {
 

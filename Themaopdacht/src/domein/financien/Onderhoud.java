@@ -19,8 +19,9 @@ public class Onderhoud extends DienstType {
 	/**
 	 * Deze methode maakt een onderhoudsdienst aan en
 	 * vult het aantal gewerkte manuren en de kosten per manuren in
-	 * @param mU is de double voor het aantal gewerkte manUren
-	 * @param pPM is de double voor de prijsPerManuur
+	 * 
+	 * @param mU het aantal gewerkte manUren
+	 * @param pPM de prijs per gewerkt uur
 	 */
 	public Onderhoud(double mU, double pPM) {
 		super();
@@ -31,7 +32,8 @@ public class Onderhoud extends DienstType {
 	/**
 	 * deze methode berekend de totaalprijs van het onderhoud 
 	 * Deze wordt berekend mbv de atributen manUren en prijsPerManuur
-	 * @return de totaalprijs door de prijsPerManuur te vermenigvuldigen met het aantal gemaakte manUren
+	 * 
+	 * @return de totaalprijs voor het aantal gewerkte uren
 	 */
 	public double totaalManuurPrijs() {
 		totaalMU = manUren * prijsPerManuur;
@@ -40,7 +42,8 @@ public class Onderhoud extends DienstType {
 
 	/**
 	 * deze methode vult het aantal manUren in
-	 * @param mU de double waarde voor het aantal manUren
+	 * 
+	 * @param mU het aantal gewerkte uren
 	 */
 	public void setManUren(double mU) {
 		manUren = mU;
@@ -48,7 +51,8 @@ public class Onderhoud extends DienstType {
 
 	/**
 	 * deze methode vult de prijsPerManuur in
-	 * @param pPM de double waarde voor de prijsPerManuur
+	 * 
+	 * @param de prijs per gewerkt uur
 	 */
 	public void setPrijsPerManuur(double pPM) {
 		prijsPerManuur = pPM;
@@ -57,7 +61,8 @@ public class Onderhoud extends DienstType {
 	/**
 	 * deze methode vult het Onderdeel deOnderdelen in 
 	 * hiervan kunnen er meerdere worden toegevoegd per onderhoudsbeurt
-	 * @param dO het Onderdeel dat in deOnderdelen komt te staan
+	 * 
+	 * @param dO het onderdeel
 	 */
 	public void setDeOnderdelen(Onderdeel dO) {
 		deOnderdelen = dO;
@@ -65,6 +70,7 @@ public class Onderhoud extends DienstType {
 
 	/**
 	 * deze methode vraag het deOnderdelen op
+	 * 
 	 * @return de waarde van deOnderdelen
 	 */
 	public Onderdeel getDeOnderdelen() {
@@ -73,19 +79,20 @@ public class Onderhoud extends DienstType {
 
 	/**
 	 * Deze methode geeft het diensttype (in dit geval onderhoud) weer in de vorm van een string
-	 * @return s String met de naam van dit diensttype
+	 * 
+	 * @return s de naam van dit diensttype
 	 */
 	public String dienstType() {
 		String s = "Onderhoud";
 		return s;
 	}
 
-	// prijs voor de onderhoudkosten
 	/**
 	 * Deze methode berekend de totale onderhoudskosten
 	 * Deze worden berekend door de totaalkosten van manuren en onderdelen bij elkaar op te tellen
 	 * deze totaalkosten worden berekend mbv de methoden totaalManuurPrijs() en totaalPrijsOnderdeel()(uit klasse Onderdeel)
-	 * @return totaal double waarde van de som van de teruggegeven doubles van totaalManuurPrijs() en totaalPrijsOnderdeel()
+	 * 
+	 * @return totaal de totaalkosten van alle gewerkte uren en de onderdeelkosten
 	 */
 	public double dienstPrijs() {
 		totaal = totaalManuurPrijs() + deOnderdelen.totaalPrijsOnderdeel();

@@ -1,6 +1,5 @@
 package domein.financien;
 
-import java.text.DecimalFormat;
 import java.util.HashMap;
 
 import domein.klusbeheer.Klus;
@@ -8,7 +7,7 @@ import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
 /**
- * In de klasse Factuur wordt de factuur opgesteld
+ * In de klasse Factuur wordt de factuur opgesteld en berekend
  */
 public class Factuur {
 	private Klus klus;
@@ -25,12 +24,11 @@ public class Factuur {
 	private double totaalprijs;
 
 	/**
-	 * Er wordt een Factuur aangemaakt en meteen aan een klus gekoppelt de
-	 * methode setKlus wordt gemaakt om een klus aan de Factuur te koppelen het
-	 * factuurnummer wordt automatisch toegekend en verandert.
+	 * Er wordt een Factuur aangemaakt bij een afgeronde klus.
+	 * Het factuurnummer wordt automatisch toegekend en verandert.
+	 * De gemaakte kosten van de klus worden opgevraagd en de eindprijs wordt berekend.
 	 * 
-	 * @param k
-	 *            de klus waar de factuur voor opgesteld moet worden
+	 * @param k de klus waar de factuur voor opgesteld moet worden
 	 */
 	public Factuur(Klus k) {
 		setKlus(k);
@@ -42,7 +40,7 @@ public class Factuur {
 	}
 
 	/**
-	 * In deze methode wordt de waarde van het attribuut manurenprijs opgevraagt
+	 * In deze methode wordt de kosten van een uur werken opgevraagd
 	 * 
 	 * @return de kosten van een uur werktijd
 	 */
@@ -51,20 +49,19 @@ public class Factuur {
 	}
 
 	/**
-	 * In deze methode wordt de kosten voor manuren berekend per klus
+	 * In deze methode wordt de totaalkosten voor de gewerkte uren berekend
 	 * 
-	 * @param k
-	 *            de klus waarvan de kosten moeten worden berekend
+	 * @param k de klus waarvan de kosten moeten worden berekend
 	 */
 	public void setManurenprijs(Klus k) {
 		double prijs = 0.0;
 		prijs = k.getManuren() * 10.0; // 10.0 = prijs per uur
-
+		//k.getManuren = aantal gewerkte uren van deze klus
 		manurenprijs = prijs;
 	}
 
 	/**
-	 * In deze methode wordt de prijs van een onderdeel opgevraagd
+	 * In deze methode worden van alle onderdelen per onderdeel de totaalprijs opgevraagd
 	 * 
 	 * @return de prijs van een onderdeel
 	 */
@@ -75,12 +72,10 @@ public class Factuur {
 	/**
 	 * in deze methode wordt de prijs van de gebruikte onderdelen berekend
 	 * 
-	 * @param k
-	 *            de klus waarvan de prijs berekend moet worden
+	 * @param k de klus waarvan de prijs berekend moet worden
 	 */
 	public void setOnderdelenprijs(Klus k) {
-		HashMap<Onderdeel, Integer> gebruikteOnderdelen = k
-				.getGebruikteOnderdelen();
+		HashMap<Onderdeel, Integer> gebruikteOnderdelen = k.getGebruikteOnderdelen();
 		for (Onderdeel o : gebruikteOnderdelen.keySet()) {
 			double a = gebruikteOnderdelen.get(o) * o.getPrijsArtikel();
 			onderdelenprijs.put(o.getNaam(), a);
@@ -99,15 +94,13 @@ public class Factuur {
 	/**
 	 * deze methode berekend de totale brandstofprijs voor een klus
 	 * 
-	 * @param k
-	 *            de klus waarvan de brandstofkosten berekend moeten worden
+	 * @param k de klus waarvan de brandstofkosten berekend moeten worden
 	 */
 	public void setBrandstofprijs(Klus k) {
-		HashMap<Brandstof, Double> gebruikteBrandstof = k
-				.getGebruikteBrandstof(); // get de gebruikte brandstof
+		HashMap<Brandstof, Double> gebruikteBrandstof = k.getGebruikteBrandstof(); // get de gebruikte brandstof
 		for (Brandstof b : gebruikteBrandstof.keySet()) {
 			double a = gebruikteBrandstof.get(b) * b.getPrijsPerLiter();
-			 brandstofprijs.put(b.getBrandstofType(), a);
+			brandstofprijs.put(b.getBrandstofType(), a);
 		}
 	}
 
@@ -142,8 +135,7 @@ public class Factuur {
 	 * deze methode berekend de totaalprijs aan onderdelen en benzine en
 	 * werktijd voor een klus
 	 * 
-	 * @param k
-	 *            de meegegeven klus
+	 * @param k de meegegeven klus
 	 */
 	public void setTotaalprijs(Klus k) {
 		double prijs = 0.0;
@@ -162,17 +154,16 @@ public class Factuur {
 	}
 
 	/**
-	 * De factuur wordt aangemaakt
+	 * Het factuurnummer wordt ingevuld
 	 * 
-	 * @param fN
-	 *            de int voor het nummer van de factuur
+	 * @param fN de int voor het nummer van de factuur
 	 */
 	public void setFactuurNummer(int fN) {
 		factuurNummer = fN;
 	}
 
 	/**
-	 * deze methode vraagt het factuurnummer
+	 * deze methode vraagt het factuurnummer op
 	 * 
 	 * @return de int waarde van factuurNummer
 	 */
@@ -202,15 +193,14 @@ public class Factuur {
 	/**
 	 * Deze methode vult de klus in waarvoor de factuur gemaakt moet worden
 	 * 
-	 * @param klus
-	 *            de klus waarvoor de factuur gemaakt wordt
+	 * @param klus de klus waarvoor de factuur gemaakt wordt
 	 */
 	public void setKlus(Klus klus) {
 		this.klus = klus;
 	}
 
 	/**
-	 * deze methode vraagt de waarde korting op
+	 * deze methode vraagt de hoeveelheid korting op die de klant krijgt
 	 * 
 	 * @return het percentage korting dat gegeven gaat worden
 	 */
@@ -219,10 +209,9 @@ public class Factuur {
 	}
 
 	/**
-	 * deze methode vult de waarde korting in
+	 * deze methode vult de hoeveelheid korting in die de klant krijgt
 	 * 
-	 * @param korting
-	 *            het percentage korting dat gegeven gaat worden
+	 * @param korting het percentage korting dat gegeven gaat worden
 	 */
 	public void setKorting(double korting) {
 		this.korting = korting;
