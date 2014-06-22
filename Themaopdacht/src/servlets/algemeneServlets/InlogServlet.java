@@ -55,12 +55,11 @@ public class InlogServlet extends HttpServlet {
 		HttpSession ses = req.getSession();
 
 		// Logger output voor inloggen
-		Klant u = login(username, password);
-
-		if (u != null) {
-			Logger.getLogger("").info("User <" + username + "> logged in!");
+		if (username != null) {
+			Logger.getLogger("servlets.algemeneServlets").info(
+					"User <" + username + "> logged in!");
 		} else {
-			Logger.getLogger("").warning(
+			Logger.getLogger("servlets.algemeneServlets").warning(
 					"Login failed for <" + username + ">!");
 		}
 

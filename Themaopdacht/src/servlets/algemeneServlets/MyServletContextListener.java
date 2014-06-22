@@ -88,7 +88,7 @@ public class MyServletContextListener implements ServletContextListener {
 		sce.getServletContext().setAttribute("planning", planning);
 
 		// Logger
-		Logger logger = Logger.getLogger("");
+		Logger logger = Logger.getLogger("servlets.algemeneServlets");
 		try {
 			FileHandler fh = new FileHandler("log.xml");
 			logger.addHandler(fh);
