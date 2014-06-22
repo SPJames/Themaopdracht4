@@ -49,8 +49,6 @@ public class VoorraadBrandstofToevoegen {
 		driver.findElement(By.linkText("Nieuw Brandstof Toevoegen")).click();
 		driver.findElement(By.name("type")).clear();
 		driver.findElement(By.name("type")).sendKeys("diesel");
-
-		// hier gaat iets mis
 		driver.findElement(By.name("aantal")).clear();
 		driver.findElement(By.name("aantal")).sendKeys("5");
 		driver.findElement(By.name("PrijsLiter")).clear();

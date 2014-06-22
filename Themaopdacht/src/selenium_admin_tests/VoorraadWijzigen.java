@@ -41,8 +41,6 @@ public class VoorraadWijzigen {
 		driver.findElement(By.name("pwd")).clear();
 		driver.findElement(By.name("pwd")).sendKeys("Admin");
 		driver.findElement(By.name("Go")).click();
-		
-		//hier gaat iets mis
 		driver.findElement(By.linkText("Voorraad Overzicht")).click();
 		driver.findElement(By.linkText("Wijzigen")).click();
 		driver.findElement(By.name("aantal")).clear();

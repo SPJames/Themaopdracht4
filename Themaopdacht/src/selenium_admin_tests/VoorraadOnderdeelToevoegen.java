@@ -38,8 +38,6 @@ public class VoorraadOnderdeelToevoegen {
 		driver.findElement(By.name("Go")).click();
 		driver.findElement(By.linkText("Voorraad Overzicht")).click();
 		driver.findElement(By.linkText("Nieuw Onderdeel Toevoegen")).click();
-
-		// hier gaat iets mis
 		driver.findElement(By.name("aantal")).clear();
 		driver.findElement(By.name("aantal")).sendKeys("3");
 		driver.findElement(By.name("artikelnaam")).clear();
