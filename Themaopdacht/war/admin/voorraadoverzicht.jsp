@@ -20,8 +20,8 @@
 		<div id="onderdelen">	<!-- In deze div staat een tabel met alle aanwezige onderdelen -->
 		<%
 			@SuppressWarnings("unchecked")
-			ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) application.getAttribute("alleOnderdelen");
-			if (onderdelen.size() > 0) {
+			ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) application.getAttribute("alleOnderdelen");//alle onderdelen ophalen
+			if (onderdelen.size() > 0) {//save guard voor als de array leeg is
 		%>
 		
 		<table>
@@ -33,20 +33,20 @@
 				<th></th>
 			</tr>
 			<%
-				for (Onderdeel o : onderdelen) {
+				for (Onderdeel o : onderdelen) {//print alle onderdelen in tabel
 			%>
 			<tr>
 				<td><%=o.getArtikelNr()%></td>
 				<td><%=o.getNaam()%></td>
 				<td><%=o.getAantal() %></td>
 				<td><%=o.getPrijsArtikel() %></td>
-				<td><a href="onderdeelbewerken.jsp?id=<%=o.getArtikelNr()%>">Wijzigen</a></td>
+				<td><a href="onderdeelbewerken.jsp?id=<%=o.getArtikelNr()%>">Wijzigen</a></td><!-- door sturen naar het bewerken van het onderdeel met desbetrefende id -->
 			</tr>
 			<%
 				}
 			%>
 		</table>
-		<% } else{ %>
+		<% } else{//als de array nog leeg is %>
 		<p>Er zijn geen onderdelen in voorraad.</p>
 		<% } %>
 		<a href='onderdeeltoevoegen.jsp'>Nieuw Onderdeel Toevoegen</a>
@@ -55,6 +55,7 @@
 		<!-- In deze div staat de tabel voor alle aanwezige brandstof -->
 		<div id="brandstof" style="display:none"> 
 		<%
+			//zelfde verhaal maar dan voor brandstoffen
 			@SuppressWarnings("unchecked")
 			ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) application.getAttribute("alleBrandstof");
 			if (brandstoffen.size() > 0) {

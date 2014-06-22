@@ -16,10 +16,11 @@
 				//gegevens van het meegegeven onderdeel worden opgevraagd
 				@SuppressWarnings("unchecked")
 				ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) application
-						.getAttribute("alleOnderdelen");
+						.getAttribute("alleOnderdelen");//alle onderdelen ophalen
 				if (onderdelen.size() > 0) {
 					for(Onderdeel o : onderdelen){
-						if(o.getArtikelNr() == Integer.parseInt(request.getParameter("id"))){
+						if(o.getArtikelNr() == Integer.parseInt(request.getParameter("id"))){//pak het onderdeel die gelijk staat aan de geselecteerde id
+							//pak alle gegevens van het onderdeel
 							int id = o.getArtikelNr();
 							String naam = o.getNaam();
 							int aantal = o.getAantal();
@@ -43,7 +44,7 @@
 			<%
 						}
 					}
-				} else {
+				} else {//als de array nog leeg is
 			%>
 			<p>Er is nog geen voorraad.</p>
 			<%

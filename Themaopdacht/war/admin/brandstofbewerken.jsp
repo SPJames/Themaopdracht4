@@ -12,14 +12,14 @@
 
 		<jsp:include page="../message.jsp"/>
 			<%
-				}
 				//de meegegeven brandstof opzoeken
 				@SuppressWarnings("unchecked")
 				ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) application
 						.getAttribute("alleBrandstof");
-				if (brandstoffen.size() > 0) {
+				if (brandstoffen.size() > 0) {//kleine save guard voor als de array leeg is
 					for(Brandstof b : brandstoffen){
-						if(b.getTsic() == Integer.parseInt(request.getParameter("id"))){
+						if(b.getTsic() == Integer.parseInt(request.getParameter("id"))){//pak het id van de brandstof die ze nodig hebben
+							//alle info van de brandstof ophalen
 							int id = b.getTsic();
 							String naam = b.getBrandstofType();
 							double aantal = b.getLiter();
@@ -43,7 +43,7 @@
 			<%
 						}
 					}
-				} else {
+				} else {//als de array dus leeg is
 			%>
 			<p>Er is nog geen voorraad.</p>
 			<%
