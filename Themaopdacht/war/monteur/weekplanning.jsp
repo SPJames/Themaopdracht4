@@ -13,7 +13,8 @@
 		
 		<%
 			Weekplanning week = (Weekplanning) application.getAttribute("planning");
-			Klus[][][] klussen = week.getKlussen();
+			Klus[][][] klussen = week.getKlussen(); //3 dimensionale array. geeft per week aan op welke
+													// dag welke klussen ingepland staan.
 			
 		%>
 
@@ -21,7 +22,7 @@
 			<table>
 				<thead>
 					<tr>
-						<td>Weeknummer: <%= week.getWeekNr() %></td>
+						<td>Weeknummer: <%= week.getWeekNr() %></td> <!--  weeknummer huidige week -->
 						<td></td>
 					</tr>
 				</thead>
