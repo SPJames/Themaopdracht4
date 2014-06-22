@@ -18,10 +18,8 @@ public class KlantHerinneringEmail {
 	 * deze methode logt eerst in bij de account die de mail moet sturen de
 	 * gegenereerde mail wordt gestuurd naar het meegegeven email-adres
 	 * 
-	 * @param to
-	 *            het emailadres waar de mail naartoe gestuurd moet worden
-	 * @param fn
-	 *            de naam van de klant
+	 * @param to het emailadres waar de mail naartoe gestuurd moet worden
+	 * @param fn de naam van de klant
 	 */
 	public KlantHerinneringEmail(String to, String fn) {
 

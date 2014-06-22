@@ -10,18 +10,20 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * In deze klasse wordt een email gestuurd als een klus is afgerond
+ * In deze klasse wordt een email gegenereert als een klus is afgerond
  */
 public class KlusAfgerondEmail {
 
 	/**
 	 * Er wordt ingelogd op het adres waarvandaan de mail gestuurd gaat worden.
-	 * Een van te voren opgestelde mail wordt gestuurd naar de meegegeven klant
+	 * Een van te voren opgestelde mail wordt gestuurd naar de meegegeven klant.
+	 * 
 	 * @param to het adres waar de mail naartoe gestuurd moet worden
 	 * @param fn de naam van de ontvanger van de email
 	 */
 	public KlusAfgerondEmail(String to, String fn) {
 
+		//inloggen
 		final String username = "atd.probe0001@gmail.com";
 		final String password = "Wachtwoord1";
 
@@ -39,7 +41,7 @@ public class KlusAfgerondEmail {
 				});
 
 		try {
-
+			//mail genereren, de klantnaam wordt ingevuld
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(to));
 			message.setRecipients(Message.RecipientType.TO,

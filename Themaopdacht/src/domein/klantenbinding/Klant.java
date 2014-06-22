@@ -1,7 +1,5 @@
 package domein.klantenbinding;
 
-//import java.io.FileWriter;
-//import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +26,7 @@ public class Klant {
 	 * met deze methode wordt een klant aangemaakt met een naam, adres, postcode,
 	 * email adres, gebruikersnaam en wachtwoord.
 	 * er wordt een klantid aangemaakt die automatisch wordt opgehoogd als er een nieuwe klant wordt aangemaakt
+	 * 
 	 * @param nm de volledig naam van de klant
 	 * @param ad het woonadres van de klant
 	 * @param pc de postcode van de klant
@@ -35,19 +34,19 @@ public class Klant {
 	 * @param un de gebruikersnaam van de klant voor op de site
 	 * @param pw het wachtwoord van de klant voor op de site
 	 */
-	public Klant(String nm, String ad, String pc, String em, String un,
-			String pw) {
+	public Klant(String nm, String ad, String pc, String em, String un,	String pw) {
 		setNaam(nm);
 		setAdres(ad);
 		setPostcode(pc);
 		setEmail(em);
 		setUsername(un);
 		setPassword(pw);
-		id = getal++;
+		id = getal++;	//het automatisch ophogen van klantid
 	}
 
 	/**
 	 * deze methode vraagt de gebruikersnaam van de klant op
+	 * 
 	 * @return de gebruikersnaam
 	 */
 	public String getUsername() {
@@ -56,6 +55,7 @@ public class Klant {
 
 	/**
 	 * deze methode vult de gebruikersnaam van de klant in
+	 * 
 	 * @param username de gebruikersnaam
 	 */
 	public void setUsername(String username) {
@@ -64,6 +64,7 @@ public class Klant {
 
 	/**
 	 * deze methode vraagt het wachtwoord van de klant op
+	 * 
 	 * @return het wachtwoord
 	 */
 	public String getPassword() {
@@ -72,6 +73,7 @@ public class Klant {
 
 	/**
 	 * deze methode vult het wachtwoord van de klant in
+	 *
 	 * @param password het wachtwoord
 	 */
 	public void setPassword(String password) {
@@ -80,6 +82,7 @@ public class Klant {
 
 	/**
 	 * deze methode vraagt de naam van de klant op
+	 * 
 	 * @return de naam
 	 */
 	public String getNaam() {
@@ -88,6 +91,7 @@ public class Klant {
 
 	/**
 	 * deze methode vult de naam van de klant in
+	 * 
 	 * @param nm de naam
 	 */
 	public void setNaam(String nm) {
@@ -96,6 +100,7 @@ public class Klant {
 
 	/**
 	 * deze methode vraagt het woonadres van de klant op
+	 * 
 	 * @return het woonadres
 	 */
 	public String getAdres() {
@@ -104,6 +109,7 @@ public class Klant {
 
 	/**
 	 * deze methode vult het woonadres van de klant in
+	 * 
 	 * @param ad het woonadres
 	 */
 	public void setAdres(String ad) {
@@ -112,6 +118,7 @@ public class Klant {
 
 	/**
 	 * deze methode vraagt de postcode van de klant op
+	 * 
 	 * @return de postcode
 	 */
 	public String getPostcode() {
@@ -120,6 +127,7 @@ public class Klant {
 
 	/**
 	 * deze methode vult de postcode van de klant in
+	 * 
 	 * @param pc de postcode
 	 */
 	public void setPostcode(String pc) {
@@ -128,6 +136,7 @@ public class Klant {
 
 	/**
 	 * deze methode vraagt het emailadres van de klant op
+	 * 
 	 * @return het emailadres
 	 */
 	public String getEmail() {
@@ -136,6 +145,7 @@ public class Klant {
 
 	/** 
 	 * deze methode vult het emailadres van de klant in
+	 * 
 	 * @param em het emailadres
 	 */
 	public void setEmail(String em) {
@@ -144,6 +154,7 @@ public class Klant {
 
 	/**
 	 * deze methode vraagt de datum van het laatse bezoek op in de vorm van een string
+	 * 
 	 * @return de datum als deze er is
 	 */
 	public String getLaatstBezocht() {
@@ -155,20 +166,9 @@ public class Klant {
 		}
 	}
 
-	//HEBBEN WE DIT NOG NODIG? ANDERS WEGGOOIEN
-	// public void schrijfWeg(String[] userinfo) throws IOException{
-	// FileWriter fw = new
-	// FileWriter("C:/apache-tomcat-8.0.5/webapps/Themaopdracht4/users.dat",
-	// true);
-	//
-	// fw.write("\n"+ id++
-	// +" "+userinfo[0]+":"+userinfo[2]+";"+userinfo[1]+" "+userinfo[4]+" "+userinfo[6]+" "+userinfo[7]);
-	// fw.flush();
-	// fw.close();
-	// }
-
 	/**
 	 * deze methode vraagt het klantid van de klant op
+	 * 
 	 * @return de klantid
 	 */
 	public int getId() {
@@ -177,6 +177,7 @@ public class Klant {
 
 	/**
 	 * deze methode vult de klantid van de klant in
+	 * 
 	 * @param id de klantid
 	 */
 	public void setId(int id) {
@@ -185,14 +186,13 @@ public class Klant {
 
 	/**
 	 * deze methode vult de datum van het laatste bezoek in
+	 * 
 	 * @param nd de datum van het laatste bezoek
 	 */
 	public void setLaatstBezocht(Calendar nd) {
 		laatstBezocht = nd;
 	}
 
-	//hebben we deze nog nodig, deze methode is er ook in een string vorm?
-	//wat betekend raw?
 	/**
 	 * deze methode vraagt de datum van het laatste bezoek op in calendar vorm
 	 * @return de datum van het laatste bezoek
@@ -201,11 +201,10 @@ public class Klant {
 		return laatstBezocht;
 	}
 
-	//alle zooi van de arraylist auto staat nu zowel hier als in betaling.
-	//op een van de 2 plekken moeten we het weghalen
 	/**
 	 * deze methode vraagt de arraylist met autos op
 	 * elke klant heeft een eigen arraylist autos
+	 * 
 	 * @return alle autos van de klant
 	 */
 	public ArrayList<Auto> getAlleAutos() {
@@ -215,17 +214,18 @@ public class Klant {
 	/**
 	 * Als een klant aangepast wordt wordt deze methode gebruikt om
 	 * te zorgen dat de klant de autos behoud
+	 * 
 	 * @param alleAutos de arraylist van alle autos van de klant
 	 */
 	public void setAlleAutos(ArrayList<Auto> alleAutos) {
 		this.alleAutos = alleAutos;
 	}
 
-	//moeten we hier niet een boolean van maken
 	/**
 	 * deze methode voegt een auto toe aan de arraylist
 	 * er wordt mbv methode heeftAuto gekeken of de auto al in de lijst staat
 	 * er wordt gecontroleert op kenteken
+	 * 
 	 * @param nwA de toe te voegen auto
 	 */
 	public void voegAutoToe(Auto nwA) {
@@ -239,6 +239,7 @@ public class Klant {
 	/**
 	 * deze methode gebruikt de methode zoekauto om te kijken of de auto al in de lijst staat
 	 * er wordt gezocht op kenteken
+	 * 
 	 * @param kt het kenteken van de gezochte auto
 	 * @return een boolean die aangeeft of de auto in de lijst staat of niet
 	 */
@@ -252,6 +253,7 @@ public class Klant {
 
 	/**
 	 * deze methode zoekt naar een auto met een opgegeven kenteken in de arraylist alleAutos
+	 * 
 	 * @param kt het kenteken waar op gezocht wordt
 	 * @return als er een auto is wordt die teruggegeven anders niks
 	 */
@@ -268,6 +270,7 @@ public class Klant {
 	/**
 	 * deze methode wordt gebruikt om een auto te verwijderen uit de lijst alleAutos
 	 * met de methode heeftAuto wordt gekeken of de auto ook echt in de lijst zit
+	 * 
 	 * @param exA de te verwijderen auto
 	 * @return een boolean die aangeeft of de auto verwijdert is
 	 */
@@ -284,6 +287,7 @@ public class Klant {
 
 	/**
 	 * deze methode geeft weer hoeveel autos deze klant heeft
+	 * 
 	 * @return het aantal autos dat de klant heeft
 	 */
 	public int aantalAutos() {
@@ -293,8 +297,4 @@ public class Klant {
 			return 0;
 		}
 	}
-
-	/*
-	 * public String toString() { String s = getNaam() + ""; return s; }
-	 */
 }

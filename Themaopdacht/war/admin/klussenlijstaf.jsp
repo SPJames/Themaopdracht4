@@ -24,22 +24,23 @@
 			<%@ page import="domein.financien.Factuur"%>
 			<%
 			@SuppressWarnings("unchecked")
-			ArrayList<Factuur>facturen = (ArrayList<Factuur>) application.getAttribute("alleFacturen");
+			ArrayList<Factuur>facturen = (ArrayList<Factuur>) application.getAttribute("alleFacturen");//alle facturen ophalen
 			@SuppressWarnings("unchecked")
-			ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
+			ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");//alle users ophalen
 			@SuppressWarnings("unchecked")
-			ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("alleKlussen");
+			ArrayList<Klus> klussen = (ArrayList<Klus>) application.getAttribute("alleKlussen");//alle klussen ophalen
 				for (Klus k : klussen) {
-					if (k.isKlusafgerond()) {
+					if (k.isKlusafgerond()) {//boolean voor als de klus klaar is voor facturatie
+						//pak alle klus gegevens
 						int id = k.getKlusNummer();
 						int klantid = k.getKlantID();	
 						String klantname = "";
 						for(Klant klant : klanten) {
-							if(klant.getId() == k.getKlantID()) {
-								klantname = klant.getNaam();
+							if(klant.getId() == k.getKlantID()) {//kijken of het klantid wat bij de klus het zelfde is als het id van de klant
+								klantname = klant.getNaam();//pak de naam van die klant
 							}
 						}
-							
+						//nog meer gegevens van de klus	
 						String auto = k.getAuto().getKenteken();
 						String type = k.getHetType().dienstType();
 						String commentaar = k.getBeschrijving();
@@ -52,7 +53,7 @@
 							<td><%=type%></td>
 							<td><%=commentaar%></td>
 							<td><%=parkeerplaats%></td>
-							<td><a href="KlusFacturerenServlet?klusid=<%=id%>">factureren</a></td>
+							<td><a href="KlusFacturerenServlet?klusid=<%=id%>">factureren</a></td><!-- de klus door sturen naar facturatie met het id van de klus -->
 						</tr>
 						<%
 					}

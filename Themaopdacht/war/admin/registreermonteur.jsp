@@ -13,7 +13,7 @@
 					placeholder="Realname" class="box" />
 				<label for="pwd">Password</label><input type="password" name="pwd" 
 					placeholder="password" class="box" />
-				<label for="pwd2]">Re-enter password</label><input type="password"
+				<label for="pwd2">Re-enter password</label><input type="password"
 					name="pwd2" placeholder="password" class="box" />
 				<input type="submit" value="Verzenden" class="down" />
 			</fieldset>

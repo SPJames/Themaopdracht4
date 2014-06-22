@@ -16,7 +16,7 @@
 			@SuppressWarnings("unchecked")
 			ArrayList<Klant> klanten = (ArrayList<Klant>) application
 					.getAttribute("alleUsers");
-			if (klanten.size() > 0) {
+			if (klanten.size() > 0) {//save guard voor als de array leeg is
 		%>
 	<table>
 		<tr>
@@ -32,7 +32,7 @@
 			<td><%=k.getId()%></td>
 			<td><%=k.getNaam()%></td>
 			<td><a
-				href="/atd/KiezenEmail.do?id=<%=k.getId()%>&sort=herinnering">Stuur Herinnerings-email</a></td>
+				href="/atd/KiezenEmail.do?id=<%=k.getId()%>&sort=herinnering">Stuur Herinnerings-email</a></td><!-- kies de juiste email, de klant id word dynamisch mee gegeven -->
 			<td><a href="/atd/KiezenEmail.do?id=<%=k.getId()%>&sort=betaald">Stuur Niet Betaald-email</a></td>
 			<td><a href="/atd/KiezenEmail.do?id=<%=k.getId()%>&sort=auto">Stuur Auto Controlen-email</a></td>
 		</tr>
@@ -41,7 +41,7 @@
 		%>
 	</table>
 	<%
-		} else {
+		} else {//als de array leeg is
 	%>
 	<p>Er zijn nog geen klanten.</p>
 	<%

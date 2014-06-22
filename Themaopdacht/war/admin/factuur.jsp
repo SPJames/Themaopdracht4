@@ -15,7 +15,7 @@
 		<%
 			@SuppressWarnings("unchecked")
 			ArrayList<Factuur> facturen = (ArrayList<Factuur>) application
-					.getAttribute("alleFacturen");
+					.getAttribute("alleFacturen");//alle facturen ophalen
 		%>
 		<%
 			for (Factuur f : facturen) {

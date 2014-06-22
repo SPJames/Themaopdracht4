@@ -17,8 +17,8 @@
 		<%
 			@SuppressWarnings("unchecked")
 			ArrayList<Factuur> facturen = (ArrayList<Factuur>) application
-					.getAttribute("alleFacturen");
-			if (facturen.size() > 0) {
+					.getAttribute("alleFacturen");//haal alle facturen op
+			if (facturen.size() > 0) {//save guard voor als de array leeg is
 		%>
 		<table>
 			<tr>
@@ -38,7 +38,7 @@
 			%>
 		</table>
 		<%
-			} else {
+			} else {//als de array leeg is
 		%>
 		<p>Er zijn nog geen facturen.</p>
 		<%
