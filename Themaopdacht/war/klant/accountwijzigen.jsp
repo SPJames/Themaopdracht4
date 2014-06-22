@@ -10,11 +10,11 @@
 		<h2>Wijzig accountgegevens</h2>
 		<%
 			@SuppressWarnings("unchecked")
-			ArrayList<Klant> Users = (ArrayList<Klant>) application.getAttribute("alleUsers");
-			Klant klant = null;
+			ArrayList<Klant> Users = (ArrayList<Klant>) application.getAttribute("alleUsers");//alle klanten ophalen
+			Klant klant = null;//temp klant aan maken
 			for (Klant k : Users) {
-				if (k.getUsername().equals(session.getAttribute("Username"))) {
-					klant = k;
+				if (k.getUsername().equals(session.getAttribute("Username"))) {//kijken of de klant gelijk is aan de ingelogde klant
+					klant = k;//temp klant vullen met alle info
 				}
 			}
 		%>

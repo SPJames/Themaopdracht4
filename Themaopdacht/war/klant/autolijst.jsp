@@ -15,11 +15,11 @@
 
 		<%
 			@SuppressWarnings("unchecked")
-			ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
+			ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");//alle users ophalen
 			for (Klant k : klanten) {
-				if (k.getId() == (Integer) session.getAttribute("ID")) {
-					ArrayList<Auto> autos = k.getAlleAutos();
-					if (autos.size() > 0) {
+				if (k.getId() == (Integer) session.getAttribute("ID")) {//kijken of het de ingelogde klant is
+					ArrayList<Auto> autos = k.getAlleAutos();//alle autos van die klant
+					if (autos.size() > 0) {//save guard voor als array leeg is
 		%>
 		<table>
 			<tr>
@@ -38,7 +38,7 @@
 			%>
 		</table>
 		<%
-			} else {
+			} else {//als de array leeg is
 		%>
 		<p>U heeft nog geen auto's.</p>
 		<%

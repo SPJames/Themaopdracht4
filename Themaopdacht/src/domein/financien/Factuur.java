@@ -1,5 +1,6 @@
 package domein.financien;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 import domein.klusbeheer.Klus;
@@ -16,7 +17,7 @@ public class Factuur {
 
 	private double btw = 1.21;
 
-	private double korting;
+	private double korting = 0;
 
 	private double manurenprijs;
 	private HashMap<String, Double> onderdelenprijs = new HashMap<String, Double>();
@@ -119,7 +120,9 @@ public class Factuur {
 	 * @return de totaalprijs met btw
 	 */
 	public double getTotaalprijs() {
-		return totaalprijs * btw;
+		DecimalFormat df = new DecimalFormat("#.00");
+		double anwser = totaalprijs * btw;
+		return Double.parseDouble(df.format(anwser));
 	}
 
 	/**
@@ -128,7 +131,13 @@ public class Factuur {
 	 * @return de totaalprijs met btw en korting
 	 */
 	public double getTotaalprijsKorting() {
-		return (totaalprijs * btw) * (100 / korting);
+		double anwser;
+		if(korting >= 0){
+			DecimalFormat df = new DecimalFormat("#.00");
+			anwser = (totaalprijs * btw) * ((100 - korting)/100);
+			return Double.parseDouble(df.format(anwser));
+		}
+		return getTotaalprijs();
 	}
 
 	/**

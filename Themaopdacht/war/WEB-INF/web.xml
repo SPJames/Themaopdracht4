@@ -171,6 +171,16 @@
 		<url-pattern>/admin/BrandstofBewerkenServlet.do</url-pattern>
 	</servlet-mapping>
 	
+	<!-- Korting Wijzigen (Admin) -->
+	<servlet>
+		<servlet-name>Korting Wijzigen Servlet</servlet-name>
+		<servlet-class>servlets.adminServlets.KortingWijzigen</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Korting Wijzigen Servlet</servlet-name>
+		<url-pattern>/admin/KortingWijzigen.do</url-pattern>
+	</servlet-mapping>
+	
 	<!-- KiezenEmail Servlet  -->
 	<servlet>
 		<servlet-name>KiezenEmail</servlet-name>

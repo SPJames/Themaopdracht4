@@ -12,8 +12,9 @@
 		<jsp:include page="../message.jsp" />
 		
 		<%
-			String id = "" + (Integer) session.getAttribute("ID");
-			String name = (String) session.getAttribute("Username");
+			String id = "" + (Integer) session.getAttribute("ID");//id locaal opslaan
+			String name = (String) session.getAttribute("Username");//username locaal opslaan
+			//allebij "hidden" in vullen in de form zodat we ze straks kunnen gebruiken
 		%>
 
 		<form action="KlusAanmakenServlet.do" method="get">
@@ -25,13 +26,13 @@
 			<select name="auto">
 				<%
 					@SuppressWarnings("unchecked")
-					ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");
+					ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");//alle users ophalen
 					for (Klant k : klanten) {
-						if (k.getId() == (Integer.parseInt(id))) {
-							ArrayList<Auto> autos = k.getAlleAutos();
-							if (autos.size() > 0) {
+						if (k.getId() == (Integer.parseInt(id))) {//kijken of de klant id gelijk is aan de ingelogde klant id
+							ArrayList<Auto> autos = k.getAlleAutos();//alle autos van die klant
+							if (autos.size() > 0) {//save guard voor als hij leeg is
 								for (Auto a : autos) {
-									if (!a.isInReparatie()) {
+									if (!a.isInReparatie()) {//als auto in reparatie is(aka in de winkel) kan hij niet opnieuw als een klus worden aan gemaakt
 				%>
 				<option value="<%=a.getKenteken()%>"><%=a.getKenteken()%></option>
 				<%

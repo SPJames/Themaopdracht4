@@ -45,9 +45,14 @@
 			&euro;<%=f.getTotaalprijs()%></p>
 		<br />
 		<p>Kortingsprecentage:</p>
-		<!-- <input type="number" name="korting" min="10" max="100" /> -->
+		<form mehtod="get" action="KortingWijzigen.do">
+			Korting: 
+			<input type="hidden" name="id" value=<%=f.getFactuurNummer()%> />
+			<input type="number" name="korting" min="10" max="100" />
+			<input type="Submit" value="Voeg Korting Toe" />
+		</form>
 		<p>
-			&euro;<%=f.getKorting()%></p>
+			%<%=f.getKorting()%></p>
 		<br />
 		<p>Totaalprijs (met korting):</p>
 		<p>
