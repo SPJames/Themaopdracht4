@@ -48,7 +48,6 @@ public class KlusAanmakenServlet extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		ArrayList<Auto> autos = (ArrayList<Auto>) req.getServletContext().getAttribute("alleAutos");
 		Parkeerplaats[] parkeer = (Parkeerplaats[]) req.getServletContext().getAttribute("alleParkeerplaatsen");
-		Weekplanning planning = (Weekplanning)req.getServletContext().getAttribute("planning");
 
 		userinfo[0] = req.getParameter("klantid");// userid voor foreign key
 		userinfo[1] = req.getParameter("name");// username voor foreign key
@@ -97,7 +96,6 @@ public class KlusAanmakenServlet extends HttpServlet {
 				} else {
 					k.setParkeerplaats(plek);
 					req.setAttribute("msgs", "De klus is geregistreerd! Uw gereserveerde parkeerplek is " + (plek + 1));
-					planning.addKlus(k);
 				}
 				if (plek == -2) {
 					// foutmelding, als er geen parkeerplek is
