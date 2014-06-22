@@ -52,18 +52,6 @@ public class KlusUitkiezen {
 		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
 	}
 
-//	@Test
-//	public void testSeleniumKlusAanpassen() throws Exception {
-//		driver.get(baseUrl + "/atd/monteur/KlusUitkiezenServlet?id=1");
-//		driver.findElement(By.linkText("edit")).click();
-//		driver.findElement(By.name("comments")).clear();
-//		driver.findElement(By.name("comments")).sendKeys(
-//				"auto heeft nieuwe wieldoppen gekregen");
-//		driver.findElement(By.name("aantal0")).clear();
-//		driver.findElement(By.name("aantal0")).sendKeys("4");
-//		driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-//	}
-
 	@After
 	public void tearDown() throws Exception {
 		driver.quit();

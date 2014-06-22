@@ -34,8 +34,6 @@ public class VoorraadWijzigen {
 
 	@Test
 	public void testVoorraadWijzigen() throws Exception {
-//		driver.get(baseUrl
-//				+ "/atd/admin/BrandstofToevoegenServlet.do?type=diesel&aantal=5&PrijsLiter=1.50");
 		driver.get(baseUrl + "/atd/index.jsp");
 		driver.findElement(By.linkText("Log in")).click();
 		driver.findElement(By.name("username")).clear();

@@ -34,11 +34,6 @@ public class VoorraadBrandstofToevoegen {
 
 	@Test
 	public void testBrandstofToevoegen() throws Exception {
-		/*
-		 * driver.get(baseUrl +
-		 * "/atd/admin/OnderdeelToevoegenServlet.do?artikelnaam=schroef&aantal=2&PrijsArtikel=2.0"
-		 * );
-		 */
 		driver.get(baseUrl + "/atd/index.jsp");
 		driver.findElement(By.linkText("Log in")).click();
 		driver.findElement(By.name("username")).clear();
