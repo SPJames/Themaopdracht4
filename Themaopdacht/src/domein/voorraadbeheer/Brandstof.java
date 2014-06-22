@@ -12,6 +12,7 @@ public class Brandstof {
 	/**
 	 * de brandstofsoort wordt aangemaakt. het brandstoftype, de hoeveelheid in liters
 	 * en de prijs per liter wordt ingevuld
+	 * 
 	 * @param tp het brandstoftype
 	 * @param l hoeveelheid liters
 	 * @param ppl de prijs per liter

@@ -13,13 +13,13 @@ public class Voorraad {
 
 	// de klasse wordt geinitialiseerd
 	public Voorraad() {
-
 	}
 
 	// BRANDSTOF
 
 	/**
 	 * deze methode vraagt de lijst met alle brandstofsoorten op
+	 * 
 	 * @return de lijst alleBrandstof
 	 */
 	public ArrayList<Brandstof> getAlleBrandstof() {
@@ -29,6 +29,7 @@ public class Voorraad {
 	/**
 	 * deze methode kijkt of een brandstof soort in de lijst alleBrandstof staat
 	 * de methode zoekBrandstof wordt gebruikt
+	 * 
 	 * @param tp het brandstoftype (diesel, euro)
 	 * @return een boolean die aangeeft of de brandstof in de lijst staat of niet
 	 */
@@ -42,6 +43,7 @@ public class Voorraad {
 
 	/**
 	 * deze methode zoekt naar een brandstoftype in de lijst alleBrandstof
+	 * 
 	 * @param tp het gezochte brandstoftype
 	 * @return het gezochte brandstoftype als het in de lijst staat
 	 */
@@ -58,6 +60,7 @@ public class Voorraad {
 
 	/**
 	 * deze methode voegt brandstof toe aan de lijst alleBrandstof
+	 * 
 	 * @param nwB de toe te voegen brandstof
 	 * @return een boolean die aangeeft of het toevoegen gelukt is
 	 */
@@ -71,6 +74,7 @@ public class Voorraad {
 	/**
 	 * deze methode verwijdert een brandstoftype uit de lijst als deze erin staat
 	 * de methode heeftBrandstof wordt gebruikt om te kijken of deze in de lijst staat
+	 * 
 	 * @param exB de te verwijderen brandstof
 	 * @return een boolean die aangeeft of het verwijderen gelukt is
 	 */
@@ -86,6 +90,7 @@ public class Voorraad {
 
 	/**
 	 * deze methode geeft weer hoeveel brandstofsoorten er in de lijst alleBrandstof staan
+	 * 
 	 * @return hoeveelheid brandstofsoorten (kunnen meer van dezelfde zijn)
 	 */
 	public int aantalBrandstof() {
@@ -100,6 +105,7 @@ public class Voorraad {
 
 	/**
 	 * deze methode vraagt de lijst met alle onderdelen op
+	 * 
 	 * @return de lijst alleOnderdelen
 	 */
 	public ArrayList<Onderdeel> getAlleOnderdelen() {
@@ -109,6 +115,7 @@ public class Voorraad {
 	/**
 	 * deze methode kijkt of een onderdeel in de lijst alleOnderdelen staat
 	 * de methode zoekOnderdeel wordt gebruikt om de lijst te doorzoeken
+	 * 
 	 * @param aN het artikelnummer van het te zoeken onderdeel
 	 * @return een boolean die aangeeft of het onderdeel in de lijst staat
 	 */
@@ -122,6 +129,7 @@ public class Voorraad {
 
 	/**
 	 * deze methode zoekt een onderdeel in de lijst alleOnderdelen
+	 * 
 	 * @param aN het artikelnummer van het te zoeken onderdeel
 	 * @return het onderdeel als het in de lijst staat
 	 */
@@ -140,6 +148,7 @@ public class Voorraad {
 	 * deze methode voegt een onderdeel aan de lijst toe
 	 * als het onderdeel nog niet in de lijst stond wordt het toegevoegd
 	 * als het er al wel in stond wordt het aantal van dat onderdeel verhoogd
+	 * 
 	 * @param nwO het toe te voegen onderdeel
 	 * @return een boolean die aangeeft of het gelukt is of niet
 	 */
@@ -166,6 +175,7 @@ public class Voorraad {
 	/**
 	 * deze methode verwijdert een onderdeel uit de lijst alleOnderdelen
 	 * de methode heeftOnderdeel wordt gebruikt om te kijken of het onderdeel in de lijst staat
+	 * 
 	 * @param exO het te verwijderen onderdeel
 	 * @return een boolean die aangeeft of het onderdeel verwijdert is of niet
 	 */
@@ -182,6 +192,7 @@ public class Voorraad {
 	/**
 	 * deze methode wordt gebruikt om het aantal verschillende onderdelen 
 	 * in de lijst alleOnderdelen op te vragen
+	 * 
 	 * @return het aantal verschillende onderdelen
 	 */
 	public int aantalOnderdelen() {
@@ -196,6 +207,7 @@ public class Voorraad {
 
 	/**
 	 * deze methode vraagt de lijst met alle bestellingen op
+	 * 
 	 * @return de lijst alleBestellingen
 	 */
 	public ArrayList<Bestelling> getAlleBestellingen() {
@@ -205,6 +217,7 @@ public class Voorraad {
 	//kunnen we hier niet zoekbestellling aanroepen?
 	/**
 	 * deze methode kijkt of een bestelling in de lijst alleBestellingen zit
+	 * 
 	 * @param bN het bestellingsnummer waarop gezocht wordt
 	 * @return een boolean die aangeeft of de bestelling in de lijst staat of niet
 	 */
@@ -219,6 +232,7 @@ public class Voorraad {
 
 	/**
 	 * deze methode zoekt een bestelling in de lijst alleBestelingen
+	 * 
 	 * @param bN het bestelnummer van de gezochte bestelling
 	 * @return de bestelling als deze in de lijst zit
 	 */
@@ -236,6 +250,7 @@ public class Voorraad {
 	/**
 	 * deze methode voegt een bestelling toe aan de lijst alleBestellingen
 	 * de methode heeftBestelling wordt gebruikt om te kijken of de bestelling in de lijst staat
+	 * 
 	 * @param nwBe de toe te voegen bestelling
 	 * @return een boolean die weergeeft of de bestelling toegevoegd is
 	 */
@@ -251,6 +266,7 @@ public class Voorraad {
 	/**
 	 * met deze methode wordt een bestelling uit de lijst alleBestellingen verwijdert
 	 * de methode heeftBestelling wordt gebruikt om te kijken of de bestelling in de lijst staat
+	 * 
 	 * @param exBe de te verwijderern bestelling
 	 * @return een boolean die aangeeft of de bestelling verwijdert is
 	 */
@@ -266,6 +282,7 @@ public class Voorraad {
 
 	/**
 	 * deze methode vraagt op hoeveel bestellingen er in de lijst alleBestellingen zijn
+	 * 
 	 * @return het aantal bestellingen in lijst alleBestellingen
 	 */
 	public int aantalBestellingen() {
@@ -279,6 +296,7 @@ public class Voorraad {
 	/**
 	 * deze methode geeft een string weer die afdrukt hoeveel en welke
 	 *  onderdelen/brandstofsoorten er zijn
+	 *  
 	 *  @return een string met hoeveel en welke onderdelen en brandstofsoorten
 	 */
 	public String toString() {
