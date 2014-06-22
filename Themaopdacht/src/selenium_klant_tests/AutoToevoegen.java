@@ -43,7 +43,7 @@ public class AutoToevoegen {
 		BufferedReader reader = null;
 
 		try {
-			File file = new File("../csv/autoToevoegen.csv");
+			File file = new File("autoToevoegen.csv");
 			reader = new BufferedReader(new FileReader(file));
 
 			String line;

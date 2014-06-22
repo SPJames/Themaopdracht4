@@ -35,14 +35,16 @@ public class AccountWijzigen {
 	@Test
 	public void generateData() throws Exception {
 		String username;
-		String adres;
-		String email;
 		String pwd;
+		String username2;
+		String straat;
+		String postcode;
+		String email;
 
 		BufferedReader reader = null;
 
 		try {
-			File file = new File("../csv/accountWijzigen.csv");
+			File file = new File("accountWijzigen.csv");
 			reader = new BufferedReader(new FileReader(file));
 
 			String line;
@@ -52,10 +54,13 @@ public class AccountWijzigen {
 				s.useDelimiter(";");
 				while (s.hasNext()) {
 					username = s.next();
-					adres = s.next();
-					email = s.next();
 					pwd = s.next();
-					testSeleniumAccountWijzigen(username, adres, email, pwd);
+					username2 = s.next();
+					straat = s.next();
+					postcode = s.next();
+					email = s.next();
+					testAccountWijzigen(username, pwd, username2, straat,
+							postcode, email);
 				}
 
 			}
@@ -71,20 +76,28 @@ public class AccountWijzigen {
 		}
 	}
 
-	// ?klantid=1&name=Test&auto=wfjbf&diensttype=rep&comments=afspraak+maken+graag
-	public void testSeleniumAccountWijzigen(String username, String adres,
-			String email, String pwd) throws Exception {
-		driver.get(baseUrl + "/atd/klant/KlusAanmakenServlet.do");
-		driver.findElement(By.linkText("Account Wijzigen")).click();
+	public void testAccountWijzigen(String username, String pwd,
+			String username2, String straat, String postcode, String email)
+			throws Exception {
+		driver.get(baseUrl + "/atd/index.jsp");
+		driver.findElement(By.linkText("Log in")).click();
 		driver.findElement(By.name("username")).clear();
 		driver.findElement(By.name("username")).sendKeys(username);
+		driver.findElement(By.name("pwd")).clear();
+		driver.findElement(By.name("pwd")).sendKeys(pwd);
+		driver.findElement(By.name("Go")).click();
+		driver.findElement(By.linkText("Account Wijzigen")).click();
+		driver.findElement(By.name("username")).clear();
+		driver.findElement(By.name("username")).sendKeys(username2);
 		driver.findElement(By.name("adres")).clear();
-		driver.findElement(By.name("adres")).sendKeys(adres);
+		driver.findElement(By.name("adres")).sendKeys(straat);
+		driver.findElement(By.name("postcode")).clear();
+		driver.findElement(By.name("postcode")).sendKeys(postcode);
 		driver.findElement(By.name("email")).clear();
 		driver.findElement(By.name("email")).sendKeys(email);
 		driver.findElement(By.name("pwd")).clear();
 		driver.findElement(By.name("pwd")).sendKeys(pwd);
-		driver.findElement(By.cssSelector("input.down")).click();
+		driver.findElement(By.cssSelector("input.down-afspraak")).click();
 	}
 
 	@After

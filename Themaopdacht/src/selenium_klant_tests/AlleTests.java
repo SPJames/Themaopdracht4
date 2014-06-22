@@ -8,5 +8,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ RegistrerenKlant.class, AutoToevoegen.class,
 		AccountWijzigen.class })
 public class AlleTests {
-	// ACCOUNT WIJZIGEN MAKEN DOET HET NOG NIET
+
 }
