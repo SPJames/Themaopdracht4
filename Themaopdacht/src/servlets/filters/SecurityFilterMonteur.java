@@ -10,13 +10,24 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Deze servlet zorgt voor de filters voor de paginas die alleen door de monteur bezocht mogen worden
+ */
 public class SecurityFilterMonteur implements Filter {
+	
+	/**
+	 * Deze methode zorgt dat het filter geplaatst wordt
+	 */
 	public void init(FilterConfig arg0) throws ServletException {
 		/* Filter is being placed into service, do nothing. */
 	}
 
-	public void doFilter(ServletRequest req, ServletResponse resp,
-			FilterChain chain) throws IOException, ServletException {
+	/**
+	 * De methode controleert of de gebruiker de goede Access rang heeft om de opgevraagde pagina te bezoeken.
+	 * Als de gebruiker de goede rang heeft wordt de pagina getoond.
+	 * Als de gebruiker de goede rang niet heeft wordt een foutmelding getoond
+	 */
+	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest r2 = (HttpServletRequest) req;
 		// Alleen monteurs mogen bij monteur pagina's/servlets komen
 		if (r2.getSession().getAttribute("Access") != null) {
@@ -32,6 +43,9 @@ public class SecurityFilterMonteur implements Filter {
 		}
 	}
 
+	/**
+	 * Deze methode kan de filter verwijderen.
+	 */
 	public void destroy() {
 		/* Filter is being taken out of service, do nothing. */
 	}
