@@ -29,22 +29,20 @@
 				<tbody>
 					<%
 							//dagen
-							for (int i = 0; i < 7; i++) {
+							for (int i = 0; i < 6; i++) {
 								dag = i;
 							
 								if(dag == 0) {
-									dagtekst = "zondag";
-								} else if(dag == 1) {
 									dagtekst = "maandag";
-								} else if(dag == 2) {
+								} else if(dag == 1) {
 									dagtekst = "dinsdag";
-								} else if(dag == 3) {
+								} else if(dag == 2) {
 									dagtekst = "woensdag";
-								} else if(dag == 4) {
+								} else if(dag == 3) {
 									dagtekst = "donderdag";
-								} else if(dag == 5) {
+								} else if(dag == 4) {
 									dagtekst = "vrijdag";
-								} else if(dag == 6) {
+								} else if(dag == 5) {
 									dagtekst = "zaterdag";
 								} else {}
 						%>
