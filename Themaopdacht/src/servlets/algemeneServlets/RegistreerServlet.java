@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.email.RegisterEmail;
 import domein.klantenbinding.Klant;
-//import Database.Database;
 
 /**
  * Deze servlet wordt gebruikt om een nieuwe klant te registreren.
@@ -34,8 +33,7 @@ public class RegistreerServlet extends HttpServlet {
 	 *  klant geregistreerd en toegevoegd aan de lijst met klantaccounts.
 	 *  Hierna wordt de gebruiker doorgestuurd naar het inlogscherm.
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String[] userinfo = new String[8];
 		boolean error = false;
 
@@ -48,7 +46,7 @@ public class RegistreerServlet extends HttpServlet {
 		userinfo[6] = req.getParameter("adres");
 		userinfo[7] = req.getParameter("postcode");
 
-		// checken of alle 8 de velden zijn ingevuld
+		// controleren of alle 8 de velden zijn ingevuld
 		for (int i = 0; i < 8; i++) {
 			if (userinfo[i] == null) {
 				error = true;
@@ -57,14 +55,14 @@ public class RegistreerServlet extends HttpServlet {
 			}
 		}
 
-		// checken of password en email overeen komen
+		// controleren of de beide wachtwoorden en beide emailadressen overeen komen
 		if (!(userinfo[2].equals(userinfo[3])) && !(userinfo[4].equals(userinfo[5]))) {
 			error = true;
 		}
 		
 		// foutmelding
-		if (error) {	//misschien netter om kwamen niet overeen neer te zetten ipv matchte?
-			req.setAttribute("error", "Enkele velden waren leeg en/of het wachtwoord/email matchte niet.");
+		if (error) {
+			req.setAttribute("error", "Enkele velden waren leeg en/of het wachtwoord/email kwamen niet overeen.");
 			req.getRequestDispatcher("registreren.jsp").forward(req, resp);
 		} else {
 			// klant opslaan
@@ -75,7 +73,7 @@ public class RegistreerServlet extends HttpServlet {
 			Users.add(k);
 
 			resp.sendRedirect("inloggen.jsp");
-			@SuppressWarnings("unused")
+			@SuppressWarnings("unused") //de registratie email wordt gestuurd
 			RegisterEmail m = new RegisterEmail((String) req.getParameter("email"),
 					(String) req.getParameter("username"),
 					(String) req.getParameter("realname"),

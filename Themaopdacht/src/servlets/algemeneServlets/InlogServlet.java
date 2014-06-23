@@ -45,8 +45,7 @@ public class InlogServlet extends HttpServlet {
 	 * teruggestuurt naar de inlogpagina en wordt er een error bericht
 	 * weergegeven.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("pwd");
 		boolean error = false;
@@ -71,7 +70,7 @@ public class InlogServlet extends HttpServlet {
 		ArrayList<Monteur> monteurs = (ArrayList<Monteur>) sc
 				.getAttribute("alleMonteurs");
 
-		// checken of er iets is ingevoerd
+		// checken of er lege velden zijn
 		if (password == null || username == null) {
 			error = true;
 		} else if (password.equals("") || username.equals("")) {
@@ -81,15 +80,13 @@ public class InlogServlet extends HttpServlet {
 		// foutmelding geven
 		RequestDispatcher rd = null;
 		if (Users.size() == 0) {
-			req.setAttribute("error",
-					"Er zijn nog geen accounts aanwezig in het systeem");
+			req.setAttribute("error", "Er zijn nog geen accounts aanwezig in het systeem");
 			rd = req.getRequestDispatcher("inloggen.jsp");
 		}
 		if (error) {
 			req.setAttribute("error", "Username of Wachtwoord was leeg");
 			rd = req.getRequestDispatcher("inloggen.jsp");
 		} else {
-
 			// inloggen als admin
 			if (username.equals("Admin") && password.equals("Admin")) {
 				ses.setAttribute("Access", "Admin");
@@ -100,12 +97,10 @@ public class InlogServlet extends HttpServlet {
 				req.setAttribute("error", "Dit is geen geldige log in");
 				rd = req.getRequestDispatcher("inloggen.jsp");
 			}
-
 			// inloggen als monteur
 			if (!(done)) {
 				for (Monteur m : monteurs) {
-					if (m.getNaam().equals(username)
-							&& m.getPassword().equals(password)) {
+					if (m.getNaam().equals(username) && m.getPassword().equals(password)) {
 						ses.setAttribute("Access", "Monteur");
 						ses.setAttribute("Username", m.getNaam());
 						ses.setAttribute("ID", m.getId());
@@ -118,12 +113,10 @@ public class InlogServlet extends HttpServlet {
 					}
 				}
 			}
-
 			// inloggen als klant
 			if (!(done)) {
 				for (Klant k : Users) {
-					if (k.getUsername().equals(username)
-							&& k.getPassword().equals(password)) {
+					if (k.getUsername().equals(username) && k.getPassword().equals(password)) {
 						ses.setAttribute("Access", "Klant");
 						ses.setAttribute("Username", k.getUsername());
 						ses.setAttribute("ID", k.getId());
@@ -137,7 +130,7 @@ public class InlogServlet extends HttpServlet {
 				}
 			}
 		}
-		if (done) {
+		if (done) { 
 			resp.sendRedirect("index.jsp");
 		} else {
 			rd.forward(req, resp);

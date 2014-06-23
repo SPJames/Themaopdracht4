@@ -17,8 +17,7 @@ public class UitlogServlet extends HttpServlet {
 	 * De attributen die waren opgeslagen bij het inloggen worden leeggemaakt en de 
 	 * gebruiker wordt doorgestuurd naar de hoofdpagina.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// attributen leeg maken, bij uitloggen
 		req.getSession().setAttribute("Access", "");
 		req.getSession().setAttribute("Username", "");

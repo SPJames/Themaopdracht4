@@ -47,10 +47,8 @@ public class MyServletContextListener implements ServletContextListener {
 		Weekplanning planning = new Weekplanning();
 
 		// users initaliseren
-		Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com",
-				"Test", "derp");
-		Klant u2 = new Klant("Johnny Test", "Straat 2", "3613AH",
-				"test@test.test", "Test2", "derp");
+		Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com", "Test", "derp");
+		Klant u2 = new Klant("Johnny Test", "Straat 2", "3613AH", "test@test.test", "Test2", "derp");
 		List.add(u);
 		List.add(u2);
 
@@ -98,7 +96,6 @@ public class MyServletContextListener implements ServletContextListener {
 
 		logger.setLevel(Level.ALL);
 		logger.info("Logger initialized");
-
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
