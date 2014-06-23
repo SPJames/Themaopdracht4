@@ -34,15 +34,14 @@ public class RegistreerAutoServlet extends HttpServlet {
 	 *  Hierna wordt de klant doorgestuurd naar hun persoonlijke auto overzicht en wordt er een melding
 	 *  weergegeven dat het toevoegen gelukt is.
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String merk = req.getParameter("merk");
 		String kt = req.getParameter("kenteken");
 		String id = req.getParameter("klantid");
-		boolean error = false;
-		boolean error2 = false;
+		boolean error = false; //lege velden
+		boolean error2 = false; //er is al een auto met dit kenteken
 
-		// checken of alles is ingevuld
+		// controleren of alles is ingevuld
 		if (merk.equals("") || merk.equals(null)) {
 			error = true;
 		}
