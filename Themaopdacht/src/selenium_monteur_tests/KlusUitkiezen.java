@@ -43,6 +43,7 @@ public class KlusUitkiezen {
 		driver.findElement(By.linkText("Klussen Lijst")).click();
 		driver.findElement(By.linkText("uitkiezen")).click();
 
+		//klus wijzigen
 		driver.findElement(By.linkText("edit")).click();
 		driver.findElement(By.name("comments")).clear();
 		driver.findElement(By.name("comments")).sendKeys(
