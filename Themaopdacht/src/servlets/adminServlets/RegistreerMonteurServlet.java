@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import domein.klusbeheer.Monteur;
 
 /**
- * In deze servlet kan de admin een monteur toevoegen.
+ * In deze servlet kan de admin een monteur account toevoegen.
  */
 public class RegistreerMonteurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,26 +30,24 @@ public class RegistreerMonteurServlet extends HttpServlet {
 	 * van monteurs toegevoegd, wordt de admin doorgestuurd naar de index en
 	 * wordt een melding weergegeven dat het registreren gelukt is.
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 
 		String[] userinfo = new String[3];
 		boolean error = false;
 		@SuppressWarnings("unchecked")
-		ArrayList<Monteur> Monteurs = (ArrayList<Monteur>) req
-				.getServletContext().getAttribute("alleMonteurs");
+		ArrayList<Monteur> Monteurs = (ArrayList<Monteur>) req.getServletContext().getAttribute("alleMonteurs");
 
 		userinfo[0] = req.getParameter("Realname");
 		userinfo[1] = req.getParameter("pwd");
 		userinfo[2] = req.getParameter("pwd2");
 
 		for (int i = 0; i < 3; i++) {
-			// checken of er wat is ingevuld
+			// controlerern of alle velden zijn ingevuld
 			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
 				error = true;
 			}
 		}
-		// checken of password gelijk is
+		// controleren of de ingevoerde wachtwoorden hetzelfde zijn
 		if (!userinfo[1].equals(userinfo[2])) {
 			error = true;
 		}
@@ -57,22 +55,16 @@ public class RegistreerMonteurServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 
 		if (error == true) {
-			// foutmelding
+			// foutmelding weergeven
 			req.setAttribute("error","Invoer was leeg of wachtwoord is niet gelijk");
 			rd = req.getRequestDispatcher("registreermonteur.jsp");
-
 		} else {
-			// monteur opslaan
+			// monteur account opslaan
 			Monteur m = new Monteur(userinfo[0], userinfo[1]);
-			// m.schrijfWeg(userinfo);
 			Monteurs.add(m);
-			req.setAttribute("msgs", "De nieuwe monteur " + userinfo[0]
-					+ " is succesvol opgeslagen!");
+			req.setAttribute("msgs", "De nieuwe monteur " + userinfo[0] + " is succesvol opgeslagen!");
 			rd = req.getRequestDispatcher("../index.jsp");
-
 		}
 		rd.forward(req, resp);
-
 	}
-
 }
