@@ -1,9 +1,12 @@
 package domein.klusbeheer;
 
+import java.io.Serializable;
+
 /**
  * in deze klasse worden de gegevens van een monteur ingevult/bijgewerkt
  */
-public class Monteur {
+public class Monteur implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String naam;
 	private String password;
 	private static int nummer = 1;

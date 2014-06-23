@@ -1,11 +1,13 @@
 package domein.klusbeheer;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /** 
  * in deze klasse wordt de weekplanning bijgehouden
  */
-public class Weekplanning {
+public class Weekplanning implements Serializable{
+	private static final long serialVersionUID = 1L;
 	Calendar c = Calendar.getInstance();
 	private int weekdag = c.get(Calendar.DAY_OF_WEEK);
 	private int weeknr = c.get(Calendar.WEEK_OF_YEAR);	

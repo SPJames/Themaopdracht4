@@ -10,46 +10,79 @@ import domein.klantenbinding.Klant;
 import domein.klusbeheer.Klus;
 import domein.klusbeheer.Monteur;
 import domein.klusbeheer.Parkeerplaats;
+import domein.klusbeheer.Weekplanning;
 import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
 public class Database {
-	private File currentDirectory = new File(new File(".").getAbsolutePath());
+	private File currentDirectory = new File(new File(".").getAbsolutePath()).getParentFile();
 	
-	private HashMap<Integer, Object> data = new HashMap<Integer, Object>();
+	private String directory = currentDirectory.getParent() + "/webapps/atd/data/data.dat";
 	
-	private ArrayList<Klant> list;
-	private ArrayList<Monteur> list2;
-	private ArrayList<Klus> list3;
-	private ArrayList<Auto> list4;
-	private Parkeerplaats[] list5;
-	private ArrayList<Onderdeel> list6;
-	private ArrayList<Factuur> list7;
-	private ArrayList<Brandstof> list8;
-
-	// lees data in
-	public HashMap<Integer, Object> leesIn() throws IOException{
-		String directory = currentDirectory.getCanonicalPath() + "/../../../data/data.dat";
+	private HashMap<String, Object> data = new HashMap<String, Object>();
+	
+	/**
+	 * Deze methode geeft de locatie van het project terug vanaf: .../webapps/atd/
+	 * @throws IOException 
+	 */
+	public String getPath() throws IOException{
+		return directory;
+	}
+	
+	//check of file leeg is
+	public boolean isLeeg() throws IOException {
+		boolean result = false;
+		//String directory = locatie.toString(); //currentDirectory.getCanonicalPath() + "\\..\\webapps\\atd\\data\\data.dat";
 		
-		HashMap<Integer, Object> map = null;
+		@SuppressWarnings("resource")
+		BufferedReader br = new BufferedReader(new FileReader(directory));     
+		if (br.readLine() == null) {
+		    result = true;
+		}
+		
+		return result;
+	}
+	
+	// lees data in
+	@SuppressWarnings("unchecked")
+	public HashMap<String, Object> leesIn() throws IOException{
+		//String directory = locatie.toString(); //currentDirectory.getCanonicalPath() + "\\..\\webapps\\atd\\data\\data.dat";
+		
+		HashMap<String, Object> map = null;
+		
+		FileInputStream fin = new FileInputStream(directory);
+		ObjectInputStream ois = new ObjectInputStream(fin);
+		try {
+			map = (HashMap<String, Object>) ois.readObject();
+			ois.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("Database error met file uitlezen");
+		}
 		
 		return map;
 	}
-	public void schrijfWeg(ArrayList<Klant> list, ArrayList<Monteur> list2, ArrayList<Klus> list3, ArrayList<Auto> list4, Parkeerplaats[] list5, ArrayList<Onderdeel> list6, ArrayList<Factuur> list7, ArrayList<Brandstof> list8) throws IOException{
-		data.put(1, (Object) list);
-		data.put(2, (Object) list2);
-		data.put(3, (Object) list3);
-		data.put(4, (Object) list4);
-		data.put(5, (Object) list5);
-		data.put(6, (Object) list6);
-		data.put(7, (Object) list7);
-		data.put(8, (Object) list8);
+	//schrijf data weg
+	public void schrijfWeg(ArrayList<Klant> kla, ArrayList<Monteur> mo, ArrayList<Klus> klu, ArrayList<Auto> au, Parkeerplaats[] pa, ArrayList<Onderdeel> on, ArrayList<Factuur> fa, ArrayList<Brandstof> br, Weekplanning pl) throws IOException{
 		
-		String directory = currentDirectory.getCanonicalPath() + "/../../../data/data.dat";
 		
-		FileOutputStream fos = new FileOutputStream(directory);
-	    ObjectOutputStream oos = new ObjectOutputStream(fos);
-	      oos.writeObject(data);
-	      oos.close();
+		data.put("List", (Object) kla);
+		data.put("List2", (Object) mo);
+		data.put("List3", (Object) klu);
+		data.put("List4", (Object) au);
+		data.put("List5", (Object) pa);
+		data.put("List6", (Object) on);
+		data.put("List7", (Object) fa);
+		data.put("List8", (Object) br);
+		data.put("planning", (Object) pl);
+		
+		//String directory = locatie.toString(); //currentDirectory.getCanonicalPath() + "\\..\\webapps\\atd\\data\\data.dat";
+		File f = new File(directory);
+		if(f.exists() && !f.isDirectory()) { 
+			FileOutputStream fos = new FileOutputStream(directory);
+		    ObjectOutputStream oos = new ObjectOutputStream(fos);
+		      oos.writeObject(data);
+		      oos.close();
+		}
 	}
 }

@@ -1,5 +1,6 @@
 package domein.financien;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
@@ -10,7 +11,8 @@ import domein.voorraadbeheer.Onderdeel;
 /**
  * In de klasse Factuur wordt de factuur opgesteld en berekend
  */
-public class Factuur {
+public class Factuur implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Klus klus;
 	private static int nummer = 1;
 	private int factuurNummer;

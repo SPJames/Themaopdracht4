@@ -1,5 +1,6 @@
 package domein.klantenbinding;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -7,7 +8,8 @@ import java.util.Calendar;
 /**
  * Deze klasse wordt gebruikt om de gegevens van een auto op te slaan of te bewerken
  */
-public class Auto {
+public class Auto implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String kenteken;
 	private String merk;
 	private String klantid;

@@ -1,9 +1,12 @@
 package domein.voorraadbeheer;
 
+import java.io.Serializable;
+
 /**
  * in deze klasse worden de gegevens van een brandstofsoort ingevuld/bijgewerkt
  */
-public class Brandstof {
+public class Brandstof implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String brandstofType;
 	private int tsic;
 	private double prijsPerLiter, liter;

@@ -1,5 +1,6 @@
 package domein.klusbeheer;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -10,7 +11,8 @@ import domein.klantenbinding.Auto;
  * deze klasse beheert de parkeerplaats welke plekken er vanaf wanneer door
  * welke auto bezet zijn
  */
-public class Parkeerplaats {
+public class Parkeerplaats implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Auto auto;
 	private Calendar reseveringsDatum;
 

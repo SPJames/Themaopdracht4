@@ -1,14 +1,18 @@
 package servlets.algemeneServlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import database.Database;
 import domein.financien.Factuur;
 import domein.klantenbinding.Auto;
 import domein.klantenbinding.Klant;
@@ -19,8 +23,30 @@ import domein.klusbeheer.Weekplanning;
 import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
-public class MyServletContextListener implements ServletContextListener {
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
+
+public class MyServletContextListener implements ServletContextListener {
+	private Database d = new Database();
+	
+	private ArrayList<Klant> List = new ArrayList<Klant>();
+	private ArrayList<Monteur> List2 = new ArrayList<Monteur>();
+	private ArrayList<Klus> List3 = new ArrayList<Klus>();
+	private ArrayList<Auto> List4 = new ArrayList<Auto>();
+	private Parkeerplaats[] List5 = new Parkeerplaats[50];
+	private ArrayList<Onderdeel> List6 = new ArrayList<Onderdeel>();
+	private ArrayList<Factuur> List7 = new ArrayList<Factuur>();
+	private ArrayList<Brandstof> List8 = new ArrayList<Brandstof>();
+	private Weekplanning planning = new Weekplanning();
+	
+	private File currentDirectory = new File(new File(".").getAbsolutePath()).getParentFile();
+	private String directory = currentDirectory.getParent() + "/webapps/atd/logs/";
+	
+	private FileHandler fh = null;
+	
+	private String DATE_FORMAT_NOW = "yyyy-MM-dd HH-mm-ss";
+	
 	/**
 	 * In deze servlet worden alle arraylisten geinitialiseert zodat elke andere
 	 * servlet ze kan gebruiken. De geinitialiseerde lijsten worden ook meteen
@@ -33,46 +59,57 @@ public class MyServletContextListener implements ServletContextListener {
 	 * Verder worden er ook een aantal onderdelen geinitialiseerd, zodat we deze
 	 * meteen kunnen gebruiken bij het testen van bepaalde klassen.
 	 */
+	@SuppressWarnings("unchecked")
 	public void contextInitialized(ServletContextEvent sce) {
+		HashMap<String, Object> map = null;
+		try {
+			if(!d.isLeeg()) {
+				map = d.leesIn();
 
-		// arrays initialiseren
-		ArrayList<Klant> List = new ArrayList<Klant>();
-		ArrayList<Monteur> List2 = new ArrayList<Monteur>();
-		ArrayList<Klus> List3 = new ArrayList<Klus>();
-		ArrayList<Auto> List4 = new ArrayList<Auto>();
-		Parkeerplaats[] List5 = new Parkeerplaats[50];
-		ArrayList<Onderdeel> List6 = new ArrayList<Onderdeel>();
-		ArrayList<Factuur> List7 = new ArrayList<Factuur>();
-		ArrayList<Brandstof> List8 = new ArrayList<Brandstof>();
-		Weekplanning planning = new Weekplanning();
+				List = (ArrayList<Klant>) map.get("List");
+				List2 = (ArrayList<Monteur>) map.get("List2");
+				List3 = (ArrayList<Klus>) map.get("List3");
+				List4 = (ArrayList<Auto>) map.get("List4");
+				List5 = (Parkeerplaats[]) map.get("List5");
+				List6 = (ArrayList<Onderdeel>) map.get("List6");
+				List7 = (ArrayList<Factuur>) map.get("List7");
+				List8 = (ArrayList<Brandstof>) map.get("List8");
+				planning = (Weekplanning) map.get("planning");
+			} else {
+				//standaard waarden!
+				
+				// users initaliseren
+				Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com", "Test", "derp");
+				Klant u2 = new Klant("Johnny Test", "Straat 2", "3613AH", "test@test.test", "Test2", "derp");
+				List.add(u);
+				List.add(u2);
 
-		// users initaliseren
-		Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com", "Test", "derp");
-		Klant u2 = new Klant("Johnny Test", "Straat 2", "3613AH", "test@test.test", "Test2", "derp");
-		List.add(u);
-		List.add(u2);
+				// monteurs initaliseren
+				Monteur m = new Monteur("Klaas", "monteur1");
+				Monteur m2 = new Monteur("Kees", "monteur2");
+				List2.add(m);
+				List2.add(m2);
 
-		// monteurs initaliseren
-		Monteur m = new Monteur("Klaas", "monteur1");
-		Monteur m2 = new Monteur("Kees", "monteur2");
-		List2.add(m);
-		List2.add(m2);
+				// onderdelen initialiseren
+				Onderdeel o = new Onderdeel(30, "Wieldopje", 5.5);
+				Onderdeel o2 = new Onderdeel(999, "Headlightfuel", 40.0);
+				Onderdeel o3 = new Onderdeel(3, "Ramenwissers", 1.0);
+				List6.add(o);
+				List6.add(o2);
+				List6.add(o3);
 
-		// onderdelen initialiseren
-		Onderdeel o = new Onderdeel(30, "Wieldopje", 5.5);
-		Onderdeel o2 = new Onderdeel(999, "Headlightfuel", 40.0);
-		Onderdeel o3 = new Onderdeel(3, "Ramenwissers", 1.0);
-		List6.add(o);
-		List6.add(o2);
-		List6.add(o3);
-
-		// Brandstof initialiseren
-		Brandstof b = new Brandstof("Euro95", 50, 1.0);
-		Brandstof b2 = new Brandstof("Diesel", 20, 3.2);
-		Brandstof b3 = new Brandstof("Benzine", 69, 0.1);
-		List8.add(b);
-		List8.add(b2);
-		List8.add(b3);
+				// Brandstof initialiseren
+				Brandstof b = new Brandstof("Euro95", 50, 1.0);
+				Brandstof b2 = new Brandstof("Diesel", 20, 3.2);
+				Brandstof b3 = new Brandstof("Benzine", 69, 0.1);
+				List8.add(b);
+				List8.add(b2);
+				List8.add(b3);
+				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		// attributen opslaan
 		sce.getServletContext().setAttribute("alleUsers", List);
@@ -88,7 +125,11 @@ public class MyServletContextListener implements ServletContextListener {
 		// Logger
 		Logger logger = Logger.getLogger("servlets.algemeneServlets");
 		try {
-			FileHandler fh = new FileHandler("log-login.xml");
+			Calendar cal = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+			
+			fh = new FileHandler((directory + "inlog-logs " + sdf.format(cal.getTime()) + ".log"));
+			fh.setFormatter(new SimpleFormatter());
 			logger.addHandler(fh);
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
@@ -99,5 +140,14 @@ public class MyServletContextListener implements ServletContextListener {
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
+		try {
+			d.schrijfWeg(List, List2, List3, List4, List5, List6, List7, List8, planning);
+			Logger logger = Logger.getLogger("servlets.algemeneServlets");
+			logger.setLevel(Level.OFF);
+			logger.removeHandler(fh);
+			fh.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

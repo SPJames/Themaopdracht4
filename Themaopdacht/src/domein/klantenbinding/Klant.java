@@ -1,5 +1,6 @@
 package domein.klantenbinding;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.Calendar;
 /**
  * in deze klasse kunnen de gegevens van een klant ingevuld en gewijzigd worden
  */
-public class Klant {
+public class Klant implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String naam;
 	private String adres;
 	private String postcode;

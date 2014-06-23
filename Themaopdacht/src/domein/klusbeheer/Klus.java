@@ -1,5 +1,6 @@
 package domein.klusbeheer;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import domein.financien.*;
@@ -9,7 +10,8 @@ import domein.voorraadbeheer.*;
 /**
  * in deze klasse worden de gegevens van een klus ingevuld/bewerkt
  */
-public class Klus {
+public class Klus implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private Auto auto;
 	private String beschrijving;
 	private String werknemer;

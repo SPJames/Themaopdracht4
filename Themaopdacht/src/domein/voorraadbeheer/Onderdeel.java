@@ -1,9 +1,12 @@
 package domein.voorraadbeheer;
 
+import java.io.Serializable;
+
 /**
  * in deze klasse kunnen de gegevens van een onderdeel ingevuld/bewerkt worden
  */
-public class Onderdeel {
+public class Onderdeel implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private int artikelNr, aantal;
 	private String naam;
 	private double prijsArtikel;
