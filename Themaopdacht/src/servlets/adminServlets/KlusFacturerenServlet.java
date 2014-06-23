@@ -28,29 +28,26 @@ public class KlusFacturerenServlet extends HttpServlet {
 	 * De gebruiker wordt doorgestuurd naar klussenlijstaf en er wordt een
 	 * melding weergegeven.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = null;
 
 		int klusid = Integer.parseInt(req.getParameter("klusid"));
 		@SuppressWarnings("unchecked")
-		ArrayList<Factuur> facturen = (ArrayList<Factuur>) req
-				.getServletContext().getAttribute("alleFacturen");
+		ArrayList<Factuur> facturen = (ArrayList<Factuur>) req.getServletContext().getAttribute("alleFacturen");
 		@SuppressWarnings("unchecked")
-		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext()
-				.getAttribute("alleKlussen");
+		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");
 
 		Klus klus = null;
 		for (Klus k : klussen) {
-			if (k.getKlusNummer() == klusid) {
+			if (k.getKlusNummer() == klusid) { //huidige klus zoeken
 				Factuur factuur = new Factuur(k);
 				facturen.add(factuur);
 				klus = k;
 			}
 		}
-		klussen.remove(klus);
+		klussen.remove(klus); //klus wordt uit de lijst klussen gehaald
 
-		//req.setAttribute("msgs", "Klus succesvol gefactureerd!");
+		req.setAttribute("msgs", "Klus succesvol gefactureerd!");
 		rd = req.getRequestDispatcher("factuur.jsp");
 		rd.forward(req, resp);
 	}

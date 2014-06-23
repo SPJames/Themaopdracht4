@@ -40,7 +40,7 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 		boolean error = false;	//leeg veld
 		boolean error2 = false;	//bestaat al
 		
-		//is er een veld leeg?
+		//controleren of een veld leeg is
 		for(int i = 0;  i < 3; i++){
 			if(userinfo[i].equals(null) || userinfo[i].equals("")){
 				error = true;
@@ -51,7 +51,7 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 		@SuppressWarnings("unchecked")
 		ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) sc.getAttribute("alleBrandstof");
 		
-		//bestaat deze brandstof al?
+		//controleren of de brandstof al in voorraad is
 		RequestDispatcher rd = null;
 		for(Brandstof b : brandstoffen){
 			if(b.getBrandstofType() == userinfo[0])
