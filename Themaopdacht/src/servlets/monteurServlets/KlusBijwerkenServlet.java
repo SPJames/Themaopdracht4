@@ -31,11 +31,10 @@ public class KlusBijwerkenServlet extends HttpServlet {
 	 * teruggestuurd naar de klussenlijst en wordt daar een melding weergegeven dat de wijzigingen
 	 * doorgevoert zijn.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ServletContext sc = req.getServletContext();
 		
-		boolean error = false;
+		boolean error = false; //lege velden
 		
 		String[] userinfo = new String[3];
 		@SuppressWarnings("unchecked")
@@ -138,7 +137,6 @@ public class KlusBijwerkenServlet extends HttpServlet {
 				}
 			}
 		}
-		
 		rd.forward(req, resp);
 	}
 }

@@ -25,14 +25,12 @@ public class KlusAfrondenServlet extends HttpServlet {
 	 * klus succesvol is afgerond. De monteur wordt doorgestuurd naar de
 	 * klussenlijst.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		@SuppressWarnings("unchecked")
-		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext()
-				.getAttribute("alleKlussen");
-		Parkeerplaats[] parkeer = (Parkeerplaats[]) req.getServletContext()
-				.getAttribute("alleParkeerplaatsen");
+		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");
+		Parkeerplaats[] parkeer = (Parkeerplaats[]) req.getServletContext().getAttribute("alleParkeerplaatsen");
+		
 		// auto vrijgeven + parkeerplaats resetten
 		int id = Integer.parseInt(req.getParameter("id"));
 		for (Klus k : klussen) {
@@ -42,8 +40,7 @@ public class KlusAfrondenServlet extends HttpServlet {
 				for (int i = 0; i < 50; i++) {
 					if (parkeer[i] == null) {
 						break;
-					} else if (parkeer[i].getAuto().getKenteken()
-							.equals(k.getAuto().getKenteken())) {
+					} else if (parkeer[i].getAuto().getKenteken().equals(k.getAuto().getKenteken())) {
 						System.out.println(parkeer[i].getAuto().getKenteken());
 						parkeer[i] = null;
 					}
@@ -52,8 +49,7 @@ public class KlusAfrondenServlet extends HttpServlet {
 
 				// klanten gegevens ophalen voor email
 				@SuppressWarnings("unchecked")
-				ArrayList<Klant> klanten = (ArrayList<Klant>) req
-						.getServletContext().getAttribute("alleUsers");
+				ArrayList<Klant> klanten = (ArrayList<Klant>) req.getServletContext().getAttribute("alleUsers");
 
 				Klant klant = null;
 				for (Klant kl : klanten) {
@@ -63,13 +59,9 @@ public class KlusAfrondenServlet extends HttpServlet {
 				}
 
 				@SuppressWarnings("unused")
-				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()),
-						klant.getNaam());
+				KlusAfgerondEmail m = new KlusAfgerondEmail((klant.getEmail()),klant.getNaam());
 			}
 		}
-
 		req.getRequestDispatcher("klussenlijst.jsp").forward(req, resp);
-
 	}
-
 }
