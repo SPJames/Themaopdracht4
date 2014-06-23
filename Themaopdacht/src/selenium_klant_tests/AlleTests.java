@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ RegistrerenKlant.class, AutoToevoegen.class,
-		AccountWijzigen.class })
+		AfspraakMaken.class, AccountWijzigen.class })
 public class AlleTests {
 
 }

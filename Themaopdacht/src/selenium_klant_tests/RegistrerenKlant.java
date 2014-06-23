@@ -37,7 +37,9 @@ public class RegistrerenKlant {
 		String username;
 		String realname;
 		String pwd;
+		String pwd2;
 		String email;
+		String email2;
 		String adres;
 		String postcode;
 
@@ -56,11 +58,13 @@ public class RegistrerenKlant {
 					username = s.next();
 					realname = s.next();
 					pwd = s.next();
+					pwd2 = s.next();
 					email = s.next();
+					email2 = s.next();
 					adres = s.next();
 					postcode = s.next();
-					testSeleniumRegistrerenKlant(username, realname, pwd, email,
-							adres, postcode);
+					testSeleniumRegistrerenKlant(username, realname, pwd, pwd2,
+							email, email2, adres, postcode);
 				}
 
 			}
@@ -76,10 +80,9 @@ public class RegistrerenKlant {
 		}
 	}
 
-	
 	public void testSeleniumRegistrerenKlant(String username, String realname,
-			String pwd, String email, String adres, String postcode)
-			throws Exception {
+			String pwd, String pwd2, String email, String email2, String adres,
+			String postcode) throws Exception {
 		driver.get(baseUrl + "/atd/index.jsp");
 		driver.findElement(By.linkText("Registreer")).click();
 		driver.findElement(By.name("username")).clear();
