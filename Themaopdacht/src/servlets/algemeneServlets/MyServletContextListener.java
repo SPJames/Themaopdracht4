@@ -40,8 +40,10 @@ public class MyServletContextListener implements ServletContextListener {
 	private ArrayList<Brandstof> List8 = new ArrayList<Brandstof>();
 	private Weekplanning planning = new Weekplanning();
 	
+	private Logger logger = Logger.getLogger("servlets.algemeneServlets");
+	
 	private File currentDirectory = new File(new File(".").getAbsolutePath()).getParentFile();
-	private String directory = currentDirectory.getParent() + "/webapps/atd/logs/";
+	private String directory = currentDirectory.getParent() + "/logs/";
 	
 	private FileHandler fh = null;
 	
@@ -123,18 +125,17 @@ public class MyServletContextListener implements ServletContextListener {
 		sce.getServletContext().setAttribute("planning", planning);
 
 		// Logger
-		Logger logger = Logger.getLogger("servlets.algemeneServlets");
+		
 		try {
 			Calendar cal = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
 			
-			fh = new FileHandler((directory + "inlog-logs " + sdf.format(cal.getTime()) + ".log"));
+			fh = new FileHandler((directory + "atd-logs " + sdf.format(cal.getTime()) + ".log"));
 			fh.setFormatter(new SimpleFormatter());
 			logger.addHandler(fh);
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
-
 		logger.setLevel(Level.ALL);
 		logger.info("Logger initialized");
 	}
@@ -142,7 +143,6 @@ public class MyServletContextListener implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent sce) {
 		try {
 			d.schrijfWeg(List, List2, List3, List4, List5, List6, List7, List8, planning);
-			Logger logger = Logger.getLogger("servlets.algemeneServlets");
 			logger.setLevel(Level.OFF);
 			logger.removeHandler(fh);
 			fh.close();

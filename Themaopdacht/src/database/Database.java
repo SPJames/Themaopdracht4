@@ -14,6 +14,9 @@ import domein.klusbeheer.Weekplanning;
 import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
+/**
+ * in deze klasse worden de gegevens van het systeem weggeschreven en opgehaald
+ */
 public class Database {
 	private File currentDirectory = new File(new File(".").getAbsolutePath()).getParentFile();
 	
@@ -22,7 +25,8 @@ public class Database {
 	private HashMap<String, Object> data = new HashMap<String, Object>();
 	
 	/**
-	 * Deze methode geeft de locatie van het project terug vanaf: .../webapps/atd/
+	 * Deze methode geeft de locatie van de data.dat file
+	 * @return directory
 	 * @throws IOException 
 	 */
 	public String getPath() throws IOException{
@@ -30,6 +34,11 @@ public class Database {
 	}
 	
 	//check of file leeg is
+	/**
+	 * Check of de data.dat file leeg is
+	 * 
+	 * @return boolean
+	 */
 	public boolean isLeeg() throws IOException {
 		boolean result = false;
 		//String directory = locatie.toString(); //currentDirectory.getCanonicalPath() + "\\..\\webapps\\atd\\data\\data.dat";
@@ -44,6 +53,11 @@ public class Database {
 	}
 	
 	// lees data in
+	/**
+	 * lees de gegevens in uit data.dat.
+	 * 
+	 * @return HashMap<String, Object>
+	 */
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Object> leesIn() throws IOException{
 		//String directory = locatie.toString(); //currentDirectory.getCanonicalPath() + "\\..\\webapps\\atd\\data\\data.dat";
@@ -63,9 +77,20 @@ public class Database {
 		return map;
 	}
 	//schrijf data weg
+	/**
+	 * Schrijf gegevens weg naar data.dat
+	 * 
+	 * @param kla ArrayList van klanten
+	 * @param mo ArrayList van monteurs
+	 * @param klu ArrayList van klussen
+	 * @param au ArrayList van auto's
+	 * @param pa array van parkeerplaatsen
+	 * @param on ArrayList van onderdelen
+	 * @param fa ArrayList van facturen
+	 * @param br ArrayList van brandstof
+	 * @param pl weekplanning Object
+	 */
 	public void schrijfWeg(ArrayList<Klant> kla, ArrayList<Monteur> mo, ArrayList<Klus> klu, ArrayList<Auto> au, Parkeerplaats[] pa, ArrayList<Onderdeel> on, ArrayList<Factuur> fa, ArrayList<Brandstof> br, Weekplanning pl) throws IOException{
-		
-		
 		data.put("List", (Object) kla);
 		data.put("List2", (Object) mo);
 		data.put("List3", (Object) klu);
