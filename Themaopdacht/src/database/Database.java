@@ -29,8 +29,6 @@ public class Database {
 	 */
 	public boolean isLeeg() throws IOException {
 		boolean result = false;
-		//String directory = locatie.toString(); //currentDirectory.getCanonicalPath() + "\\..\\webapps\\atd\\data\\data.dat";
-		
 		@SuppressWarnings("resource")
 		BufferedReader br = new BufferedReader(new FileReader(directory));     
 		if (br.readLine() == null) {
@@ -47,8 +45,6 @@ public class Database {
 	 */
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Object> leesIn() throws IOException{
-		//String directory = locatie.toString(); //currentDirectory.getCanonicalPath() + "\\..\\webapps\\atd\\data\\data.dat";
-		
 		HashMap<String, Object> map = null;
 		
 		FileInputStream fin = new FileInputStream(directory);
@@ -87,8 +83,7 @@ public class Database {
 		data.put("List7", (Object) fa);
 		data.put("List8", (Object) br);
 		data.put("planning", (Object) pl);
-		
-		//String directory = locatie.toString(); //currentDirectory.getCanonicalPath() + "\\..\\webapps\\atd\\data\\data.dat";
+
 		File f = new File(directory);
 		if(f.exists() && !f.isDirectory()) { 
 			FileOutputStream fos = new FileOutputStream(directory);

@@ -125,7 +125,6 @@ public class MyServletContextListener implements ServletContextListener {
 		sce.getServletContext().setAttribute("planning", planning);
 
 		// Logger
-		
 		try {
 			Calendar cal = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
