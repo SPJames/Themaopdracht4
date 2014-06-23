@@ -143,6 +143,7 @@ public class MyServletContextListener implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent sce) {
 		try {
 			d.schrijfWeg(List, List2, List3, List4, List5, List6, List7, List8, planning);
+			logger.info("Logger ended");
 			logger.setLevel(Level.OFF);
 			logger.removeHandler(fh);
 			fh.close();

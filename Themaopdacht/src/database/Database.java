@@ -19,21 +19,9 @@ import domein.voorraadbeheer.Onderdeel;
  */
 public class Database {
 	private File currentDirectory = new File(new File(".").getAbsolutePath()).getParentFile();
-	
 	private String directory = currentDirectory.getParent() + "/webapps/atd/data/data.dat";
-	
 	private HashMap<String, Object> data = new HashMap<String, Object>();
 	
-	/**
-	 * Deze methode geeft de locatie van de data.dat file
-	 * @return directory
-	 * @throws IOException 
-	 */
-	public String getPath() throws IOException{
-		return directory;
-	}
-	
-	//check of file leeg is
 	/**
 	 * Check of de data.dat file leeg is
 	 * 
@@ -52,7 +40,6 @@ public class Database {
 		return result;
 	}
 	
-	// lees data in
 	/**
 	 * lees de gegevens in uit data.dat.
 	 * 
@@ -76,7 +63,7 @@ public class Database {
 		
 		return map;
 	}
-	//schrijf data weg
+	
 	/**
 	 * Schrijf gegevens weg naar data.dat
 	 * 
