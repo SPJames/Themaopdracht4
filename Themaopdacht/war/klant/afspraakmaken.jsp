@@ -16,6 +16,14 @@
 			String name = (String) session.getAttribute("Username");//username locaal opslaan
 			//allebij "hidden" in vullen in de form zodat we ze straks kunnen gebruiken
 		%>
+		<%
+			@SuppressWarnings("unchecked")
+			ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");//alle users ophalen
+			for (Klant k : klanten) {
+				if (k.getId() == (Integer.parseInt(id))) {//kijken of de klant id gelijk is aan de ingelogde klant id
+					ArrayList<Auto> autos = k.getAlleAutos();//alle autos van die klant
+					if (autos.size() > 0) {//save guard voor als hij leeg is
+		%>
 
 		<form action="KlusAanmakenServlet.do" method="get">
 			<input type="hidden" name="klantid" value="<%=id%>" /> 
@@ -23,30 +31,23 @@
 
 			<div id="select">
 			<!-- Auto -->
-			<select name="auto">
+			<label for="auto">Auto: </label>
+			<select name="auto" class="box">
 				<%
-					@SuppressWarnings("unchecked")
-					ArrayList<Klant> klanten = (ArrayList<Klant>) application.getAttribute("alleUsers");//alle users ophalen
-					for (Klant k : klanten) {
-						if (k.getId() == (Integer.parseInt(id))) {//kijken of de klant id gelijk is aan de ingelogde klant id
-							ArrayList<Auto> autos = k.getAlleAutos();//alle autos van die klant
-							if (autos.size() > 0) {//save guard voor als hij leeg is
-								for (Auto a : autos) {
-									if (!a.isInReparatie()) {//als auto in reparatie is(aka in de winkel) kan hij niet opnieuw als een klus worden aan gemaakt
+					for (Auto a : autos) {
+						if (!a.isInReparatie()) {//als auto in reparatie is(aka in de winkel) kan hij niet opnieuw als een klus worden aan gemaakt
 				%>
 				<option value="<%=a.getKenteken()%>"><%=a.getKenteken()%></option>
 				<%
-					}
+									}
 								}
-							}
-							break;
-						}
-					}
+							
 				%>
 			</select>
-		
+			<br />
 			<!-- diensttype -->
-			<select name="diensttype">
+			<label for="diensttype">Dienst Type: </label>
+			<select name="diensttype" class="box">
 				<option value="rep">Reparatie/Onderhoud/APK</option>
 				<option value="park">Parkeren</option>
 				<option value="tank">Tanken</option>
@@ -55,9 +56,22 @@
 			</div>
 			
 			<!-- beschrijving klus -->
-			<textarea rows="10" cols="50" name="comments"></textarea>
+			<label for="comments">Comments: </label>
+			<textarea rows="10" cols="50" name="comments"></textarea><br />
 			<input class="down-afspraak" type="submit" value="Verzenden" />
 		</form>
+		<%
+					}
+					else{%>
+						nog geen auto's geregistreed!
+						<a href="autotoevoegen.jsp">Voeg nu een auto toe</a>	
+					
+					<%}
+					break;
+				}
+			}
+		
+		%>
 	</div>
 	<jsp:include page="../footer.jsp" />
 </body>

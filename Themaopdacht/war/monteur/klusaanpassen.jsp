@@ -39,20 +39,22 @@
 		%>
 				
 			<form action="KlusBijwerkenServlet.do" method="get">
-				<input type="hidden" name="klusid"
-					value="<%="" + k.getKlusNummer()%>" /> <input type="text"
-					name="auto" value="<%=k.getAuto().getKenteken()%>"
-					readonly="readonly" />
+				<input type="hidden" name="klusid" value="<%="" + k.getKlusNummer()%>" /> 
+				<label for="auto">Auto: </label>
+				<input type="text" name="auto" value="<%=k.getAuto().getKenteken()%>" readonly="readonly" class="box" />
 				<!-- diensttype -->
+				<label for="diensttype">Dienst Type: </label><br />
 				<select name="diensttype"
-					autofocus="<%=k.getHetType().dienstType()%>">
+					autofocus="<%=k.getHetType().dienstType()%> class="box"">
 					<option value="Onderhoud">Reparatie/Onderhoud/APK</option>
 					<option value="Parkeren">Parkeren</option>
 					<option value="Tanken">Tanken</option>
 				</select>
 				<!-- beschrijving klus -->
-				<textarea rows="10" cols="50" name="comments"><%=k.getBeschrijving()%></textarea>
-				<input type="number" name="manuren" />
+				<label for="comments">Comments: </label><br />
+				<textarea rows="10" cols="50" name="comments"><%=k.getBeschrijving()%></textarea><br />
+				<label for="manuren">Manuren: </label>
+				<input type="number" name="manuren" class="box" />
 				<br />
 
 				<!-- onderdelen -->
@@ -61,7 +63,8 @@
 						for (int i = 0; i < onderdelen.size(); i++) {
 					%>
 					<div id="onderdeel<%=i%>" style="display: none;">
-						<select name="onderdeel<%=i%>">
+						<label for="onderdeel<%=i%>">Onderdeel nr <%=i %>: </label>
+						<select name="onderdeel<%=i%>" class="box">
 							<%
 								for (Onderdeel o : onderdelen) {
 							%>
@@ -69,7 +72,9 @@
 							<%
 								}
 							%>
-						</select><br /> <input type="number" name="aantal<%=i%>" min="0" value="0"><br />
+						</select><br /> 
+						<label for="aantal<%=i %>">Hoeveelheid: </label>
+						<input type="number" name="aantal<%=i%>" min="0" value="0" class="box"><br />
 						<button type="button" onClick="showNext(<%=i%>)">Show
 							next</button>
 						<br />
@@ -84,7 +89,8 @@
 					for (int i = 0; i < brandstof.size(); i++) {
 				%>
 				<div id="brandstof<%=i%>" style="display: none;">
-					<select name="brandstof<%=i%>">
+					<label for="brandstof<%=i %>">Brandstof <%=i %>: </label>
+					<select name="brandstof<%=i%>" class="box">
 						<%
 							for (Brandstof b : brandstof) {
 						%>
@@ -92,8 +98,10 @@
 						<%
 							}
 						%>
-					</select><br /> <input type="number" step="any" name="liters<%=i%>" min="0"
-						value="0"><br />
+					</select><br />
+					<label for="liters">Aantal Liters: </label>
+					<input type="number" step="any" name="liters<%=i%>" min="0"
+						value="0" class="box"><br />
 					<button type="button" onClick="showNext2(<%=i%>)">Show
 						next</button>
 					<br />
