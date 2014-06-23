@@ -24,38 +24,33 @@ public class KiezenEmail extends HttpServlet {
 	 * Hierna wordt aangegeven welk type email er naar deze klant gestuurd gaat worden.
 	 * De gebruiker wordt teruggestuurd naar klantoverzicht.jsp en er wordt een melding weergegeven
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	@SuppressWarnings("unused")
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		@SuppressWarnings("unchecked")
-		ArrayList<Klant> klanten = (ArrayList<Klant>) req.getServletContext()
-				.getAttribute("alleUsers");
+		ArrayList<Klant> klanten = (ArrayList<Klant>) req.getServletContext().getAttribute("alleUsers");
 
-		int id = Integer.parseInt(req.getParameter("id"));
+		int id = Integer.parseInt(req.getParameter("id")); //klant id
 
-		String type = req.getParameter("sort");
+		String type = req.getParameter("sort"); //email soort
 
 		Klant klant = null;
 		for (Klant k : klanten) {
-			if (id == k.getId()) {
+			if (id == k.getId()) { //de klant opzoeken die de email moet ontvangen
 				klant = k;
 			}
 		}
-		System.out.println(type);
 
 		RequestDispatcher rd = null;
 
 		if (type.equals("herinnering")) {
-			KlantHerinneringEmail kh = new KlantHerinneringEmail(
-					klant.getEmail(), klant.getNaam());
+			KlantHerinneringEmail kh = new KlantHerinneringEmail(klant.getEmail(), klant.getNaam());
 			req.setAttribute("msgs", "Herinnerings e-mail verstuurd");
 		} else if (type.equals("betaald")) {
-			NietBetaaldEmail b = new NietBetaaldEmail(klant.getEmail(),
-					klant.getNaam());
+			NietBetaaldEmail b = new NietBetaaldEmail(klant.getEmail(),klant.getNaam());
 			req.setAttribute("msgs", "Niet betaald e-mail verstuurd");
 		} else {
-			AutoControlenEmail a = new AutoControlenEmail(klant.getEmail(),
-					klant.getNaam());
+			AutoControlenEmail a = new AutoControlenEmail(klant.getEmail(),klant.getNaam());
 			req.setAttribute("msgs", "Auto controlen e-mail verstuurd");
 		}
 		
