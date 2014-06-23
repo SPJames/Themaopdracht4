@@ -48,7 +48,7 @@ public class KlusFacturerenServlet extends HttpServlet {
 		klussen.remove(klus); //klus wordt uit de lijst klussen gehaald
 
 		req.setAttribute("msgs", "Klus succesvol gefactureerd!");
-		rd = req.getRequestDispatcher("factuur.jsp");
+		rd = req.getRequestDispatcher("factuurberekenen.jsp");
 		rd.forward(req, resp);
 	}
 }

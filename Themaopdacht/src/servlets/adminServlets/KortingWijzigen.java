@@ -38,7 +38,7 @@ public class KortingWijzigen extends HttpServlet{
 				f.setKorting(korting);
 			}
 		}
-		rd = req.getRequestDispatcher("factuur.jsp"); //terug naar de factuur
+		rd = req.getRequestDispatcher("factuurberekenen.jsp"); //terug naar de factuur
 		rd.forward(req, resp);
 	}
 }

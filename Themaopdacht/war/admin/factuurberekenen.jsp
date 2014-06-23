@@ -1,3 +1,8 @@
+<%@ page import="domein.financien.Factuur"%>
+<%@ page import="domein.klantenbinding.Klant"%>
+<%@ page import="domein.klusbeheer.Klus"%>
+<%@ page import="java.util.*"%>
+
 <jsp:include page="../header.jsp">
 	<jsp:param name="title" value="Factuur overzicht" />
 	<jsp:param name="css" value="klussenlijst" />
@@ -7,10 +12,7 @@
 	<div id="klus">
 		<h2>Factuur Berekenen</h2>
 
-		<%@ page import="domein.financien.Factuur"%>
-		<%@ page import="domein.klantenbinding.Klant"%>
-		<%@ page import="domein.klusbeheer.Klus"%>
-		<%@ page import="java.util.*"%>
+		
 
 		<%
 			@SuppressWarnings("unchecked")

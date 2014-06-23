@@ -5,7 +5,7 @@
 <body>
 	<jsp:include page="../menu.jsp" />
 	<div id="klus">
-		<h2>Facturen</h2>
+		<h2>Overzicht Facturen</h2>
 
 		<%@ page import="domein.financien.Factuur"%>
 		<%@ page import="domein.klantenbinding.Klant"%>
@@ -24,13 +24,15 @@
 			<tr>
 				<th>Factuur ID</th>
 				<th>Totaalprijs (btw + korting)</th>
+				<th>Factuur Wijzigen</th>
 			</tr>
 			<%
 				for (Factuur f : facturen) {
 			%>
 			<tr>
 				<td><%=f.getFactuurNummer()%></td>
-				<td><%=f.getTotaalprijsKorting()%></td>
+				<td>&euro;<%=f.getTotaalprijsKorting()%></td>
+				<td><a href="wijzigfactuur.jsp?id=<%=f.getFactuurNummer()%>">Wijzig</a></td>
 			</tr>
 
 			<%

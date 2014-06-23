@@ -181,6 +181,26 @@
 		<url-pattern>/admin/KortingWijzigen.do</url-pattern>
 	</servlet-mapping>
 	
+	<!-- Verwijder Onderdeel en brandstof uit factuur (Admin) -->
+	<servlet>
+		<servlet-name>Verwijder Onderdeel Brandstof</servlet-name>
+		<servlet-class>servlets.adminServlets.VerwijderOnderdeelBrandstof</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Verwijder Onderdeel Brandstof</servlet-name>
+		<url-pattern>/admin/VerwijderOnderdeelBrandstof</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Wijzig Factuur (Admin) -->
+	<servlet>
+		<servlet-name>Wijzig Factuur</servlet-name>
+		<servlet-class>servlets.adminServlets.FactuurWijzigen</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Wijzig Factuur</servlet-name>
+		<url-pattern>/admin/WijzigFactuur.do</url-pattern>
+	</servlet-mapping>
+	
 	<!-- KiezenEmail Servlet  -->
 	<servlet>
 		<servlet-name>KiezenEmail</servlet-name>

@@ -45,7 +45,7 @@
 				<!-- diensttype -->
 				<label for="diensttype">Dienst Type: </label><br />
 				<select name="diensttype"
-					autofocus="<%=k.getHetType().dienstType()%> class="box"">
+					autofocus="<%=k.getHetType().dienstType()%>" class="box">
 					<option value="Onderhoud">Reparatie/Onderhoud/APK</option>
 					<option value="Parkeren">Parkeren</option>
 					<option value="Tanken">Tanken</option>
@@ -110,7 +110,7 @@
 					}
 				%>
 
-
+				<br />
 				<input type="submit" value="Verzenden" />
 			</form>
 		</div>

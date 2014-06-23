@@ -38,7 +38,7 @@
 		<%}
 				if (usertype.equals("Admin")) {%>
 					<li><a href='/atd/admin/klussenlijstaf.jsp'>Factuur Maken</a></li>
-					<li><a href='/atd/admin/facturen.jsp'>Factuur overzicht</a></li>
+					<li><a href='/atd/admin/overzichtfacturen.jsp'>Factuur overzicht</a></li>
 					<li><a href='/atd/admin/klantoverzicht.jsp'>Klanten overzicht</a></li>
 					<li><a href='/atd/admin/registreermonteur.jsp'>Nieuwe Monteur Toevoegen</a></li>
 					<li><a href='/atd/admin/voorraadoverzicht.jsp'>Voorraad Overzicht</a></li>

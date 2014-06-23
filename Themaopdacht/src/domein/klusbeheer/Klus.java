@@ -50,7 +50,33 @@ public class Klus implements Serializable{
 		klantID = id;
 		manuren = 0;
 	}
-	
+	/**
+	 *	er is al addmanuren om toe te voegen, dit is om te overschrijven 
+	 * 
+	 * @param manuren nieuwe int die de oude overschrijft
+	 */
+	public void setManuren(int manuren) {
+		this.manuren = manuren;
+	}
+
+	/**
+	 * Deze methode word gebruikt om in de klus de onderdelen aantepassen(is een volledig nieuwe HashMap)
+	 * 
+	 * @param gebruikteOnderdelen is een nieuwe hashmap om de oude te overschrijven
+	 */
+	public void setGebruikteOnderdelen(
+			HashMap<Onderdeel, Integer> gebruikteOnderdelen) {
+		this.gebruikteOnderdelen = gebruikteOnderdelen;
+	}
+	/**
+	 * Deze methode word gebruikt om in de klus de brandstof aantepassen(is een volledig nieuwe HashMap)
+	 * 
+	 * @param gebruikteBrandstof is een nieuwe hashmap om de oude te overschrijven
+	 */
+	public void setGebruikteBrandstof(HashMap<Brandstof, Double> gebruikteBrandstof) {
+		this.gebruikteBrandstof = gebruikteBrandstof;
+	}
+
 	/**
 	 * Deze methode vraagt de hashmap gebruikteonderdelen op
 	 * 
