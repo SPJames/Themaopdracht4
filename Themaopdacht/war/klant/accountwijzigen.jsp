@@ -35,8 +35,12 @@
 					<input type="text" name="adres" value="<%=klant.getAdres()%>" class="box" /> 
 				<label for="postcode">Postcode</label> 
 					<input type="text" name="postcode" value="<%=klant.getPostcode()%>" class="box" /> 
-				<label for="email">Email</label> 
-					<input type="email" name="email" value="<%=klant.getEmail()%>" class="box" />
+					
+					<!-- wijzig email -->
+				<label for="newemail">(Nieuw) Email</label> 
+					<input type="email" name="newemail" value="<%=klant.getEmail()%>" class="box" />
+				<label for="newemail2">Nieuw email controle</label> 
+					<input type="email" name="newemail2" class="box" />
 
 				<!-- wijzig wachtwoord -->
 				<label for="newpwd">Nieuw wachtwoord</label> 

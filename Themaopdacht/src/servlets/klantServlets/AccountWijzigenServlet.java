@@ -31,10 +31,9 @@ public class AccountWijzigenServlet extends HttpServlet {
 	 * Als er geen foutmeldingen zijn worden de nieuwe gegevens opgeslagen en wordt de klant doorgestuurd
 	 * naar deze pagina met de melding dat de gegevens zijn gewijzigd.
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//Klant wordt de huidige gebruiker.
+		//de huidige gebruiker wordt opgezocht in de klantenlijst
 		@SuppressWarnings("unchecked")
 		ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext().getAttribute("alleUsers");
 		Klant klant = null;
@@ -44,44 +43,52 @@ public class AccountWijzigenServlet extends HttpServlet {
 			}
 		}
 		
-		String[] userinfo = new String[8];
-		boolean error1 = false; //empty data check
-		boolean error2 = false; //wrong password check
-		boolean pwd = false;
+		String[] userinfo = new String[9];
+		boolean error1 = false; //lege velden
+		boolean error2 = false; //het ingevoerde wachtwoord is niet correct
+		boolean error3 = false; //de nieuwe wachtwoorden zijn niet aan elkaar gelijk
+		boolean error4 = false; //de emailadressen zijn niet aan elkaar gelijk
+		boolean pwd = false; //er is een nieuw wachtwoord ingevoerd
 
 		userinfo[0] = req.getParameter("username");
 		userinfo[1] = req.getParameter("realname");
 		userinfo[2] = req.getParameter("pwd");
-		userinfo[3] = req.getParameter("email");
+		userinfo[3] = req.getParameter("newemail");
 		userinfo[4] = req.getParameter("adres");
 		userinfo[5] = req.getParameter("postcode");
-		
 		userinfo[6] = req.getParameter("newpwd");
 		userinfo[7] = req.getParameter("newpwd2");
+		userinfo[8] = req.getParameter("newemail2");
 
-		//check of alles is ingevuld
+		//controleren of alles is ingevuld
 		for (int i = 0; i < 6; i++) {
 			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
 				error1 = true;
 			}
 		}
-		//check of het wachtwoord correct is
+		//controleren of het correcte wachtwoord is ingevuld
 		if(!(userinfo[2].equals(klant.getPassword()))) {
 			error2 = true;
 		}
 		
-		//check of er een nieuw wachtwoord is opgegeven
-		if ((userinfo[6] != null) && (userinfo[7] != null)) {
-			if (!(userinfo[6].equals("")) && !(userinfo[7].equals(""))) {
+		//controleren of er een nieuw wachtwoord is opgegeven
+		if ((userinfo[6] != null) || (userinfo[7] != null)) {
+			if (!(userinfo[6].equals("")) || !(userinfo[7].equals(""))) {
 				if (userinfo[6].equals(userinfo[7])) {
 					pwd = true;
 				} else {
-					error1 = true;
+					error3 = true;
 				}
 			}
 		}
 		
-		//nog controle toevoegen voor nieuw emailadress
+		//controleren of er een nieuw emailadress is opgegeven
+		if((userinfo[8] != null) && !(userinfo[8].equals("")))
+		{
+			if(!(userinfo[3].equals(userinfo[8]))){
+				error4 = true;
+			}
+		}
 		
 		//fout melding teruggeven
 		RequestDispatcher rd = null;
@@ -91,7 +98,13 @@ public class AccountWijzigenServlet extends HttpServlet {
 		} else if(error2) {
 			req.setAttribute("error", "Wachtwoord is incorrect");
 			rd = req.getRequestDispatcher("accountwijzigen.jsp");
-		} else { //sla nieuwe klant op, als invoer correct is
+		}else if(error3){
+			req.setAttribute("error", "Nieuwe wachtwoorden komen niet overeen");
+			rd = req.getRequestDispatcher("accountwijzigen.jsp");
+		}else if(error4){
+			req.setAttribute("error", "Emailaddressen komen niet overeen");
+			rd= req.getRequestDispatcher("accountwijzigen.jsp");
+		}else { //sla nieuwe klant op, als invoer correct is
 			klant.setUsername(userinfo[0]);
 			klant.setNaam(userinfo[1]);
 			klant.setPassword(userinfo[2]);
@@ -99,11 +112,10 @@ public class AccountWijzigenServlet extends HttpServlet {
 			klant.setAdres(userinfo[4]);
 			klant.setPostcode(userinfo[5]);
 			if(pwd) {
-				klant.setPassword(userinfo[6]);
+				klant.setPassword(userinfo[6]); //het nieuwe wachtwoord opslaan
 			}
 			
 			req.setAttribute("msgs", "Gegevens succesvol opgeslagen!");
-			
 			req.getSession().setAttribute("Access", "Klant");
 			req.getSession().setAttribute("Username", klant.getUsername());
 			req.getSession().setAttribute("ID", klant.getId());
@@ -111,8 +123,6 @@ public class AccountWijzigenServlet extends HttpServlet {
 			//kunnen we niet beter naar het klant hoofdmenu gaan?
 			rd = req.getRequestDispatcher("accountwijzigen.jsp");
 		}
-
 		rd.forward(req, resp);
-
 	}
 }

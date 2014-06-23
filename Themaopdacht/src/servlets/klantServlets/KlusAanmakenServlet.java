@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import domein.klantenbinding.Auto;
 import domein.klusbeheer.Klus;
 import domein.klusbeheer.Parkeerplaats;
-import domein.klusbeheer.Weekplanning;
 
 /**
  * In deze servlet kan een klant een afspraak maken.
@@ -38,10 +37,9 @@ public class KlusAanmakenServlet extends HttpServlet {
 	 * Als er geen foutmeldingen zijn wordt de klant naar de hoofdpagina gestuurd en verschijnt er een melding
 	 * dat de klus is aangemaakt. Voor de meegegeven auto wordt aangegeven dat deze bij een nog niet afgesloten klus hoort.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String[] userinfo = new String[5];
-		boolean error = false;
+		boolean error = false; //lege velden
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<Klus> Klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");
@@ -61,6 +59,7 @@ public class KlusAanmakenServlet extends HttpServlet {
 			}
 		}
 
+		//controleren of er lege velden zijn
 		for (int i = 0; i < 4; i++) {
 			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
 				error = true;
@@ -78,9 +77,7 @@ public class KlusAanmakenServlet extends HttpServlet {
 			} else if (!(auto.isInReparatie())) {
 				// aanmaken nieuwe klus
 				int plek = -1;
-				Klus k = new Klus(auto, userinfo[3], userinfo[2],
-						Integer.parseInt(userinfo[0]));
-				// k.schrijfWeg(userinfo);
+				Klus k = new Klus(auto, userinfo[3], userinfo[2], Integer.parseInt(userinfo[0]));
 				Klussen.add(k);
 				
 				// parkeerplaats toewijzen
