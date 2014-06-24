@@ -15,7 +15,7 @@ import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
 /**
- * in deze klasse worden de gegevens van het systeem weggeschreven en opgehaald
+ * In deze klasse worden de gegevens van het systeem weggeschreven en opgehaald
  */
 public class Database {
 	private File currentDirectory = new File(new File(".").getAbsolutePath()).getParentFile();
@@ -23,9 +23,9 @@ public class Database {
 	private HashMap<String, Object> data = new HashMap<String, Object>();
 	
 	/**
-	 * Check of de data.dat file leeg is
+	 * Deze methode controleert of de data.dat file leeg is
 	 * 
-	 * @return boolean
+	 * @return true, als de file leeg is, false als de file niet leeg is
 	 */
 	public boolean isLeeg() throws IOException {
 		boolean result = false;
@@ -39,9 +39,9 @@ public class Database {
 	}
 	
 	/**
-	 * lees de gegevens in uit data.dat.
+	 * Deze methode leest de gegevens in uit data.dat.
 	 * 
-	 * @return HashMap<String, Object>
+	 * @return HashMap<String, Object>, de hashmap met alle opgeslagen gegevens
 	 */
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Object> leesIn() throws IOException{
@@ -61,7 +61,7 @@ public class Database {
 	}
 	
 	/**
-	 * Schrijf gegevens weg naar data.dat
+	 * Deze methode schrijft gegevens weg naar data.dat
 	 * 
 	 * @param kla ArrayList van klanten
 	 * @param mo ArrayList van monteurs
