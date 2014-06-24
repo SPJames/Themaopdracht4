@@ -37,13 +37,12 @@ public class AfspraakMaken {
 	public void generateData() throws Exception {
 		String username;
 		String pwd;
-		String type;
 		String comments;
 
 		BufferedReader reader = null;
 
 		try {
-			File file = new File("afspraakMaken.csv");
+			File file = new File("afspraakmaken.csv");
 			reader = new BufferedReader(new FileReader(file));
 
 			String line;
@@ -54,9 +53,8 @@ public class AfspraakMaken {
 				while (s.hasNext()) {
 					username = s.next();
 					pwd = s.next();
-					type = s.next();
 					comments = s.next();
-					testSeleniumAfspraakMaken(username, pwd, type, comments);
+					testSeleniumAfspraakMaken(username, pwd, comments);
 				}
 
 			}
@@ -73,7 +71,7 @@ public class AfspraakMaken {
 	}
 
 	public void testSeleniumAfspraakMaken(String username, String pwd,
-			String type, String comments) throws Exception {
+			String comments) throws Exception {
 		driver.get(baseUrl + "/atd/index.jsp");
 		driver.findElement(By.linkText("Log in")).click();
 		driver.findElement(By.name("username")).clear();
@@ -81,9 +79,14 @@ public class AfspraakMaken {
 		driver.findElement(By.name("pwd")).clear();
 		driver.findElement(By.name("pwd")).sendKeys(pwd);
 		driver.findElement(By.name("Go")).click();
+		// driver.findElement(By.linkText("Auto Overzicht")).click();
+		// driver.findElement(By.linkText("Voeg een auto toe")).click();
+		// driver.findElement(By.name("merk")).clear();
+		// driver.findElement(By.name("merk")).sendKeys("polo");
+		// driver.findElement(By.name("kenteken")).clear();
+		// driver.findElement(By.name("kenteken")).sendKeys("dsjhsj");
+		// driver.findElement(By.cssSelector("input.down")).click();
 		driver.findElement(By.linkText("Afspraak Maken")).click();
-		new Select(driver.findElement(By.name(type)))
-				.selectByVisibleText(type);
 		driver.findElement(By.name("comments")).clear();
 		driver.findElement(By.name("comments")).sendKeys(comments);
 		driver.findElement(By.cssSelector("input.down-afspraak")).click();

@@ -93,9 +93,10 @@ public class AccountWijzigen {
 		driver.findElement(By.name("adres")).sendKeys(straat);
 		driver.findElement(By.name("postcode")).clear();
 		driver.findElement(By.name("postcode")).sendKeys(postcode);
-		driver.findElement(By.name("email")).clear();
-		driver.findElement(By.name("email")).sendKeys(email);
-		driver.findElement(By.name("pwd")).clear();
+		driver.findElement(By.name("newemail")).clear();
+		driver.findElement(By.name("newemail")).sendKeys(email);
+		driver.findElement(By.name("newemail2")).clear();
+		driver.findElement(By.name("newemail2")).sendKeys(email);
 		driver.findElement(By.name("pwd")).sendKeys(pwd);
 		driver.findElement(By.cssSelector("input.down-afspraak")).click();
 	}
