@@ -2,6 +2,7 @@ package servlets.adminServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -29,19 +30,21 @@ public class KlusFacturerenServlet extends HttpServlet {
 	 * De gebruiker wordt doorgestuurd naar klussenlijstaf en er wordt een
 	 * melding weergegeven.
 	 */
+	@SuppressWarnings("unchecked")
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = null;
 
 		int klusid = Integer.parseInt(req.getParameter("klusid"));
-		@SuppressWarnings("unchecked")
 		ArrayList<Factuur> facturen = (ArrayList<Factuur>) req.getServletContext().getAttribute("alleFacturen");
-		@SuppressWarnings("unchecked")
 		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");
 
 		Klus klus = null;
 		for (Klus k : klussen) {
 			if (k.getKlusNummer() == klusid) { //huidige klus zoeken
-				Factuur factuur = new Factuur(k);
+				int id = ((HashMap<String, Integer>) req.getServletContext().getAttribute("ids")).get("factuurID");
+				Factuur factuur = new Factuur(k, id);
+				((HashMap<String, Integer>) req.getServletContext().getAttribute("ids")).put("factuurID", id+1);
+				
 				facturen.add(factuur);
 				klus = k;
 			}

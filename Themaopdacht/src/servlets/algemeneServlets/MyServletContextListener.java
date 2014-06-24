@@ -40,6 +40,8 @@ public class MyServletContextListener implements ServletContextListener {
 	private ArrayList<Brandstof> List8 = new ArrayList<Brandstof>();
 	private Weekplanning planning = new Weekplanning();
 	
+	private HashMap<String, Integer> ids = new HashMap<String, Integer>();
+	
 	private Logger logger = Logger.getLogger("atd");
 	
 	private File currentDirectory = new File(new File(".").getAbsolutePath()).getParentFile();
@@ -67,7 +69,6 @@ public class MyServletContextListener implements ServletContextListener {
 		try {
 			if(!d.isLeeg()) {
 				map = d.leesIn();
-
 				List = (ArrayList<Klant>) map.get("List");
 				List2 = (ArrayList<Monteur>) map.get("List2");
 				List3 = (ArrayList<Klus>) map.get("List3");
@@ -77,33 +78,41 @@ public class MyServletContextListener implements ServletContextListener {
 				List7 = (ArrayList<Factuur>) map.get("List7");
 				List8 = (ArrayList<Brandstof>) map.get("List8");
 				planning = (Weekplanning) map.get("planning");
+				ids = (HashMap<String, Integer>) map.get("ids");
 			} else {
 				//standaard waarden!
 				
+				//ids initialiseren (alle waarden op 1 zetten als 'database' leeg is)
+				ids.put("userID", 3);
+				ids.put("monteurID", 3);
+				ids.put("factuurID", 1);
+				ids.put("onderdeelID", 4);
+				ids.put("brandstofID", 4);
+				
 				// users initaliseren
-				Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com", "Test", "derp");
-				Klant u2 = new Klant("Johnny Test", "Straat 2", "3613AH", "test@test.test", "Test2", "derp");
+				Klant u = new Klant("James", "Straat 1", "3612AH", "test@test.com", "Test", "derp", 1);
+				Klant u2 = new Klant("Johnny Test", "Straat 2", "3613AH", "test@test.test", "Test2", "derp", 2);
 				List.add(u);
 				List.add(u2);
 
 				// monteurs initaliseren
-				Monteur m = new Monteur("Klaas", "monteur1");
-				Monteur m2 = new Monteur("Kees", "monteur2");
+				Monteur m = new Monteur("Klaas", "monteur1", 1);
+				Monteur m2 = new Monteur("Kees", "monteur2", 2);
 				List2.add(m);
 				List2.add(m2);
 
 				// onderdelen initialiseren
-				Onderdeel o = new Onderdeel(30, "Wieldopje", 5.5);
-				Onderdeel o2 = new Onderdeel(999, "Headlightfuel", 40.0);
-				Onderdeel o3 = new Onderdeel(3, "Ramenwissers", 1.0);
+				Onderdeel o = new Onderdeel(30, "Wieldopje", 5.5, 1);
+				Onderdeel o2 = new Onderdeel(999, "Headlightfuel", 40.0, 2);
+				Onderdeel o3 = new Onderdeel(3, "Ramenwissers", 1.0, 3);
 				List6.add(o);
 				List6.add(o2);
 				List6.add(o3);
 
 				// Brandstof initialiseren
-				Brandstof b = new Brandstof("Euro95", 50, 1.0);
-				Brandstof b2 = new Brandstof("Diesel", 20, 3.2);
-				Brandstof b3 = new Brandstof("Benzine", 69, 0.1);
+				Brandstof b = new Brandstof("Euro95", 50, 1.0, 1);
+				Brandstof b2 = new Brandstof("Diesel", 20, 3.2, 2);
+				Brandstof b3 = new Brandstof("Benzine", 69, 0.1, 3);
 				List8.add(b);
 				List8.add(b2);
 				List8.add(b3);
@@ -123,6 +132,7 @@ public class MyServletContextListener implements ServletContextListener {
 		sce.getServletContext().setAttribute("alleFacturen", List7);
 		sce.getServletContext().setAttribute("alleBrandstof", List8);
 		sce.getServletContext().setAttribute("planning", planning);
+		sce.getServletContext().setAttribute("ids", ids);
 
 		// Logger
 		try {
@@ -141,7 +151,7 @@ public class MyServletContextListener implements ServletContextListener {
 
 	public void contextDestroyed(ServletContextEvent sce) {
 		try {
-			d.schrijfWeg(List, List2, List3, List4, List5, List6, List7, List8, planning);
+			d.schrijfWeg(List, List2, List3, List4, List5, List6, List7, List8, planning, ids);
 			logger.info("Logger ended");
 			logger.setLevel(Level.OFF);
 			logger.removeHandler(fh);

@@ -2,6 +2,7 @@ package servlets.adminServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -30,6 +31,7 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 	 * Als er geen errors zijn wordt het nieuwe brandstoftype toegevoegd aan de lijst bestaande brandstoffen
 	 * en wordt de gebruiker teruggestuurd naar voorraadoverzicht.jsp en wordt er een melding gegeven.
 	 */
+	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[3];
@@ -51,7 +53,6 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 		}
 		
 		//alle aanwezige brandstof opvragen
-		@SuppressWarnings("unchecked")
 		ArrayList<Brandstof> brandstoffen = (ArrayList<Brandstof>) sc.getAttribute("alleBrandstof");
 		
 		//controleren of de brandstof al in voorraad is
@@ -64,7 +65,10 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 		}
 		
 		//nieuwe brandstof aanmaken met ingevoerde gegevens
-		brandstof = new Brandstof(userinfo[0], Double.parseDouble(userinfo[1]), Double.parseDouble(userinfo[2]));
+		int id = ((HashMap<String, Integer>) req.getServletContext().getAttribute("ids")).get("brandstofID");
+		brandstof = new Brandstof(userinfo[0], Double.parseDouble(userinfo[1]), Double.parseDouble(userinfo[2]), id);
+		((HashMap<String, Integer>) req.getServletContext().getAttribute("ids")).put("brandstofID", id+1);
+		
 		if(error){//error 1, er was een leeg veld
 			req.setAttribute("error", "één of meerdere velden waren leeg");
 			rd = req.getRequestDispatcher("brandstoftoevoegen.jsp");
