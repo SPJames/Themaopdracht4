@@ -37,11 +37,12 @@
 					<li><a href='/atd/monteur/weekplanning.jsp'>Week planning</a></li>
 		<%}
 				if (usertype.equals("Admin")) {%>
-				<li>Factuur</li>
-				<ul>
+				<li>Factuur
+				<ul id="dropdown">
 					<li><a href='/atd/admin/klussenlijstaf.jsp'>Factuur Maken</a></li>
 					<li><a href='/atd/admin/overzichtfacturen.jsp'>Factuur overzicht</a></li>
-				</ul>
+					</ul>
+				</li>
 					<li><a href='/atd/admin/klantoverzicht.jsp'>Klanten overzicht</a></li>
 					<li><a href='/atd/admin/registreermonteur.jsp'>Nieuwe Monteur Toevoegen</a></li>
 					<li><a href='/atd/admin/voorraadoverzicht.jsp'>Voorraad Overzicht</a></li>
@@ -53,5 +54,5 @@
 			<li><a href='/atd/registreren.jsp'>Registreer</a></li>
 			<li><a href='/atd/inloggen.jsp'>Log in</a></li>
 		<%}%>
-	</ul>
+		</ul>
 </div>
