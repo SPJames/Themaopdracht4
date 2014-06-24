@@ -1,12 +1,15 @@
 package domein.financien;
 
+import java.io.Serializable;
+
 import domein.voorraadbeheer.Onderdeel;
 
 /**
  * De klasse Onderhoud berekend de kosten voor het onderhoud aan een auto
  * Er worden een aantal methodes geerft van de abstracte klasse DienstType
  */
-public class Onderhoud extends DienstType {
+public class Onderhoud extends DienstType implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private double manUren, prijsPerManuur;
 	private double totaalMU, totaal;
 	private Onderdeel deOnderdelen;

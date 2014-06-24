@@ -12,7 +12,6 @@
 
 		<jsp:include page="../message.jsp"/>
 			<%
-				}
 				//gegevens van het meegegeven onderdeel worden opgevraagd
 				@SuppressWarnings("unchecked")
 				ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) application

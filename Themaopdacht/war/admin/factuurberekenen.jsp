@@ -20,7 +20,7 @@
 		%>
 		<%
 			for (Factuur f : facturen) {
-				if(f.getFactuurNummer() == (int) request.getAttribute("id")) {
+				if(f.getFactuurNummer() == (Integer) request.getAttribute("id")) {
 		%>
 		<p>Factuur ID</p>
 		<p><%=f.getFactuurNummer()%></p>
