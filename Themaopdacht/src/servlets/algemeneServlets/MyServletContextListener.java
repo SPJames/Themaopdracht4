@@ -26,7 +26,9 @@ import domein.voorraadbeheer.Onderdeel;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 
-
+/**
+ * In deze klasse worden alle basiswaarden geinitialiseerd
+ */
 public class MyServletContextListener implements ServletContextListener {
 	private Database d = new Database();
 	
@@ -52,7 +54,7 @@ public class MyServletContextListener implements ServletContextListener {
 	private String DATE_FORMAT_NOW = "yyyy-MM-dd HH-mm-ss";
 	
 	/**
-	 * In deze servlet worden alle arraylisten geinitialiseert zodat elke andere
+	 * In deze methode worden alle arraylisten geinitialiseert en uitgelezen zodat elke andere
 	 * servlet ze kan gebruiken. De geinitialiseerde lijsten worden ook meteen
 	 * opgeslagen als attributen.
 	 * 
@@ -149,6 +151,10 @@ public class MyServletContextListener implements ServletContextListener {
 		logger.info("Logger initialized");
 	}
 
+	/**
+	 * In deze methode worden alle servlets weggeschreven
+	 * Hierna wordt de contextlistener afgesloten
+	 */
 	public void contextDestroyed(ServletContextEvent sce) {
 		try {
 			d.schrijfWeg(List, List2, List3, List4, List5, List6, List7, List8, planning, ids);
