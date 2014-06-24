@@ -34,8 +34,7 @@
 			ArrayList<Brandstof> brandstof = (ArrayList<Brandstof>) application
 					.getAttribute("alleBrandstof");
 			for (Klus k : klussen) {
-				if (Integer.parseInt(request.getParameter("id")) == k
-						.getKlusNummer()) {
+				if (Integer.parseInt(request.getParameter("id")) == k.getKlusNummer()) {
 		%>
 				
 			<form action="KlusBijwerkenServlet.do" method="post">

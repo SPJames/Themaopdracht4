@@ -91,9 +91,9 @@ public class KlusBijwerkenServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 		for (int i = 0; i < 3; i++) {
 			// foutmelding
-			if (userinfo[i].equals("") || userinfo[i].equals(null)) {
+			if (userinfo[i].equals("") || userinfo[i] == null) {
 				req.setAttribute("error", "Sommige velden waren leeg.");
-				rd = req.getRequestDispatcher("klusaanpassen.jsp");
+				rd = req.getRequestDispatcher("klusaanpassen.jsp?id="+klus.getKlusNummer());
 				error = true;
 				break;
 			} else {
@@ -103,7 +103,7 @@ public class KlusBijwerkenServlet extends HttpServlet {
 					klus.setBeschrijving(userinfo[2]);
 					req.setAttribute("msgs", "Klus succesvol aangepast.");
 					Logger.getLogger("atd").info("Klus "+userinfo[0]+" is succesvol bijgewerkt");
-					rd = req.getRequestDispatcher("klussenlijst.jsp");
+					rd = req.getRequestDispatcher("klussenlijst.jsp?id="+klus.getKlusNummer());
 					auto.setInReparatie(true);
 				}
 			}
