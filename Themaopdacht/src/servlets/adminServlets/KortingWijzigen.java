@@ -36,6 +36,7 @@ public class KortingWijzigen extends HttpServlet{
 		for(Factuur f: facturen){
 			if(f.getFactuurNummer() == factId){
 				f.setKorting(korting);
+				req.setAttribute("id", f.getFactuurNummer());
 			}
 		}
 		rd = req.getRequestDispatcher("factuurberekenen.jsp"); //terug naar de factuur
