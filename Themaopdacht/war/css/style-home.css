@@ -23,7 +23,12 @@ body {
 	margin-right: auto;
 	width: 800px;
 }
-
+ul li > ul {
+    display: block;
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
 tr {
 	text-align: right;
 }
