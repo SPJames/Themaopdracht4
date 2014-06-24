@@ -38,8 +38,8 @@
 		<%}
 				if (usertype.equals("Admin")) {%>
 				<li>Factuur
-				<ul id="dropdown">
-					<li><a href='/atd/admin/klussenlijstaf.jsp'>Factuur Maken</a></li>
+				<ul id="dropdowns">
+					<li><a href='/atd/admin/klussenlijstaf.jsp'>Factuur Maken</a></li><br />
 					<li><a href='/atd/admin/overzichtfacturen.jsp'>Factuur overzicht</a></li>
 					</ul>
 				</li>
