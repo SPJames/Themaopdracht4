@@ -6,7 +6,7 @@
 <title>${param.title}</title>
 <link rel="stylesheet" type="text/css"
 	href="/atd/css/style-${param.css}.css" />
-<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/JavaScript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 <link rel="shortcut icon" href="/atd/images/favicon.ico" />
 </head>

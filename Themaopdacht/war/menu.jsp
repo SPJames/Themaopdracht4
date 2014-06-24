@@ -54,9 +54,4 @@
 			<li><a href='/atd/inloggen.jsp'>Log in</a></li>
 		<%}%>
 	</ul>
-	<script>
-	$(function() {
-        $( "#ul-menu" ).menu({ position: { my: "left top", at: "left-1 top+35" } });
-        });
-	</script>
 </div>
