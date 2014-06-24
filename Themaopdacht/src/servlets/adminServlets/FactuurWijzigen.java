@@ -3,6 +3,7 @@ package servlets.adminServlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -112,6 +113,7 @@ public class FactuurWijzigen extends HttpServlet{
 			}
 		}
 		rd = req.getRequestDispatcher("overzichtfacturen.jsp");
+		Logger.getLogger("atd").info("Factuur <"+id+"> is gewijzigd");
 		rd.forward(req, resp);
 	}
 	

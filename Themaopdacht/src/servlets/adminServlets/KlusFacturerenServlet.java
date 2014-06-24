@@ -2,6 +2,7 @@ package servlets.adminServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,6 +49,7 @@ public class KlusFacturerenServlet extends HttpServlet {
 		klussen.remove(klus); //klus wordt uit de lijst klussen gehaald
 
 		req.setAttribute("msgs", "Klus succesvol gefactureerd!");
+		Logger.getLogger("atd").info("Klus <"+klusid+"> succesvol gefactureerd");
 		rd = req.getRequestDispatcher("factuurberekenen.jsp");
 		rd.forward(req, resp);
 	}

@@ -2,6 +2,7 @@ package servlets.adminServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -71,6 +72,7 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 		if(!error && !error2){ //geen errors, alles kan doorgevoerd worden
 			onderdelen.add(onderdeel);
 			req.setAttribute("msgs", "Onderdeel succesvol toegevoegd!");
+			Logger.getLogger("atd").info("Onderdeel <"+onderdeel.getNaam()+"> is toegevoegd");
 			rd = req.getRequestDispatcher("voorraadoverzicht.jsp");
 		}
 		rd.forward(req,resp);

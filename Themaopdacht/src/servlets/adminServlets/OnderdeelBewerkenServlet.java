@@ -2,6 +2,7 @@ package servlets.adminServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -60,6 +61,7 @@ public class OnderdeelBewerkenServlet extends HttpServlet {
 				} else if (i==3) { //prijs per artikel opslaan
 					onderdeel.setPrijsArtikel(Double.parseDouble(userinfo[3]));
 					req.setAttribute("msgs", "Onderdeel succesvol aangepast!");
+					Logger.getLogger("atd").info("Onderdeel <"+onderdeel.getNaam()+"> is bijgewerkt");
 					rd = req.getRequestDispatcher("voorraadoverzicht.jsp");
 				}
 			}

@@ -2,6 +2,7 @@ package servlets.adminServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -73,6 +74,7 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 		if(!error && !error2){ //geen errors de brandstof is toegevoegd
 			brandstoffen.add(brandstof);
 			req.setAttribute("msgs", "Brandstof succesvol toegevoegd!");
+			Logger.getLogger("atd").info("Brandstof <"+userinfo[0]+"> is toegevoegd");
 			rd = req.getRequestDispatcher("voorraadoverzicht.jsp");
 		}
 		rd.forward(req,resp);
