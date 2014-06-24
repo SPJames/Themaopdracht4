@@ -26,7 +26,7 @@ public class KlusAfrondenServlet extends HttpServlet {
 	 * klus succesvol is afgerond. De monteur wordt doorgestuurd naar de
 	 * klussenlijst.
 	 */
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		@SuppressWarnings("unchecked")
 		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");

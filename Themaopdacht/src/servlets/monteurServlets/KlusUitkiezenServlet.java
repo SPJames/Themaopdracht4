@@ -30,7 +30,7 @@ public class KlusUitkiezenServlet extends HttpServlet {
 	 * dan wordt  de ingelogde monteur aan de klus toegewezen en wordt de monteur doorgestuurd
 	 * naar deze pagina en wordt een melding weergegeven dat het uitkiezen gelukt is.
 	 */
-	public void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 
 		int klusid = Integer.parseInt(req.getParameter("id"));
 		String werknemer = (String) req.getSession().getAttribute("Username");
