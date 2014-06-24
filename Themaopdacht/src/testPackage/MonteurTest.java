@@ -11,7 +11,7 @@ public class MonteurTest {
 	
 	@Test
 	public void testGetId() {
-		assertEquals(2, m.getId());
+		assertEquals(3, m.getId());
 	}
 	
 	@Test

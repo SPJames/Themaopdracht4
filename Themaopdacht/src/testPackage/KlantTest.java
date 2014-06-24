@@ -2,9 +2,12 @@ package testPackage;
 
 import static org.junit.Assert.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.junit.Test;
+
 import domein.klantenbinding.*;
 
 public class KlantTest {
@@ -12,6 +15,7 @@ public class KlantTest {
 	Auto a = new Auto("ww-22-pp","honda","something");
 	Auto a2 = new Auto("ww-23-pp","ford","henk");
 	private Calendar nd = Calendar.getInstance();
+	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	
 	@Test
 	public void testVoegAutoToe(){
@@ -80,8 +84,9 @@ public class KlantTest {
 	@Test
 	public void testSetLaatstBezocht(){
 		Klant b = new Klant(null, null, null, null, null, null, 11);
+		String s = df.format(nd.getTime());
 		b.setLaatstBezocht(nd);
-		assertEquals("22/06/2014", b.getLaatstBezocht());
+		assertEquals(s, b.getLaatstBezocht());
 		
 	}
 	

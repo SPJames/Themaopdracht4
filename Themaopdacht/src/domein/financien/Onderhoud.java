@@ -101,4 +101,12 @@ public class Onderhoud extends DienstType implements Serializable{
 		totaal = totaalManuurPrijs() + deOnderdelen.totaalPrijsOnderdeel();
 		return totaal;
 	}
+
+	public double getPrijsPerManuur() {
+		return prijsPerManuur;
+	}
+
+	public double getManUren() {
+		return manUren;
+	}
 }

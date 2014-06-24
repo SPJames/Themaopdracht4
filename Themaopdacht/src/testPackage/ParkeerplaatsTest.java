@@ -2,6 +2,8 @@ package testPackage;
 
 import static org.junit.Assert.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import domein.klusbeheer.Parkeerplaats;
@@ -15,6 +17,7 @@ public class ParkeerplaatsTest {
 	Auto u2 = new Auto("34-xz-65", "ford", "4");
 	Parkeerplaats p = new Parkeerplaats(u);
 	private Calendar cal = Calendar.getInstance();
+	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	
 	@Test
 	public void testSetAuto() {
@@ -24,8 +27,9 @@ public class ParkeerplaatsTest {
 	
 	@Test
 	public void testSetReserveringsDatum(){
+		String s = df.format(cal.getTime());
 		p.setReseveringsDatum(cal);
-		assertEquals("22/06/2014", p.getReseveringsDatum());
+		assertEquals(s, p.getReseveringsDatum());
 	}
 
 }
