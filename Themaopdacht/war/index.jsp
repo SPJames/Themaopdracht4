@@ -16,11 +16,10 @@
 
 		<p>
 			Welkom bij de garage van <b>Auto Totaal Diensten.</b><br /> Bij ons
-			hoeft u niet te bellen en te overleggen om een afspraak te maken.
-			Door een account aan te maken kunt u in één keer zien op welke dagen
-			en tijden wij tijd voor u hebben en kunt u zelf aangeven wanneer u
-			geholpen wilt worden. <br />Tijdens het maken van de afspraak kunt u
-			aangeven of u uw auto wilt laten repareren en/of wil tanken. U kunt
+			hoeft u niet te bellen en te overleggen om een afspraak te maken.<br />
+			Door een account aan te maken kunt u in één keer een afspraak maken.
+			 <br />Tijdens het maken van de afspraak kunt u
+			aangeven of u uw auto wilt laten repareren en/of wil tanken.<br /> U kunt
 			doorgeven wat voor problemen u waarneemt met uw auto. <br />Na het
 			maken van de afspraak hoeft u alleen maar uw auto af te leveren in de
 			aan u toegewezen parkeerplaats in onze beveiligde en overdekte
