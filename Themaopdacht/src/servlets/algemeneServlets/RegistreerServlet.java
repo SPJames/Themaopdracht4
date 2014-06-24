@@ -81,7 +81,7 @@ public class RegistreerServlet extends HttpServlet {
 				error2 = true;
 			}
 		}
-		if (error2) {
+		if (error2 || userinfo[0].equals("Admin")) {
 			req.setAttribute("error", "Deze gebruikersnaam is al bezet");
 			rd = req.getRequestDispatcher("registreren.jsp");
 		} else if (error3) {

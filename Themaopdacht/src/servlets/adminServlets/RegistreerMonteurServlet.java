@@ -74,7 +74,7 @@ public class RegistreerMonteurServlet extends HttpServlet {
 			// foutmelding weergeven
 			req.setAttribute("error","Invoer was leeg of wachtwoord is niet gelijk");
 			rd = req.getRequestDispatcher("registreermonteur.jsp");
-		} else if (error2) {
+		} else if (error2 || userinfo[0].equals("Admin")) {
 			//foutmelding 2
 			req.setAttribute("error","Deze naam is al in gebruik");
 			rd = req.getRequestDispatcher("registreermonteur.jsp");
