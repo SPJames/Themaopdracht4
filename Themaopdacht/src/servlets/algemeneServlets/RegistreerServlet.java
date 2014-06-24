@@ -4,6 +4,7 @@ package servlets.algemeneServlets;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -54,30 +55,27 @@ public class RegistreerServlet extends HttpServlet {
 				error = true;
 			}
 		}
-
+		RequestDispatcher rd = null;
 		// controleren of de beide wachtwoorden en beide emailadressen overeen komen
-		if (!(userinfo[2].equals(userinfo[3])) && !(userinfo[4].equals(userinfo[5]))) {
-			error = true;
-		}
-		
-		// foutmelding
-		if (error) {
-			req.setAttribute("error", "Enkele velden waren leeg en/of het wachtwoord/email kwamen niet overeen.");
-			req.getRequestDispatcher("registreren.jsp").forward(req, resp);
-		} else {
+		if (userinfo[2].equals(userinfo[3]) && userinfo[4].equals(userinfo[5]) && !error) {
 			// klant opslaan
 			Klant k = new Klant(userinfo[1], userinfo[6], userinfo[7], userinfo[4], userinfo[0], userinfo[2]);
 
 			@SuppressWarnings("unchecked")
 			ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext().getAttribute("alleUsers");
 			Users.add(k);
-
-			resp.sendRedirect("inloggen.jsp");
+			req.setAttribute("msgs", "U bent succesvol geregistreerd.");
+			rd = req.getRequestDispatcher("inloggen.jsp");
 			@SuppressWarnings("unused") //de registratie email wordt gestuurd
 			RegisterEmail m = new RegisterEmail((String) req.getParameter("email"),
 					(String) req.getParameter("username"),
 					(String) req.getParameter("realname"),
 					(String) req.getParameter("pwd"));
+			
+		} else {
+			req.setAttribute("error", "Enkele velden waren leeg en/of het wachtwoord/email kwamen niet overeen.");
+			rd = req.getRequestDispatcher("registreren.jsp");
 		}
+		rd.forward(req, resp);
 	}
 }
