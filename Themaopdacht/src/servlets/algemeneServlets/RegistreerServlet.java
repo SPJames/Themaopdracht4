@@ -38,6 +38,8 @@ public class RegistreerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String[] userinfo = new String[8];
 		boolean error = false;
+		boolean error2 = false;
+		boolean error3 = false;
 
 		userinfo[0] = req.getParameter("username");
 		userinfo[1] = req.getParameter("realname");
@@ -58,7 +60,25 @@ public class RegistreerServlet extends HttpServlet {
 		}
 		RequestDispatcher rd = null;
 		// controleren of de beide wachtwoorden en beide emailadressen overeen komen
-		if (userinfo[2].equals(userinfo[3]) && userinfo[4].equals(userinfo[5]) && !error) {
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Klant> klanten = (ArrayList<Klant>) req.getServletContext().getAttribute("alleUsers");
+		for(Klant k : klanten) {
+			if(k.getUsername().equals(userinfo[0])) {
+				error2 = true;
+			}
+			if(k.getEmail().equals(userinfo[4])) {
+				error3 = true;
+			}
+		}
+		if (error2) {
+			req.setAttribute("error", "Deze gebruikersnaam is al bezet");
+			rd = req.getRequestDispatcher("registreren.jsp");
+		} else if (error3) {
+			req.setAttribute("error", "Dit email adres is al bezet");
+			rd = req.getRequestDispatcher("registreren.jsp");
+		} else {
+			if (userinfo[2].equals(userinfo[3]) && userinfo[4].equals(userinfo[5]) && !error) {
 			// klant opslaan
 			Klant k = new Klant(userinfo[1], userinfo[6], userinfo[7], userinfo[4], userinfo[0], userinfo[2]);
 
@@ -74,10 +94,10 @@ public class RegistreerServlet extends HttpServlet {
 					(String) req.getParameter("realname"),
 					(String) req.getParameter("pwd"));
 			
-		} else {
+			} else {
 			req.setAttribute("error", "Enkele velden waren leeg en/of het wachtwoord/email kwamen niet overeen.");
-			Logger.getLogger("atd").warning("Gast met het IP '"+req.getRemoteAddr()+"' heeft zich onsuccesvol geregistreerd");
 			rd = req.getRequestDispatcher("registreren.jsp");
+			}
 		}
 		rd.forward(req, resp);
 	}

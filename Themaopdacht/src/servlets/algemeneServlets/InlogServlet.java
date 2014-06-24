@@ -122,10 +122,9 @@ public class InlogServlet extends HttpServlet {
 			}
 		}
 		if (done) { 
-			Logger.getLogger("atd").info("Gebruiker <" + username + "> is ingelogd!");
+			Logger.getLogger("atd").info("Gebruiker <" + username + "> is ingelogd");
 			resp.sendRedirect("index.jsp");
 		} else {
-			Logger.getLogger("atd").warning("Inloggen mislukt voor gebruiker <" + username + ">!");
 			rd.forward(req, resp);
 		}
 	}
