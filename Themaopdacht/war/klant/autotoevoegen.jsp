@@ -12,7 +12,7 @@
 
 		<jsp:include page="../message.jsp" />
 
-		<form action="RegistreerAutoServlet.do" method="get">
+		<form action="RegistreerAutoServlet.do" method="post">
 			<fieldset>
 				<input type="hidden" name="klantid" value="<%=id%>" /> 
 				<label for="Merk">Merk</label> <input type="text" name="merk"

@@ -25,7 +25,7 @@ public class KortingWijzigen extends HttpServlet{
 	 * De gebruiker wordt teruggestuurt naar de factuur waarin gewerkt werd.
 	 * Deze factuur is meteen aangepast
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		int korting = Integer.parseInt(req.getParameter("korting"));
 		int factId = Integer.parseInt(req.getParameter("id"));
 		RequestDispatcher rd = null;

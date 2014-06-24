@@ -9,7 +9,7 @@
 		<h2>Onderdeel Toevoegen</h2>
 		<jsp:include page="../message.jsp"/>
 		<!-- gegevens van het nieuwe onderdeel kunnen worden ingevoerd -->
-		<form action="OnderdeelToevoegenServlet.do" method="get">
+		<form action="OnderdeelToevoegenServlet.do" method="post">
 			<fieldset>
 				<label for="artikelnaam">Artikel Naam</label>
 				<input type="text"	name="artikelnaam" placeholder="ArtikelNaam" class="box"

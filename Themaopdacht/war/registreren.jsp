@@ -7,7 +7,7 @@
 	<div id="register">
 		<h2>Register</h2>
 		<jsp:include page="message.jsp" />
-		<form action="RegistreerServlet.do" method="get">
+		<form action="RegistreerServlet.do" method="post">
 			<fieldset>
 				<label for="username">Username</label> 
 					<input type="text" name="username" placeholder="Username" class="box" value="${param.username}" /> 

@@ -24,7 +24,7 @@ public class OnderdeelBewerkenServlet extends HttpServlet {
 	 * als alles ingevuld is worden de gewijzigde gegevens opgeslagen en wordt de gebruiker terug
 	 * gestuurd naar voorraadoverzicht.jsp en wordt er een melding weergegeven
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[4];
 			

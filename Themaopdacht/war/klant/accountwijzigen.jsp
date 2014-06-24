@@ -20,7 +20,7 @@
 		%>
 
 		<jsp:include page="../message.jsp" />
-		<form action="AccountWijzigenServlet.do" method="get">
+		<form action="AccountWijzigenServlet.do" method="post">
 			<fieldset>
 
 				<!-- wijzig gegevens -->

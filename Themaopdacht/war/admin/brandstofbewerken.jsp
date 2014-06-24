@@ -26,7 +26,7 @@
 							double prijs = b.getPrijsPerLiter();
 			%>
 			<!-- aantal aanwezige liters en de prijs per liter kunnen gewijzigd worden -->
-			<form action="BrandstofBewerkenServlet.do" method="get">
+			<form action="BrandstofBewerkenServlet.do" method="post">
 				<fieldset>
 					<input type="hidden" name="artikelid" value="<%= id %>" />
 					<label for="type">Brandstof Type</label>

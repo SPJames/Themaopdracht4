@@ -38,7 +38,7 @@
 						.getKlusNummer()) {
 		%>
 				
-			<form action="KlusBijwerkenServlet.do" method="get">
+			<form action="KlusBijwerkenServlet.do" method="post">
 				<input type="hidden" name="klusid" value="<%="" + k.getKlusNummer()%>" /> 
 				<label for="auto">Auto: </label>
 				<input type="text" name="auto" value="<%=k.getAuto().getKenteken()%>" readonly="readonly" class="box" />

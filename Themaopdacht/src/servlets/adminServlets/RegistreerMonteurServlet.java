@@ -30,7 +30,7 @@ public class RegistreerMonteurServlet extends HttpServlet {
 	 * van monteurs toegevoegd, wordt de admin doorgestuurd naar de index en
 	 * wordt een melding weergegeven dat het registreren gelukt is.
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 
 		String[] userinfo = new String[3];
 		boolean error = false;

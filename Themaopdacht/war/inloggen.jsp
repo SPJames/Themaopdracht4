@@ -7,7 +7,7 @@
 	<div id="login">
 		<h2>Login</h2>
 		<jsp:include page="message.jsp" />
-		<form action='InlogServlet.do' method='get'>
+		<form action='InlogServlet.do' method='post'>
 			<fieldset>
 				<label for="username">Username</label> <input type='text'
 					name='username' placeholder="Username" class="box"

@@ -27,7 +27,7 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 	 * Als er geen errors zijn wordt het nieuwe brandstoftype toegevoegd aan de lijst bestaande brandstoffen
 	 * en wordt de gebruiker teruggestuurd naar voorraadoverzicht.jsp en wordt er een melding gegeven.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[3];
 		

@@ -27,7 +27,7 @@
 							double prijs = o.getPrijsArtikel();
 			%>
 			<!-- van het meegegeven onderdeel kunnen aantal en prijs per artikel worden gewijzigd -->
-			<form action="OnderdeelBewerkenServlet.do" method="get">
+			<form action="OnderdeelBewerkenServlet.do" method="post">
 				<fieldset>
 					<input type="hidden" name="artikelid" value="<%= id %>" />
 					<label for="artikelnaam">Artikel Naam</label>

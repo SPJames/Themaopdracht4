@@ -25,7 +25,7 @@ public class BrandstofBewerkenServlet extends HttpServlet {
 	 * Als alles was ingevuld worden de gegevens gewijzigd en wordt de gebruiker doorgestuurd naar
 	 * voorraadoverzicht.jsp en wordt er een bericht weergegeven.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[4];
 			

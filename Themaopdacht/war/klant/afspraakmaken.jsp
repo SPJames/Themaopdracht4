@@ -25,7 +25,7 @@
 					if (autos.size() > 0) {//save guard voor als hij leeg is
 		%>
 
-		<form action="KlusAanmakenServlet.do" method="get">
+		<form action="KlusAanmakenServlet.do" method="post">
 			<input type="hidden" name="klantid" value="<%=id%>" /> 
 			<input type="hidden" name="name" value="<%=name%>" />
 

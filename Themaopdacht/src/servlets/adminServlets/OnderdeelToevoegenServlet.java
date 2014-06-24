@@ -26,7 +26,7 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 	 * als er geen foutmeldingen gegeven zijn wordt het onderdeel aan de lijst toegevoegd en wordt
 	 * de gebruiker teruggestuurd naar voorraadoverzicht.jsp waar een melding gegeven wordt
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[3];
 		

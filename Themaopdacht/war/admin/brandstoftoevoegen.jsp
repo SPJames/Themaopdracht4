@@ -9,7 +9,7 @@
 		<h2>Brandstof Toevoegen</h2>
 		<jsp:include page="../message.jsp"/>
 	<!-- Hier worden de gegevens van de nieuwe brandstof ingevoerd -->
-		<form action="BrandstofToevoegenServlet.do" method="get">
+		<form action="BrandstofToevoegenServlet.do" method="post">
 			<fieldset>
 				<label for="type">Brandstof Type</label>
 				<input type="text"	name="type" placeholder="Brandstof Type" class="box"
