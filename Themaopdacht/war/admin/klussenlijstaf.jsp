@@ -1,3 +1,8 @@
+<%@ page import="domein.klusbeheer.Klus"%>
+<%@ page import="domein.klantenbinding.Klant"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="domein.financien.Factuur"%>
+
 <jsp:include page="../header.jsp">
 	<jsp:param name="title" value="Afgeronde klussen lijst" />
 	<jsp:param name="css" value="klussenlijst" />
@@ -18,10 +23,6 @@
 				<th>Comments</th>
 				<th>Parkeerplaats</th>
 			</tr>
-			<%@ page import="domein.klusbeheer.Klus"%>
-			<%@ page import="domein.klantenbinding.Klant"%>
-			<%@ page import="java.util.ArrayList"%>
-			<%@ page import="domein.financien.Factuur"%>
 			<%
 			@SuppressWarnings("unchecked")
 			ArrayList<Factuur>facturen = (ArrayList<Factuur>) application.getAttribute("alleFacturen");//alle facturen ophalen

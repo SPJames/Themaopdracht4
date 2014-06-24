@@ -3,6 +3,7 @@ package domein.financien;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.Map;
 
 import domein.klusbeheer.Klus;
 import domein.voorraadbeheer.Brandstof;
@@ -15,6 +16,8 @@ public class Factuur implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Klus klus;
 	private int factuurNummer;
+	
+	private DecimalFormat df = new DecimalFormat("#.00");
 
 	private double btw = 1.21;
 
@@ -46,8 +49,8 @@ public class Factuur implements Serializable{
 	 * 
 	 * @return de kosten van een uur werktijd
 	 */
-	public double getManurenprijs() {
-		return manurenprijs;
+	public String getManurenprijs() {
+		return df.format(manurenprijs);
 	}
 
 	/**
@@ -67,8 +70,12 @@ public class Factuur implements Serializable{
 	 * 
 	 * @return de prijs van een onderdeel
 	 */
-	public HashMap<String, Double> getOnderdelenprijs() {
-		return onderdelenprijs;
+	public String getOnderdelenprijs() {
+		String answer = "";
+		for(Map.Entry<String, Double> entry: onderdelenprijs.entrySet()) {
+			answer = answer + entry.getKey() + ": &euro;"+df.format(onderdelenprijs.get(entry.getKey())) + "</br>";
+		}
+		return answer;
 	}
 
 	/**
@@ -89,8 +96,12 @@ public class Factuur implements Serializable{
 	 * 
 	 * @return de brandstofprijs
 	 */
-	public HashMap<String, Double> getBrandstofprijs() {
-		return brandstofprijs;
+	public String getBrandstofprijs() {
+		String answer = "";
+		for(Map.Entry<String, Double> entry: brandstofprijs.entrySet()) {
+			answer = answer + entry.getKey() + ": &euro;"+df.format(brandstofprijs.get(entry.getKey())) + "</br>";
+		}
+		return answer;
 	}
 
 	/**
@@ -111,8 +122,8 @@ public class Factuur implements Serializable{
 	 * 
 	 * @return de totaalprijs exclusief de btw
 	 */
-	public double getTotaalprijsExBtw() {
-		return totaalprijs;
+	public String getTotaalprijsExBtw() {
+		return df.format(totaalprijs);
 	}
 
 	/**
@@ -120,10 +131,9 @@ public class Factuur implements Serializable{
 	 * 
 	 * @return de totaalprijs met btw
 	 */
-	public double getTotaalprijs() {
-		DecimalFormat df = new DecimalFormat("#.00");
+	public String getTotaalprijs() {
 		double anwser = totaalprijs * btw;
-		return Double.parseDouble(df.format(anwser));
+		return df.format(anwser);
 	}
 
 	/**
@@ -131,12 +141,11 @@ public class Factuur implements Serializable{
 	 * 
 	 * @return de totaalprijs met btw en korting
 	 */
-	public double getTotaalprijsKorting() {
+	public String getTotaalprijsKorting() {
 		double anwser;
 		if(korting >= 0){
-			DecimalFormat df = new DecimalFormat("#.00");
 			anwser = (totaalprijs * btw) * ((100 - korting)/100);
-			return Double.parseDouble(df.format(anwser));
+			return df.format(anwser);
 		}
 		return getTotaalprijs();
 	}
