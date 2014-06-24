@@ -24,7 +24,7 @@ ul {
 
 li {
 	display: inline-block;
-	width: 125px;
+	width: 110px;
 	margin-top: 15px;
 }
 
@@ -94,6 +94,7 @@ label {
 	width: 600px;
 	margin-left: auto;
 	margin-right: auto;
+	color: black;
 }
 
 #error {
@@ -104,16 +105,16 @@ label {
 	width: 600px;
 	margin-left: auto;
 	margin-right: auto;
+	color: black;
 }
 
 .down-afspraak {
-	margin-top: 250px;
+	margin-top: 260px;
 	border: 2px solid black;
 	color: white;
 	background: #888;
 	border-radius: 5px;
-	margin-right: auto;
-	margin-left: auto;
+	margin-right: 80px;
 	border: 2px solid black;
 }
 

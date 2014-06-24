@@ -24,7 +24,7 @@ ul {
 
 li {
 	display: inline-block;
-	width: 125px;
+	width: 110px;
 	margin-top: 15px;
 }
 
@@ -103,6 +103,7 @@ fieldset {
 	width: 600px;
 	margin-left: auto;
 	margin-right: auto;
+	color: black;
 }
 
 #error {
@@ -113,4 +114,5 @@ fieldset {
 	width: 600px;
 	margin-left: auto;
 	margin-right: auto;
+	color: black;
 }

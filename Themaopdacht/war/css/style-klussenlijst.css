@@ -24,7 +24,7 @@ ul {
 
 li {
 	display: inline-block;
-	width: 125px;
+	width: 110px;
 	margin-top: 15px;
 }
 
@@ -94,6 +94,7 @@ h2 {
 	width: 600px;
 	margin-left: auto;
 	margin-right: auto;
+	color: black;
 }
 
 #error {
@@ -104,4 +105,30 @@ h2 {
 	width: 600px;
 	margin-left: auto;
 	margin-right: auto;
+	color: black;
+}
+
+/* menu voor admin */
+ul li ul {
+	display: none;
+}
+
+ul li:hover  ul {
+	position: absolute;
+	display: block;
+	margin-top: 0px;
+	margin-left: -40px;
+}
+
+ul li ul li a {
+	border: 1px solid grey;
+	text-decoration: none;
+	padding: 8px;
+	background: #E2EAED;
+}
+
+ul li ul li a:hover {
+	background: lightgrey;
+	padding: 8px;
+	color: red;
 }
