@@ -2,6 +2,7 @@ package servlets.klantServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,7 +32,7 @@ public class AccountWijzigenServlet extends HttpServlet {
 	 * Als er geen foutmeldingen zijn worden de nieuwe gegevens opgeslagen en wordt de klant doorgestuurd
 	 * naar deze pagina met de melding dat de gegevens zijn gewijzigd.
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		//de huidige gebruiker wordt opgezocht in de klantenlijst
 		@SuppressWarnings("unchecked")
@@ -116,6 +117,7 @@ public class AccountWijzigenServlet extends HttpServlet {
 			}
 			
 			req.setAttribute("msgs", "Gegevens succesvol opgeslagen!");
+			Logger.getLogger("atd").info("Gebruiker <" + klant.getNaam() + "> is succesvol gewijzigd");
 			req.getSession().setAttribute("Access", "Klant");
 			req.getSession().setAttribute("Username", klant.getUsername());
 			req.getSession().setAttribute("ID", klant.getId());

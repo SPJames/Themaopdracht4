@@ -45,22 +45,13 @@ public class InlogServlet extends HttpServlet {
 	 * teruggestuurt naar de inlogpagina en wordt er een error bericht
 	 * weergegeven.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("pwd");
 		boolean error = false;
 		boolean done = false;
 		ServletContext sc = req.getServletContext();
 		HttpSession ses = req.getSession();
-
-		// Logger output voor inloggen
-		if (username != null) {
-			Logger.getLogger("servlets.algemeneServlets").info(
-					"User <" + username + "> logged in!");
-		} else {
-			Logger.getLogger("servlets.algemeneServlets").warning(
-					"Login failed for <" + username + ">!");
-		}
 
 		// servlet context imports
 		@SuppressWarnings("unchecked")
@@ -131,8 +122,10 @@ public class InlogServlet extends HttpServlet {
 			}
 		}
 		if (done) { 
+			Logger.getLogger("atd").info("Gebruiker <" + username + "> is ingelogd!");
 			resp.sendRedirect("index.jsp");
 		} else {
+			Logger.getLogger("atd").warning("Inloggen mislukt voor gebruiker <" + username + ">!");
 			rd.forward(req, resp);
 		}
 	}

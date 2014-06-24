@@ -1,6 +1,7 @@
 package servlets.filters;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -33,12 +34,14 @@ public class SecurityFilterKlant implements Filter {
 		if (r2.getSession().getAttribute("Access") != null) {
 			if (!r2.getSession().getAttribute("Access").equals("Klant")) {
 				r2.setAttribute("error", "U heeft geen toegang tot deze pagina");
+				Logger.getLogger("atd").info("Gebruiker op het IP '"+r2.getRemoteAddr()+"' zocht toegang naar een pagina waar hij geen rechten heeft");
 				r2.getRequestDispatcher("../error.jsp").forward(req, resp);
 			} else {
 				chain.doFilter(req, resp);
 			}
 		} else {
 			r2.setAttribute("error", "U moet inloggen om bij deze pagina te komen");
+			Logger.getLogger("atd").info("Gast op het IP '"+r2.getRemoteAddr()+"' zocht toegang naar een pagina waar hij geen rechten heeft");
 			r2.getRequestDispatcher("../error.jsp").forward(req, resp);
 		}
 	}

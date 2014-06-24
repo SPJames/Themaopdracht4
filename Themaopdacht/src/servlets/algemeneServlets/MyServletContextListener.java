@@ -40,7 +40,7 @@ public class MyServletContextListener implements ServletContextListener {
 	private ArrayList<Brandstof> List8 = new ArrayList<Brandstof>();
 	private Weekplanning planning = new Weekplanning();
 	
-	private Logger logger = Logger.getLogger("servlets.algemeneServlets");
+	private Logger logger = Logger.getLogger("atd");
 	
 	private File currentDirectory = new File(new File(".").getAbsolutePath()).getParentFile();
 	private String directory = currentDirectory.getParent() + "/logs/";

@@ -2,6 +2,7 @@ package servlets.monteurServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +26,7 @@ public class KlusAfrondenServlet extends HttpServlet {
 	 * klus succesvol is afgerond. De monteur wordt doorgestuurd naar de
 	 * klussenlijst.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		@SuppressWarnings("unchecked")
 		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");
@@ -46,6 +47,8 @@ public class KlusAfrondenServlet extends HttpServlet {
 					}
 				}
 				req.setAttribute("msgs", "Klus " + id + " succesvol afgerond");
+				
+				Logger.getLogger("atd").info("Klus "+id+" is succesvol afgerond");
 
 				// klanten gegevens ophalen voor email
 				@SuppressWarnings("unchecked")

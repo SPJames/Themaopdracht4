@@ -3,6 +3,7 @@ package servlets.algemeneServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,7 +35,7 @@ public class RegistreerServlet extends HttpServlet {
 	 *  klant geregistreerd en toegevoegd aan de lijst met klantaccounts.
 	 *  Hierna wordt de gebruiker doorgestuurd naar het inlogscherm.
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String[] userinfo = new String[8];
 		boolean error = false;
 
@@ -65,6 +66,7 @@ public class RegistreerServlet extends HttpServlet {
 			ArrayList<Klant> Users = (ArrayList<Klant>) req.getServletContext().getAttribute("alleUsers");
 			Users.add(k);
 			req.setAttribute("msgs", "U bent succesvol geregistreerd.");
+			Logger.getLogger("atd").info("<"+k.getNaam()+"> met het IP '"+req.getRemoteAddr()+"' heeft zich succesvol geregistreerd");
 			rd = req.getRequestDispatcher("inloggen.jsp");
 			@SuppressWarnings("unused") //de registratie email wordt gestuurd
 			RegisterEmail m = new RegisterEmail((String) req.getParameter("email"),
@@ -74,6 +76,7 @@ public class RegistreerServlet extends HttpServlet {
 			
 		} else {
 			req.setAttribute("error", "Enkele velden waren leeg en/of het wachtwoord/email kwamen niet overeen.");
+			Logger.getLogger("atd").warning("Gast met het IP '"+req.getRemoteAddr()+"' heeft zich onsuccesvol geregistreerd");
 			rd = req.getRequestDispatcher("registreren.jsp");
 		}
 		rd.forward(req, resp);

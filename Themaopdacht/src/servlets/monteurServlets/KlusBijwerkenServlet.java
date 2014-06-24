@@ -2,6 +2,7 @@ package servlets.monteurServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -31,7 +32,7 @@ public class KlusBijwerkenServlet extends HttpServlet {
 	 * teruggestuurd naar de klussenlijst en wordt daar een melding weergegeven dat de wijzigingen
 	 * doorgevoert zijn.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ServletContext sc = req.getServletContext();
 		
 		boolean error = false; //lege velden
@@ -101,6 +102,7 @@ public class KlusBijwerkenServlet extends HttpServlet {
 				} else if (i == 2) {
 					klus.setBeschrijving(userinfo[2]);
 					req.setAttribute("msgs", "Klus succesvol aangepast.");
+					Logger.getLogger("atd").info("Klus "+userinfo[0]+" is succesvol bijgewerkt");
 					rd = req.getRequestDispatcher("klussenlijst.jsp");
 					auto.setInReparatie(true);
 				}

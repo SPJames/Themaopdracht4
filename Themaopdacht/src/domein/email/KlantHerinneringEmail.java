@@ -1,6 +1,8 @@
 package domein.email;
 
 import java.util.Properties;
+import java.util.logging.Logger;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -24,8 +26,8 @@ public class KlantHerinneringEmail {
 	public KlantHerinneringEmail(String to, String fn) {
 
 		// inloggen
-		final String username = "atd.probe0001@gmail.com";
-		final String password = "Wachtwoord1";
+		final String username = "atdgarages@gmail.com";
+		final String password = "Themagroep2";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -57,7 +59,7 @@ public class KlantHerinneringEmail {
 
 			Transport.send(message);
 
-			System.out.println("Done");
+			Logger.getLogger("atd").info("Herrineringsmail verzonden naar de klant <"+ fn +">");
 
 		} catch (MessagingException e) {
 			e.printStackTrace();

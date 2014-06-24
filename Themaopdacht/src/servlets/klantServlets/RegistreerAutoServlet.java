@@ -2,6 +2,7 @@ package servlets.klantServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,7 +35,7 @@ public class RegistreerAutoServlet extends HttpServlet {
 	 *  Hierna wordt de klant doorgestuurd naar hun persoonlijke auto overzicht en wordt er een melding
 	 *  weergegeven dat het toevoegen gelukt is.
 	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String merk = req.getParameter("merk");
 		String kt = req.getParameter("kenteken");
 		String id = req.getParameter("klantid");
@@ -74,6 +75,7 @@ public class RegistreerAutoServlet extends HttpServlet {
 				}
 				Autos.add(a);
 				req.setAttribute("msgs", "Auto succesvol toegevoegd!");
+				Logger.getLogger("atd").info("Gebruiker met ID <" + id + "> heeft een nieuwe auto <"+kt+"> toegevoegd");
 				rd = req.getRequestDispatcher("autolijst.jsp");
 			}
 		}

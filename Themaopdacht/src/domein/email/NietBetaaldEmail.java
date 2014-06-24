@@ -1,6 +1,7 @@
 package domein.email;
 
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -26,8 +27,8 @@ public class NietBetaaldEmail {
 	public NietBetaaldEmail(String to, String fn) {
 
 		// inloggen
-		final String username = "atd.probe0001@gmail.com";
-		final String password = "Wachtwoord1";
+		final String username = "atdgarages@gmail.com";
+		final String password = "Themagroep2";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -58,7 +59,7 @@ public class NietBetaaldEmail {
 
 			Transport.send(message);
 
-			System.out.println("Done");
+			Logger.getLogger("atd").info("Niet betaald mail verzonden naar de klant <"+ fn +">");
 
 		} catch (MessagingException e) {
 			e.printStackTrace();

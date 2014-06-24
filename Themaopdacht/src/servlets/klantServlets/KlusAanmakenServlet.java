@@ -3,6 +3,7 @@ package servlets.klantServlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,7 +38,7 @@ public class KlusAanmakenServlet extends HttpServlet {
 	 * Als er geen foutmeldingen zijn wordt de klant naar de hoofdpagina gestuurd en verschijnt er een melding
 	 * dat de klus is aangemaakt. Voor de meegegeven auto wordt aangegeven dat deze bij een nog niet afgesloten klus hoort.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String[] userinfo = new String[5];
 		boolean error = false; //lege velden
 		
@@ -92,6 +93,7 @@ public class KlusAanmakenServlet extends HttpServlet {
 					plek = -2;
 				} else {
 					k.setParkeerplaats(plek);
+					Logger.getLogger("atd").info("Gebruiker <" + userinfo[1] + "> heeft een nieuwe klus aangemaakt");
 					req.setAttribute("msgs", "De klus is geregistreerd! Uw gereserveerde parkeerplek is " + (plek + 1));
 				}
 				if (plek == -2) {

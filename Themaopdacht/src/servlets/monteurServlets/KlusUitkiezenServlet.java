@@ -2,6 +2,7 @@ package servlets.monteurServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,7 +30,7 @@ public class KlusUitkiezenServlet extends HttpServlet {
 	 * dan wordt  de ingelogde monteur aan de klus toegewezen en wordt de monteur doorgestuurd
 	 * naar deze pagina en wordt een melding weergegeven dat het uitkiezen gelukt is.
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 
 		int klusid = Integer.parseInt(req.getParameter("id"));
 		String werknemer = (String) req.getSession().getAttribute("Username");
@@ -49,6 +50,7 @@ public class KlusUitkiezenServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 		if (succes) {
 			req.setAttribute("msgs", "Klus succesvol uitgekozen!");
+			Logger.getLogger("atd").info("Klus "+klusid+" is succesvol toegewezen aan "+werknemer);
 			rd = req.getRequestDispatcher("klussenlijst.jsp");
 		} else{ 
 			req.setAttribute("error", "Deze klus is al aan iemand toegewezen!");
