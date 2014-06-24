@@ -12,14 +12,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * In deze klasse wordt een email gestuurd als een klant zich geregistreerd
- * heeft
+ * In deze klasse wordt een email gestuurd als een klant zich geregistreerd heeft
  */
 public class RegisterEmail {
 
 	/**
-	 * Er wordt ingelogd in het dres waarvandaan de mail gestuurd gaat worden.
-	 * Een van te voren opgestelde mail wordt gestuurd naar het door de klant
+	 * Er wordt ingelogd in het adres waarvandaan de mail gestuurd gaat worden.
+	 * Een van te voren opgestelde email wordt gestuurd naar het door de klant
 	 * opgegeven emailadres
 	 * 
 	 * @param to het emailadres waar de mail naartoe gestuurd wordt
@@ -52,16 +51,12 @@ public class RegisterEmail {
 			//wordt meegegeven
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(to));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(to));
+			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(to));
 			message.setSubject("Uw ATD WEB account is gereed voor gebruik");
-			message.setText("Beste "
-					+ fn
-					+ ","
+			message.setText("Beste " + fn + ","
 					+ "\n\nUw atd web account is gereed voor gebruik. Uw gebruikernaam is "
-					+ uname + ". Uw wachtwoord is " + pass
+					+ uname + ". Uw wachtwoord is " + pass 
 					+ "\nMet vriendelijke groeten,\n\nAuto Totaal Diensten\n");
-
 			Transport.send(message);
 
 			Logger.getLogger("atd").info("Registratie email verzonden naar de klant <"+ fn +">");

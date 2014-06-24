@@ -13,14 +13,14 @@ import javax.mail.internet.MimeMessage;
 
 /**
  * In deze klasse wordt een email gegenereed die een mail stuurt als een auto
- * een apk keuring moet krijgen
+ *  een apk keuring moet krijgen
  */
 public class AutoControlenEmail {
 
 	/**
-	 * Deze methode logt eerst in in het emailadres dat de mail moet sturen
-	 * Hierna wordt een van te voren opgestelde mail verstuurd naar het
-	 * megegeven emailadres.
+	 * Deze methode logt eerst in in het emailadres dat de email moet sturen
+	 * Hierna wordt een van te voren opgestelde mail verstuurd naar het door de
+	 * klant megegeven emailadres.
 	 * 
 	 * @param to het emailadres waar de mail naartoe gestuurd moet worden
 	 * @param fn de naam van de klant
@@ -49,15 +49,11 @@ public class AutoControlenEmail {
 			// het opgestelde bericht, de naam van de klant wordt ingevuld
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(to));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(to));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 			message.setSubject("Vergeet niet uw APK - ATD");
-			message.setText("Beste "
-					+ fn
-					+ ","
+			message.setText("Beste " + fn + ","
 					+ "\nWe sturen deze e-mail om je eraan te herinneren dat je auto een APK-keuring nodig heeft."
 					+ "\nMet vriendelijke groeten,\n\nAuto Totaal Diensten\n");
-
 			Transport.send(message);
 
 			Logger.getLogger("atd").info("APK keuring mail verzonden naar de klant <"+ fn +">");
