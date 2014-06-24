@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domein.klantenbinding.Klant;
 import domein.klusbeheer.Monteur;
 
 /**
@@ -36,6 +37,7 @@ public class RegistreerMonteurServlet extends HttpServlet {
 
 		String[] userinfo = new String[3];
 		boolean error = false;
+		boolean error2 = false;
 		ArrayList<Monteur> Monteurs = (ArrayList<Monteur>) req.getServletContext().getAttribute("alleMonteurs");
 
 		userinfo[0] = req.getParameter("Realname");
@@ -52,12 +54,29 @@ public class RegistreerMonteurServlet extends HttpServlet {
 		if (!userinfo[1].equals(userinfo[2])) {
 			error = true;
 		}
-
+		
+		//controlleer of naam al bestaat
+		ArrayList<Klant> klanten = (ArrayList<Klant>) req.getServletContext().getAttribute("alleUsers");
+		ArrayList<Monteur> monteurs = (ArrayList<Monteur>) req.getServletContext().getAttribute("alleMonteurs");
+		for(Klant k : klanten) {
+			if(k.getUsername().equals(userinfo[0])) {
+				error2 = true;
+			}
+		}
+		for(Monteur m : monteurs) {
+			if(m.getNaam().equals(userinfo[0])) {
+				error2 = true;
+			}
+		}
+		
 		RequestDispatcher rd = null;
-
-		if (error == true) {
+		if (error) {
 			// foutmelding weergeven
 			req.setAttribute("error","Invoer was leeg of wachtwoord is niet gelijk");
+			rd = req.getRequestDispatcher("registreermonteur.jsp");
+		} else if (error2 || userinfo[0].equals("Admin")) {
+			//foutmelding 2
+			req.setAttribute("error","Deze naam is al in gebruik");
 			rd = req.getRequestDispatcher("registreermonteur.jsp");
 		} else {
 			// monteur account opslaan

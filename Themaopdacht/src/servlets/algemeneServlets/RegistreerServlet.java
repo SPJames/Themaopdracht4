@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import domein.email.RegisterEmail;
 import domein.klantenbinding.Klant;
+import domein.klusbeheer.Monteur;
 
 /**
  * Deze servlet wordt gebruikt om een nieuwe klant te registreren.
@@ -66,6 +67,7 @@ public class RegistreerServlet extends HttpServlet {
 		// controleren of de beide wachtwoorden en beide emailadressen overeen komen
 		
 		ArrayList<Klant> klanten = (ArrayList<Klant>) req.getServletContext().getAttribute("alleUsers");
+		ArrayList<Monteur> monteurs = (ArrayList<Monteur>) req.getServletContext().getAttribute("alleMonteurs");
 		for(Klant k : klanten) {
 			if(k.getUsername().equals(userinfo[0])) {
 				error2 = true;
@@ -74,7 +76,12 @@ public class RegistreerServlet extends HttpServlet {
 				error3 = true;
 			}
 		}
-		if (error2) {
+		for(Monteur m : monteurs) {
+			if(m.getNaam().equals(userinfo[0])) {
+				error2 = true;
+			}
+		}
+		if (error2 || userinfo[0].equals("Admin")) {
 			req.setAttribute("error", "Deze gebruikersnaam is al bezet");
 			rd = req.getRequestDispatcher("registreren.jsp");
 		} else if (error3) {

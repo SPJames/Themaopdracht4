@@ -24,13 +24,6 @@ body {
 	width: 800px;
 }
 
-ul li>ul {
-	display: block;
-	clear: both;
-	margin: 0;
-	padding: 0;
-}
-
 tr {
 	text-align: right;
 }
@@ -96,17 +89,18 @@ h2 {
 	margin-right: auto;
 }
 
-<!-- menu voor admin -->
-#dropdown li{
-	display: inline-block;
-	margin: 4px;
+/* menu voor admin */
+ul ul{
+	display:none;
+}
+ul li:hover ul{
+	position:absolute;
+	display: block;
+	margin-left:-20px;
+	margin-top:0px;
 }
 
-#dropdown li a {
-	padding: 4px;
-}
-
-#dropdown li a:hover {
+ul ul li a:hover {
 	background: #5F94DC;
 	color: white;
-} 
+}  
