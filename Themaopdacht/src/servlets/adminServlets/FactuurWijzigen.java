@@ -16,10 +16,19 @@ import domein.financien.Factuur;
 import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
+/**
+ * In deze klasse kan een factuur gewijzigd worden
+ */
 public class FactuurWijzigen extends HttpServlet{
 
 	/**
+	 * Deze methode vraagt alle gegevens van de doorgegeven factuurid op
+	 * De gegevens van de klus kunnen gewijzigd worden en worden meteen gecontroleerd op correcte invoer
 	 * 
+	 * Als er incorrecte invoer is wordt de gebruiker teruggestuurd naar dit scherm en wordt er een
+	 * foutmelding weergegeven.
+	 * 
+	 * Als er geen errors zijn worden de gegevens opgeslagen
 	 */
 	private static final long serialVersionUID = 1L;
 
