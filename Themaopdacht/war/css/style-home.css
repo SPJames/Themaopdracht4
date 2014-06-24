@@ -40,12 +40,17 @@ ul {
 
 li {
 	display: inline-block;
-	width: 125px;
+	width: 110px;
 	margin-top: 15px;
 }
 
 ul li a {
 	text-decoration: none;
+	color: grey;
+}
+
+a:hover {
+	color: red;
 }
 
 #Content {
@@ -90,17 +95,26 @@ h2 {
 }
 
 /* menu voor admin */
-ul ul{
-	display:none;
-}
-ul li:hover ul{
-	position:absolute;
-	display: block;
-	margin-left:-20px;
-	margin-top:0px;
+ul li ul {
+	display: none;
 }
 
-ul ul li a:hover {
-	background: #5F94DC;
-	color: white;
-}  
+ul li:hover  ul {
+	position: absolute;
+	display: block;
+	margin-top: 0px;
+	margin-left: -40px;
+}
+
+ul li ul li a {
+	border: 1px solid grey;
+	text-decoration: none;
+	padding: 8px;
+	background: #E2EAED;
+}
+
+ul li ul li a:hover {
+	background: lightgrey;
+	padding: 8px;
+	color: red;
+}

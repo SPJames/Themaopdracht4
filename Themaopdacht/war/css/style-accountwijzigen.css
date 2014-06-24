@@ -30,6 +30,11 @@ li {
 
 ul li a {
 	text-decoration: none;
+	color: grey;
+}
+
+a:hover {
+	color: red;
 }
 
 #register {
@@ -102,7 +107,7 @@ label {
 }
 
 .down-afspraak {
-	margin-top: 230px;
+	margin-top: 250px;
 	border: 2px solid black;
 	color: white;
 	background: #888;

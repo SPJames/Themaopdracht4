@@ -44,16 +44,16 @@
 
 				<!-- wijzig wachtwoord -->
 				<label for="newpwd">Nieuw wachtwoord</label> 
-					<input type="password" name="newpwd" placeholder="password" class="box" /> 
+					<input type="password" name="newpwd" placeholder="Wachtwoord" class="box" /> 
 				<label for="newpwd2">Nieuw wachtwoord controle</label> 
-					<input type="password" name="newpwd2" placeholder="password" class="box" />
+					<input type="password" name="newpwd2" placeholder="Wachtwoord" class="box" />
 
-				<!-- wachtwoord bevesteging -->
+				<!-- wachtwoord bevestiging -->
 
 				<p id="text">Vul uw wachtwoord in ter bevesteging van de wijziging:</p>
 
 				<label for="pwd">Huidige wachtwoord</label> 
-					<input type="password" name="pwd" placeholder="password" class="box" /> 
+					<input type="password" name="pwd" placeholder="Wachtwoord" class="box" /> 
 				<input type="submit" value="Verzenden" class="down-afspraak" />
 			</fieldset>
 		</form>

@@ -30,6 +30,11 @@ li {
 
 ul li a {
 	text-decoration: none;
+	color: grey;
+}
+
+a:hover {
+	color: red;
 }
 
 table,th,td {

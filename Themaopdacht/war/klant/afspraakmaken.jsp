@@ -14,7 +14,6 @@
 		<%
 			String id = "" + (Integer) session.getAttribute("ID");//id locaal opslaan
 			String name = (String) session.getAttribute("Username");//username locaal opslaan
-			//allebij "hidden" in vullen in de form zodat we ze straks kunnen gebruiken
 		%>
 		<%
 			@SuppressWarnings("unchecked")
@@ -63,7 +62,7 @@
 		<%
 					}
 					else{%>
-						nog geen auto's geregistreed!
+						Nog geen auto's geregistreerd!
 						<a href="autotoevoegen.jsp">Voeg nu een auto toe</a>	
 					
 					<%}
