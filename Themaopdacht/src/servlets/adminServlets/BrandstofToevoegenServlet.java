@@ -54,7 +54,7 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 		//controleren of de brandstof al in voorraad is
 		RequestDispatcher rd = null;
 		for(Brandstof b : brandstoffen){
-			if(b.getBrandstofType() == userinfo[0])
+			if(b.getBrandstofType().equals(userinfo[0]))
 			{
 				error2 = true;
 			}

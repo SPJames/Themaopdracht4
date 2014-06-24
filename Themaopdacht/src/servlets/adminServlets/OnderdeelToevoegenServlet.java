@@ -52,7 +52,7 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 		// controleren of het onderdeel al bestaat
 		RequestDispatcher rd = null;
 		for(Onderdeel o : onderdelen){
-			if(o.getNaam() == userinfo[0])
+			if(o.getNaam().equals(userinfo[0]))
 			{
 				error2 = true;
 			}
