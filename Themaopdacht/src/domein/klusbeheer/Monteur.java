@@ -9,7 +9,6 @@ public class Monteur implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String naam;
 	private String password;
-	private static int nummer = 1;
 	private int id;
 
 	/**
@@ -19,10 +18,10 @@ public class Monteur implements Serializable{
 	 * @param nm de gebruikersnaam van de monteur
 	 * @param pw het wachtwoord van de monteur
 	 */
-	public Monteur(String nm, String pw) {
+	public Monteur(String nm, String pw, int id) {
 		setNaam(nm);
 		setPassword(pw);
-		id = nummer++; //het automatisch ophogen
+		this.id = id; //het automatisch ophogen
 	}
 	
 	/**

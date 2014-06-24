@@ -14,7 +14,7 @@ public class ParkeerplaatsTest {
 	Auto u = new Auto("12-zx-56", "honda", "1");
 	Auto u2 = new Auto("34-xz-65", "ford", "4");
 	Parkeerplaats p = new Parkeerplaats(u);
-	private Calendar cal;
+	private Calendar cal = Calendar.getInstance();
 	
 	@Test
 	public void testSetAuto() {
@@ -24,7 +24,7 @@ public class ParkeerplaatsTest {
 	
 	@Test
 	public void testSetReserveringsDatum(){
-		p.setReseveringsDatum(cal.getInstance());
+		p.setReseveringsDatum(cal);
 		assertEquals("22/06/2014", p.getReseveringsDatum());
 	}
 

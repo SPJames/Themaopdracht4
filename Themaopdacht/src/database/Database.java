@@ -73,7 +73,7 @@ public class Database {
 	 * @param br ArrayList van brandstof
 	 * @param pl weekplanning Object
 	 */
-	public void schrijfWeg(ArrayList<Klant> kla, ArrayList<Monteur> mo, ArrayList<Klus> klu, ArrayList<Auto> au, Parkeerplaats[] pa, ArrayList<Onderdeel> on, ArrayList<Factuur> fa, ArrayList<Brandstof> br, Weekplanning pl) throws IOException{
+	public void schrijfWeg(ArrayList<Klant> kla, ArrayList<Monteur> mo, ArrayList<Klus> klu, ArrayList<Auto> au, Parkeerplaats[] pa, ArrayList<Onderdeel> on, ArrayList<Factuur> fa, ArrayList<Brandstof> br, Weekplanning pl, HashMap<String, Integer> id) throws IOException{
 		data.put("List", (Object) kla);
 		data.put("List2", (Object) mo);
 		data.put("List3", (Object) klu);
@@ -83,6 +83,7 @@ public class Database {
 		data.put("List7", (Object) fa);
 		data.put("List8", (Object) br);
 		data.put("planning", (Object) pl);
+		data.put("ids", (Object) id);
 
 		File f = new File(directory);
 		if(f.exists() && !f.isDirectory()) { 

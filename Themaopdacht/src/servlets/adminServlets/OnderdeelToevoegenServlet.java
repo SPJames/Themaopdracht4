@@ -2,6 +2,7 @@ package servlets.adminServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -27,6 +28,7 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 	 * als er geen foutmeldingen gegeven zijn wordt het onderdeel aan de lijst toegevoegd en wordt
 	 * de gebruiker teruggestuurd naar voorraadoverzicht.jsp waar een melding gegeven wordt
 	 */
+	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		ServletContext sc = req.getServletContext();
 		String[] userinfo = new String[3];
@@ -47,7 +49,6 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 			}
 		}
 		
-		@SuppressWarnings("unchecked")
 		ArrayList<Onderdeel> onderdelen = (ArrayList<Onderdeel>) sc.getAttribute("alleOnderdelen");
 		
 		// controleren of het onderdeel al bestaat
@@ -60,7 +61,10 @@ public class OnderdeelToevoegenServlet extends HttpServlet{
 		}
 		
 		//een nieuw onderdeel aanmaken met de ingevoerde gegevens
-		onderdeel = new Onderdeel(Integer.parseInt(userinfo[1]), userinfo[0], Double.parseDouble(userinfo[2]));
+		int id = ((HashMap<String, Integer>) req.getServletContext().getAttribute("ids")).get("onderdeelID");
+		onderdeel = new Onderdeel(Integer.parseInt(userinfo[1]), userinfo[0], Double.parseDouble(userinfo[2]), id);
+		((HashMap<String, Integer>) req.getServletContext().getAttribute("ids")).put("onderdeelID", id+1);
+		
 		if(error){ //eerste error bericht, er was een veld leeg
 			req.setAttribute("error", "één of meerdere velden waren leeg");
 			rd = req.getRequestDispatcher("onderdeeltoevoegen.jsp");

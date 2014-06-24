@@ -21,7 +21,6 @@ public class Klant implements Serializable{
 	private Calendar laatstBezocht;
 	private ArrayList<Auto> alleAutos = new ArrayList<Auto>();
 	DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-	private static int getal = 1;
 	private int id;
 
 	/**
@@ -36,14 +35,14 @@ public class Klant implements Serializable{
 	 * @param un de gebruikersnaam van de klant voor op de site
 	 * @param pw het wachtwoord van de klant voor op de site
 	 */
-	public Klant(String nm, String ad, String pc, String em, String un,	String pw) {
+	public Klant(String nm, String ad, String pc, String em, String un,	String pw, int id) {
 		setNaam(nm);
 		setAdres(ad);
 		setPostcode(pc);
 		setEmail(em);
 		setUsername(un);
 		setPassword(pw);
-		id = getal++;	//het automatisch ophogen van klantid
+		this.id = id;
 	}
 
 	/**

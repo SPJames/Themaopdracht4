@@ -10,7 +10,6 @@ public class Brandstof implements Serializable{
 	private String brandstofType;
 	private int tsic;
 	private double prijsPerLiter, liter;
-	private static int getal = 1;
 
 	/**
 	 * de brandstofsoort wordt aangemaakt. het brandstoftype, de hoeveelheid in liters
@@ -20,10 +19,10 @@ public class Brandstof implements Serializable{
 	 * @param l hoeveelheid liters
 	 * @param ppl de prijs per liter
 	 */
-	public Brandstof(String tp, double l, double ppl) {
+	public Brandstof(String tp, double l, double ppl, int id) {
 		brandstofType = tp;
 		liter = l;
-		tsic = getal++;
+		tsic = id;
 		prijsPerLiter = ppl;
 	}
 

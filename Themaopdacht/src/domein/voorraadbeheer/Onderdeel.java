@@ -11,7 +11,6 @@ public class Onderdeel implements Serializable{
 	private String naam;
 	private double prijsArtikel;
 	private double totaal;
-	private static int getal = 1;
 
 	/**
 	 * het onderdeel wordt aangemaakt het krijgt een artikelnummer, het aantal artikelen dat
@@ -21,8 +20,8 @@ public class Onderdeel implements Serializable{
 	 * @param nm	de naam
 	 * @param pA	de prijs per artikel
 	 */
-	public Onderdeel(int aan, String nm, double pA) {
-		artikelNr = getal++;
+	public Onderdeel(int aan, String nm, double pA, int id) {
+		artikelNr = id;
 		aantal = aan;
 		naam = nm;
 		prijsArtikel = pA;

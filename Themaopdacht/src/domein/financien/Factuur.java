@@ -14,7 +14,6 @@ import domein.voorraadbeheer.Onderdeel;
 public class Factuur implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Klus klus;
-	private static int nummer = 1;
 	private int factuurNummer;
 
 	private double btw = 1.21;
@@ -33,9 +32,9 @@ public class Factuur implements Serializable{
 	 * 
 	 * @param k de klus waar de factuur voor opgesteld moet worden
 	 */
-	public Factuur(Klus k) {
+	public Factuur(Klus k, int id) {
 		setKlus(k);
-		factuurNummer = nummer++;
+		factuurNummer = id;
 		setManurenprijs(k);
 		setBrandstofprijs(k);
 		setOnderdelenprijs(k);

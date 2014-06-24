@@ -14,8 +14,8 @@ import domein.klusbeheer.*;
 public class KlusTest {
 	Auto a = new Auto("11-22-33", "honda", "1");
 	Auto a2 = new Auto("22-33-44", "ford", "2");
-	Onderdeel o = new Onderdeel(50, "bout", 0.50);
-	Brandstof b = new Brandstof("diesel", 50, 1.23);
+	Onderdeel o = new Onderdeel(50, "bout", 0.50, 4);
+	Brandstof b = new Brandstof("diesel", 50, 1.23, 5);
 	Klus s = new Klus(a,"uitlaat = broken", "rep", 1);
 	
 	@Test

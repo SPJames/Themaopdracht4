@@ -7,7 +7,7 @@ import org.junit.Test;
 import domein.klusbeheer.Monteur;
 
 public class MonteurTest {
-	Monteur m = new Monteur("jan", "pass");
+	Monteur m = new Monteur("jan", "pass", 3);
 	
 	@Test
 	public void testGetId() {

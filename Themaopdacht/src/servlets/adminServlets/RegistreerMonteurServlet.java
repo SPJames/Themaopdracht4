@@ -2,6 +2,7 @@ package servlets.adminServlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,11 +31,11 @@ public class RegistreerMonteurServlet extends HttpServlet {
 	 * van monteurs toegevoegd, wordt de admin doorgestuurd naar de index en
 	 * wordt een melding weergegeven dat het registreren gelukt is.
 	 */
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 
 		String[] userinfo = new String[3];
 		boolean error = false;
-		@SuppressWarnings("unchecked")
 		ArrayList<Monteur> Monteurs = (ArrayList<Monteur>) req.getServletContext().getAttribute("alleMonteurs");
 
 		userinfo[0] = req.getParameter("Realname");
@@ -60,7 +61,10 @@ public class RegistreerMonteurServlet extends HttpServlet {
 			rd = req.getRequestDispatcher("registreermonteur.jsp");
 		} else {
 			// monteur account opslaan
-			Monteur m = new Monteur(userinfo[0], userinfo[1]);
+			int id = ((HashMap<String, Integer>) req.getServletContext().getAttribute("ids")).get("monteurID");
+			Monteur m = new Monteur(userinfo[0], userinfo[1], id);
+			((HashMap<String, Integer>) req.getServletContext().getAttribute("ids")).put("monteurID", id+1);
+			
 			Monteurs.add(m);
 			req.setAttribute("msgs", "De nieuwe monteur " + userinfo[0] + " is succesvol opgeslagen!");
 			rd = req.getRequestDispatcher("../index.jsp");
