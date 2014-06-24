@@ -44,7 +44,7 @@ public class KlusFacturerenServlet extends HttpServlet {
 				int id = ((HashMap<String, Integer>) req.getServletContext().getAttribute("ids")).get("factuurID");
 				Factuur factuur = new Factuur(k, id);
 				((HashMap<String, Integer>) req.getServletContext().getAttribute("ids")).put("factuurID", id+1);
-				
+				req.setAttribute("id", factuur.getFactuurNummer());
 				facturen.add(factuur);
 				klus = k;
 			}
@@ -52,6 +52,7 @@ public class KlusFacturerenServlet extends HttpServlet {
 		klussen.remove(klus); //klus wordt uit de lijst klussen gehaald
 
 		req.setAttribute("msgs", "Klus succesvol gefactureerd!");
+		
 		Logger.getLogger("atd").info("Klus <"+klusid+"> succesvol gefactureerd");
 		rd = req.getRequestDispatcher("factuurberekenen.jsp");
 		rd.forward(req, resp);

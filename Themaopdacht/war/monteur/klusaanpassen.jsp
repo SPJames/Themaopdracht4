@@ -54,7 +54,7 @@
 				<label for="comments">Comments: </label><br />
 				<textarea rows="10" cols="50" name="comments"><%=k.getBeschrijving()%></textarea><br />
 				<label for="manuren">Manuren: </label>
-				<input type="number" name="manuren" class="box" />
+				<input type="number" name="manuren" class="box" min="0" value="0"/>
 				<br />
 
 				<!-- onderdelen -->
@@ -63,7 +63,7 @@
 						for (int i = 0; i < onderdelen.size(); i++) {
 					%>
 					<div id="onderdeel<%=i%>" style="display: none;">
-						<label for="onderdeel<%=i%>">Onderdeel nr <%=i %>: </label>
+						<label for="onderdeel<%=i%>">Onderdeel nr <%=i+1 %>: </label>
 						<select name="onderdeel<%=i%>" class="box">
 							<%
 								for (Onderdeel o : onderdelen) {
@@ -89,7 +89,7 @@
 					for (int i = 0; i < brandstof.size(); i++) {
 				%>
 				<div id="brandstof<%=i%>" style="display: none;">
-					<label for="brandstof<%=i %>">Brandstof <%=i %>: </label>
+					<label for="brandstof<%=i %>">Brandstof <%=i+1 %>: </label>
 					<select name="brandstof<%=i%>" class="box">
 						<%
 							for (Brandstof b : brandstof) {

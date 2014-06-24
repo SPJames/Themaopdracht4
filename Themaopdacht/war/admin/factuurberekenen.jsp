@@ -16,11 +16,11 @@
 
 		<%
 			@SuppressWarnings("unchecked")
-			ArrayList<Factuur> facturen = (ArrayList<Factuur>) application
-					.getAttribute("alleFacturen");//alle facturen ophalen
+			ArrayList<Factuur> facturen = (ArrayList<Factuur>) application.getAttribute("alleFacturen");//alle facturen ophalen
 		%>
 		<%
 			for (Factuur f : facturen) {
+				if(f.getFactuurNummer() == (int) request.getAttribute("id")) {
 		%>
 		<p>Factuur ID</p>
 		<p><%=f.getFactuurNummer()%></p>
@@ -62,6 +62,7 @@
 		<br />
 
 		<%
+				}
 			}
 		%>
 
