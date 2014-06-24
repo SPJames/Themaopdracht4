@@ -9,7 +9,7 @@ import domein.voorraadbeheer.Brandstof;
 import domein.voorraadbeheer.Onderdeel;
 
 /**
- * In de klasse Factuur wordt de factuur opgesteld en berekend
+ * In deze klasse wordt de factuur opgesteld en berekend
  */
 public class Factuur implements Serializable{
 	private static final long serialVersionUID = 1L;

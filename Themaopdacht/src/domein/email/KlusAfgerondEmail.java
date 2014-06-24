@@ -17,8 +17,9 @@ import javax.mail.internet.MimeMessage;
 public class KlusAfgerondEmail {
 
 	/**
-	 * Er wordt ingelogd op het adres waarvandaan de mail gestuurd gaat worden.
-	 * Een van te voren opgestelde mail wordt gestuurd naar de meegegeven klant.
+	 * Deze methode logt eerst in bij de account die de email moet sturen. 
+	 * De email is van te voren opgesteld en wordt gestuurd naar het door
+	 * de klant megegeven emailadres.
 	 * 
 	 * @param to het adres waar de mail naartoe gestuurd moet worden
 	 * @param fn de naam van de ontvanger van de email
@@ -46,13 +47,11 @@ public class KlusAfgerondEmail {
 			//mail genereren, de klantnaam wordt ingevuld
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(to));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(to));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 			message.setSubject("Uw auto staat klaar - ATD");
 			message.setText("Beste " + fn + ","
 					+ "\nUw auto staat klaar om afgehaald te worden."
 					+ "\nMet vriendelijke groeten,\n\nAuto Totaal Diensten\n");
-
 			Transport.send(message);
 
 			Logger.getLogger("atd").info("Auto klaar mail verzonden naar de klant <"+ fn +">");

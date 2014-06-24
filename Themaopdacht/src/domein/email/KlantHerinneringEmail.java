@@ -17,8 +17,9 @@ import javax.mail.internet.MimeMessage;
 public class KlantHerinneringEmail {
 
 	/**
-	 * deze methode logt eerst in bij de account die de mail moet sturen de
-	 * gegenereerde mail wordt gestuurd naar het meegegeven email-adres
+	 * Deze methode logt eerst in bij de account die de email moet sturen.
+	 * De email is van te voren opgesteld en wordt gestuurd naar het door 
+	 * de klant meegegeven emailadres
 	 * 
 	 * @param to het emailadres waar de mail naartoe gestuurd moet worden
 	 * @param fn de naam van de klant
@@ -47,16 +48,12 @@ public class KlantHerinneringEmail {
 			// de gegenereerde mail, de naam van de klant wordt ingevuld
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(to));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(to));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
 			message.setSubject("Lang niet gezien! - ATD");
-			message.setText("Beste "
-					+ fn
-					+ ","
+			message.setText("Beste " + fn + ","
 					+ "\nWij hebben u al voor langere tijd niet gezien bij Auto Totaal Diensten."
 					+ "\nVergeet niet om langs te komen voor onze speciale aanbiedingen.\n"
 					+ "\nMet vriendelijke groeten,\n\nAuto Totaal Diensten\n");
-
 			Transport.send(message);
 
 			Logger.getLogger("atd").info("Herrineringsmail verzonden naar de klant <"+ fn +">");

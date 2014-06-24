@@ -23,8 +23,10 @@ public class BrandstofToevoegenServlet extends HttpServlet{
 	 * In deze methode wordt het nieuwe brandstoftype toegevoegd aan de lijst bestaande brandstoftypes
 	 * Als er een veld leeg was wordt de gebruiker terug gestuurd naar deze pagina en wordt er een 
 	 * foutmelding weergegeven
+	 * 
 	 * als het brandstoftype al bestaat wordt de gebruiker teruggestuurd naar deze pagina en wordt
 	 *  er een foutmelding weergegeven
+	 *  
 	 * Als er geen errors zijn wordt het nieuwe brandstoftype toegevoegd aan de lijst bestaande brandstoffen
 	 * en wordt de gebruiker teruggestuurd naar voorraadoverzicht.jsp en wordt er een melding gegeven.
 	 */
