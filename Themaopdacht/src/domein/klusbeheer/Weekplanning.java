@@ -62,16 +62,15 @@ public class Weekplanning implements Serializable{
 		}
 	}
 	
-	/**
-	 *  Deze methode laat de klussen op één dag zien
-	 * 
-	 * @param dag de dag waarvan de klussen opgevraagd worden
-	 * @return de klussen die op die dag ingepland staan
-	 */
-	public String getKlussenOpDag(int dag) { //dag 1-7
-		String result = "";
-		for (int i = 0; i<6; i++) {
-			if(planning[i][dag-1][weeknr] == null) {				
+	public Klus getKlus(Klus k) {
+		Klus result = null;
+		for(int i=0; i<52; i++) {
+			for(int j=0; j<7; j++) {
+				for(int l=0; l<6; l++) {
+					if(planning[l][j][i] == k) {
+						result = k;
+					}
+				}
 			}
 		}
 		return result;
