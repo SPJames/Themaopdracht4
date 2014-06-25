@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 import org.junit.Test;
 
-import domein.financien.Parkeren;
 import domein.klantenbinding.*;
 import domein.voorraadbeheer.*;
 import domein.klusbeheer.*;
@@ -42,12 +41,6 @@ public class KlusTest {
 	public void testSetWerknemer(){
 		s.setWerknemer("henk");
 		assertEquals("henk", s.getWerknemer());
-	}
-	
-	@Test
-	public void testSetParkeerplaats(){
-		s.setParkeerplaats(2);
-		assertEquals(2, s.getParkeerplaats());
 	}
 	
 	@Test
