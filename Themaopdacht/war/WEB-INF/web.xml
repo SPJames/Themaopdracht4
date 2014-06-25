@@ -174,7 +174,7 @@
 	<!-- Korting Wijzigen (Admin) -->
 	<servlet>
 		<servlet-name>Korting Wijzigen Servlet</servlet-name>
-		<servlet-class>servlets.adminServlets.KortingWijzigen</servlet-class>
+		<servlet-class>servlets.adminServlets.KortingWijzigenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Korting Wijzigen Servlet</servlet-name>
@@ -194,7 +194,7 @@
 	<!-- Wijzig Factuur (Admin) -->
 	<servlet>
 		<servlet-name>Wijzig Factuur</servlet-name>
-		<servlet-class>servlets.adminServlets.FactuurWijzigen</servlet-class>
+		<servlet-class>servlets.adminServlets.FactuurWijzigenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Wijzig Factuur</servlet-name>
