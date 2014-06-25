@@ -17,6 +17,7 @@ public class FactuurTest {
 	@Test
 	public void testSetManurenPrijs() {
 		f.setManurenprijs(k);
+		System.out.println(f.getManurenprijs());
 		assertEquals(",00", f.getManurenprijs());
 		
 	}

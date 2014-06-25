@@ -2,7 +2,9 @@ package domein.financien;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import domein.klusbeheer.Klus;
@@ -16,8 +18,8 @@ public class Factuur implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Klus klus;
 	private int factuurNummer;
-	
-	private DecimalFormat df = new DecimalFormat("#.00");
+	private DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.FRENCH);
+	private DecimalFormat df = new DecimalFormat("#.00", dfs);
 
 	private double btw = 1.21;
 
