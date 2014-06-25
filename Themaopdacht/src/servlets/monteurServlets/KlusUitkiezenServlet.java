@@ -40,7 +40,7 @@ public class KlusUitkiezenServlet extends HttpServlet {
 		// klussen ophalen
 		ArrayList<Klus> klussen = (ArrayList<Klus>) req.getServletContext().getAttribute("alleKlussen");
 		for (Klus k : klussen) {
-			if ((k.getKlusNummer() == klusid) && !(werknemer.equals(k.getWerknemer()))) {
+			if ((k.getKlusNummer() == klusid) && (k.getWerknemer() == null)) {
 				k.setWerknemer(werknemer);
 				planning.addKlus(k);
 				succes = true;
