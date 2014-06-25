@@ -44,6 +44,12 @@ public class KlusTest {
 	}
 	
 	@Test
+	public void testSetParkeerplaats(){
+		s.setParkeerplaats(2);
+		assertEquals(2, s.getParkeerplaats());
+	}
+	
+	@Test
 	public void testSetAuto(){
 		s.setAuto(a2);
 		assertEquals(a2, s.getAuto());
