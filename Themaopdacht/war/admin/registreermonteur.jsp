@@ -11,9 +11,9 @@
 			<fieldset>
 				<label for="Realname">Naam</label><input type="text" name="Realname"
 					placeholder="Realname" class="box" />
-				<label for="pwd">Password</label><input type="password" name="pwd" 
+				<label for="pwd">Wachtwoord</label><input type="password" name="pwd" 
 					placeholder="password" class="box" />
-				<label for="pwd2">Re-enter password</label><input type="password"
+				<label for="pwd2">Herhaal wachtwoord</label><input type="password"
 					name="pwd2" placeholder="password" class="box" />
 				<input type="submit" value="Verzenden" class="down" />
 			</fieldset>
