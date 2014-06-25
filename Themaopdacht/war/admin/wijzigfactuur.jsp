@@ -75,7 +75,7 @@
 			</div>
 			
 			<label for="korting">Korting: </label>
-			<input type="number" name="korting" value="<%=f.getKorting() %>" min="0" max="100" /><br />
+			<input type="number" name="korting" step="any" value="<%=f.getKorting() %>" min="0" max="100" /><br />
 			<input type="submit" value="Wijzig" />
 		</form>
 		<%
