@@ -17,7 +17,6 @@ public class Klus implements Serializable{
 	private String werknemer;
 	private int klantID;
 	private DienstType hetType;
-	private int parkeerplaats;
 	private static int nummer = 1;
 	private int klusnummer;
 	private boolean klusafgerond = false;
@@ -189,24 +188,6 @@ public class Klus implements Serializable{
 	public String toString() {
 		String s = "" + getKlusNummer();
 		return s;
-	}
-
-	/**
-	 * deze methode vraagt de parkeerplaats van de auto op
-	 * 
-	 * @return de parkeerplaats
-	 */
-	public int getParkeerplaats() {
-		return parkeerplaats;
-	}
-
-	/**
-	 * deze methode vult de parkeerplaats van de auto in
-	 * 
-	 * @param parkeerplaats de parkeerplaats
-	 */
-	public void setParkeerplaats(int parkeerplaats) {
-		this.parkeerplaats = parkeerplaats;
 	}
 
 	/**

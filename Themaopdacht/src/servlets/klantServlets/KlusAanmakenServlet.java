@@ -92,7 +92,6 @@ public class KlusAanmakenServlet extends HttpServlet {
 				if (plek == -1) {
 					plek = -2;
 				} else {
-					k.setParkeerplaats(plek);
 					Logger.getLogger("atd").info("Gebruiker <" + userinfo[1] + "> heeft een nieuwe klus aangemaakt");
 					req.setAttribute("msgs", "De klus is geregistreerd! Uw gereserveerde parkeerplek is " + (plek + 1));
 				}
