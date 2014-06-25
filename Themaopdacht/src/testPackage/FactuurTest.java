@@ -2,8 +2,6 @@ package testPackage;
 
 import static org.junit.Assert.*;
 
-import java.util.HashMap;
-
 import org.junit.Test;
 
 import domein.financien.Factuur;
@@ -57,8 +55,8 @@ public class FactuurTest {
 	
 	@Test
 	public void testSetKorting(){
-		f.setKorting(0.70);
-		assertEquals(0.70, f.getKorting(),1e-15);
+		f.setKorting(70);
+		assertEquals(70, f.getKorting(),1e-15);
 	}
 	
 	

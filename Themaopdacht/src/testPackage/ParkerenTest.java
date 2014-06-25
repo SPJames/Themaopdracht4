@@ -3,8 +3,6 @@ package testPackage;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import domein.financien.Onderhoud;
 import domein.financien.Parkeren;
 
 public class ParkerenTest {
