@@ -17,7 +17,7 @@ public class FactuurTest {
 	@Test
 	public void testSetManurenPrijs() {
 		f.setManurenprijs(k);
-		assertEquals(",00", f.getManurenprijs());
+		assertEquals(".00", f.getManurenprijs());
 		
 	}
 	
@@ -36,7 +36,7 @@ public class FactuurTest {
 	@Test
 	public void testSetTotaalprijs(){
 		f.setTotaalprijs(k);
-		assertEquals(",00", f.getTotaalprijs());
+		assertEquals(".00", f.getTotaalprijs());
 	}
 	
 	@Test
