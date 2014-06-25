@@ -12,7 +12,7 @@ import java.util.logging.SimpleFormatter;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import database.Database;
+import persistencie.Persistencie;
 import domein.financien.Factuur;
 import domein.klantenbinding.Auto;
 import domein.klantenbinding.Klant;
@@ -30,7 +30,7 @@ import java.text.SimpleDateFormat;
  * In deze klasse worden alle basiswaarden geinitialiseerd
  */
 public class MyServletContextListener implements ServletContextListener {
-	private Database d = new Database();
+	private Persistencie d = new Persistencie();
 	
 	private ArrayList<Klant> List = new ArrayList<Klant>();
 	private ArrayList<Monteur> List2 = new ArrayList<Monteur>();

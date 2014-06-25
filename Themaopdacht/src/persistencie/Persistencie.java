@@ -1,4 +1,4 @@
-package database;
+package persistencie;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import domein.voorraadbeheer.Onderdeel;
 /**
  * In deze klasse worden de gegevens van het systeem weggeschreven en opgehaald
  */
-public class Database {
+public class Persistencie {
 	private File currentDirectory = new File(new File(".").getAbsolutePath()).getParentFile();
 	private String directory = currentDirectory.getParent() + "/webapps/atd/data/data.dat";
 	private HashMap<String, Object> data = new HashMap<String, Object>();

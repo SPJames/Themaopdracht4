@@ -37,14 +37,7 @@ public class KlusTest {
 		s.setBeschrijving("uitlaat is kapot");
 		assertEquals("uitlaat is kapot", s.getBeschrijving());
 	}
-	
-	@Test
-	public void testSetHetType(){
-		s.setHetType("Parkeren");
-		Parkeren p = new Parkeren();
-		assertEquals(p, s.getHetType());
-	}
-	
+		
 	@Test
 	public void testSetWerknemer(){
 		s.setWerknemer("henk");
