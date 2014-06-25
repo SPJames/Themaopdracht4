@@ -21,7 +21,7 @@ public class Factuur implements Serializable{
 
 	private double btw = 1.21;
 
-	private double korting = 0;
+	private int korting = 0;
 
 	private double manurenprijs;
 	private HashMap<String, Double> onderdelenprijs = new HashMap<String, Double>();
@@ -223,7 +223,7 @@ public class Factuur implements Serializable{
 	 * 
 	 * @return het percentage korting dat gegeven gaat worden
 	 */
-	public double getKorting() {
+	public int getKorting() {
 		return korting;
 	}
 
@@ -232,7 +232,7 @@ public class Factuur implements Serializable{
 	 * 
 	 * @param korting het percentage korting dat gegeven gaat worden
 	 */
-	public void setKorting(double korting) {
+	public void setKorting(int korting) {
 		this.korting = korting;
 	}
 }

@@ -50,7 +50,7 @@
 		<form method="post" action="KortingWijzigen.do">
 			Korting: 
 			<input type="hidden" name="id" value=<%=f.getFactuurNummer()%> />
-			<input type="number" name="korting" min="10" max="100" />
+			<input type="number" name="korting" min="0" max="100" />
 			<input type="Submit" value="Voeg Korting Toe" />
 		</form>
 		<p>
